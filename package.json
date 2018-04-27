@@ -1,0 +1,22 @@
+{
+  "name": "nodecloud-core",
+  "version": "1.0.0",
+  "description": "Unified API for cloud providers",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudlibz/nodecloud-core.git"
+  },
+  "keywords": [
+    "nodecloud"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/cloudlibz/nodecloud-core/issues"
+  },
+  "homepage": "https://github.com/cloudlibz/nodecloud-core#readme"
+}
