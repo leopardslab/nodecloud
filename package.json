@@ -10,10 +10,19 @@
     "type": "git",
     "url": "git+https://github.com/cloudlibz/nodecloud-core.git"
   },
+  "dependencies": {
+    "config": "^1.26.1",
+    "keymirror": "^0.1.1"
+  },
   "keywords": [
-    "nodecloud"
+    "nodecloud",
+    "nodejs",
+    "node",
+    "node-cloud",
+    "node-aws",
+    "node-azure"
   ],
-  "author": "",
+  "author": "scorelab",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/cloudlibz/nodecloud-core/issues"
