@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "config": "^1.26.1",
-    "keymirror": "^0.1.1"
+    "key-mirror": "^1.0.1",
   },
   "keywords": [
     "nodecloud",
