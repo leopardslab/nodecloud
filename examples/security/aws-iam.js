@@ -17,15 +17,15 @@ const GroupPolicyParams = {
 }
 
 iam.createGroup(GroupParams)
-    .then((res) => {
-        return iam.attachGroupPolicy(GroupPolicyParams);
-    })
-    .then((res) => {
-        return iam.detachGroupPolicy(GroupPolicyParams);
-    })
-    .then((res) => {
-        return iam.deleteGroup(GroupParams);
-    })
+		.then((res) => {
+		    return iam.attachGroupPolicy(GroupPolicyParams);
+		})
+		.then((res) => {
+		    return iam.detachGroupPolicy(GroupPolicyParams);
+		})
+		.then((res) => {
+		    return iam.deleteGroup(GroupParams);
+		})
 		.then((res) => {
 		    console.log(res);
 		})
