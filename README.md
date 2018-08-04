@@ -42,6 +42,37 @@ yarn add nodecloud
 
 ## Usage
 
+# Quick Start Guide
+
+## Note:
+
+Please make sure you have `.nc.config` file in the project root and have `nodecloud-core` installed.
+
+Content of `.nc.config` file is assumed as the following json structure.
+It is an array of supported providers.
+
+1.  `name` : It is the provider name which nodecloud-core supports.
+2.  `tag` : It is the name that you will use to load the given provider. It is for your reference in code. It can be anything that you may like.
+3.  `libName` : It is the name of the library which has to be installed before loading a provider.
+
+This config file can contain array of objects for all providers and all will be loaded.
+Supported values for `name` : Azure, google, AWS
+
+```js
+const providers = [
+  {
+    name: "Azure",
+    tag: "azure",
+    libName: "nodecloud-azure"
+  },
+  {
+    ... // For Google
+  }
+];
+
+module.exports = providers;
+```
+
 ```js
 const nodeCloud = require("nodecloud");
 // AWS
