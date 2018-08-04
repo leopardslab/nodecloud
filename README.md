@@ -38,6 +38,7 @@ yarn add nodecloud
 |                         | NoSQL: key-value | DynamoDB       | Cloud Datastore  |
 |                         | NoSQL: indexed   | -              | Cloud Datastore  |
 | Security/ Authorization | IAM              | AWS IAM        | -                | -                  |
+| Utilities               | Apps management  | -              | -                | WebApps            |
 
 ## Usage
 
