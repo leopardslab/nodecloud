@@ -44,8 +44,6 @@ yarn add nodecloud
 
 # Quick Start Guide
 
-## Note:
-
 Please make sure you have `.nc.config` file in the project root and have `nodecloud-core` installed.
 
 Content of `.nc.config` file is assumed as the following json structure.
@@ -72,6 +70,11 @@ const providers = [
 
 module.exports = providers;
 ```
+
+
+## [Supported providers](https://github.com/cloudlibz/nodecloud-core/blob/master/lib/core/providers-list.js)
+
+## Usage
 
 ```js
 const nodeCloud = require("nodecloud");
