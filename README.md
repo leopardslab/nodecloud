@@ -40,7 +40,6 @@ yarn add nodecloud
 | Security/ Authorization | IAM              | AWS IAM        | -                | -                  |
 | Utilities               | Apps management  | -              | -                | WebApps            |
 
-## Usage
 
 # Quick Start Guide
 
