@@ -1,4 +1,7 @@
-![Node Cloud Logo](assets/logo.png)
+<p align="center">
+  <img src="assets/logo.png">
+</p>
+
 
 # NodeCloud
 
@@ -10,7 +13,7 @@
 NodeCloud is a standard library to get a single API on the open cloud with multiple providers (Eg. AWS, GCP, Azure.. ).
 This will make building products among multiple cloud services and its services easier for the developer.
 
-## Install
+## 🚀 Install
 
 ```
 npm install nodecloud
@@ -18,13 +21,13 @@ npm install nodecloud
 yarn add nodecloud
 ```
 
-## Service Providers
+## 📘 Service Providers
 
 - Amazon web services (AWS)
 - Google cloud platform (GCP)
 - Azure
 
-## Service Types
+## 📟 Service Types
 
 | Service Category        | Service          | AWS            | GCP              | Azure              |
 | ----------------------- | ---------------- | -------------- | ---------------- | ------------------ |
@@ -42,7 +45,7 @@ yarn add nodecloud
 | Utilities               | Apps management  | -              | -                | WebApps            |
 
 
-# Usage
+# ✌️ How to setup
 
 Make sure you have `.nc.config.js` file in the project root.
 
@@ -71,10 +74,9 @@ const providers = [
 module.exports = providers;
 ```
 
-
 ## [Supported providers](https://github.com/cloudlibz/nodecloud/blob/master/lib/core/providers-list.js)
 
-## Usage
+## 📣 Usage
 
 ```js
 const nodeCloud = require("nodecloud");
@@ -106,7 +108,7 @@ ec2
   });
 ```
 
-## Development setup
+## 💻 Development setup
 
 ```
 $ git clone https://github.com/cloudlibz/nodecloud
@@ -114,7 +116,7 @@ $ cd nodecloud
 $ yarn install
 ```
 
-### Run unit tests
+## ✒️ Run unit tests
 
 ```
 $ yarn test
