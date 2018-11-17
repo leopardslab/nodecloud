@@ -22,6 +22,7 @@ yarn add nodecloud
 
 - Amazon web services (AWS)
 - Google cloud platform (GCP)
+- Azure
 
 ## Service Types
 
@@ -41,11 +42,11 @@ yarn add nodecloud
 | Utilities               | Apps management  | -              | -                | WebApps            |
 
 
-# Quick Start Guide
+# Usage
 
-Please make sure you have `.nc.config` file in the project root and have `nodecloud-core` installed.
+Make sure you have `.nc.config.js` file in the project root.
 
-Content of `.nc.config` file is assumed as the following json structure.
+Content of `.nc.config.js` file is assumed as the following structure.
 It is an array of supported providers.
 
 1.  `name` : It is the provider name which nodecloud-core supports.
@@ -58,9 +59,9 @@ Supported values for `name` : Azure, google, AWS
 ```js
 const providers = [
   {
-    name: "Azure",
-    tag: "azure",
-    libName: "nodecloud-azure"
+    name: "aws",
+    tag: "aws",
+    libName: "nodecloud-aws-plugin"
   },
   {
     ... // For Google
@@ -71,14 +72,14 @@ module.exports = providers;
 ```
 
 
-## [Supported providers](https://github.com/cloudlibz/nodecloud-core/blob/master/lib/core/providers-list.js)
+## [Supported providers](https://github.com/cloudlibz/nodecloud/blob/master/lib/core/providers-list.js)
 
 ## Usage
 
 ```js
 const nodeCloud = require("nodecloud");
 // AWS
-const ncAWS = nodeCloud.getProvider("AWS");
+const ncProviders = nodeCloud.getProviders();
 const options = {
   apiVersion: "2016-11-15"
 };
@@ -94,7 +95,7 @@ const instanceParams = {
   Value: "Node Cloud demo"
 };
 
-const ec2 = ncAWS.AWS.compute(options);
+const ec2 = ncProviders.aws.compute(options);
 ec2
   .createInstance(params, instanceParams)
   .then(res => {
