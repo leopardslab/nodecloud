@@ -10,8 +10,8 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b94b1fe2ac724e8083f8237de3473c8a)](https://www.codacy.com/app/rehrumesh/nodecloud?utm_source=github.com&utm_medium=referral&utm_content=cloudlibz/nodecloud&utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/cloudlibz/nodecloud.svg?branch=master)](https://travis-ci.org/cloudlibz/nodecloud)
 
-NodeCloud is a standard library to get a single API on the open cloud with multiple providers (Eg. AWS, GCP, Azure.. ).
-This will make building products among multiple cloud services and its services easier for the developer.
+NodeCloud is a standard library to get a single API on the open cloud with multiple providers.
+Making open cloud easily accessible and managed.
 
 ## 🚀 Install
 
