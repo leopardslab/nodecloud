@@ -121,3 +121,6 @@ $ yarn install
 ```
 $ yarn test
 ```
+## 📜 License
+
+MIT
