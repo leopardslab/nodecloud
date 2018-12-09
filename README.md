@@ -81,7 +81,7 @@ module.exports = providers;
 ```js
 const nodeCloud = require("nodecloud");
 // AWS
-const ncProviders = nodeCloud.getProviders();
+const ncProvider = nodeCloud.getProvider();
 const options = {
   apiVersion: "2016-11-15"
 };
