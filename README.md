@@ -80,7 +80,6 @@ module.exports = providers;
 
 ```js
 const nodeCloud = require("nodecloud");
-// AWS
 const ncProviders = nodeCloud.getProviders();
 const options = {
   apiVersion: "2016-11-15"
@@ -106,6 +105,15 @@ ec2
   .catch(err => {
     console.log(`Oops something happened ${err}`);
   });
+```
+
+## Ovveride providers
+
+NodeCloud officialy supports AWS, GCP and Azure. If you want to use a community driven plugin override the providers list as follows.
+
+```js
+const nodeCloud = require("nodecloud");
+const ncProviders = nodeCloud.getProviders(true);
 ```
 
 ## 💻 Development setup
