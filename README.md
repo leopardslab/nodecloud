@@ -2,7 +2,6 @@
   <img src="assets/logo.png">
 </p>
 
-
 # NodeCloud
 
 [![npm version](https://badge.fury.io/js/nodecloud.svg)](https://badge.fury.io/js/nodecloud)
@@ -43,7 +42,6 @@ yarn add nodecloud
 |                         | NoSQL: indexed   | -              | Cloud Datastore  |
 | Security/ Authorization | IAM              | AWS IAM        | -                | -                  |
 | Utilities               | Apps management  | -              | -                | WebApps            |
-
 
 # ✌️ How to setup
 
@@ -107,7 +105,7 @@ ec2
   });
 ```
 
-## Ovveride providers
+## Override providers
 
 NodeCloud officialy supports AWS, GCP and Azure. If you want to use a community driven plugin override the providers list as follows.
 
@@ -129,6 +127,7 @@ $ yarn install
 ```
 $ yarn test
 ```
+
 ## 📜 License
 
 MIT

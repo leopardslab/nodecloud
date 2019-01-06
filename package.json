@@ -1,11 +1,12 @@
 {
-  "name": "nodecloudc",
+  "name": "nodecloud",
   "version": "1.0.0",
   "description": "Unified API for cloud providers",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha",
-    "prettier": "pretty-quick --staged"
+    "prettier": "pretty-quick --staged",
+    "prepublish": "npm run test"
   },
   "repository": {
     "type": "git",
