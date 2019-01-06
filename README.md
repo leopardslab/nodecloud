@@ -111,7 +111,10 @@ NodeCloud officialy supports AWS, GCP and Azure. If you want to use a community 
 
 ```js
 const nodeCloud = require("nodecloud");
-const ncProviders = nodeCloud.getProviders(true);
+const options = {
+  overrideProviders: true
+};
+const ncProviders = nodeCloud.getProviders(options);
 ```
 
 ## 💻 Development setup
