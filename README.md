@@ -50,9 +50,9 @@ Make sure you have `.nc.config.js` file in the project root.
 Content of `.nc.config.js` file is assumed as the following structure.
 It is an array of supported providers.
 
-1.  `name` : It is the provider name which nodecloud-core supports.
-2.  `tag` : It is the name that you will use to load the given provider. It is for your reference in code. It can be anything that you may like.
-3.  `libName` : It is the name of the library which has to be installed before loading a provider.
+1.  `name` : Provider identifier, this can be used to identify the plugin at a glance.
+2.  `tag` : Tag name that will be used to load the given provider.
+3.  `libName` : Name of the plugin repository eg: nodecloud-aws-plugin
 
 This config file can contain array of objects for all providers and all will be loaded.
 Supported values for `name` : Azure, google, AWS
