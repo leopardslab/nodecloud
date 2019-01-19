@@ -1,11 +1,11 @@
-const nodeCloud = require('../../lib');
-const chai = require('chai');
+const nodeCloud = require("../../lib");
+const chai = require("chai");
 const assert = chai.assert;
-const providers = require('../../lib/core/providers');		
-const nodeCloud = require('../../lib');
-const nock = require('nock');
+const providers = require("../../lib/core/providers");
+const nodeCloud = require("../../lib");
+const nock = require("nock");
 
-const ncGoogle = nodeCloud.getProvider("google", {
+const ncGoogle = nodeCloud.getProviders("google", {
   projectId: process.env.GCLOUD_PROJECT,
   keyFilename: process.env.GCLOUD_KEY_FILE_NAME
 });
