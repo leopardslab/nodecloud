@@ -36,8 +36,8 @@ yarn add nodecloud
 |                         | Kubernetes*      | EKS            | Kubernetes Engine| AKS                |
 | Storage                 | Object Storage   | S3             | Cloud Storage    | Blob, Queue, Table,Files*|
 |                         | Block Storage    | EBS            | Persistent Disks |
-| Networking              | Load Balancer    | ELB            | GC Load Balancing*| Virtual Networks   |
-|                         | Peering          | Direct Connect | Direct Peering,Carrier Peering         | Azure API|
+| Networking              | Load Balancer    | ELB            | GC Load Balancing*| Virtual Networks  |
+|                         | Peering          | Direct Connect | Direct Peering*,Carrier Peering*      | Azure API|
 |                         | DNS              | Route53        | Google DNS       |
 | Databases               | RDBMS            | RDS            | -                | Azure Database     |
 |                         | NoSQL: key-value | DynamoDB       | Cloud Datastore  |
@@ -45,7 +45,7 @@ yarn add nodecloud
 | Security/ Authorization | IAM              | AWS IAM        | -                | -                  |
 | Utilities               | Apps management  | -              | -                | WebApps            |
 
-*-To be Implemented 
+* marked features are to be Implemented 
 
 # ✌️ How to setup
 
