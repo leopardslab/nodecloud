@@ -26,26 +26,25 @@ yarn add nodecloud
 - Google cloud platform (GCP)
 - Azure
 
-
 ## 📟 Service Types
 
-| Service Category        | Service          | AWS            | GCP              | Azure              |
-| ----------------------- | ---------------- | -------------- | ---------------- | ------------------ |
-| Compute                 | IaaS             | EC2            | Compute Engine   | Virtual Machine    |
-|                         | Containers       | ECS            | -                | -                  |
-|                         | Kubernetes*      | EKS            | Kubernetes Engine| AKS                |
-| Storage                 | Object Storage   | S3             | Cloud Storage    | Blob, Queue, Table,Files*|
-|                         | Block Storage    | EBS            | Persistent Disks |
-| Networking              | Load Balancer    | ELB            | GC Load Balancing*| Virtual Networks  |
-|                         | Peering          | Direct Connect | Direct Peering*,Carrier Peering*| Azure API|
-|                         | DNS              | Route53        | Google DNS       | Azure DNS*
-| Databases               | RDBMS            | RDS            | Cloud SQL*       | Azure Database     |
-|                         | NoSQL: key-value | DynamoDB       | Cloud Datastore  |
-|                         | NoSQL: indexed   | -              | Cloud Datastore  |
-| Security/ Authorization | IAM              | AWS IAM        | -                | -                  |
-| Utilities               | Apps management  | -              | -                | WebApps            |
+- yet to be implemented
 
-* marked features are to be Implemented 
+| Service Category        | Service          | AWS            | GCP                               | Azure                       |
+| ----------------------- | ---------------- | -------------- | --------------------------------- | --------------------------- |
+| Compute                 | IaaS             | EC2            | Compute Engine                    | Virtual Machine             |
+|                         | Containers       | ECS            | -                                 | -                           |
+|                         | Kubernetes\*     | EKS            | Kubernetes Engine                 | AKS                         |
+| Storage                 | Object Storage   | S3             | Cloud Storage                     | Blob, Queue, Table, Files\* |
+|                         | Block Storage    | EBS            | Persistent Disks                  |
+| Networking              | Load Balancer    | ELB            | GC Load Balancing\*               | Virtual Networks            |
+|                         | Peering          | Direct Connect | Direct Peering*, Carrier Peering* | Azure API                   |
+|                         | DNS              | Route53        | Google DNS                        | Azure DNS\*                 |
+| Databases               | RDBMS            | RDS            | Cloud SQL\*                       | Azure Database              |
+|                         | NoSQL: key-value | DynamoDB       | Cloud Datastore                   |
+|                         | NoSQL: indexed   | -              | Cloud Datastore                   |
+| Security/ Authorization | IAM              | AWS IAM        | -                                 | -                           |
+| Utilities               | Apps management  | -              | -                                 | WebApps                     |
 
 # ✌️ How to setup
 
