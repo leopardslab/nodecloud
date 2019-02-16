@@ -35,6 +35,7 @@ yarn add nodecloud
 |                         | Containers       | ECS            | -                | -                  |
 |                         | Kubernetes*      | EKS            | Kubernetes Engine| AKS                |
 | Storage                 | Object Storage   | S3             | Cloud Storage    | Blob, Queue, Table |
+|                         |                  |                |                  | files
 |                         | Block Storage    | EBS            | Persistent Disks |
 | Networking              | Load Balancer    | ELB            | -                | Virtual Networks   |
 |                         | Peering          | Direct Connect | -                | Azure API          |
