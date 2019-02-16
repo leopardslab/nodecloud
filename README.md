@@ -34,10 +34,10 @@ yarn add nodecloud
 | Compute                 | IaaS             | EC2            | Compute Engine   | Virtual Machine    |
 |                         | Containers       | ECS            | -                | -                  |
 |                         | Kubernetes*      | EKS            | Kubernetes Engine| AKS                |
-| Storage                 | Object Storage   | S3             | Cloud Storage    | Blob, Queue, Table |
-|                         |                  |                |                  | files
+| Storage                 | Object Storage   | S3             | Cloud Storage    | Blob, Queue, Table,Files*|
+|                         |                  |                |                  | 
 |                         | Block Storage    | EBS            | Persistent Disks |
-| Networking              | Load Balancer    | ELB            | -                | Virtual Networks   |
+| Networking              | Load Balancer    | ELB            | GC Load Balancing*| Virtual Networks   |
 |                         | Peering          | Direct Connect | -                | Azure API          |
 |                         | DNS              | Route53        | Google DNS       |
 | Databases               | RDBMS            | RDS            | -                | Azure Database     |
