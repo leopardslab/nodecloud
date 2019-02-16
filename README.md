@@ -26,12 +26,14 @@ yarn add nodecloud
 - Google cloud platform (GCP)
 - Azure
 
+
 ## 📟 Service Types
 
 | Service Category        | Service          | AWS            | GCP              | Azure              |
 | ----------------------- | ---------------- | -------------- | ---------------- | ------------------ |
 | Compute                 | IaaS             | EC2            | Compute Engine   | Virtual Machine    |
 |                         | Containers       | ECS            | -                | -                  |
+|                         | Kubernetes*      | EKS            | Kubernetes Engine| AKS                |
 | Storage                 | Object Storage   | S3             | Cloud Storage    | Blob, Queue, Table |
 |                         | Block Storage    | EBS            | Persistent Disks |
 | Networking              | Load Balancer    | ELB            | -                | Virtual Networks   |
@@ -42,6 +44,8 @@ yarn add nodecloud
 |                         | NoSQL: indexed   | -              | Cloud Datastore  |
 | Security/ Authorization | IAM              | AWS IAM        | -                | -                  |
 | Utilities               | Apps management  | -              | -                | WebApps            |
+
+*-To be Implemented 
 
 # ✌️ How to setup
 
