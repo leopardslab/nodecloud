@@ -37,9 +37,9 @@ yarn add nodecloud
 | Storage                 | Object Storage   | S3             | Cloud Storage    | Blob, Queue, Table,Files*|
 |                         | Block Storage    | EBS            | Persistent Disks |
 | Networking              | Load Balancer    | ELB            | GC Load Balancing*| Virtual Networks  |
-|                         | Peering          | Direct Connect | Direct Peering*,Carrier Peering*      | Azure API|
-|                         | DNS              | Route53        | Google DNS       |Azure DNS*
-| Databases               | RDBMS            | RDS            | -                | Azure Database     |
+|                         | Peering          | Direct Connect | Direct Peering*,Carrier Peering*| Azure API|
+|                         | DNS              | Route53        | Google DNS       | Azure DNS*
+| Databases               | RDBMS            | RDS            | Cloud SQL*       | Azure Database     |
 |                         | NoSQL: key-value | DynamoDB       | Cloud Datastore  |
 |                         | NoSQL: indexed   | -              | Cloud Datastore  |
 | Security/ Authorization | IAM              | AWS IAM        | -                | -                  |
