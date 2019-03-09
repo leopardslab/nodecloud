@@ -61,14 +61,13 @@ This config file can contain array of objects for all providers and all will be 
 Supported values for `name` : Azure, google, AWS
 
 ```js
+const nodeCloudAwsPlugin = require("nodecloud-aws-plugin");
+
 const providers = [
   {
     name: "aws",
     tag: "aws",
-    libName: "nodecloud-aws-plugin"
-  },
-  {
-    ... // For Google
+    plugin: nodeCloudAwsPlugin
   }
 ];
 
