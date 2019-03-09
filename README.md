@@ -54,8 +54,8 @@ Content of `.nc.config.js` file is assumed as the following structure.
 It is an array of supported providers.
 
 1.  `name` : Provider identifier, this can be used to identify the plugin at a glance.
-2.  `tag` : Tag name that will be used to load the given provider.
-3.  `libName` : Name of the plugin repository eg: nodecloud-aws-plugin
+2.  `tag` : Tag name that will be used to load the given provider internally.
+3.  `plugin` : Plugin module
 
 This config file can contain array of objects for all providers and all will be loaded.
 Supported values for `name` : Azure, google, AWS
