@@ -100,7 +100,7 @@ const instanceParams = {
 
 const ec2 = ncProviders.aws.compute(options);
 ec2
-  .createInstance(params, instanceParams)
+  .create(params, instanceParams)
   .then(res => {
     console.log(`All done ! ${res}`);
   })
