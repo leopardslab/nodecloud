@@ -27,7 +27,7 @@ yarn add nodecloud
 
 ## 📟 Service Types
 
-- yet to be implemented
+- \*yet to be implemented
 
 | Service Category        | Service          | AWS            | GCP                               | Azure                       |
 | ----------------------- | ---------------- | -------------- | --------------------------------- | --------------------------- |
