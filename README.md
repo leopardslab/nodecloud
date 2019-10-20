@@ -21,29 +21,31 @@ yarn add nodecloud
 
 ## 📘 Service Providers
 
-- Amazon web services (AWS)
-- Google cloud platform (GCP)
 - Azure
+- AliCloud
+- DigitalOcean
+- Amazon Web Services (AWS)
+- Google Cloud Platform (GCP)
 
 ## 📟 Service Types
 
 - \*yet to be implemented
 
-| Service Category        | Service          | AWS            | GCP                               | Azure                       |
-| ----------------------- | ---------------- | -------------- | --------------------------------- | --------------------------- |
-| Compute                 | IaaS             | EC2            | Compute Engine                    | Virtual Machine             |
-|                         | Containers       | ECS            | -                                 | -                           |
-|                         | Kubernetes\*     | EKS            | Kubernetes Engine                 | AKS                         |
-| Storage                 | Object Storage   | S3             | Cloud Storage                     | Blob, Queue, Table, Files\* |
-|                         | Block Storage    | EBS            | Persistent Disks                  |
-| Networking              | Load Balancer    | ELB            | GC Load Balancing\*               | Virtual Networks            |
-|                         | Peering          | Direct Connect | Direct Peering*, Carrier Peering* | Azure API                   |
-|                         | DNS              | Route53        | Google DNS                        | Azure DNS\*                 |
-| Databases               | RDBMS            | RDS            | Cloud SQL\*                       | Azure Database              |
-|                         | NoSQL: key-value | DynamoDB       | Cloud Datastore                   |
-|                         | NoSQL: indexed   | -              | Cloud Datastore                   |
-| Security/ Authorization | IAM              | AWS IAM        | -                                 | -                           |
-| Utilities               | Apps management  | -              | -                                 | WebApps                     |
+| Service Category        | Service          | AWS            | GCP                               | Azure                       | DigitalOcean | AliCloud
+| ----------------------- | ---------------- | -------------- | --------------------------------- | --------------------------- | ----------------------- | ----------------------- |
+| Compute                 | IaaS             | EC2            | Compute Engine                    | Virtual Machine             | Droplets | ECS | 
+|                         | Containers       | ECS            | -                                 | -                         | - | - |
+|                         | Kubernetes\*     | EKS            | Kubernetes Engine                 | AKS                         | DO Kubernetes* | - |
+| Storage                 | Object Storage   | S3             | Cloud Storage                     | Blob, Queue, Table, Files\* | Spaces* | Bucket (OSS) & Table Store* |
+|                         | Block Storage    | EBS            | Persistent Disks                  | - | Volumes | - |
+| Networking              | Load Balancer    | ELB            | GC Load Balancing\*               | Virtual Networks | DO Load Balancers | SLB |
+|                         | Peering          | Direct Connect | Direct Peering*, Carrier Peering* | Azure API   | - | - |
+|                         | DNS              | Route53        | Google DNS                        | Azure DNS\* | DO DNS* | Alibaba DNS |
+| Databases               | RDBMS            | RDS            | Cloud SQL\*                       | Azure Database              | Managed Postgres* | Apsara RDS |
+|                         | NoSQL: key-value | DynamoDB       | Cloud Datastore                   | - | - | Apsara for MongoDB |
+|                         | NoSQL: indexed   | -              | Cloud Datastore                   | - | - | - |
+| Security/ Authorization | IAM              | AWS IAM        | -                                 | -                           | - | - |
+| Utilities               | Apps management  | -              | -                                 | WebApps                     | - | - |
 
 # ✌️ How to setup
 
@@ -57,7 +59,7 @@ It is an array of supported providers.
 3.  `plugin` : Plugin module
 
 This config file can contain array of objects for all providers and all will be loaded.
-Supported values for `name` : Azure, google, AWS
+Supported values for `name` : aws, azure, alicloud, digitalocean, google
 
 ```js
 const nodeCloudAwsPlugin = require("nodecloud-aws-plugin");
@@ -111,7 +113,7 @@ ec2
 
 ## Override providers
 
-NodeCloud officialy supports AWS, GCP and Azure. If you want to use a community driven plugin override the providers list as follows.
+NodeCloud officialy supports AWS, GCP, Azure, DigitalOcean and AliCloud. If you want to use a community driven plugin override the providers list as follows.
 
 ```js
 const nodeCloud = require("nodecloud");
