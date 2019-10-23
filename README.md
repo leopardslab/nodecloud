@@ -21,10 +21,10 @@ yarn add nodecloud
 
 ## 📘 Service Providers
 
-- Azure
 - AliCloud
-- DigitalOcean
 - Amazon Web Services (AWS)
+- Azure
+- DigitalOcean
 - Google Cloud Platform (GCP)
 
 ## 📟 Service Types
