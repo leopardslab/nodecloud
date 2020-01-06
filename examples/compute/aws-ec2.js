@@ -15,9 +15,9 @@ const params = {
 
 ec2
   .stop(params)
-  .then(res => {
+  .then((res) => {
     console.log(res);
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });

@@ -14,9 +14,9 @@ const params = {
 // describe ECS clusters
 ecs
   .describeClusters(params)
-  .then(res => {
+  .then((res) => {
     console.log(res);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
   });

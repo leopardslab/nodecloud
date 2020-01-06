@@ -17,9 +17,9 @@ const params = {
 // create connection
 awsDc
   .createConnection(params)
-  .then(res => {
+  .then((res) => {
     console.log(`Connection created ! ${res}`);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(`Oops something happened ${err}`);
   });

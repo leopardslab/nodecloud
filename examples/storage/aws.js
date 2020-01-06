@@ -19,9 +19,9 @@ console.log("creating ebs image");
 // create AWS ESB image
 ebs
   .create(params)
-  .then(res => {
+  .then((res) => {
     console.log(`All done ! ${res}`);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(`Oops something happened ${err}`);
   });

@@ -19,9 +19,9 @@ const params = {
 // create DB instance
 rds
   .createDBInstance(params)
-  .then(res => {
+  .then((res) => {
     console.log(res);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
   });

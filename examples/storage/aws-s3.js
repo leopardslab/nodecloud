@@ -18,9 +18,9 @@ const params = {
 console.log("creating bucket");
 
 s3.create(params)
-  .then(res => {
+  .then((res) => {
     console.log(`Bucket created ! ${res}`);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(`Oops something happened ${err}`);
   });

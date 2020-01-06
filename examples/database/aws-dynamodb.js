@@ -17,7 +17,7 @@ const params = {
   TableName: "Test"
 };
 
-dynamoDB.createItem(params).then(res => {
+dynamoDB.createItem(params).then((res) => {
   assert.equal(res.ConsumedCapacity.TableName, "Test");
   done();
 });

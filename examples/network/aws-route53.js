@@ -18,9 +18,9 @@ const params = {
 
 route53
   .createZone(params)
-  .then(res => {
+  .then((res) => {
     console.log(res);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
   });

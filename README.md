@@ -47,7 +47,7 @@ yarn add nodecloud
 | Security/ Authorization | IAM              | AWS IAM        | -                                 | -                           | - | - |
 | Utilities               | Apps management  | -              | -                                 | WebApps                     | - | - |
 
-# ✌️ How to setup
+## ✌️ How to setup
 
 Make sure you have `.nc.config.js` file in the project root.
 

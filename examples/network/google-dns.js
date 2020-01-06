@@ -16,9 +16,9 @@ const params = {
 
 gceDNS
   .createZone()
-  .then(res => {
+  .then((res) => {
     console.log(res);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
   });
