@@ -24,7 +24,7 @@ gceCompute
   .list({
     maxResults: 1
   })
-  .then(res => {
+  .then((res) => {
     // console.log(res);
   })
   .catch((err) => {
