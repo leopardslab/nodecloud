@@ -93,6 +93,7 @@ const options = {
 const params = {
   ImageId: "ami-10fd7020", // amzn-ami-2011.09.1.x86_64-ebs
   InstanceType: "t1.micro",
+  KeyName: "nodeCloud", // key name of Key pair
   MinCount: 1,
   MaxCount: 1
 };
