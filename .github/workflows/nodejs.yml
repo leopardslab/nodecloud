@@ -1,4 +1,4 @@
-name: Node Cloud Build
+name: nodecloud CI
 
 on:
   push:
