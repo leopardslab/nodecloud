@@ -31,22 +31,22 @@ yarn add nodecloud
 
 - \*yet to be implemented
 
-| Service Category        | Service                             |                   AWS                  |                 GCP                |                                  Azure                                  |                DigitalOcean               |                        AliCloud                        |
-|-------------------------|-------------------------------------|:--------------------------------------:|:----------------------------------:|:-----------------------------------------------------------------------:|:-----------------------------------------:|:------------------------------------------------------:|
-| Compute                 | IaaS                                |                   EC2                  |           Compute Engine           |                             Virtual Machine                             |                  Droplets                 |                           ECS                          |
-|                         | Faas                                |               AWS Lambda*              |          Cloud Functions*          |                             Azure Functions*                            |                     -                     |                    Function Compute*                   |
-|                         | Containers                          |                ECS, EKS*               |      Google Kubernetes Engine*     |                       AKS*, Azure Service Fabric*                       |               DO Kubernetes*              | Container Service*,  Container Service for Kubernetes* |
-|                         | Containers (without infrastructure) |              AWS Fargate*              |             Cloud Run*             |                                    -                                    |                     -                     |                          ECI*                          |
-|                         | Paas                                |         AWS Elastic Beanstalk*         |            App Engine*             |                               App Service*                              |                     -                     |               Simple Application Server*               |
-| Storage                 | Object Storage                      |                   S3                   |            Cloud Storage           |                            Azure Blob Storage                           |                  Spaces*                  |                      Bucket (OSS)                      |
-|                         | Block Storage                       |                   EBS                  |          Persistent Disks          |                               Disk Storage                              |                  Volumes                  |                          NAS*                          |
-| Networking              | Load Balancer                       |                   ELB                  |        Cloud Load Balancing*       |                           Azure Load Balancer*                          |              DO Load Balancer             |                           SLB                          |
-|                         | Peering/Dedicated Interconnect      |             Direct Connect             |         Cloud Interconnect*        |                              ExpressRoute*                              |                     -                     |                    Express Connect*                    |
-|                         | DNS                                 |                 Route53                |     Google Domains, Cloud DNS*     |                                Azure DNS*                               |                  DO DNS*                  |                   Alibaba Cloud DNS*                   |
-| Databases               | RDBMS                               | RDS, Amazon Aurora*,  Amazon Redshift* |     Cloud SQL*,  Cloud Spanner*    | SQL Database, Azure Database for MySQL*, Azure Database for PostgreSQL* | Managed Databases(PostgreSQL* and MySQL*) |  ApsaraDB (MySQL, MariaDB TX,  SQL Server, PostgreSQL) |
-|                         | NoSQL: key-value                    |                DynamoDB                | Cloud Firestore*,  Cloud Bigtable* |                              Table Storage                              |         Managed Databases(Redis)*         |                   ApsaraDB for Redis*                  |
-|                         | NoSQL: indexed                      |            Amazon SimpleDB*            |          Cloud Firestore*          |                                Cosmos DB*                               |                     -                     |                  ApsaraDB for MongoDB*                 |
-| Security/ Authorization | Identity Access Management          |                 AWS IAM                |             Cloud IAM*             |        Azure Active Directory*, Azure Role Based Access Control*        |                     -                     |               Resource Access Management*              |
+| Service Category        | Service                             |                  AWS                  |                GCP                |                                  Azure                                  |               DigitalOcean                |                       AliCloud                        |
+| ----------------------- | ----------------------------------- | :-----------------------------------: | :-------------------------------: | :---------------------------------------------------------------------: | :---------------------------------------: | :---------------------------------------------------: |
+| Compute                 | IaaS                                |                  EC2                  |          Compute Engine           |                             Virtual Machine                             |                 Droplets                  |                          ECS                          |
+|                         | Faas                                |             AWS Lambda\*              |         Cloud Functions\*         |                            Azure Functions\*                            |                     -                     |                  Function Compute\*                   |
+|                         | Containers                          |              ECS, EKS\*               |    Google Kubernetes Engine\*     |                       AKS*, Azure Service Fabric*                       |              DO Kubernetes\*              | Container Service*, Container Service for Kubernetes* |
+|                         | Containers (without infrastructure) |             AWS Fargate\*             |            Cloud Run\*            |                                    -                                    |                     -                     |                         ECI\*                         |
+|                         | Paas                                |        AWS Elastic Beanstalk\*        |           App Engine\*            |                              App Service\*                              |                     -                     |              Simple Application Server\*              |
+| Storage                 | Object Storage                      |                  S3                   |           Cloud Storage           |                           Azure Blob Storage                            |                 Spaces\*                  |                     Bucket (OSS)                      |
+|                         | Block Storage                       |                  EBS                  |         Persistent Disks          |                              Disk Storage                               |                  Volumes                  |                         NAS\*                         |
+| Networking              | Load Balancer                       |                  ELB                  |      Cloud Load Balancing\*       |                          Azure Load Balancer\*                          |             DO Load Balancer              |                          SLB                          |
+|                         | Peering/Dedicated Interconnect      |            Direct Connect             |       Cloud Interconnect\*        |                             ExpressRoute\*                              |                     -                     |                   Express Connect\*                   |
+|                         | DNS                                 |                Route53                |    Google Domains, Cloud DNS\*    |                               Azure DNS\*                               |                 DO DNS\*                  |                  Alibaba Cloud DNS\*                  |
+| Databases               | RDBMS                               | RDS, Amazon Aurora*, Amazon Redshift* |    Cloud SQL*, Cloud Spanner*     | SQL Database, Azure Database for MySQL*, Azure Database for PostgreSQL* | Managed Databases(PostgreSQL* and MySQL*) | ApsaraDB (MySQL, MariaDB TX, SQL Server, PostgreSQL)  |
+|                         | NoSQL: key-value                    |               DynamoDB                | Cloud Firestore*, Cloud Bigtable* |                              Table Storage                              |        Managed Databases(Redis)\*         |                 ApsaraDB for Redis\*                  |
+|                         | NoSQL: indexed                      |           Amazon SimpleDB\*           |         Cloud Firestore\*         |                               Cosmos DB\*                               |                     -                     |                ApsaraDB for MongoDB\*                 |
+| Security/ Authorization | Identity Access Management          |                AWS IAM                |            Cloud IAM\*            |        Azure Active Directory*, Azure Role Based Access Control*        |                     -                     |             Resource Access Management\*              |
 
 # ✌️ How to setup
 
@@ -58,6 +58,7 @@ It is an array of supported providers.
 1.  `name` : Provider identifier, this can be used to identify the plugin at a glance.
 2.  `tag` : Tag name that will be used to load the given provider internally.
 3.  `plugin` : Plugin module
+4.  `configPath` : Provider configuration file
 
 This config file can contain array of objects for all providers and all will be loaded.
 Supported values for `name` : aws, azure, alicloud, digitalocean, google
@@ -69,7 +70,8 @@ const providers = [
   {
     name: "aws",
     tag: "aws",
-    plugin: nodeCloudAwsPlugin
+    plugin: nodeCloudAwsPlugin,
+    configPath: "./aws-config.json"
   }
 ];
 
