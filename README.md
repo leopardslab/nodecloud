@@ -2,7 +2,7 @@
   <img src="assets/logo.png">
 </p>
 
-# NodeCloud
+# NodeCloud ![nodecloud CI](https://github.com/cloudlibz/nodecloud/workflows/nodecloud%20CI/badge.svg)
 
 [![npm version](https://badge.fury.io/js/nodecloud.svg)](https://badge.fury.io/js/nodecloud)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b94b1fe2ac724e8083f8237de3473c8a)](https://www.codacy.com/app/rehrumesh/nodecloud?utm_source=github.com&utm_medium=referral&utm_content=cloudlibz/nodecloud&utm_campaign=Badge_Grade)
