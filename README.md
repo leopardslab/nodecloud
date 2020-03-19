@@ -2,10 +2,10 @@
   <img src="assets/logo.png">
 </p>
 
-# NodeCloud
+# NodeCloud ![nodecloud CI](https://github.com/cloudlibz/nodecloud/workflows/nodecloud%20CI/badge.svg)
 
-[![npm version](https://badge.fury.io/js/nodecloud.svg)](https://badge.fury.io/js/nodecloud)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b94b1fe2ac724e8083f8237de3473c8a)](https://www.codacy.com/app/rehrumesh/nodecloud?utm_source=github.com&utm_medium=referral&utm_content=cloudlibz/nodecloud&utm_campaign=Badge_Grade)
+[![npm version](https://badge.fury.io/js/nodecloud.svg)](https://badge.fury.io/js/nodecloud)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b94b1fe2ac724e8083f8237de3473c8a)](https://www.codacy.com/app/rehrumesh/nodecloud?utm_source=github.com&utm_medium=referral&utm_content=cloudlibz/nodecloud&utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/cloudlibz/nodecloud.svg?branch=master)](https://travis-ci.org/cloudlibz/nodecloud)
 
 NodeCloud is a standard library to get a single API on the open cloud with multiple providers.
@@ -55,9 +55,10 @@ Make sure you have `.nc.config.js` file in the project root.
 Content of `.nc.config.js` file is assumed as the following structure.
 It is an array of supported providers.
 
-1. `name` : Provider identifier, this can be used to identify the plugin at a glance.
-2. `tag` : Tag name that will be used to load the given provider internally.
-3. `plugin` : Plugin module
+1.  `name` : Provider identifier, this can be used to identify the plugin at a glance.
+2.  `tag` : Tag name that will be used to load the given provider internally.
+3.  `plugin` : Plugin module
+4.  `configPath` : Provider configuration file
 
 This config file can contain array of objects for all providers and all will be loaded.
 Supported values for `name` : aws, azure, alicloud, digitalocean, google
@@ -69,7 +70,8 @@ const providers = [
   {
     name: "aws",
     tag: "aws",
-    plugin: nodeCloudAwsPlugin
+    plugin: nodeCloudAwsPlugin,
+    configPath: "./aws-config.json"
   }
 ];
 
@@ -93,6 +95,7 @@ const options = {
 const params = {
   ImageId: "ami-10fd7020", // amzn-ami-2011.09.1.x86_64-ebs
   InstanceType: "t1.micro",
+  KeyName: "nodeCloud", // key name of Key pair
   MinCount: 1,
   MaxCount: 1
 };
@@ -104,10 +107,10 @@ const instanceParams = {
 const ec2 = ncProviders.aws.compute(options);
 ec2
   .createInstance(params, instanceParams)
-  .then((res) => {
+  .then(res => {
     console.log(`All done ! ${res}`);
   })
-  .catch((err) => {
+  .catch(err => {
     console.log(`Oops something happened ${err}`);
   });
 ```

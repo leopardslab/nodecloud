@@ -1,7 +1,7 @@
 {
   "name": "nodecloud",
-  "version": "1.0.0-beta.1",
-  "description": "Unified API for cloud providers",
+  "version": "1.0.0-beta.3",
+  "description": "⚡️ The Node.js API for open cloud",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha",
@@ -27,9 +27,9 @@
   "author": "scorelab",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/cloudlibz/nodecloud-core/issues"
+    "url": "https://github.com/cloudlibz/nodecloud/issues"
   },
-  "homepage": "https://github.com/cloudlibz/nodecloud-core#readme",
+  "homepage": "https://github.com/cloudlibz/nodecloud#readme",
   "devDependencies": {
     "chai": "^4.2.0",
     "husky": "^1.3.1",
