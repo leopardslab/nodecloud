@@ -7,7 +7,7 @@ const options = {
   apiVersion: "2010-12-01"
 };
 
-const beanstalkModule = ncProviders.aws.elasticBeanstalk(options);
+const beanstalkModule = ncProviders.aws.PaaS(options);
 
 function createApp() {
   const applicationDetails = {
