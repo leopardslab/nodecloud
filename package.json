@@ -14,7 +14,10 @@
   },
   "dependencies": {
     "config": "^1.26.1",
-    "key-mirror": "^1.0.1"
+    "key-mirror": "^1.0.1",
+    "aws-sdk": "^2.686.0",
+    "js-yaml": "^3.14.0",
+    "typescript": "^3.9.3"
   },
   "keywords": [
     "nodecloud",
@@ -36,7 +39,8 @@
     "mocha": "^5.2.0",
     "nock": "^9.6.1",
     "prettier": "^1.15.3",
-    "pretty-quick": "^1.8.0"
+    "pretty-quick": "^1.8.0",
+    "@types/node": "^14.0.6"
   },
   "husky": {
     "hooks": {
