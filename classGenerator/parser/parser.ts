@@ -1,9 +1,13 @@
 import * as fs from "fs";
+import * as path from "path";
 import { createSourceFile, ScriptTarget, SyntaxKind } from "typescript";
 
 export function getAstTree(sdkFile) {
   return new Promise((resolve, reject) => {
-    const file = "../node_modules/aws-sdk/clients/" + sdkFile;
+    const file = path.join(
+      __dirname,
+      "../../node_modules/aws-sdk/clients/" + sdkFile.toLowerCase()
+    );
     const ast = createSourceFile(
       file,
       fs.readFileSync(file).toString(),
