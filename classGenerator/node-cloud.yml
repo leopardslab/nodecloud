@@ -1,0 +1,6 @@
+container:
+  Azure:
+    create: arm-containerservice managedClusters.d.ts createOrUpdate
+    delete: arm-containerservice openShiftManagedClusters.d.ts listByResourceGroup
+    updateTags: arm-containerservice managedClusters.d.ts updateTags
+    listByResourceGroup: arm-containerservice openShiftManagedClusters.d.ts listByResourceGroup
