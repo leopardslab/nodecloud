@@ -4,3 +4,15 @@ container:
     delete: arm-containerservice openShiftManagedClusters.d.ts listByResourceGroup
     updateTags: arm-containerservice managedClusters.d.ts updateTags
     listByResourceGroup: arm-containerservice openShiftManagedClusters.d.ts listByResourceGroup
+
+noSqlIndexed:
+  AWS:
+    createCollection: SimpleDB.d.ts createDomain
+    deleteCollection: SimpleDB.d.ts deleteDomain
+    listCollections: SimpleDB.d.ts listDomains
+    batchDelete: SimpleDB.d.ts batchDeleteAttributes
+    batchWrite: SimpleDB.d.ts batchPutAttributes
+    query: SimpleDB.d.ts select
+    setAttribute: SimpleDB.d.ts putAttributes
+    deleteAttribute: SimpleDB.d.ts deleteAttributes
+    getAttributes: SimpleDB.d.ts getAttributes

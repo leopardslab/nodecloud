@@ -60,6 +60,7 @@ export async function generateGcpClass(serviceClass) {
       const method = methods.find(
         methd => methd.SDKFunctionName === member.name.text
       );
+
       // const parameters = member.parameters.map(param =>{
       //   return{
       //   }

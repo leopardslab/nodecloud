@@ -150,7 +150,8 @@ function generateGcpClass(serviceClass) {
               fileName: serviceClass[key].split(" ")[1],
               functionName: key,
               SDKFunctionName: serviceClass[key].split(" ")[2],
-              params: []
+              params: [],
+              returnType: null
             });
           });
           files = Array.from(
@@ -208,7 +209,11 @@ function generateGcpClass(serviceClass) {
               var method = methods.find(function(methd) {
                 return methd.SDKFunctionName === member.name.text;
               });
-              console.log(method);
+              console.log(member.name.text);
+              // const parameters = member.parameters.map(param =>{
+              //   return{
+              //   }
+              // });
             }
           });
           return [2 /*return*/];

@@ -50,7 +50,7 @@ class SimpleDB {
       });
     });
   }
-  createDocument(params) {
+  createCollection(params) {
     return new Promise((resolve, reject) => {
       this._simpleDB.createDomain(params, (error, data) => {
         if (error) {
@@ -61,7 +61,7 @@ class SimpleDB {
       });
     });
   }
-  createDocument() {
+  createCollection() {
     return new Promise((resolve, reject) => {
       this._simpleDB.createDomain((error, data) => {
         if (error) {
@@ -94,7 +94,7 @@ class SimpleDB {
       });
     });
   }
-  deleteDocument(params) {
+  deleteCollection(params) {
     return new Promise((resolve, reject) => {
       this._simpleDB.deleteDomain(params, (error, data) => {
         if (error) {
@@ -105,7 +105,7 @@ class SimpleDB {
       });
     });
   }
-  deleteDocument() {
+  deleteCollection() {
     return new Promise((resolve, reject) => {
       this._simpleDB.deleteDomain((error, data) => {
         if (error) {
@@ -138,7 +138,7 @@ class SimpleDB {
       });
     });
   }
-  listDocuments(params) {
+  listCollections(params) {
     return new Promise((resolve, reject) => {
       this._simpleDB.listDomains(params, (error, data) => {
         if (error) {
@@ -149,7 +149,7 @@ class SimpleDB {
       });
     });
   }
-  listDocuments() {
+  listCollections() {
     return new Promise((resolve, reject) => {
       this._simpleDB.listDomains((error, data) => {
         if (error) {
