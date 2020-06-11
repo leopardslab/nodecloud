@@ -110,7 +110,7 @@ function updateAppEnvironment() {
   );
 }
 
-function getApplicatios() {
+function getApplications() {
   const apps = {
     ApplicationNames: ["node-cloud-app"]
   };
