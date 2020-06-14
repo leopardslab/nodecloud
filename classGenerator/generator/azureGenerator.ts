@@ -1,5 +1,8 @@
+import * as fs from "fs";
 import { getAstTree } from "../parser/azure_paser";
-import { SyntaxKind } from "typescript";
+import { SyntaxKind, createSourceFile, ScriptTarget } from "typescript";
+import { transform } from "./azureTransformer";
+
 interface FunctionData {
   pkgName: string;
   fileName: string;
@@ -7,6 +10,7 @@ interface FunctionData {
   SDKFunctionName: string;
   params: param[];
   returnType: string;
+  client: string;
 }
 
 interface param {
@@ -16,6 +20,14 @@ interface param {
 
 const methods: FunctionData[] = [];
 
+const dummyFile = "generator/azureDummyClass.js";
+const dummyAst = createSourceFile(
+  dummyFile,
+  fs.readFileSync(dummyFile).toString(),
+  ScriptTarget.Latest,
+  true
+);
+
 export async function generateGcpClass(serviceClass) {
   Object.keys(serviceClass).map((key, index) => {
     methods.push({
@@ -24,7 +36,8 @@ export async function generateGcpClass(serviceClass) {
       functionName: key,
       SDKFunctionName: serviceClass[key].split(" ")[2],
       params: [],
-      returnType: null
+      returnType: null,
+      client: null
     });
   });
 
@@ -46,26 +59,58 @@ export async function generateGcpClass(serviceClass) {
     file.ast = await getAstTree(file);
   });
 
-  sdkFiles[0].ast.members.map(member => {
-    if (SyntaxKind[member.kind] === "Constructor") {
-      member.parameters.map(param => {
-        sdkFiles[0].client = param.type.typeName.text;
-      });
-    }
+  sdkFiles.map(sdkFile => {
+    sdkFile.ast.members.map(member => {
+      if (SyntaxKind[member.kind] === "Constructor") {
+        member.parameters.map(param => {
+          const tempStr = param.type.typeName.text.split(/(?=[A-Z])/);
+          tempStr.pop();
+          sdkFile.client = tempStr.join("");
+        });
+      }
 
-    if (
-      SyntaxKind[member.kind] === "MethodDeclaration" &&
-      sdkFiles[0].sdkFunctionNames.includes(member.name.text)
-    ) {
-      const method = methods.find(
-        methd => methd.SDKFunctionName === member.name.text
-      );
+      if (
+        SyntaxKind[member.kind] === "MethodDeclaration" &&
+        sdkFile.sdkFunctionNames.includes(member.name.text)
+      ) {
+        const method = methods.find(
+          methd => methd.SDKFunctionName === member.name.text
+        );
+        const parameters = member.parameters.map(param => {
+          return {
+            name: param.name.text,
+            optional: param.questionToken ? true : false,
+            type: SyntaxKind[param.type.kind]
+          };
+        });
 
-      // const parameters = member.parameters.map(param =>{
-      //   return{
-      //   }
+        const returnType = SyntaxKind[member.type.kind];
 
-      // });
-    }
+        if (!method.returnType) {
+          method.params = parameters;
+          method.returnType = returnType;
+          method.client = sdkFile.client;
+        } else {
+          const clone = JSON.parse(JSON.stringify(method));
+          clone.params = parameters;
+          clone.returnType = returnType;
+          clone.client = sdkFile.client;
+          methods.push(clone);
+        }
+      }
+    });
   });
+
+  const classData = {
+    functions: methods
+  };
+
+  const output = transform(dummyAst, classData);
+  fs.writeFile(
+    "generatedClasses/" + classData.functions[0].pkgName.split("-")[1] + ".js",
+    output,
+    function(err) {
+      if (err) throw err;
+    }
+  );
 }

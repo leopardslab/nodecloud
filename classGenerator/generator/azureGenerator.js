@@ -134,12 +134,21 @@ var __generator =
   };
 exports.__esModule = true;
 exports.generateGcpClass = void 0;
+var fs = require("fs");
 var azure_paser_1 = require("../parser/azure_paser");
 var typescript_1 = require("typescript");
+var azureTransformer_1 = require("./azureTransformer");
 var methods = [];
+var dummyFile = "generator/azureDummyClass.js";
+var dummyAst = typescript_1.createSourceFile(
+  dummyFile,
+  fs.readFileSync(dummyFile).toString(),
+  typescript_1.ScriptTarget.Latest,
+  true
+);
 function generateGcpClass(serviceClass) {
   return __awaiter(this, void 0, void 0, function() {
-    var files, sdkFiles;
+    var files, sdkFiles, classData, output;
     var _this = this;
     return __generator(this, function(_a) {
       switch (_a.label) {
@@ -151,7 +160,8 @@ function generateGcpClass(serviceClass) {
               functionName: key,
               SDKFunctionName: serviceClass[key].split(" ")[2],
               params: [],
-              returnType: null
+              returnType: null,
+              client: null
             });
           });
           files = Array.from(
@@ -196,26 +206,57 @@ function generateGcpClass(serviceClass) {
           ];
         case 1:
           _a.sent();
-          sdkFiles[0].ast.members.map(function(member) {
-            if (typescript_1.SyntaxKind[member.kind] === "Constructor") {
-              member.parameters.map(function(param) {
-                sdkFiles[0].client = param.type.typeName.text;
-              });
-            }
-            if (
-              typescript_1.SyntaxKind[member.kind] === "MethodDeclaration" &&
-              sdkFiles[0].sdkFunctionNames.includes(member.name.text)
-            ) {
-              var method = methods.find(function(methd) {
-                return methd.SDKFunctionName === member.name.text;
-              });
-              console.log(member.name.text);
-              // const parameters = member.parameters.map(param =>{
-              //   return{
-              //   }
-              // });
-            }
+          sdkFiles.map(function(sdkFile) {
+            sdkFile.ast.members.map(function(member) {
+              if (typescript_1.SyntaxKind[member.kind] === "Constructor") {
+                member.parameters.map(function(param) {
+                  var tempStr = param.type.typeName.text.split(/(?=[A-Z])/);
+                  tempStr.pop();
+                  sdkFile.client = tempStr.join("");
+                });
+              }
+              if (
+                typescript_1.SyntaxKind[member.kind] === "MethodDeclaration" &&
+                sdkFile.sdkFunctionNames.includes(member.name.text)
+              ) {
+                var method = methods.find(function(methd) {
+                  return methd.SDKFunctionName === member.name.text;
+                });
+                var parameters = member.parameters.map(function(param) {
+                  return {
+                    name: param.name.text,
+                    optional: param.questionToken ? true : false,
+                    type: typescript_1.SyntaxKind[param.type.kind]
+                  };
+                });
+                var returnType = typescript_1.SyntaxKind[member.type.kind];
+                if (!method.returnType) {
+                  method.params = parameters;
+                  method.returnType = returnType;
+                  method.client = sdkFile.client;
+                } else {
+                  var clone = JSON.parse(JSON.stringify(method));
+                  clone.params = parameters;
+                  clone.returnType = returnType;
+                  clone.client = sdkFile.client;
+                  methods.push(clone);
+                }
+              }
+            });
           });
+          classData = {
+            functions: methods
+          };
+          output = azureTransformer_1.transform(dummyAst, classData);
+          fs.writeFile(
+            "generatedClasses/" +
+              classData.functions[0].pkgName.split("-")[1] +
+              ".js",
+            output,
+            function(err) {
+              if (err) throw err;
+            }
+          );
           return [2 /*return*/];
       }
     });

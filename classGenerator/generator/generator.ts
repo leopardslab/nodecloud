@@ -64,7 +64,7 @@ export function generate(serviceClass) {
         }
       );
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   });
 }
