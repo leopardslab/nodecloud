@@ -1,3 +1,10 @@
+container:
+  Azure:
+    create: arm-containerservice managedClusters.d.ts createOrUpdate
+    delete: arm-containerservice openShiftManagedClusters.d.ts deleteMethod
+    updateTags: arm-containerservice managedClusters.d.ts updateTags
+    listByResourceGroup: arm-containerservice openShiftManagedClusters.d.ts listByResourceGroup
+
 noSqlIndexed:
   AWS:
     createCollection: SimpleDB.d.ts createDomain
