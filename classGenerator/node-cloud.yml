@@ -4,6 +4,7 @@ container:
     delete: arm-containerservice openShiftManagedClusters.d.ts deleteMethod
     updateTags: arm-containerservice managedClusters.d.ts updateTags
     listByResourceGroup: arm-containerservice openShiftManagedClusters.d.ts listByResourceGroup
+    list: arm-containerservice openShiftManagedClusters.d.ts list
 
 noSqlIndexed:
   AWS:

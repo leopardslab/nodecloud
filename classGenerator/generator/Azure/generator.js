@@ -133,20 +133,20 @@ var __generator =
     }
   };
 exports.__esModule = true;
-exports.generateGcpClass = void 0;
+exports.generateAzureClass = void 0;
 var fs = require("fs");
-var azure_paser_1 = require("../parser/azure_paser");
 var typescript_1 = require("typescript");
-var azureTransformer_1 = require("./azureTransformer");
+var parser_1 = require("../../parser/Azure/parser");
+var transformer_1 = require("../../transformer/Azure/transformer");
 var methods = [];
-var dummyFile = "generator/azureDummyClass.js";
+var dummyFile = process.cwd() + "/dummyClasses/azureDummyClass.js";
 var dummyAst = typescript_1.createSourceFile(
   dummyFile,
   fs.readFileSync(dummyFile).toString(),
   typescript_1.ScriptTarget.Latest,
   true
 );
-function generateGcpClass(serviceClass) {
+function generateAzureClass(serviceClass) {
   return __awaiter(this, void 0, void 0, function() {
     var files, sdkFiles, classData, output;
     var _this = this;
@@ -195,7 +195,7 @@ function generateGcpClass(serviceClass) {
                   switch (_b.label) {
                     case 0:
                       _a = file;
-                      return [4 /*yield*/, azure_paser_1.getAstTree(file)];
+                      return [4 /*yield*/, parser_1.getAstTree(file)];
                     case 1:
                       _a.ast = _b.sent();
                       return [2 /*return*/];
@@ -247,9 +247,10 @@ function generateGcpClass(serviceClass) {
           classData = {
             functions: methods
           };
-          output = azureTransformer_1.transform(dummyAst, classData);
+          output = transformer_1.transform(dummyAst, classData);
           fs.writeFile(
-            "generatedClasses/" +
+            process.cwd() +
+              "/generatedClasses/Azure/" +
               classData.functions[0].pkgName.split("-")[1] +
               ".js",
             output,
@@ -262,4 +263,4 @@ function generateGcpClass(serviceClass) {
     });
   });
 }
-exports.generateGcpClass = generateGcpClass;
+exports.generateAzureClass = generateAzureClass;

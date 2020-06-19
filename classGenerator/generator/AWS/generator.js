@@ -1,11 +1,11 @@
 "use strict";
 exports.__esModule = true;
-exports.generate = void 0;
+exports.generateAWSClass = void 0;
 var fs = require("fs");
 var typescript_1 = require("typescript");
-var parser_1 = require("../parser/parser");
-var transformer_1 = require("./transformer");
-var dummyFile = "generator/dummyClass.js";
+var parser_1 = require("../../parser/AWS/parser");
+var transformer_1 = require("../../transformer/AWS/transformer");
+var dummyFile = process.cwd() + "/dummyClasses/awsDummyClass.js";
 var dummyAst = typescript_1.createSourceFile(
   dummyFile,
   fs.readFileSync(dummyFile).toString(),
@@ -16,7 +16,7 @@ var sdkClassAst;
 var sdkFile;
 var functions = [];
 var methods = [];
-function generate(serviceClass) {
+function generateAWSClass(serviceClass) {
   Object.keys(serviceClass).map(function(key, index) {
     functions.push(serviceClass[key].split(" ")[1]);
     sdkFile = serviceClass[key].split(" ")[0];
@@ -45,7 +45,7 @@ function generate(serviceClass) {
       };
       var output = transformer_1.transform(dummyAst, classData);
       fs.writeFile(
-        "generatedClasses/" + classData.className + ".js",
+        process.cwd() + "/generatedClasses/AWS/" + classData.className + ".js",
         output,
         function(err) {
           if (err) throw err;
@@ -56,4 +56,4 @@ function generate(serviceClass) {
     }
   });
 }
-exports.generate = generate;
+exports.generateAWSClass = generateAWSClass;

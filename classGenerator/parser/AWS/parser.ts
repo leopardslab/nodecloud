@@ -6,7 +6,7 @@ export function getAstTree(sdkFile) {
   return new Promise((resolve, reject) => {
     const file = path.join(
       __dirname,
-      "../../node_modules/aws-sdk/clients/" + sdkFile.toLowerCase()
+      "../../../node_modules/aws-sdk/clients/" + sdkFile.toLowerCase()
     );
     const ast = createSourceFile(
       file,

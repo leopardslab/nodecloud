@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import { createSourceFile, ScriptTarget } from "typescript";
-import { getAstTree } from "../parser/parser";
-import { transform } from "./transformer";
+import { getAstTree } from "../../parser/AWS/parser";
+import { transform } from "../../transformer/AWS/transformer";
 
 interface FunctionData {
   functionName: string;
@@ -14,7 +14,7 @@ interface ClassData {
   functions: FunctionData[];
 }
 
-const dummyFile = "generator/dummyClass.js";
+const dummyFile = process.cwd() + "/dummyClasses/awsDummyClass.js";
 const dummyAst = createSourceFile(
   dummyFile,
   fs.readFileSync(dummyFile).toString(),
@@ -26,7 +26,7 @@ let sdkFile;
 const functions = [];
 const methods: FunctionData[] = [];
 
-export function generate(serviceClass) {
+export function generateAWSClass(serviceClass) {
   Object.keys(serviceClass).map((key, index) => {
     functions.push(serviceClass[key].split(" ")[1]);
     sdkFile = serviceClass[key].split(" ")[0];
@@ -57,7 +57,7 @@ export function generate(serviceClass) {
       const output = transform(dummyAst, classData);
 
       fs.writeFile(
-        "generatedClasses/" + classData.className + ".js",
+        process.cwd() + "/generatedClasses/AWS/" + classData.className + ".js",
         output,
         function(err) {
           if (err) throw err;
