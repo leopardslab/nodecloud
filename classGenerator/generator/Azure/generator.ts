@@ -1,7 +1,7 @@
 import * as fs from "fs";
-import { getAstTree } from "../parser/azure_paser";
 import { SyntaxKind, createSourceFile, ScriptTarget } from "typescript";
-import { transform } from "./azureTransformer";
+import { getAstTree } from "../../parser/Azure/parser";
+import { transform } from "../../transformer/Azure/transformer";
 
 interface FunctionData {
   pkgName: string;
@@ -20,7 +20,7 @@ interface param {
 
 const methods: FunctionData[] = [];
 
-const dummyFile = "generator/azureDummyClass.js";
+const dummyFile = process.cwd() + "/dummyClasses/azureDummyClass.js";
 const dummyAst = createSourceFile(
   dummyFile,
   fs.readFileSync(dummyFile).toString(),
@@ -28,7 +28,7 @@ const dummyAst = createSourceFile(
   true
 );
 
-export async function generateGcpClass(serviceClass) {
+export async function generateAzureClass(serviceClass) {
   Object.keys(serviceClass).map((key, index) => {
     methods.push({
       pkgName: serviceClass[key].split(" ")[0],
@@ -107,7 +107,10 @@ export async function generateGcpClass(serviceClass) {
 
   const output = transform(dummyAst, classData);
   fs.writeFile(
-    "generatedClasses/" + classData.functions[0].pkgName.split("-")[1] + ".js",
+    process.cwd() +
+      "/generatedClasses/Azure/" +
+      classData.functions[0].pkgName.split("-")[1] +
+      ".js",
     output,
     function(err) {
       if (err) throw err;

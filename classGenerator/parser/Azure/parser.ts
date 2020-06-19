@@ -6,7 +6,7 @@ export function getAstTree(sdkFileInfo) {
   return new Promise((resolve, reject) => {
     const file = path.join(
       __dirname,
-      `../../node_modules/@azure/${sdkFileInfo.pkgName}/esm/operations/${
+      `../../../node_modules/@azure/${sdkFileInfo.pkgName}/esm/operations/${
         sdkFileInfo.fileName
       }`
     );
