@@ -15,6 +15,17 @@ const addFunctions = <T extends ts.Node>(context: ts.TransformationContext) => (
 ) => {
   function visit(node: ts.Node): ts.Node {
     if (ts.isClassDeclaration(node)) {
+      ts.setSyntheticLeadingComments(node, [
+        {
+          pos: -1,
+          end: -1,
+          hasTrailingNewLine: true,
+          text:
+            "The below JavaScript class is an auto generated code for NodeCloud Azure plugin, Please do not change",
+          kind: ts.SyntaxKind.MultiLineCommentTrivia
+        }
+      ]);
+
       let functions: any = [];
       classData.functions.map(method => {
         const clonedNode = Object.assign({}, node.members[1]);

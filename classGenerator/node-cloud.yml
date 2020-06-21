@@ -1,10 +1,10 @@
 container:
   Azure:
     create: arm-containerservice managedClusters.d.ts createOrUpdate
-    delete: arm-containerservice openShiftManagedClusters.d.ts deleteMethod
+    delete: arm-containerservice managedClusters.d.ts deleteMethod
     updateTags: arm-containerservice managedClusters.d.ts updateTags
-    listByResourceGroup: arm-containerservice openShiftManagedClusters.d.ts listByResourceGroup
-    list: arm-containerservice openShiftManagedClusters.d.ts list
+    listByResourceGroup: arm-containerservice managedClusters.d.ts listByResourceGroup
+    list: arm-containerservice managedClusters.d.ts list
 
 noSqlIndexed:
   AWS:

@@ -13,17 +13,22 @@ const addFunctions = <T extends ts.Node>(context: ts.TransformationContext) => (
 ) => {
   function visit(node: ts.Node): ts.Node {
     if (ts.isClassDeclaration(node)) {
+      ts.setSyntheticLeadingComments(node, [
+        {
+          pos: -1,
+          end: -1,
+          hasTrailingNewLine: true,
+          text:
+            "The below JavaScript class is an auto generated code for NodeCloud AWS plugin, Please do not change",
+          kind: ts.SyntaxKind.MultiLineCommentTrivia
+        }
+      ]);
+
       let functions: any = [];
       classData.functions.map(method => {
-        if (method.hasParams) {
-          const clonedNode = Object.assign({}, node.members[1]);
-          clonedNode.name = ts.createIdentifier(method.functionName);
-          functions.push(clonedNode);
-        } else {
-          const clonedNode = Object.assign({}, node.members[2]);
-          clonedNode.name = ts.createIdentifier(method.functionName);
-          functions.push(clonedNode);
-        }
+        const clonedNode = Object.assign({}, node.members[1]);
+        clonedNode.name = ts.createIdentifier(method.functionName);
+        functions.push(clonedNode);
       });
 
       const updatedClass = ts.updateClassDeclaration(
@@ -48,6 +53,25 @@ const addIdentifiers = <T extends ts.Node>(
 ) => (rootNode: T) => {
   let count = 0;
   function visit(node: ts.Node): ts.Node {
+    if (ts.isMethodDeclaration(node)) {
+      const parameters = classData.functions[count].params.map(param => {
+        const paramNode = ts.createParameter(
+          undefined,
+          undefined,
+          undefined,
+          param.name
+        );
+
+        if (param.optional) {
+          paramNode.initializer = ts.createIdentifier("undefined");
+        }
+
+        return paramNode;
+      });
+
+      node.parameters = parameters;
+    }
+
     if (ts.isIdentifier(node) && dummyIdentifiers.includes(node.text)) {
       let updatedIdentifier;
       switch (node.text) {
@@ -77,6 +101,20 @@ const addIdentifiers = <T extends ts.Node>(
           count++;
       }
       return updatedIdentifier;
+    }
+
+    if (ts.isCallExpression(node)) {
+      node.expression.forEachChild(childNode => {
+        if (
+          ts.isIdentifier(childNode) &&
+          childNode.text === "SDKFunctionName"
+        ) {
+          const args = classData.functions[count].params.map(param =>
+            ts.createIdentifier(param.name)
+          );
+          node.arguments = args.concat(node.arguments);
+        }
+      });
     }
 
     return ts.visitEachChild(node, visit, context);

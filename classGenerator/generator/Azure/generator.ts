@@ -18,7 +18,7 @@ interface param {
   type: string;
 }
 
-const methods: FunctionData[] = [];
+let methods: FunctionData[] = [];
 
 const dummyFile = process.cwd() + "/dummyClasses/azureDummyClass.js";
 const dummyAst = createSourceFile(
@@ -27,6 +27,66 @@ const dummyAst = createSourceFile(
   ScriptTarget.Latest,
   true
 );
+
+function groupMethods(): any {
+  const methodArr = Object.values(
+    methods.reduce(
+      (
+        result,
+        {
+          functionName,
+          SDKFunctionName,
+          params,
+          pkgName,
+          fileName,
+          client,
+          returnType
+        }
+      ) => {
+        // Create new group
+        if (!result[functionName])
+          result[functionName] = {
+            functionName,
+            array: []
+          };
+        // Append to group
+        result[functionName].array.push({
+          functionName,
+          SDKFunctionName,
+          params,
+          pkgName,
+          fileName,
+          client,
+          returnType
+        });
+        return result;
+      },
+      {}
+    )
+  );
+
+  return methodArr;
+}
+
+function filterMethods(groupedMethods) {
+  methods = [];
+  groupedMethods.map(group => {
+    if (group.array.length === 1) {
+      methods.push(group.array[0]);
+    } else {
+      let methodPushed = false;
+      group.array.map(method => {
+        if (!method.params.find(param => param.name === "callback")) {
+          methods.push(method);
+          methodPushed = true;
+        }
+      });
+      if (!methodPushed) {
+        methods.push(group.array[0]);
+      }
+    }
+  });
+}
 
 export async function generateAzureClass(serviceClass) {
   Object.keys(serviceClass).map((key, index) => {
@@ -100,6 +160,9 @@ export async function generateAzureClass(serviceClass) {
       }
     });
   });
+
+  const groupedMethods = groupMethods();
+  filterMethods(groupedMethods);
 
   const classData = {
     functions: methods

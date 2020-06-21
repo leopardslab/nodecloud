@@ -7,19 +7,7 @@ class ClassName {
     });
   }
 
-  functionOne(params) {
-    return new Promise((resolve, reject) => {
-      this._sdkClassName.SDKFunctionName(params, (error, data) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(data);
-        }
-      });
-    });
-  }
-
-  functionTwo() {
+  dummyFunction() {
     return new Promise((resolve, reject) => {
       this._sdkClassName.SDKFunctionName((error, data) => {
         if (error) {

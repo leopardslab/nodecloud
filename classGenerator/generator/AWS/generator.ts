@@ -1,12 +1,16 @@
 import * as fs from "fs";
-import { createSourceFile, ScriptTarget } from "typescript";
+import { createSourceFile, ScriptTarget, SyntaxKind } from "typescript";
 import { getAstTree } from "../../parser/AWS/parser";
 import { transform } from "../../transformer/AWS/transformer";
 
 interface FunctionData {
   functionName: string;
   SDKFunctionName: string;
-  hasParams: boolean;
+  params: param[];
+}
+interface param {
+  name: string;
+  type: string;
 }
 
 interface ClassData {
@@ -24,7 +28,39 @@ const dummyAst = createSourceFile(
 let sdkClassAst;
 let sdkFile;
 const functions = [];
-const methods: FunctionData[] = [];
+let methods: FunctionData[] = [];
+
+function groupMethods(): any {
+  const methodArr = Object.values(
+    methods.reduce((result, { functionName, SDKFunctionName, params }) => {
+      // Create new group
+      if (!result[functionName])
+        result[functionName] = {
+          functionName,
+          array: []
+        };
+      // Append to group
+      result[functionName].array.push({
+        functionName,
+        SDKFunctionName,
+        params
+      });
+      return result;
+    }, {})
+  );
+
+  return methodArr;
+}
+
+function filterMethods(groupedMethods) {
+  methods = [];
+  groupedMethods.map(group => {
+    group.array.sort(function(a, b) {
+      return a.params.length - b.params.length;
+    });
+    methods.push(group.array.slice(-1)[0]);
+  });
+}
 
 export function generateAWSClass(serviceClass) {
   Object.keys(serviceClass).map((key, index) => {
@@ -43,13 +79,29 @@ export function generateAWSClass(serviceClass) {
               name = key;
             }
           });
+
+          const parameters = [];
+          method.parameters.map(param => {
+            if (param.name.text !== "callback") {
+              parameters.push({
+                name: param.name.text,
+                optional: param.questionToken ? true : false,
+                type: SyntaxKind[param.type.kind]
+              });
+            }
+          });
+
           methods.push({
             functionName: name.toString(),
             SDKFunctionName: method.name.text.toString(),
-            hasParams: method.parameters.length > 1
+            params: parameters
           });
         }
       });
+
+      const groupedMethods = groupMethods();
+      filterMethods(groupedMethods);
+
       const classData: ClassData = {
         className: sdkClassAst.name.text,
         functions: methods

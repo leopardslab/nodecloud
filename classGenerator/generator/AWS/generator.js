@@ -16,6 +16,38 @@ var sdkClassAst;
 var sdkFile;
 var functions = [];
 var methods = [];
+function groupMethods() {
+  var methodArr = Object.values(
+    methods.reduce(function(result, _a) {
+      var functionName = _a.functionName,
+        SDKFunctionName = _a.SDKFunctionName,
+        params = _a.params;
+      // Create new group
+      if (!result[functionName])
+        result[functionName] = {
+          functionName: functionName,
+          array: []
+        };
+      // Append to group
+      result[functionName].array.push({
+        functionName: functionName,
+        SDKFunctionName: SDKFunctionName,
+        params: params
+      });
+      return result;
+    }, {})
+  );
+  return methodArr;
+}
+function filterMethods(groupedMethods) {
+  methods = [];
+  groupedMethods.map(function(group) {
+    group.array.sort(function(a, b) {
+      return a.params.length - b.params.length;
+    });
+    methods.push(group.array.slice(-1)[0]);
+  });
+}
 function generateAWSClass(serviceClass) {
   Object.keys(serviceClass).map(function(key, index) {
     functions.push(serviceClass[key].split(" ")[1]);
@@ -32,13 +64,25 @@ function generateAWSClass(serviceClass) {
               name_1 = key;
             }
           });
+          var parameters_1 = [];
+          method.parameters.map(function(param) {
+            if (param.name.text !== "callback") {
+              parameters_1.push({
+                name: param.name.text,
+                optional: param.questionToken ? true : false,
+                type: typescript_1.SyntaxKind[param.type.kind]
+              });
+            }
+          });
           methods.push({
             functionName: name_1.toString(),
             SDKFunctionName: method.name.text.toString(),
-            hasParams: method.parameters.length > 1
+            params: parameters_1
           });
         }
       });
+      var groupedMethods = groupMethods();
+      filterMethods(groupedMethods);
       var classData = {
         className: sdkClassAst.name.text,
         functions: methods

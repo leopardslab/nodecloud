@@ -13,17 +13,21 @@ var addFunctions = function(context) {
   return function(rootNode) {
     function visit(node) {
       if (ts.isClassDeclaration(node)) {
+        ts.setSyntheticLeadingComments(node, [
+          {
+            pos: -1,
+            end: -1,
+            hasTrailingNewLine: true,
+            text:
+              "The below JavaScript class is an auto generated code for NodeCloud AWS plugin, Please do not change",
+            kind: ts.SyntaxKind.MultiLineCommentTrivia
+          }
+        ]);
         var functions_1 = [];
         classData.functions.map(function(method) {
-          if (method.hasParams) {
-            var clonedNode = Object.assign({}, node.members[1]);
-            clonedNode.name = ts.createIdentifier(method.functionName);
-            functions_1.push(clonedNode);
-          } else {
-            var clonedNode = Object.assign({}, node.members[2]);
-            clonedNode.name = ts.createIdentifier(method.functionName);
-            functions_1.push(clonedNode);
-          }
+          var clonedNode = Object.assign({}, node.members[1]);
+          clonedNode.name = ts.createIdentifier(method.functionName);
+          functions_1.push(clonedNode);
         });
         var updatedClass = ts.updateClassDeclaration(
           node,
@@ -45,6 +49,21 @@ var addIdentifiers = function(context) {
   return function(rootNode) {
     var count = 0;
     function visit(node) {
+      if (ts.isMethodDeclaration(node)) {
+        var parameters = classData.functions[count].params.map(function(param) {
+          var paramNode = ts.createParameter(
+            undefined,
+            undefined,
+            undefined,
+            param.name
+          );
+          if (param.optional) {
+            paramNode.initializer = ts.createIdentifier("undefined");
+          }
+          return paramNode;
+        });
+        node.parameters = parameters;
+      }
       if (ts.isIdentifier(node) && dummyIdentifiers.includes(node.text)) {
         var updatedIdentifier = void 0;
         switch (node.text) {
@@ -74,6 +93,19 @@ var addIdentifiers = function(context) {
             count++;
         }
         return updatedIdentifier;
+      }
+      if (ts.isCallExpression(node)) {
+        node.expression.forEachChild(function(childNode) {
+          if (
+            ts.isIdentifier(childNode) &&
+            childNode.text === "SDKFunctionName"
+          ) {
+            var args = classData.functions[count].params.map(function(param) {
+              return ts.createIdentifier(param.name);
+            });
+            node.arguments = args.concat(node.arguments);
+          }
+        });
       }
       return ts.visitEachChild(node, visit, context);
     }
