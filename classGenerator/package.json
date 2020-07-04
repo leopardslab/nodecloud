@@ -1,0 +1,25 @@
+{
+  "name": "class-generator",
+  "version": "1.0.0",
+  "main": "main.js",
+  "author": "Scorelab",
+  "description": "NodeCloud code generation tool",
+  "license": "Apache-2.0",
+  "keywords": [
+    "nodecloud",
+    "code-generation"
+  ],
+  "dependencies": {
+    "@azure/arm-appservice": "^6.0.0",
+    "@azure/arm-compute": "^14.0.0",
+    "@azure/arm-containerservice": "^11.0.0",
+    "@azure/arm-cosmosdb": "^8.0.0",
+    "@azure/arm-keyvault": "^1.2.1",
+    "@azure/arm-monitor": "^6.0.0",
+    "@azure/arm-sql": "^7.0.0",
+    "@azure/arm-storage": "^15.0.0",
+    "aws-sdk": "^2.686.0",
+    "js-yaml": "^3.14.0",
+    "typescript": "^3.9.3"
+  }
+}
