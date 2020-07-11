@@ -2,6 +2,7 @@ import * as yaml from "js-yaml";
 import * as fs from "fs";
 import { generateAWSClass } from "./generator/AWS/generator";
 import { generateAzureClass } from "./generator/Azure/generator";
+import { generateGCPClass } from "./generator/GCP/generator";
 
 try {
   const services = yaml.safeLoad(fs.readFileSync("node-cloud.yml", "utf8"));
@@ -11,6 +12,8 @@ try {
         generateAzureClass(services[key][key1]);
       } else if (key1 === "AWS") {
         generateAWSClass(services[key][key1]);
+      } else if (key1 === "GCP") {
+        generateGCPClass(services[key][key1]);
       }
     });
   });

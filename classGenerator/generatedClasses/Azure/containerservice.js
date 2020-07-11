@@ -105,7 +105,7 @@ class containerservice {
         });
     });
   }
-  list(options = undefined) {
+  listClusters(options = undefined) {
     return new Promise((resolve, reject) => {
       this._azureRestSdk
         .loginWithServicePrincipalSecretWithAuthResponse(
