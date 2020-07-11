@@ -4,7 +4,11 @@ container:
     delete: arm-containerservice managedClusters.d.ts deleteMethod
     updateTags: arm-containerservice managedClusters.d.ts updateTags
     listByResourceGroup: arm-containerservice managedClusters.d.ts listByResourceGroup
-    list: arm-containerservice managedClusters.d.ts list
+    listClusters: arm-containerservice managedClusters.d.ts list
+  GCP:
+    create: container v1 cluster_manager_client.d.ts createCluster
+    delete: container v1 cluster_manager_client.d.ts deleteCluster
+    listClusters: container v1 cluster_manager_client.d.ts listClusters
 
 noSqlIndexed:
   AWS:
@@ -17,3 +21,12 @@ noSqlIndexed:
     setAttribute: SimpleDB.d.ts putAttributes
     deleteAttribute: SimpleDB.d.ts deleteAttributes
     getAttributes: SimpleDB.d.ts getAttributes
+
+monitoring:
+  GCP:
+    createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
+    deleteAlarm: monitoring v3 alert_policy_service_client.d.ts deleteAlertPolicy
+    updateAlarm: monitoring v3 alert_policy_service_client.d.ts updateAlertPolicy
+    listAlarms: monitoring v3 alert_policy_service_client.d.ts listAlertPolicies
+    getMetricDescriptor: monitoring v3 metric_service_client.d.ts getMetricDescriptor
+    projectPath: monitoring v3 alert_policy_service_client.d.ts projectPath
