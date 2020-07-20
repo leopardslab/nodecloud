@@ -4,7 +4,7 @@ exports.getAstTree = void 0;
 var fs = require("fs");
 var path = require("path");
 var typescript_1 = require("typescript");
-function getAstTree(sdkFileInfo) {
+function getAstTree(sdkFileInfo, multi) {
   var filePath;
   if (sdkFileInfo.version) {
     filePath =
@@ -29,12 +29,23 @@ function getAstTree(sdkFileInfo) {
       typescript_1.ScriptTarget.Latest,
       true
     );
-    ast.forEachChild(function(child) {
-      if (typescript_1.SyntaxKind[child.kind] === "ClassDeclaration") {
-        var cloned = Object.assign({}, child);
-        return resolve(cloned);
-      }
-    });
+    if (multi === true) {
+      var classes_1 = [];
+      ast.forEachChild(function(child) {
+        if (typescript_1.SyntaxKind[child.kind] === "ClassDeclaration") {
+          var cloned = Object.assign({}, child);
+          classes_1.push(cloned);
+        }
+      });
+      resolve(classes_1);
+    } else {
+      ast.forEachChild(function(child) {
+        if (typescript_1.SyntaxKind[child.kind] === "ClassDeclaration") {
+          var cloned = Object.assign({}, child);
+          return resolve(cloned);
+        }
+      });
+    }
   });
 }
 exports.getAstTree = getAstTree;

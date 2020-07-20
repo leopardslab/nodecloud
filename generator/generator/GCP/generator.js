@@ -135,9 +135,11 @@ var __generator =
 exports.__esModule = true;
 exports.generateGCPClass = void 0;
 var fs = require("fs");
+var path = require("path");
 var typescript_1 = require("typescript");
 var parser_1 = require("../../parser/GCP/parser");
 var transformer_1 = require("../../transformer/GCP/transformer");
+var classBasedTransformer_1 = require("../../transformer/GCP/classBasedTransformer");
 var dummyFile = process.cwd() + "/dummyClasses/gcpDummyClass.js";
 var dummyAst = typescript_1.createSourceFile(
   dummyFile,
@@ -145,6 +147,108 @@ var dummyAst = typescript_1.createSourceFile(
   typescript_1.ScriptTarget.Latest,
   true
 );
+function extractClientBasedSDKdata(methods) {
+  var _this = this;
+  return new Promise(function(resolve, reject) {
+    return __awaiter(_this, void 0, void 0, function() {
+      var files, sdkFiles, error_1;
+      var _this = this;
+      return __generator(this, function(_a) {
+        switch (_a.label) {
+          case 0:
+            _a.trys.push([0, 2, , 3]);
+            files = Array.from(
+              new Set(
+                methods.map(function(method) {
+                  return method.fileName + " " + method.version;
+                })
+              )
+            );
+            sdkFiles = files.map(function(file) {
+              return {
+                fileName: file.split(" ")[0],
+                version: file.split(" ")[1],
+                pkgName: methods[0].pkgName,
+                ast: null,
+                client: null,
+                sdkFunctionNames: methods
+                  .filter(function(method) {
+                    return method.fileName === file.split(" ")[0];
+                  })
+                  .map(function(method) {
+                    return method.SDKFunctionName;
+                  })
+              };
+            });
+            return [
+              4 /*yield*/,
+              sdkFiles.map(function(file) {
+                return __awaiter(_this, void 0, void 0, function() {
+                  var _a;
+                  return __generator(this, function(_b) {
+                    switch (_b.label) {
+                      case 0:
+                        _a = file;
+                        return [4 /*yield*/, parser_1.getAstTree(file)];
+                      case 1:
+                        _a.ast = _b.sent();
+                        return [2 /*return*/];
+                    }
+                  });
+                });
+              })
+            ];
+          case 1:
+            _a.sent();
+            sdkFiles.map(function(sdkFile) {
+              sdkFile.client = sdkFile.ast.name.text;
+              sdkFile.ast.members.map(function(member) {
+                if (
+                  typescript_1.SyntaxKind[member.kind] ===
+                    "MethodDeclaration" &&
+                  sdkFile.sdkFunctionNames.includes(member.name.text)
+                ) {
+                  var method = methods.find(function(methd) {
+                    return methd.SDKFunctionName === member.name.text;
+                  });
+                  var parameters = member.parameters.map(function(param) {
+                    return {
+                      name: param.name.text,
+                      optional: param.questionToken ? true : false,
+                      type: typescript_1.SyntaxKind[param.type.kind]
+                    };
+                  });
+                  var returnType = typescript_1.SyntaxKind[member.type.kind];
+                  if (returnType === "TypeReference") {
+                    method.returnTypeName = member.type.typeName.text;
+                  }
+                  if (!method.returnType) {
+                    method.params = parameters;
+                    method.returnType = returnType;
+                    method.client = sdkFile.client;
+                  } else {
+                    var clone = JSON.parse(JSON.stringify(method));
+                    clone.params = parameters;
+                    clone.returnType = returnType;
+                    clone.client = sdkFile.client;
+                    methods.push(clone);
+                  }
+                }
+              });
+            });
+            resolve(methods);
+            return [3 /*break*/, 3];
+          case 2:
+            error_1 = _a.sent();
+            reject(error_1);
+            return [3 /*break*/, 3];
+          case 3:
+            return [2 /*return*/];
+        }
+      });
+    });
+  });
+}
 function groupMethods(methods) {
   var methodArr = Object.values(
     methods.reduce(function(result, _a) {
@@ -155,7 +259,8 @@ function groupMethods(methods) {
         fileName = _a.fileName,
         client = _a.client,
         returnType = _a.returnType,
-        returnTypeName = _a.returnTypeName;
+        returnTypeName = _a.returnTypeName,
+        classConstructorData = _a.classConstructorData;
       // Create new group
       if (!result[functionName])
         result[functionName] = {
@@ -171,7 +276,8 @@ function groupMethods(methods) {
         fileName: fileName,
         client: client,
         returnType: returnType,
-        returnTypeName: returnTypeName
+        returnTypeName: returnTypeName,
+        classConstructorData: classConstructorData
       });
       return result;
     }, {})
@@ -202,16 +308,193 @@ function filterMethods(groupedMethods) {
   });
   return methods;
 }
+function extractClassBasedSDKData(methods) {
+  var _this = this;
+  return new Promise(function(resolve, reject) {
+    return __awaiter(_this, void 0, void 0, function() {
+      var dirPath, files, sdkFiles, classes_1, extractedData, error_2;
+      var _this = this;
+      return __generator(this, function(_a) {
+        switch (_a.label) {
+          case 0:
+            _a.trys.push([0, 2, , 3]);
+            dirPath =
+              "../../../node_modules/@google-cloud/" +
+              methods[0].pkgName +
+              "/build/src/";
+            files = fs.readdirSync(path.join(__dirname, dirPath));
+            files = files.filter(function(fileName) {
+              return (
+                fileName.split(".")[1] === "d" &&
+                fileName.split(".")[2] === "ts"
+              );
+            });
+            sdkFiles = files.map(function(fileName) {
+              return {
+                fileName: fileName,
+                pkgName: methods[0].pkgName,
+                classes: null,
+                sdkFunctionNames: methods
+                  .filter(function(method) {
+                    return method.fileName === fileName;
+                  })
+                  .map(function(method) {
+                    return method.SDKFunctionName;
+                  })
+              };
+            });
+            return [
+              4 /*yield*/,
+              sdkFiles.map(function(file) {
+                return __awaiter(_this, void 0, void 0, function() {
+                  var _a;
+                  return __generator(this, function(_b) {
+                    switch (_b.label) {
+                      case 0:
+                        _a = file;
+                        return [4 /*yield*/, parser_1.getAstTree(file, true)];
+                      case 1:
+                        _a.classes = _b.sent();
+                        return [2 /*return*/];
+                    }
+                  });
+                });
+              })
+            ];
+          case 1:
+            _a.sent();
+            classes_1 = [];
+            sdkFiles.map(function(file) {
+              file.classes.map(function(classAst) {
+                var classInfo = {
+                  name: classAst.name.text,
+                  methods: [],
+                  properties: [],
+                  constructor: null
+                };
+                classAst.members.map(function(member) {
+                  if (
+                    typescript_1.SyntaxKind[member.kind] === "MethodDeclaration"
+                  ) {
+                    var returnType = typescript_1.SyntaxKind[member.type.kind];
+                    var parameters = member.parameters.map(function(param) {
+                      return {
+                        name: param.name.text,
+                        optional: param.questionToken ? true : false,
+                        type: typescript_1.SyntaxKind[param.type.kind]
+                      };
+                    });
+                    var method_1 = {
+                      pkgName: file.pkgName,
+                      version: null,
+                      fileName: file.fileName,
+                      functionName: null,
+                      SDKFunctionName: member.name.text,
+                      params: parameters,
+                      returnType: returnType,
+                      returnTypeName: null,
+                      client: null
+                    };
+                    if (returnType === "TypeReference") {
+                      method_1.returnTypeName = member.type.typeName.text;
+                    }
+                    var meth = methods.find(function(meth) {
+                      return (
+                        meth.SDKFunctionName === method_1.SDKFunctionName &&
+                        meth.fileName === method_1.fileName
+                      );
+                    });
+                    method_1.functionName = meth ? meth.functionName : null;
+                    classInfo.methods.push(method_1);
+                  }
+                  if (typescript_1.SyntaxKind[member.kind] === "Constructor") {
+                    var parameters = member.parameters.map(function(param) {
+                      return {
+                        name: param.name.text,
+                        optional: param.questionToken ? true : false,
+                        type: typescript_1.SyntaxKind[param.type.kind],
+                        typeRefName: param.type.typeName
+                          ? param.type.typeName.text
+                          : null
+                      };
+                    });
+                    classInfo.constructor = {
+                      parameters: parameters
+                    };
+                  }
+                  if (
+                    typescript_1.SyntaxKind[member.kind] ===
+                    "PropertyDeclaration"
+                  ) {
+                    var isPrivateProp =
+                      member.modifiers &&
+                      member.modifiers.some(function(modifier) {
+                        return (
+                          typescript_1.SyntaxKind[modifier.kind] ===
+                          "PrivateKeyword"
+                        );
+                      });
+                    if (!isPrivateProp) {
+                      var prop = {
+                        name: member.name.text,
+                        type: typescript_1.SyntaxKind[member.type.kind],
+                        typeRefName: member.type.typeName
+                          ? member.type.typeName.text
+                          : null
+                      };
+                      classInfo.properties.push(prop);
+                    }
+                  }
+                });
+                classes_1.push(classInfo);
+              });
+            });
+            methods = [];
+            classes_1.map(function(classData) {
+              var filteredMethods = classData.methods.filter(function(meth) {
+                return meth.functionName !== null;
+              });
+              filteredMethods.map(function(filMeth) {
+                filMeth.classConstructorData = classData.constructor;
+              });
+              methods = methods.concat(filteredMethods);
+            });
+            extractedData = {
+              classes: classes_1,
+              methods: methods
+            };
+            resolve(extractedData);
+            return [3 /*break*/, 3];
+          case 2:
+            error_2 = _a.sent();
+            reject(error_2);
+            return [3 /*break*/, 3];
+          case 3:
+            return [2 /*return*/];
+        }
+      });
+    });
+  });
+}
 function generateGCPClass(serviceClass) {
   return __awaiter(this, void 0, void 0, function() {
-    var methods, files, sdkFiles, groupedMethods, classData, output;
-    var _this = this;
+    var methods,
+      data,
+      groupedMethods,
+      classData,
+      output,
+      extractedData,
+      groupedMethods,
+      output;
     return __generator(this, function(_a) {
       switch (_a.label) {
         case 0:
           methods = [];
+          data = {};
           Object.keys(serviceClass).map(function(key, index) {
-            if (
+            if (key === "mainClass") {
+              data.mainClass = serviceClass[key];
+            } else if (
               serviceClass[key].split(" ")[1].length === 2 &&
               serviceClass[key].split(" ")[1].charAt(0) === "v"
             ) {
@@ -226,91 +509,35 @@ function generateGCPClass(serviceClass) {
                 returnTypeName: null,
                 client: null
               });
+            } else {
+              methods.push({
+                pkgName: serviceClass[key].split(" ")[0],
+                version: null,
+                fileName: serviceClass[key].split(" ")[1],
+                functionName: key,
+                SDKFunctionName: serviceClass[key].split(" ")[2],
+                params: [],
+                returnType: null,
+                returnTypeName: null,
+                client: null
+              });
             }
           });
-          files = Array.from(
-            new Set(
-              methods.map(function(method) {
-                return method.fileName + " " + method.version;
-              })
-            )
-          );
-          sdkFiles = files.map(function(file) {
-            return {
-              fileName: file.split(" ")[0],
-              version: file.split(" ")[1],
-              pkgName: methods[0].pkgName,
-              ast: null,
-              client: null,
-              sdkFunctionNames: methods
-                .filter(function(method) {
-                  return method.fileName === file.split(" ")[0];
-                })
-                .map(function(method) {
-                  return method.SDKFunctionName;
-                })
-            };
-          });
+          if (!methods[0].version) return [3 /*break*/, 2];
           return [
             4 /*yield*/,
-            sdkFiles.map(function(file) {
-              return __awaiter(_this, void 0, void 0, function() {
-                var _a;
-                return __generator(this, function(_b) {
-                  switch (_b.label) {
-                    case 0:
-                      _a = file;
-                      return [4 /*yield*/, parser_1.getAstTree(file)];
-                    case 1:
-                      _a.ast = _b.sent();
-                      return [2 /*return*/];
-                  }
-                });
-              });
+            extractClientBasedSDKdata(methods).then(function(result) {
+              return result;
             })
           ];
         case 1:
-          _a.sent();
-          sdkFiles.map(function(sdkFile) {
-            sdkFile.client = sdkFile.ast.name.text;
-            sdkFile.ast.members.map(function(member) {
-              if (
-                typescript_1.SyntaxKind[member.kind] === "MethodDeclaration" &&
-                sdkFile.sdkFunctionNames.includes(member.name.text)
-              ) {
-                var method = methods.find(function(methd) {
-                  return methd.SDKFunctionName === member.name.text;
-                });
-                var parameters = member.parameters.map(function(param) {
-                  return {
-                    name: param.name.text,
-                    optional: param.questionToken ? true : false,
-                    type: typescript_1.SyntaxKind[param.type.kind]
-                  };
-                });
-                var returnType = typescript_1.SyntaxKind[member.type.kind];
-                if (returnType === "TypeReference") {
-                  method.returnTypeName = member.type.typeName.text;
-                }
-                if (!method.returnType) {
-                  method.params = parameters;
-                  method.returnType = returnType;
-                  method.client = sdkFile.client;
-                } else {
-                  var clone = JSON.parse(JSON.stringify(method));
-                  clone.params = parameters;
-                  clone.returnType = returnType;
-                  clone.client = sdkFile.client;
-                  methods.push(clone);
-                }
-              }
-            });
-          });
+          methods = _a.sent();
           groupedMethods = groupMethods(methods);
           methods = filterMethods(groupedMethods);
           classData = {
             functions: methods
           };
+          console.log("sdcsdc");
           output = transformer_1.transform(dummyAst, classData);
           fs.writeFile(
             process.cwd() +
@@ -322,6 +549,34 @@ function generateGCPClass(serviceClass) {
               if (err) throw err;
             }
           );
+          return [3 /*break*/, 4];
+        case 2:
+          return [
+            4 /*yield*/,
+            extractClassBasedSDKData(methods).then(function(result) {
+              return result;
+            })
+          ];
+        case 3:
+          extractedData = _a.sent();
+          groupedMethods = groupMethods(extractedData.methods);
+          methods = filterMethods(groupedMethods);
+          data.functions = methods;
+          data.classData = extractedData.classes;
+          console.log(data);
+          output = classBasedTransformer_1.classBasedTransform(dummyAst, data);
+          fs.writeFile(
+            process.cwd() +
+              "/generatedClasses/GCP/" +
+              data.functions[0].pkgName +
+              ".js",
+            output,
+            function(err) {
+              if (err) throw err;
+            }
+          );
+          _a.label = 4;
+        case 4:
           return [2 /*return*/];
       }
     });

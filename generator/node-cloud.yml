@@ -30,3 +30,14 @@ monitoring:
     listAlarms: monitoring v3 alert_policy_service_client.d.ts listAlertPolicies
     getMetricDescriptor: monitoring v3 metric_service_client.d.ts getMetricDescriptor
     projectPath: monitoring v3 alert_policy_service_client.d.ts projectPath
+
+DNS:
+  GCP:
+    mainClass: DNS
+    listZones: dns index.d.ts getZones
+    createZone: dns zone.d.ts create
+
+Storage:
+  GCP:
+    mainClass: Storage
+    makePublic: storage file.d.ts makePublic
