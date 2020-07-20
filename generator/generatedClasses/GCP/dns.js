@@ -1,14 +1,13 @@
-const { ClientName } = require("pkgName");
-
-class ClassName {
+const { DNS } = require("@google-cloud/dns");
+/*The below JavaScript class is an auto generated code for NodeCloud GCP plugin, Please do not change*/
+class dns {
   constructor(config) {
-    this._clientObj = new Client(config);
+    this._dns = new DNS(config);
   }
-
-  dummyFunctionWithPromise() {
+  listZones(query = undefined) {
     return new Promise((resolve, reject) => {
-      this._client
-        .SDKFunctionName()
+      this._dns
+        .getZones(query)
         .then(result => {
           resolve(result);
         })
@@ -17,15 +16,10 @@ class ClassName {
         });
     });
   }
-
-  dummyFunction() {
-    return this._client.SDKFunctionName();
-  }
-
-  paramClientDummyFunctionWithPromise() {
+  createZone(dns, config) {
     return new Promise((resolve, reject) => {
-      _client
-        .SDKFunctionName()
+      dns
+        .create(config)
         .then(result => {
           resolve(result);
         })
@@ -35,5 +29,4 @@ class ClassName {
     });
   }
 }
-
-module.exports = ClassName;
+module.exports = dns;

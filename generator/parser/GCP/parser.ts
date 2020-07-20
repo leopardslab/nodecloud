@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { createSourceFile, ScriptTarget, SyntaxKind } from "typescript";
 
-export function getAstTree(sdkFileInfo) {
+export function getAstTree(sdkFileInfo, multi?: boolean) {
   let filePath;
   if (sdkFileInfo.version) {
     filePath = `../../../node_modules/@google-cloud/${
@@ -22,11 +22,22 @@ export function getAstTree(sdkFileInfo) {
       true
     );
 
-    ast.forEachChild(child => {
-      if (SyntaxKind[child.kind] === "ClassDeclaration") {
-        let cloned = Object.assign({}, child);
-        return resolve(cloned);
-      }
-    });
+    if (multi === true) {
+      let classes = [];
+      ast.forEachChild(child => {
+        if (SyntaxKind[child.kind] === "ClassDeclaration") {
+          let cloned = Object.assign({}, child);
+          classes.push(cloned);
+        }
+      });
+      resolve(classes);
+    } else {
+      ast.forEachChild(child => {
+        if (SyntaxKind[child.kind] === "ClassDeclaration") {
+          let cloned = Object.assign({}, child);
+          return resolve(cloned);
+        }
+      });
+    }
   });
 }
