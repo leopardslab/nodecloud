@@ -123,6 +123,7 @@ var addIdentifiers = function(context) {
   };
 };
 function transform(code, data) {
+  code = Object.assign({}, code);
   classData = data;
   var printer = ts.createPrinter({
     newLine: ts.NewLineKind.LineFeed,

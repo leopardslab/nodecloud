@@ -123,6 +123,7 @@ const addIdentifiers = <T extends ts.Node>(
 };
 
 export function transform(code: ts.SourceFile, data: any): string {
+  code = Object.assign({}, code);
   classData = data;
   const printer: ts.Printer = ts.createPrinter({
     newLine: ts.NewLineKind.LineFeed,

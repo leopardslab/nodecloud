@@ -3,9 +3,10 @@ exports.__esModule = true;
 exports.generateAWSClass = void 0;
 var fs = require("fs");
 var typescript_1 = require("typescript");
-var parser_1 = require("../../parser/AWS/parser");
-var transformer_1 = require("../../transformer/AWS/transformer");
-var dummyFile = process.cwd() + "/dummyClasses/awsDummyClass.js";
+var parser_1 = require("../../parser/aws/parser");
+var transformer_1 = require("../../transformer/aws/transformer");
+var helper_1 = require("../lib/helper");
+var dummyFile = process.cwd() + "/dummyClasses/aws.js";
 var dummyAst = typescript_1.createSourceFile(
   dummyFile,
   fs.readFileSync(dummyFile).toString(),
@@ -14,46 +15,14 @@ var dummyAst = typescript_1.createSourceFile(
 );
 var sdkClassAst;
 var sdkFile;
-var functions = [];
-var methods = [];
-function groupMethods() {
-  var methodArr = Object.values(
-    methods.reduce(function(result, _a) {
-      var functionName = _a.functionName,
-        SDKFunctionName = _a.SDKFunctionName,
-        params = _a.params;
-      // Create new group
-      if (!result[functionName])
-        result[functionName] = {
-          functionName: functionName,
-          array: []
-        };
-      // Append to group
-      result[functionName].array.push({
-        functionName: functionName,
-        SDKFunctionName: SDKFunctionName,
-        params: params
-      });
-      return result;
-    }, {})
-  );
-  return methodArr;
-}
-function filterMethods(groupedMethods) {
-  methods = [];
-  groupedMethods.map(function(group) {
-    group.array.sort(function(a, b) {
-      return a.params.length - b.params.length;
-    });
-    methods.push(group.array.slice(-1)[0]);
-  });
-}
 function generateAWSClass(serviceClass) {
+  var functions = [];
+  var methods = [];
   Object.keys(serviceClass).map(function(key, index) {
     functions.push(serviceClass[key].split(" ")[1]);
     sdkFile = serviceClass[key].split(" ")[0];
   });
-  parser_1.getAstTree(sdkFile).then(function(result) {
+  parser_1.getAST(sdkFile).then(function(result) {
     sdkClassAst = result;
     try {
       sdkClassAst.members.map(function(method) {
@@ -81,19 +50,16 @@ function generateAWSClass(serviceClass) {
           });
         }
       });
-      var groupedMethods = groupMethods();
-      filterMethods(groupedMethods);
+      var groupedMethods = helper_1.groupers.aws(methods);
+      methods = helper_1.filters.aws(groupedMethods);
       var classData = {
         className: sdkClassAst.name.text,
         functions: methods
       };
       var output = transformer_1.transform(dummyAst, classData);
-      fs.writeFile(
+      helper_1.printFile(
         process.cwd() + "/generatedClasses/AWS/" + classData.className + ".js",
-        output,
-        function(err) {
-          if (err) throw err;
-        }
+        output
       );
     } catch (e) {
       console.error(e);

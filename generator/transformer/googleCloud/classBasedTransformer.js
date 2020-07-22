@@ -9,7 +9,8 @@ var dummyIdentifiers = [
   "ClientName",
   "_client",
   "_clientObj",
-  "Client"
+  "Client",
+  "_className"
 ];
 var addFunctions = function(context) {
   return function(rootNode) {
@@ -89,7 +90,7 @@ var addIdentifiers = function(context) {
           }
           return paramNode;
         });
-        node.parameters = parameters;
+        node.parameters = parameters.concat(node.parameters);
       }
       if (ts.isStringLiteral(node) && node.text === "pkgName") {
         node.text = "@google-cloud/" + classData.functions[0].pkgName;
@@ -112,6 +113,13 @@ var addIdentifiers = function(context) {
               ts.createIdentifier(classData.functions[count].SDKFunctionName)
             );
             count++;
+            break;
+          case "_className":
+            updatedIdentifier = ts.updateIdentifier(
+              ts.createIdentifier(
+                classData.functions[count].client.toLowerCase()
+              )
+            );
             break;
           case "_client":
             if (
@@ -166,6 +174,7 @@ var addIdentifiers = function(context) {
   };
 };
 function classBasedTransform(code, data) {
+  code = Object.assign({}, code);
   classData = data;
   var printer = ts.createPrinter({
     newLine: ts.NewLineKind.LineFeed,

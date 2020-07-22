@@ -5,7 +5,7 @@ class ClassName {
     this._azureRestSdk = azureRestSdk;
   }
 
-  dummyFunction() {
+  function() {
     return new Promise((resolve, reject) => {
       this._azureRestSdk
         .loginWithServicePrincipalSecretWithAuthResponse(

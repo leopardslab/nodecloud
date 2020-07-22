@@ -1,9 +1,10 @@
 import * as fs from "fs";
 import * as path from "path";
 import { SyntaxKind, createSourceFile, ScriptTarget } from "typescript";
-import { getAstTree } from "../../parser/GCP/parser";
-import { transform } from "../../transformer/GCP/transformer";
-import { classBasedTransform } from "../../transformer/GCP/classBasedTransformer";
+import { getAST } from "../../parser/googleCloud/parser";
+import { filters, groupers, printFile } from "../lib/helper";
+import { clientBasedTransform } from "../../transformer/googleCloud/clientBasedTransformer";
+import { classBasedTransform } from "../../transformer/googleCloud/classBasedTransformer";
 
 interface ClassData {
   name: string;
@@ -11,6 +12,7 @@ interface ClassData {
   constructor: constructorData;
   properties: propertyData[];
 }
+
 interface FunctionData {
   pkgName: string;
   version: string;
@@ -31,13 +33,14 @@ interface propertyData {
 interface constructorData {
   parameters: param[];
 }
+
 interface param {
   name: string;
   type: string;
   optional: boolean;
 }
 
-const dummyFile = process.cwd() + "/dummyClasses/gcpDummyClass.js";
+const dummyFile = process.cwd() + "/dummyClasses/gcp.js";
 const dummyAst = createSourceFile(
   dummyFile,
   fs.readFileSync(dummyFile).toString(),
@@ -65,7 +68,7 @@ function extractClientBasedSDKdata(methods): any {
       });
 
       await sdkFiles.map(async file => {
-        file.ast = await getAstTree(file);
+        file.ast = await getAST(file);
       });
 
       sdkFiles.map(sdkFile => {
@@ -113,71 +116,6 @@ function extractClientBasedSDKdata(methods): any {
   });
 }
 
-function groupMethods(methods): any {
-  const methodArr = Object.values(
-    methods.reduce(
-      (
-        result,
-        {
-          functionName,
-          SDKFunctionName,
-          params,
-          pkgName,
-          fileName,
-          client,
-          returnType,
-          returnTypeName,
-          classConstructorData
-        }
-      ) => {
-        // Create new group
-        if (!result[functionName])
-          result[functionName] = {
-            functionName,
-            array: []
-          };
-        // Append to group
-        result[functionName].array.push({
-          functionName,
-          SDKFunctionName,
-          params,
-          pkgName,
-          fileName,
-          client,
-          returnType,
-          returnTypeName,
-          classConstructorData
-        });
-        return result;
-      },
-      {}
-    )
-  );
-
-  return methodArr;
-}
-
-function filterMethods(groupedMethods): any {
-  let methods = [];
-  groupedMethods.map(group => {
-    if (group.array.length === 1) {
-      methods.push(group.array[0]);
-    } else {
-      let methodPushed = false;
-      group.array.map(method => {
-        if (!method.params.find(param => param.name === "callback")) {
-          methods.push(method);
-          methodPushed = true;
-        }
-      });
-      if (!methodPushed) {
-        methods.push(group.array[0]);
-      }
-    }
-  });
-  return methods;
-}
-
 function extractClassBasedSDKData(methods): any {
   return new Promise(async (resolve, reject) => {
     try {
@@ -202,7 +140,7 @@ function extractClassBasedSDKData(methods): any {
       });
 
       await sdkFiles.map(async file => {
-        file.classes = await getAstTree(file, true);
+        file.classes = await getAST(file, true);
       });
 
       let classes: ClassData[] = [];
@@ -236,7 +174,7 @@ function extractClassBasedSDKData(methods): any {
                 params: parameters,
                 returnType: returnType,
                 returnTypeName: null,
-                client: null
+                client: classAst.name.text // Class name
               };
 
               if (returnType === "TypeReference") {
@@ -355,19 +293,17 @@ export async function generateGCPClass(serviceClass) {
 
   if (methods[0].version) {
     methods = await extractClientBasedSDKdata(methods).then(result => result);
-    const groupedMethods = groupMethods(methods);
-    methods = filterMethods(groupedMethods);
+    const groupedMethods = groupers.gcp(methods);
+    methods = filters.gcp(groupedMethods);
 
     const classData = {
       functions: methods
     };
 
-    console.log("sdcsdc");
-
-    const output = transform(dummyAst, classData);
+    const output = clientBasedTransform(dummyAst, classData);
     fs.writeFile(
       process.cwd() +
-        "/generatedClasses/GCP/" +
+        "/generatedClasses/googleCloud/" +
         classData.functions[0].pkgName +
         ".js",
       output,
@@ -379,22 +315,18 @@ export async function generateGCPClass(serviceClass) {
     const extractedData = await extractClassBasedSDKData(methods).then(
       result => result
     );
-    const groupedMethods = groupMethods(extractedData.methods);
-    methods = filterMethods(groupedMethods);
+    const groupedMethods = groupers.gcp(extractedData.methods);
+    methods = filters.gcp(groupedMethods);
     data.functions = methods;
     data.classData = extractedData.classes;
-    console.log(data);
 
     const output = classBasedTransform(dummyAst, data);
-    fs.writeFile(
+    printFile(
       process.cwd() +
-        "/generatedClasses/GCP/" +
+        "/generatedClasses/googleCloud/" +
         data.functions[0].pkgName +
         ".js",
-      output,
-      function(err) {
-        if (err) throw err;
-      }
+      output
     );
   }
 }

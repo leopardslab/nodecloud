@@ -1,13 +1,16 @@
 "use strict";
 exports.__esModule = true;
-exports.transform = void 0;
+exports.clientBasedTransform = void 0;
 var ts = require("typescript");
 var classData;
+var clients;
 var dummyIdentifiers = [
   "ClassName",
-  "_sdkClassName",
-  "SDKClassName",
-  "SDKFunctionName"
+  "SDKFunctionName",
+  "ClientName",
+  "_client",
+  "_clientObj",
+  "Client"
 ];
 var addFunctions = function(context) {
   return function(rootNode) {
@@ -19,13 +22,18 @@ var addFunctions = function(context) {
             end: -1,
             hasTrailingNewLine: true,
             text:
-              "The below JavaScript class is an auto generated code for NodeCloud AWS plugin, Please do not change",
+              "The below JavaScript class is an auto generated code for NodeCloud GCP plugin, Please do not change",
             kind: ts.SyntaxKind.MultiLineCommentTrivia
           }
         ]);
         var functions_1 = [];
         classData.functions.map(function(method) {
-          var clonedNode = Object.assign({}, node.members[1]);
+          var clonedNode;
+          if (method.returnTypeName === "Promise") {
+            clonedNode = Object.assign({}, node.members[1]);
+          } else {
+            clonedNode = Object.assign({}, node.members[2]);
+          }
           clonedNode.name = ts.createIdentifier(method.functionName);
           functions_1.push(clonedNode);
         });
@@ -48,6 +56,8 @@ var addFunctions = function(context) {
 var addIdentifiers = function(context) {
   return function(rootNode) {
     var count = 0;
+    var clientCount = 0;
+    var clientObjCount = 0;
     function visit(node) {
       if (ts.isMethodDeclaration(node)) {
         var parameters = classData.functions[count].params.map(function(param) {
@@ -64,33 +74,53 @@ var addIdentifiers = function(context) {
         });
         node.parameters = parameters;
       }
+      if (ts.isStringLiteral(node) && node.text === "pkgName") {
+        node.text = "@google-cloud/" + classData.functions[0].pkgName;
+      }
       if (ts.isIdentifier(node) && dummyIdentifiers.includes(node.text)) {
         var updatedIdentifier = void 0;
         switch (node.text) {
           case "ClassName":
             updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier(classData.className)
+              ts.createIdentifier(classData.functions[0].pkgName)
             );
             break;
-          case "_sdkClassName":
+          case "ClientName":
             updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier(
-                "_" +
-                  classData.className.charAt(0).toLowerCase() +
-                  classData.className.substr(1)
-              )
+              ts.createIdentifier(clients[clientCount])
             );
-            break;
-          case "SDKClassName":
-            updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier(classData.className)
-            );
+            clientCount++;
             break;
           case "SDKFunctionName":
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(classData.functions[count].SDKFunctionName)
             );
             count++;
+            break;
+          case "_client":
+            updatedIdentifier = ts.updateIdentifier(
+              ts.createIdentifier(
+                "_" +
+                  classData.functions[count].client.toLowerCase().charAt(0) +
+                  classData.functions[count].client.substr(1)
+              )
+            );
+            break;
+          case "_clientObj":
+            updatedIdentifier = ts.updateIdentifier(
+              ts.createIdentifier(
+                "_" +
+                  clients[clientObjCount].toLowerCase().charAt(0) +
+                  clients[clientObjCount].substr(1)
+              )
+            );
+            break;
+          case "Client":
+            updatedIdentifier = ts.updateIdentifier(
+              ts.createIdentifier(clients[clientObjCount])
+            );
+            clientObjCount++;
+            break;
         }
         return updatedIdentifier;
       }
@@ -103,7 +133,7 @@ var addIdentifiers = function(context) {
             var args = classData.functions[count].params.map(function(param) {
               return ts.createIdentifier(param.name);
             });
-            node.arguments = args.concat(node.arguments);
+            node.arguments = args;
           }
         });
       }
@@ -112,13 +142,34 @@ var addIdentifiers = function(context) {
     return ts.visitNode(rootNode, visit);
   };
 };
-function transform(code, data) {
+function clientBasedTransform(code, data) {
   code = Object.assign({}, code);
   classData = data;
   var printer = ts.createPrinter({
     newLine: ts.NewLineKind.LineFeed,
     removeComments: false
   });
+  // import related
+  clients = Array.from(
+    new Set(
+      classData.functions.map(function(method) {
+        return method.client;
+      })
+    )
+  );
+  var importStatments = new Array(clients.length);
+  importStatments.fill(Object.assign({}, code.statements[0]));
+  code.statements = importStatments.concat(code.statements.slice(1));
+  var classDeclarationNode = code.statements.find(function(node) {
+    return ts.isClassDeclaration(node);
+  });
+  var constructorNode = classDeclarationNode.members.find(function(node) {
+    return ts.SyntaxKind[node.kind] === "Constructor";
+  });
+  var clientObjects = new Array(clients.length);
+  clientObjects.fill(Object.assign({}, constructorNode.body.statements[0]));
+  constructorNode.body.statements = clientObjects;
+  // import related
   var result = ts.transform(code, [addFunctions]);
   var transformedNodes = result.transformed[0];
   var outputOne = printer.printNode(
@@ -127,7 +178,7 @@ function transform(code, data) {
     code
   );
   code = ts.createSourceFile(
-    "dummyClass.js",
+    "gcpDummyClass.js",
     outputOne,
     ts.ScriptTarget.Latest
   );
@@ -135,4 +186,4 @@ function transform(code, data) {
   var transformedNodes2 = result2.transformed[0];
   return printer.printNode(ts.EmitHint.SourceFile, transformedNodes2, code);
 }
-exports.transform = transform;
+exports.clientBasedTransform = clientBasedTransform;

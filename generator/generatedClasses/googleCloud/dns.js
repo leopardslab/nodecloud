@@ -3,6 +3,7 @@ const { DNS } = require("@google-cloud/dns");
 class dns {
   constructor(config) {
     this._dns = new DNS(config);
+    this._dns = new DNS(config);
   }
   listZones(query = undefined) {
     return new Promise((resolve, reject) => {
@@ -16,9 +17,10 @@ class dns {
         });
     });
   }
-  createZone(dns, config) {
+  createZone(dns, config, identifier = undefined) {
     return new Promise((resolve, reject) => {
       dns
+        .zone(identifier)
         .create(config)
         .then(result => {
           resolve(result);

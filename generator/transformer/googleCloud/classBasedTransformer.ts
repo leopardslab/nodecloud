@@ -1,14 +1,14 @@
 import * as ts from "typescript";
 
 let classData;
-let clients;
 const dummyIdentifiers = [
   "ClassName",
   "SDKFunctionName",
   "ClientName",
   "_client",
   "_clientObj",
-  "Client"
+  "Client",
+  "_className"
 ];
 
 const addFunctions = <T extends ts.Node>(context: ts.TransformationContext) => (
@@ -31,7 +31,15 @@ const addFunctions = <T extends ts.Node>(context: ts.TransformationContext) => (
       classData.functions.map(method => {
         let clonedNode;
         if (method.returnTypeName === "Promise") {
-          clonedNode = Object.assign({}, node.members[1]);
+          if (
+            (method.classConstructorData.parameters[0].type =
+              "TypeReference" &&
+              !method.classConstructorData.parameters[0].optional)
+          ) {
+            clonedNode = Object.assign({}, node.members[3]);
+          } else {
+            clonedNode = Object.assign({}, node.members[1]);
+          }
         } else {
           clonedNode = Object.assign({}, node.members[2]);
         }
@@ -60,11 +68,23 @@ const addIdentifiers = <T extends ts.Node>(
   context: ts.TransformationContext
 ) => (rootNode: T) => {
   let count = 0;
-  let clientCount = 0;
-  let clientObjCount = 0;
   function visit(node: ts.Node): ts.Node {
     if (ts.isMethodDeclaration(node)) {
-      const parameters = classData.functions[count].params.map(param => {
+      let params = [];
+      if (
+        (classData.functions[count].classConstructorData.parameters[0].type =
+          "TypeReference" &&
+          !classData.functions[count].classConstructorData.parameters[0]
+            .optional)
+      ) {
+        params.push(
+          classData.functions[count].classConstructorData.parameters[0]
+        );
+      }
+
+      params = params.concat(classData.functions[count].params);
+
+      const parameters: any = params.map(param => {
         const paramNode = ts.createParameter(
           undefined,
           undefined,
@@ -79,7 +99,7 @@ const addIdentifiers = <T extends ts.Node>(
         return paramNode;
       });
 
-      node.parameters = parameters;
+      node.parameters = parameters.concat(node.parameters);
     }
 
     if (ts.isStringLiteral(node) && node.text === "pkgName") {
@@ -96,9 +116,8 @@ const addIdentifiers = <T extends ts.Node>(
           break;
         case "ClientName":
           updatedIdentifier = ts.updateIdentifier(
-            ts.createIdentifier(clients[clientCount])
+            ts.createIdentifier(classData.mainClass)
           );
-          clientCount++;
           break;
         case "SDKFunctionName":
           updatedIdentifier = ts.updateIdentifier(
@@ -106,29 +125,41 @@ const addIdentifiers = <T extends ts.Node>(
           );
           count++;
           break;
-        case "_client":
+        case "_className":
           updatedIdentifier = ts.updateIdentifier(
-            ts.createIdentifier(
-              "_" +
-                classData.functions[count].client.toLowerCase().charAt(0) +
-                classData.functions[count].client.substr(1)
-            )
+            ts.createIdentifier(classData.functions[count].client.toLowerCase())
           );
+          break;
+        case "_client":
+          if (
+            (classData.functions[
+              count
+            ].classConstructorData.parameters[0].type =
+              "TypeReference" &&
+              !classData.functions[count].classConstructorData.parameters[0]
+                .optional)
+          ) {
+            updatedIdentifier = ts.updateIdentifier(
+              ts.createIdentifier(
+                classData.functions[count].classConstructorData.parameters[0]
+                  .name
+              )
+            );
+          } else {
+            updatedIdentifier = ts.updateIdentifier(
+              ts.createIdentifier("_" + classData.mainClass.toLowerCase())
+            );
+          }
           break;
         case "_clientObj":
           updatedIdentifier = ts.updateIdentifier(
-            ts.createIdentifier(
-              "_" +
-                clients[clientObjCount].toLowerCase().charAt(0) +
-                clients[clientObjCount].substr(1)
-            )
+            ts.createIdentifier("_" + classData.mainClass.toLowerCase())
           );
           break;
         case "Client":
           updatedIdentifier = ts.updateIdentifier(
-            ts.createIdentifier(clients[clientObjCount])
+            ts.createIdentifier(classData.mainClass)
           );
-          clientObjCount++;
           break;
       }
       return updatedIdentifier;
@@ -153,31 +184,13 @@ const addIdentifiers = <T extends ts.Node>(
   return ts.visitNode(rootNode, visit);
 };
 
-export function transform(code: ts.SourceFile, data: any): string {
+export function classBasedTransform(code: ts.SourceFile, data: any): string {
+  code = Object.assign({}, code);
   classData = data;
   const printer: ts.Printer = ts.createPrinter({
     newLine: ts.NewLineKind.LineFeed,
     removeComments: false
   });
-
-  // import related
-  clients = Array.from(
-    new Set(classData.functions.map(method => method.client))
-  );
-  const importStatments: any = new Array(clients.length);
-  importStatments.fill(Object.assign({}, code.statements[0]));
-  code.statements = importStatments.concat(code.statements.slice(1));
-
-  let classDeclarationNode: any = code.statements.find(node =>
-    ts.isClassDeclaration(node)
-  );
-  let constructorNode: any = classDeclarationNode.members.find(
-    node => ts.SyntaxKind[node.kind] === "Constructor"
-  );
-  const clientObjects: any = new Array(clients.length);
-  clientObjects.fill(Object.assign({}, constructorNode.body.statements[0]));
-  constructorNode.body.statements = clientObjects;
-  // import related
 
   const result = ts.transform(code, [addFunctions]);
   const transformedNodes = result.transformed[0];

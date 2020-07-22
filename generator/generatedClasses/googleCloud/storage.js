@@ -3,10 +3,12 @@ const { Storage } = require("@google-cloud/storage");
 class storage {
   constructor(config) {
     this._storage = new Storage(config);
+    this._storage = new Storage(config);
   }
-  makePublic(bucket) {
+  makePublic(bucket, identifier = undefined) {
     return new Promise((resolve, reject) => {
       bucket
+        .file(identifier)
         .makePublic()
         .then(result => {
           resolve(result);

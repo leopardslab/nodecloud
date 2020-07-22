@@ -137,10 +137,11 @@ exports.generateGCPClass = void 0;
 var fs = require("fs");
 var path = require("path");
 var typescript_1 = require("typescript");
-var parser_1 = require("../../parser/GCP/parser");
-var transformer_1 = require("../../transformer/GCP/transformer");
-var classBasedTransformer_1 = require("../../transformer/GCP/classBasedTransformer");
-var dummyFile = process.cwd() + "/dummyClasses/gcpDummyClass.js";
+var parser_1 = require("../../parser/googleCloud/parser");
+var helper_1 = require("../lib/helper");
+var clientBasedTransformer_1 = require("../../transformer/googleCloud/clientBasedTransformer");
+var classBasedTransformer_1 = require("../../transformer/googleCloud/classBasedTransformer");
+var dummyFile = process.cwd() + "/dummyClasses/gcp.js";
 var dummyAst = typescript_1.createSourceFile(
   dummyFile,
   fs.readFileSync(dummyFile).toString(),
@@ -189,7 +190,7 @@ function extractClientBasedSDKdata(methods) {
                     switch (_b.label) {
                       case 0:
                         _a = file;
-                        return [4 /*yield*/, parser_1.getAstTree(file)];
+                        return [4 /*yield*/, parser_1.getAST(file)];
                       case 1:
                         _a.ast = _b.sent();
                         return [2 /*return*/];
@@ -249,65 +250,6 @@ function extractClientBasedSDKdata(methods) {
     });
   });
 }
-function groupMethods(methods) {
-  var methodArr = Object.values(
-    methods.reduce(function(result, _a) {
-      var functionName = _a.functionName,
-        SDKFunctionName = _a.SDKFunctionName,
-        params = _a.params,
-        pkgName = _a.pkgName,
-        fileName = _a.fileName,
-        client = _a.client,
-        returnType = _a.returnType,
-        returnTypeName = _a.returnTypeName,
-        classConstructorData = _a.classConstructorData;
-      // Create new group
-      if (!result[functionName])
-        result[functionName] = {
-          functionName: functionName,
-          array: []
-        };
-      // Append to group
-      result[functionName].array.push({
-        functionName: functionName,
-        SDKFunctionName: SDKFunctionName,
-        params: params,
-        pkgName: pkgName,
-        fileName: fileName,
-        client: client,
-        returnType: returnType,
-        returnTypeName: returnTypeName,
-        classConstructorData: classConstructorData
-      });
-      return result;
-    }, {})
-  );
-  return methodArr;
-}
-function filterMethods(groupedMethods) {
-  var methods = [];
-  groupedMethods.map(function(group) {
-    if (group.array.length === 1) {
-      methods.push(group.array[0]);
-    } else {
-      var methodPushed_1 = false;
-      group.array.map(function(method) {
-        if (
-          !method.params.find(function(param) {
-            return param.name === "callback";
-          })
-        ) {
-          methods.push(method);
-          methodPushed_1 = true;
-        }
-      });
-      if (!methodPushed_1) {
-        methods.push(group.array[0]);
-      }
-    }
-  });
-  return methods;
-}
 function extractClassBasedSDKData(methods) {
   var _this = this;
   return new Promise(function(resolve, reject) {
@@ -352,7 +294,7 @@ function extractClassBasedSDKData(methods) {
                     switch (_b.label) {
                       case 0:
                         _a = file;
-                        return [4 /*yield*/, parser_1.getAstTree(file, true)];
+                        return [4 /*yield*/, parser_1.getAST(file, true)];
                       case 1:
                         _a.classes = _b.sent();
                         return [2 /*return*/];
@@ -393,7 +335,7 @@ function extractClassBasedSDKData(methods) {
                       params: parameters,
                       returnType: returnType,
                       returnTypeName: null,
-                      client: null
+                      client: classAst.name.text
                     };
                     if (returnType === "TypeReference") {
                       method_1.returnTypeName = member.type.typeName.text;
@@ -532,16 +474,18 @@ function generateGCPClass(serviceClass) {
           ];
         case 1:
           methods = _a.sent();
-          groupedMethods = groupMethods(methods);
-          methods = filterMethods(groupedMethods);
+          groupedMethods = helper_1.groupers.gcp(methods);
+          methods = helper_1.filters.gcp(groupedMethods);
           classData = {
             functions: methods
           };
-          console.log("sdcsdc");
-          output = transformer_1.transform(dummyAst, classData);
+          output = clientBasedTransformer_1.clientBasedTransform(
+            dummyAst,
+            classData
+          );
           fs.writeFile(
             process.cwd() +
-              "/generatedClasses/GCP/" +
+              "/generatedClasses/googleCloud/" +
               classData.functions[0].pkgName +
               ".js",
             output,
@@ -559,21 +503,17 @@ function generateGCPClass(serviceClass) {
           ];
         case 3:
           extractedData = _a.sent();
-          groupedMethods = groupMethods(extractedData.methods);
-          methods = filterMethods(groupedMethods);
+          groupedMethods = helper_1.groupers.gcp(extractedData.methods);
+          methods = helper_1.filters.gcp(groupedMethods);
           data.functions = methods;
           data.classData = extractedData.classes;
-          console.log(data);
           output = classBasedTransformer_1.classBasedTransform(dummyAst, data);
-          fs.writeFile(
+          helper_1.printFile(
             process.cwd() +
-              "/generatedClasses/GCP/" +
+              "/generatedClasses/googleCloud/" +
               data.functions[0].pkgName +
               ".js",
-            output,
-            function(err) {
-              if (err) throw err;
-            }
+            output
           );
           _a.label = 4;
         case 4:
