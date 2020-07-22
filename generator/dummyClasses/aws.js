@@ -7,7 +7,7 @@ class ClassName {
     });
   }
 
-  dummyFunction() {
+  function() {
     return new Promise((resolve, reject) => {
       this._sdkClassName.SDKFunctionName((error, data) => {
         if (error) {

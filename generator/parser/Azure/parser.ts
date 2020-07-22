@@ -2,11 +2,13 @@ import * as fs from "fs";
 import * as path from "path";
 import { createSourceFile, ScriptTarget, SyntaxKind } from "typescript";
 
-export function getAstTree(sdkFileInfo) {
+export function getAST(sdkFileInfo) {
   return new Promise((resolve, reject) => {
     const file = path.join(
       __dirname,
-      `../../../node_modules/@azure/${sdkFileInfo.pkgName}/esm/operations/${sdkFileInfo.fileName}`
+      `../../../node_modules/@azure/${sdkFileInfo.pkgName}/esm/operations/${
+        sdkFileInfo.fileName
+      }`
     );
     const ast = createSourceFile(
       file,

@@ -136,77 +136,24 @@ exports.__esModule = true;
 exports.generateAzureClass = void 0;
 var fs = require("fs");
 var typescript_1 = require("typescript");
-var parser_1 = require("../../parser/Azure/parser");
-var transformer_1 = require("../../transformer/Azure/transformer");
-var methods = [];
-var dummyFile = process.cwd() + "/dummyClasses/azureDummyClass.js";
+var parser_1 = require("../../parser/azure/parser");
+var helper_1 = require("../lib/helper");
+var transformer_1 = require("../../transformer/azure/transformer");
+var dummyFile = process.cwd() + "/dummyClasses/azure.js";
 var dummyAst = typescript_1.createSourceFile(
   dummyFile,
   fs.readFileSync(dummyFile).toString(),
   typescript_1.ScriptTarget.Latest,
   true
 );
-function groupMethods() {
-  var methodArr = Object.values(
-    methods.reduce(function(result, _a) {
-      var functionName = _a.functionName,
-        SDKFunctionName = _a.SDKFunctionName,
-        params = _a.params,
-        pkgName = _a.pkgName,
-        fileName = _a.fileName,
-        client = _a.client,
-        returnType = _a.returnType;
-      // Create new group
-      if (!result[functionName])
-        result[functionName] = {
-          functionName: functionName,
-          array: []
-        };
-      // Append to group
-      result[functionName].array.push({
-        functionName: functionName,
-        SDKFunctionName: SDKFunctionName,
-        params: params,
-        pkgName: pkgName,
-        fileName: fileName,
-        client: client,
-        returnType: returnType
-      });
-      return result;
-    }, {})
-  );
-  return methodArr;
-}
-function filterMethods(groupedMethods) {
-  methods = [];
-  groupedMethods.map(function(group) {
-    if (group.array.length === 1) {
-      methods.push(group.array[0]);
-    } else {
-      var methodPushed_1 = false;
-      group.array.map(function(method) {
-        if (
-          !method.params.find(function(param) {
-            return param.name === "callback";
-          })
-        ) {
-          methods.push(method);
-          methodPushed_1 = true;
-        }
-      });
-      if (!methodPushed_1) {
-        methods.push(group.array[0]);
-      }
-    }
-  });
-}
 function generateAzureClass(serviceClass) {
   return __awaiter(this, void 0, void 0, function() {
-    var files, sdkFiles, groupedMethods, classData, output;
+    var methods, files, sdkFiles, groupedMethods, classData, output;
     var _this = this;
     return __generator(this, function(_a) {
       switch (_a.label) {
         case 0:
+          methods = [];
           Object.keys(serviceClass).map(function(key, index) {
             methods.push({
               pkgName: serviceClass[key].split(" ")[0],
@@ -249,7 +196,7 @@ function generateAzureClass(serviceClass) {
                   switch (_b.label) {
                     case 0:
                       _a = file;
-                      return [4 /*yield*/, parser_1.getAstTree(file)];
+                      return [4 /*yield*/, parser_1.getAST(file)];
                     case 1:
                       _a.ast = _b.sent();
                       return [2 /*return*/];
@@ -298,21 +245,18 @@ function generateAzureClass(serviceClass) {
               }
             });
           });
-          groupedMethods = groupMethods();
-          filterMethods(groupedMethods);
+          groupedMethods = helper_1.groupers.azure(methods);
+          methods = helper_1.filters.azure(groupedMethods);
           classData = {
             functions: methods
           };
           output = transformer_1.transform(dummyAst, classData);
-          fs.writeFile(
+          helper_1.printFile(
             process.cwd() +
               "/generatedClasses/Azure/" +
               classData.functions[0].pkgName.split("-")[1] +
               ".js",
-            output,
-            function(err) {
-              if (err) throw err;
-            }
+            output
           );
           return [2 /*return*/];
       }

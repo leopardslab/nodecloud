@@ -1,14 +1,14 @@
-container:
-  Azure:
-    create: arm-containerservice managedClusters.d.ts createOrUpdate
-    delete: arm-containerservice managedClusters.d.ts deleteMethod
-    updateTags: arm-containerservice managedClusters.d.ts updateTags
-    listByResourceGroup: arm-containerservice managedClusters.d.ts listByResourceGroup
-    listClusters: arm-containerservice managedClusters.d.ts list
-  GCP:
-    create: container v1 cluster_manager_client.d.ts createCluster
-    delete: container v1 cluster_manager_client.d.ts deleteCluster
-    listClusters: container v1 cluster_manager_client.d.ts listClusters
+# container:
+#   Azure:
+#     create: arm-containerservice managedClusters.d.ts createOrUpdate
+#     delete: arm-containerservice managedClusters.d.ts deleteMethod
+#     updateTags: arm-containerservice managedClusters.d.ts updateTags
+#     listByResourceGroup: arm-containerservice managedClusters.d.ts listByResourceGroup
+#     listClusters: arm-containerservice managedClusters.d.ts list
+#   GCP:
+#     create: container v1 cluster_manager_client.d.ts createCluster
+#     delete: container v1 cluster_manager_client.d.ts deleteCluster
+#     listClusters: container v1 cluster_manager_client.d.ts listClusters
 
 noSqlIndexed:
   AWS:
@@ -21,23 +21,22 @@ noSqlIndexed:
     setAttribute: SimpleDB.d.ts putAttributes
     deleteAttribute: SimpleDB.d.ts deleteAttributes
     getAttributes: SimpleDB.d.ts getAttributes
+# monitoring:
+#   GCP:
+#     createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
+#     deleteAlarm: monitoring v3 alert_policy_service_client.d.ts deleteAlertPolicy
+#     updateAlarm: monitoring v3 alert_policy_service_client.d.ts updateAlertPolicy
+#     listAlarms: monitoring v3 alert_policy_service_client.d.ts listAlertPolicies
+#     getMetricDescriptor: monitoring v3 metric_service_client.d.ts getMetricDescriptor
+#     projectPath: monitoring v3 alert_policy_service_client.d.ts projectPath
 
-monitoring:
-  GCP:
-    createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
-    deleteAlarm: monitoring v3 alert_policy_service_client.d.ts deleteAlertPolicy
-    updateAlarm: monitoring v3 alert_policy_service_client.d.ts updateAlertPolicy
-    listAlarms: monitoring v3 alert_policy_service_client.d.ts listAlertPolicies
-    getMetricDescriptor: monitoring v3 metric_service_client.d.ts getMetricDescriptor
-    projectPath: monitoring v3 alert_policy_service_client.d.ts projectPath
+# DNS:
+#   GCP:
+#     mainClass: DNS
+#     listZones: dns index.d.ts getZones
+#     createZone: dns zone.d.ts create
 
-DNS:
-  GCP:
-    mainClass: DNS
-    listZones: dns index.d.ts getZones
-    createZone: dns zone.d.ts create
-
-Storage:
-  GCP:
-    mainClass: Storage
-    makePublic: storage file.d.ts makePublic
+# Storage:
+#   GCP:
+#     mainClass: Storage
+#     makePublic: storage file.d.ts makePublic

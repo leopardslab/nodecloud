@@ -1,10 +1,10 @@
 "use strict";
 exports.__esModule = true;
-exports.getAstTree = void 0;
+exports.getAST = void 0;
 var fs = require("fs");
 var path = require("path");
 var typescript_1 = require("typescript");
-function getAstTree(sdkFile) {
+function getAST(sdkFile) {
   return new Promise(function(resolve, reject) {
     var file = path.join(
       __dirname,
@@ -24,4 +24,4 @@ function getAstTree(sdkFile) {
     });
   });
 }
-exports.getAstTree = getAstTree;
+exports.getAST = getAST;

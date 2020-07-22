@@ -2,6 +2,7 @@
 exports.__esModule = true;
 exports.transform = void 0;
 var ts = require("typescript");
+var lodash_1 = require("lodash");
 var classData;
 var clients;
 var dummyIdentifiers = [
@@ -123,6 +124,7 @@ var addIdentifiers = function(context) {
   };
 };
 function transform(code, data) {
+  code = lodash_1.cloneDeep(code);
   classData = data;
   var printer = ts.createPrinter({
     newLine: ts.NewLineKind.LineFeed,

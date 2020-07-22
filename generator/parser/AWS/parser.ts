@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { createSourceFile, ScriptTarget, SyntaxKind } from "typescript";
 
-export function getAstTree(sdkFile) {
+export function getAST(sdkFile) {
   return new Promise((resolve, reject) => {
     const file = path.join(
       __dirname,

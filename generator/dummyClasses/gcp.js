@@ -5,7 +5,7 @@ class ClassName {
     this._clientObj = new Client(config);
   }
 
-  dummyFunctionWithPromise() {
+  functionWithPromise() {
     return new Promise((resolve, reject) => {
       this._client
         .SDKFunctionName()
@@ -18,13 +18,14 @@ class ClassName {
     });
   }
 
-  dummyFunction() {
+  function() {
     return this._client.SDKFunctionName();
   }
 
-  paramClientDummyFunctionWithPromise() {
+  classBasedFunctionWithPromise(identifier = undefined) {
     return new Promise((resolve, reject) => {
       _client
+        ._className(identifier)
         .SDKFunctionName()
         .then(result => {
           resolve(result);

@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { createSourceFile, ScriptTarget, SyntaxKind } from "typescript";
 
-export function getAstTree(sdkFileInfo, multi?: boolean) {
+export function getAST(sdkFileInfo, multi?: boolean) {
   let filePath;
   if (sdkFileInfo.version) {
     filePath = `../../../node_modules/@google-cloud/${

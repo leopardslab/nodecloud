@@ -1,4 +1,5 @@
 import * as ts from "typescript";
+import { cloneDeep } from "lodash";
 
 let classData;
 let clients;
@@ -134,6 +135,7 @@ const addIdentifiers = <T extends ts.Node>(
 };
 
 export function transform(code: ts.SourceFile, data: any): string {
+  code = cloneDeep(code);
   classData = data;
 
   const printer: ts.Printer = ts.createPrinter({
