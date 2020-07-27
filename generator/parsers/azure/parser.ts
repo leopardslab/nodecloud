@@ -3,25 +3,37 @@ import * as path from "path";
 import { createSourceFile, ScriptTarget, SyntaxKind } from "typescript";
 
 export function getAST(sdkFileInfo) {
-  return new Promise((resolve, reject) => {
-    const file = path.join(
-      __dirname,
-      `../../../node_modules/@azure/${sdkFileInfo.pkgName}/esm/operations/${
-        sdkFileInfo.fileName
-      }`
-    );
-    const ast = createSourceFile(
-      file,
-      fs.readFileSync(file).toString(),
-      ScriptTarget.Latest,
-      true
-    );
+  return new Promise(async (resolve, reject) => {
+    try {
+      const file = path.join(
+        __dirname,
+        `../../../node_modules/@azure/${sdkFileInfo.pkgName}/esm/operations/${sdkFileInfo.fileName}`
+      );
+      const ast = createSourceFile(
+        file,
+        fs.readFileSync(file).toString(),
+        ScriptTarget.Latest,
+        true
+      );
 
-    ast.forEachChild(child => {
-      if (SyntaxKind[child.kind] === "ClassDeclaration") {
-        let cloned = Object.assign({}, child);
-        return resolve(cloned);
+      let cloned = null;
+      await ast.forEachChild(child => {
+        if (SyntaxKind[child.kind] === "ClassDeclaration") {
+          cloned = Object.assign({}, child);
+        }
+      });
+
+      if (!cloned) {
+        reject(new Error("Class not found!"));
+      } else {
+        resolve(cloned);
       }
-    });
+    } catch (error) {
+      if (error.code === "ENOENT") {
+        reject(new Error("File not found!"));
+      } else {
+        reject(error);
+      }
+    }
   });
 }

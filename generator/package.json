@@ -9,6 +9,9 @@
     "nodecloud",
     "code-generation"
   ],
+  "scripts": {
+    "test": "cross-env TS_NODE_FILES=true mocha --exit --require ts-node/register --colors test/**/*.ts"
+  },
   "dependencies": {
     "@azure/arm-appservice": "^6.0.0",
     "@azure/arm-compute": "^14.0.0",

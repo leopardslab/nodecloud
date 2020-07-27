@@ -119,9 +119,7 @@ function extractClientBasedSDKdata(methods): any {
 function extractClassBasedSDKData(methods): any {
   return new Promise(async (resolve, reject) => {
     try {
-      const dirPath = `../../../node_modules/@google-cloud/${
-        methods[0].pkgName
-      }/build/src/`;
+      const dirPath = `../../../node_modules/@google-cloud/${methods[0].pkgName}/build/src/`;
       let files = fs.readdirSync(path.join(__dirname, dirPath));
       files = files.filter(
         fileName =>
