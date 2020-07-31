@@ -175,6 +175,20 @@ var addIdentifiers = function(context) {
   };
 };
 function classBasedTransform(code, data) {
+  var node = code.statements.find(function(stm) {
+    return ts.isClassDeclaration(stm);
+  });
+  if (!data.functions || !data.classData) {
+    throw new Error("Input is invalid");
+  }
+  if (
+    !node ||
+    !node.members.some(function(member) {
+      return ts.isMethodDeclaration(member);
+    })
+  ) {
+    throw new Error("Code is invalid");
+  }
   code = lodash_1.cloneDeep(code);
   classData = data;
   var printer = ts.createPrinter({
