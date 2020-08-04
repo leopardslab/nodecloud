@@ -48,101 +48,9 @@ const dummyAst = createSourceFile(
   true
 );
 
-function extractClientBasedSDKdata(methods): any {
+export function extractClassBasedSDKData(methods, sdkFiles): any {
   return new Promise(async (resolve, reject) => {
     try {
-      const files = Array.from(
-        new Set(methods.map(method => method.fileName + " " + method.version))
-      );
-      const sdkFiles = files.map(file => {
-        return {
-          fileName: (<string>file).split(" ")[0],
-          version: (<string>file).split(" ")[1],
-          pkgName: methods[0].pkgName,
-          ast: null,
-          client: null,
-          sdkFunctionNames: methods
-            .filter(method => method.fileName === (<string>file).split(" ")[0])
-            .map(method => method.SDKFunctionName)
-        };
-      });
-
-      await Promise.all(
-        sdkFiles.map(async file => {
-          file.ast = await getAST(file);
-        })
-      );
-
-      sdkFiles.map(sdkFile => {
-        sdkFile.client = sdkFile.ast.name.text;
-        sdkFile.ast.members.map(member => {
-          if (
-            SyntaxKind[member.kind] === "MethodDeclaration" &&
-            sdkFile.sdkFunctionNames.includes(member.name.text)
-          ) {
-            const method = methods.find(
-              methd => methd.SDKFunctionName === member.name.text
-            );
-
-            const parameters = member.parameters.map(param => {
-              return {
-                name: param.name.text,
-                optional: param.questionToken ? true : false,
-                type: SyntaxKind[param.type.kind]
-              };
-            });
-
-            const returnType = SyntaxKind[member.type.kind];
-            if (returnType === "TypeReference") {
-              method.returnTypeName = member.type.typeName.text;
-            }
-
-            if (!method.returnType) {
-              method.params = parameters;
-              method.returnType = returnType;
-              method.client = sdkFile.client;
-            } else {
-              const clone = JSON.parse(JSON.stringify(method));
-              clone.params = parameters;
-              clone.returnType = returnType;
-              clone.client = sdkFile.client;
-              methods.push(clone);
-            }
-          }
-        });
-      });
-      resolve(methods);
-    } catch (error) {
-      reject(error);
-    }
-  });
-}
-
-function extractClassBasedSDKData(methods): any {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const dirPath = `../../../node_modules/@google-cloud/${methods[0].pkgName}/build/src/`;
-      let files = fs.readdirSync(path.join(__dirname, dirPath));
-      files = files.filter(
-        fileName =>
-          fileName.split(".")[1] === "d" && fileName.split(".")[2] === "ts"
-      );
-
-      const sdkFiles = files.map(fileName => {
-        return {
-          fileName: fileName,
-          pkgName: methods[0].pkgName,
-          classes: null,
-          sdkFunctionNames: methods
-            .filter(method => method.fileName === <string>fileName)
-            .map(method => method.SDKFunctionName)
-        };
-      });
-
-      await sdkFiles.map(async file => {
-        file.classes = await getAST(file, true);
-      });
-
       let classes: ClassData[] = [];
 
       sdkFiles.map(file => {
@@ -254,6 +162,140 @@ function extractClassBasedSDKData(methods): any {
   });
 }
 
+export function extractClientBasedSDKdata(methods, sdkFiles): any {
+  return new Promise(async (resolve, reject) => {
+    try {
+      sdkFiles.map(sdkFile => {
+        sdkFile.client = sdkFile.ast.name.text;
+        sdkFile.ast.members.map(member => {
+          if (
+            SyntaxKind[member.kind] === "MethodDeclaration" &&
+            sdkFile.sdkFunctionNames.includes(member.name.text)
+          ) {
+            const method = methods.find(
+              methd => methd.SDKFunctionName === member.name.text
+            );
+
+            const parameters = member.parameters.map(param => {
+              return {
+                name: param.name.text,
+                optional: param.questionToken ? true : false,
+                type: SyntaxKind[param.type.kind]
+              };
+            });
+
+            const returnType = SyntaxKind[member.type.kind];
+            if (returnType === "TypeReference") {
+              method.returnTypeName = member.type.typeName.text;
+            }
+
+            if (!method.returnType) {
+              method.params = parameters;
+              method.returnType = returnType;
+              method.client = sdkFile.client;
+            } else {
+              const clone = JSON.parse(JSON.stringify(method));
+              clone.params = parameters;
+              clone.returnType = returnType;
+              clone.client = sdkFile.client;
+              methods.push(clone);
+            }
+          }
+        });
+      });
+      resolve(methods);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+async function generateClassBasedCode(methods, data) {
+  const dirPath = `../../../node_modules/@google-cloud/${methods[0].pkgName}/build/src/`;
+  let files = fs.readdirSync(path.join(__dirname, dirPath));
+  files = files.filter(
+    fileName =>
+      fileName.split(".")[1] === "d" && fileName.split(".")[2] === "ts"
+  );
+
+  const sdkFiles = files.map(fileName => {
+    return {
+      fileName: fileName,
+      pkgName: methods[0].pkgName,
+      classes: null,
+      sdkFunctionNames: methods
+        .filter(method => method.fileName === <string>fileName)
+        .map(method => method.SDKFunctionName)
+    };
+  });
+
+  await Promise.all(
+    sdkFiles.map(async file => {
+      file.classes = await getAST(file, true);
+    })
+  );
+
+  const extractedData = await extractClassBasedSDKData(methods, sdkFiles).then(
+    result => result
+  );
+  const groupedMethods = groupers.gcp(extractedData.methods);
+  methods = filters.gcp(groupedMethods);
+  data.functions = methods;
+  data.classData = extractedData.classes;
+
+  const output = classBasedTransform(dummyAst, data);
+  printFile(
+    process.cwd() +
+      "/generatedClasses/googleCloud/" +
+      data.functions[0].pkgName +
+      ".js",
+    output
+  );
+}
+
+async function generateClientBasedCode(methods) {
+  const files = Array.from(
+    new Set(methods.map(method => method.fileName + " " + method.version))
+  );
+  const sdkFiles = files.map(file => {
+    return {
+      fileName: (<string>file).split(" ")[0],
+      version: (<string>file).split(" ")[1],
+      pkgName: methods[0].pkgName,
+      ast: null,
+      client: null,
+      sdkFunctionNames: methods
+        .filter(method => method.fileName === (<string>file).split(" ")[0])
+        .map(method => method.SDKFunctionName)
+    };
+  });
+
+  await Promise.all(
+    sdkFiles.map(async file => {
+      file.ast = await getAST(file);
+    })
+  );
+
+  methods = await extractClientBasedSDKdata(methods, sdkFiles).then(
+    result => result
+  );
+  const groupedMethods = groupers.gcp(methods);
+  methods = filters.gcp(groupedMethods);
+
+  const classData = {
+    functions: methods
+  };
+
+  const output = clientBasedTransform(dummyAst, classData);
+  printFile(
+    process.cwd() +
+      "/generatedClasses/googleCloud/" +
+      classData.functions[0].pkgName +
+      ".js",
+    output
+  );
+}
+
 export async function generateGCPClass(serviceClass) {
   let methods: FunctionData[] = [];
   const data: any = {};
@@ -292,41 +334,8 @@ export async function generateGCPClass(serviceClass) {
   });
 
   if (methods[0].version) {
-    methods = await extractClientBasedSDKdata(methods).then(result => result);
-    const groupedMethods = groupers.gcp(methods);
-    methods = filters.gcp(groupedMethods);
-
-    const classData = {
-      functions: methods
-    };
-
-    const output = clientBasedTransform(dummyAst, classData);
-    fs.writeFile(
-      process.cwd() +
-        "/generatedClasses/googleCloud/" +
-        classData.functions[0].pkgName +
-        ".js",
-      output,
-      function(err) {
-        if (err) throw err;
-      }
-    );
+    generateClientBasedCode(methods);
   } else {
-    const extractedData = await extractClassBasedSDKData(methods).then(
-      result => result
-    );
-    const groupedMethods = groupers.gcp(extractedData.methods);
-    methods = filters.gcp(groupedMethods);
-    data.functions = methods;
-    data.classData = extractedData.classes;
-
-    const output = classBasedTransform(dummyAst, data);
-    printFile(
-      process.cwd() +
-        "/generatedClasses/googleCloud/" +
-        data.functions[0].pkgName +
-        ".js",
-      output
-    );
+    generateClassBasedCode(methods, data);
   }
 }

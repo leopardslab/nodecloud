@@ -27,41 +27,7 @@ const dummyAst = createSourceFile(
   true
 );
 
-export async function generateAzureClass(serviceClass) {
-  let methods: FunctionData[] = [];
-
-  Object.keys(serviceClass).map((key, index) => {
-    methods.push({
-      pkgName: serviceClass[key].split(" ")[0],
-      fileName: serviceClass[key].split(" ")[1],
-      functionName: key,
-      SDKFunctionName: serviceClass[key].split(" ")[2],
-      params: [],
-      returnType: null,
-      client: null
-    });
-  });
-
-  const files = Array.from(new Set(methods.map(method => method.fileName)));
-
-  const sdkFiles = files.map(file => {
-    return {
-      fileName: file,
-      pkgName: methods[0].pkgName,
-      ast: null,
-      client: null,
-      sdkFunctionNames: methods
-        .filter(method => method.fileName === file)
-        .map(method => method.SDKFunctionName)
-    };
-  });
-
-  await Promise.all(
-    sdkFiles.map(async file => {
-      file.ast = await getAST(file);
-    })
-  );
-
+export function extractSDKData(sdkFiles, methods) {
   sdkFiles.map(sdkFile => {
     sdkFile.ast.members.map(member => {
       if (SyntaxKind[member.kind] === "Constructor") {
@@ -111,6 +77,45 @@ export async function generateAzureClass(serviceClass) {
     functions: methods
   };
 
+  return classData;
+}
+
+export async function generateAzureClass(serviceClass) {
+  let methods: FunctionData[] = [];
+
+  Object.keys(serviceClass).map((key, index) => {
+    methods.push({
+      pkgName: serviceClass[key].split(" ")[0],
+      fileName: serviceClass[key].split(" ")[1],
+      functionName: key,
+      SDKFunctionName: serviceClass[key].split(" ")[2],
+      params: [],
+      returnType: null,
+      client: null
+    });
+  });
+
+  const files = Array.from(new Set(methods.map(method => method.fileName)));
+
+  const sdkFiles = files.map(file => {
+    return {
+      fileName: file,
+      pkgName: methods[0].pkgName,
+      ast: null,
+      client: null,
+      sdkFunctionNames: methods
+        .filter(method => method.fileName === file)
+        .map(method => method.SDKFunctionName)
+    };
+  });
+
+  await Promise.all(
+    sdkFiles.map(async file => {
+      file.ast = await getAST(file);
+    })
+  );
+
+  const classData = extractSDKData(sdkFiles, methods);
   const output = transform(dummyAst, classData);
   printFile(
     process.cwd() +
