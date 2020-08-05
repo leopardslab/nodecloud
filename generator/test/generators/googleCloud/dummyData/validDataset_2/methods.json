@@ -1,0 +1,35 @@
+[
+  {
+    "pkgName": "container",
+    "version": "v1",
+    "fileName": "cluster_manager_client.d.ts",
+    "functionName": "create",
+    "SDKFunctionName": "createCluster",
+    "params": [],
+    "returnType": null,
+    "returnTypeName": null,
+    "client": null
+  },
+  {
+    "pkgName": "container",
+    "version": "v1",
+    "fileName": "cluster_manager_client.d.ts",
+    "functionName": "delete",
+    "SDKFunctionName": "deleteCluster",
+    "params": [],
+    "returnType": null,
+    "returnTypeName": null,
+    "client": null
+  },
+  {
+    "pkgName": "container",
+    "version": "v1",
+    "fileName": "cluster_manager_client.d.ts",
+    "functionName": "listClusters",
+    "SDKFunctionName": "listClusters",
+    "params": [],
+    "returnType": null,
+    "returnTypeName": null,
+    "client": null
+  }
+]

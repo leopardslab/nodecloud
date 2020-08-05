@@ -150,6 +150,7 @@ var dummyAst = typescript_1.createSourceFile(
 );
 function extractClassBasedSDKData(methods, sdkFiles) {
   var _this = this;
+  var specifiedMethods = JSON.parse(JSON.stringify(methods));
   return new Promise(function(resolve, reject) {
     return __awaiter(_this, void 0, void 0, function() {
       var classes_1, extractedData;
@@ -254,7 +255,11 @@ function extractClassBasedSDKData(methods, sdkFiles) {
             classes: classes_1,
             methods: methods
           };
-          resolve(extractedData);
+          if (JSON.stringify(methods) === JSON.stringify(specifiedMethods)) {
+            reject(new Error("Data extraction unsuccessful"));
+          } else {
+            resolve(extractedData);
+          }
         } catch (error) {
           reject(error);
         }
@@ -266,6 +271,7 @@ function extractClassBasedSDKData(methods, sdkFiles) {
 exports.extractClassBasedSDKData = extractClassBasedSDKData;
 function extractClientBasedSDKdata(methods, sdkFiles) {
   var _this = this;
+  var specifiedMethods = JSON.parse(JSON.stringify(methods));
   return new Promise(function(resolve, reject) {
     return __awaiter(_this, void 0, void 0, function() {
       return __generator(this, function(_a) {
@@ -305,7 +311,11 @@ function extractClientBasedSDKdata(methods, sdkFiles) {
               }
             });
           });
-          resolve(methods);
+          if (JSON.stringify(methods) === JSON.stringify(specifiedMethods)) {
+            reject(new Error("Data extraction unsuccessful"));
+          } else {
+            resolve(methods);
+          }
         } catch (error) {
           reject(error);
         }

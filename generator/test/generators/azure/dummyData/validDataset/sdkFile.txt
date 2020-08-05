@@ -1,0 +1,349 @@
+import * as msRest from "@azure/ms-rest-js";
+import * as msRestAzure from "@azure/ms-rest-azure-js";
+import * as Models from "../models";
+import { ContainerServiceClientContext } from "../containerServiceClientContext";
+/** Class representing a ManagedClusters. */
+export declare class ManagedClusters {
+    private readonly client;
+    /**
+     * Create a ManagedClusters.
+     * @param {ContainerServiceClientContext} client Reference to the service client.
+     */
+    constructor(client: ContainerServiceClientContext);
+    /**
+     * Gets a list of managed clusters in the specified subscription. The operation returns properties
+     * of each managed cluster.
+     * @summary Gets a list of managed clusters in the specified subscription.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersListResponse>
+     */
+    list(options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersListResponse>;
+    /**
+     * @param callback The callback
+     */
+    list(callback: msRest.ServiceCallback<Models.ManagedClusterListResult>): void;
+    /**
+     * @param options The optional parameters
+     * @param callback The callback
+     */
+    list(options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.ManagedClusterListResult>): void;
+    /**
+     * Lists managed clusters in the specified subscription and resource group. The operation returns
+     * properties of each managed cluster.
+     * @summary Lists managed clusters in the specified subscription and resource group.
+     * @param resourceGroupName The name of the resource group.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersListByResourceGroupResponse>
+     */
+    listByResourceGroup(resourceGroupName: string, options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersListByResourceGroupResponse>;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param callback The callback
+     */
+    listByResourceGroup(resourceGroupName: string, callback: msRest.ServiceCallback<Models.ManagedClusterListResult>): void;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param options The optional parameters
+     * @param callback The callback
+     */
+    listByResourceGroup(resourceGroupName: string, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.ManagedClusterListResult>): void;
+    /**
+     * Gets the details of the upgrade profile for a managed cluster with a specified resource group
+     * and name.
+     * @summary Gets upgrade profile for a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersGetUpgradeProfileResponse>
+     */
+    getUpgradeProfile(resourceGroupName: string, resourceName: string, options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersGetUpgradeProfileResponse>;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param callback The callback
+     */
+    getUpgradeProfile(resourceGroupName: string, resourceName: string, callback: msRest.ServiceCallback<Models.ManagedClusterUpgradeProfile>): void;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param options The optional parameters
+     * @param callback The callback
+     */
+    getUpgradeProfile(resourceGroupName: string, resourceName: string, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.ManagedClusterUpgradeProfile>): void;
+    /**
+     * Gets the accessProfile for the specified role name of the managed cluster with a specified
+     * resource group and name.
+     * @summary Gets an access profile of a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param roleName The name of the role for managed cluster accessProfile resource.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersGetAccessProfileResponse>
+     */
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersGetAccessProfileResponse>;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param roleName The name of the role for managed cluster accessProfile resource.
+     * @param callback The callback
+     */
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, callback: msRest.ServiceCallback<Models.ManagedClusterAccessProfile>): void;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param roleName The name of the role for managed cluster accessProfile resource.
+     * @param options The optional parameters
+     * @param callback The callback
+     */
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.ManagedClusterAccessProfile>): void;
+    /**
+     * Gets cluster admin credential of the managed cluster with a specified resource group and name.
+     * @summary Gets cluster admin credential of a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersListClusterAdminCredentialsResponse>
+     */
+    listClusterAdminCredentials(resourceGroupName: string, resourceName: string, options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersListClusterAdminCredentialsResponse>;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param callback The callback
+     */
+    listClusterAdminCredentials(resourceGroupName: string, resourceName: string, callback: msRest.ServiceCallback<Models.CredentialResults>): void;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param options The optional parameters
+     * @param callback The callback
+     */
+    listClusterAdminCredentials(resourceGroupName: string, resourceName: string, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.CredentialResults>): void;
+    /**
+     * Gets cluster user credential of the managed cluster with a specified resource group and name.
+     * @summary Gets cluster user credential of a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersListClusterUserCredentialsResponse>
+     */
+    listClusterUserCredentials(resourceGroupName: string, resourceName: string, options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersListClusterUserCredentialsResponse>;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param callback The callback
+     */
+    listClusterUserCredentials(resourceGroupName: string, resourceName: string, callback: msRest.ServiceCallback<Models.CredentialResults>): void;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param options The optional parameters
+     * @param callback The callback
+     */
+    listClusterUserCredentials(resourceGroupName: string, resourceName: string, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.CredentialResults>): void;
+    /**
+     * Gets cluster monitoring user credential of the managed cluster with a specified resource group
+     * and name.
+     * @summary Gets cluster monitoring user credential of a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersListClusterMonitoringUserCredentialsResponse>
+     */
+    listClusterMonitoringUserCredentials(resourceGroupName: string, resourceName: string, options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersListClusterMonitoringUserCredentialsResponse>;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param callback The callback
+     */
+    listClusterMonitoringUserCredentials(resourceGroupName: string, resourceName: string, callback: msRest.ServiceCallback<Models.CredentialResults>): void;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param options The optional parameters
+     * @param callback The callback
+     */
+    listClusterMonitoringUserCredentials(resourceGroupName: string, resourceName: string, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.CredentialResults>): void;
+    /**
+     * Gets the details of the managed cluster with a specified resource group and name.
+     * @summary Gets a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersGetResponse>
+     */
+    get(resourceGroupName: string, resourceName: string, options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersGetResponse>;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param callback The callback
+     */
+    get(resourceGroupName: string, resourceName: string, callback: msRest.ServiceCallback<Models.ManagedCluster>): void;
+    /**
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param options The optional parameters
+     * @param callback The callback
+     */
+    get(resourceGroupName: string, resourceName: string, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.ManagedCluster>): void;
+    /**
+     * Creates or updates a managed cluster with the specified configuration for agents and Kubernetes
+     * version.
+     * @summary Creates or updates a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param parameters Parameters supplied to the Create or Update a Managed Cluster operation.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersCreateOrUpdateResponse>
+     */
+    createOrUpdate(resourceGroupName: string, resourceName: string, parameters: Models.ManagedCluster, options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersCreateOrUpdateResponse>;
+    /**
+     * Updates a managed cluster with the specified tags.
+     * @summary Updates tags on a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param parameters Parameters supplied to the Update Managed Cluster Tags operation.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersUpdateTagsResponse>
+     */
+    updateTags(resourceGroupName: string, resourceName: string, parameters: Models.TagsObject, options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersUpdateTagsResponse>;
+    /**
+     * Deletes the managed cluster with a specified resource group and name.
+     * @summary Deletes a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param [options] The optional parameters
+     * @returns Promise<msRest.RestResponse>
+     */
+    deleteMethod(resourceGroupName: string, resourceName: string, options?: msRest.RequestOptionsBase): Promise<msRest.RestResponse>;
+    /**
+     * Update the service principal Profile for a managed cluster.
+     * @summary Reset Service Principal Profile of a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param parameters Parameters supplied to the Reset Service Principal Profile operation for a
+     * Managed Cluster.
+     * @param [options] The optional parameters
+     * @returns Promise<msRest.RestResponse>
+     */
+    resetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: Models.ManagedClusterServicePrincipalProfile, options?: msRest.RequestOptionsBase): Promise<msRest.RestResponse>;
+    /**
+     * Update the AAD Profile for a managed cluster.
+     * @summary Reset AAD Profile of a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param parameters Parameters supplied to the Reset AAD Profile operation for a Managed Cluster.
+     * @param [options] The optional parameters
+     * @returns Promise<msRest.RestResponse>
+     */
+    resetAADProfile(resourceGroupName: string, resourceName: string, parameters: Models.ManagedClusterAADProfile, options?: msRest.RequestOptionsBase): Promise<msRest.RestResponse>;
+    /**
+     * Rotate certificates of a managed cluster.
+     * @summary Rotate certificates of a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param [options] The optional parameters
+     * @returns Promise<msRest.RestResponse>
+     */
+    rotateClusterCertificates(resourceGroupName: string, resourceName: string, options?: msRest.RequestOptionsBase): Promise<msRest.RestResponse>;
+    /**
+     * Creates or updates a managed cluster with the specified configuration for agents and Kubernetes
+     * version.
+     * @summary Creates or updates a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param parameters Parameters supplied to the Create or Update a Managed Cluster operation.
+     * @param [options] The optional parameters
+     * @returns Promise<msRestAzure.LROPoller>
+     */
+    beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: Models.ManagedCluster, options?: msRest.RequestOptionsBase): Promise<msRestAzure.LROPoller>;
+    /**
+     * Updates a managed cluster with the specified tags.
+     * @summary Updates tags on a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param parameters Parameters supplied to the Update Managed Cluster Tags operation.
+     * @param [options] The optional parameters
+     * @returns Promise<msRestAzure.LROPoller>
+     */
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: Models.TagsObject, options?: msRest.RequestOptionsBase): Promise<msRestAzure.LROPoller>;
+    /**
+     * Deletes the managed cluster with a specified resource group and name.
+     * @summary Deletes a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param [options] The optional parameters
+     * @returns Promise<msRestAzure.LROPoller>
+     */
+    beginDeleteMethod(resourceGroupName: string, resourceName: string, options?: msRest.RequestOptionsBase): Promise<msRestAzure.LROPoller>;
+    /**
+     * Update the service principal Profile for a managed cluster.
+     * @summary Reset Service Principal Profile of a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param parameters Parameters supplied to the Reset Service Principal Profile operation for a
+     * Managed Cluster.
+     * @param [options] The optional parameters
+     * @returns Promise<msRestAzure.LROPoller>
+     */
+    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: Models.ManagedClusterServicePrincipalProfile, options?: msRest.RequestOptionsBase): Promise<msRestAzure.LROPoller>;
+    /**
+     * Update the AAD Profile for a managed cluster.
+     * @summary Reset AAD Profile of a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param parameters Parameters supplied to the Reset AAD Profile operation for a Managed Cluster.
+     * @param [options] The optional parameters
+     * @returns Promise<msRestAzure.LROPoller>
+     */
+    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: Models.ManagedClusterAADProfile, options?: msRest.RequestOptionsBase): Promise<msRestAzure.LROPoller>;
+    /**
+     * Rotate certificates of a managed cluster.
+     * @summary Rotate certificates of a managed cluster.
+     * @param resourceGroupName The name of the resource group.
+     * @param resourceName The name of the managed cluster resource.
+     * @param [options] The optional parameters
+     * @returns Promise<msRestAzure.LROPoller>
+     */
+    beginRotateClusterCertificates(resourceGroupName: string, resourceName: string, options?: msRest.RequestOptionsBase): Promise<msRestAzure.LROPoller>;
+    /**
+     * Gets a list of managed clusters in the specified subscription. The operation returns properties
+     * of each managed cluster.
+     * @summary Gets a list of managed clusters in the specified subscription.
+     * @param nextPageLink The NextLink from the previous successful call to List operation.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersListNextResponse>
+     */
+    listNext(nextPageLink: string, options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersListNextResponse>;
+    /**
+     * @param nextPageLink The NextLink from the previous successful call to List operation.
+     * @param callback The callback
+     */
+    listNext(nextPageLink: string, callback: msRest.ServiceCallback<Models.ManagedClusterListResult>): void;
+    /**
+     * @param nextPageLink The NextLink from the previous successful call to List operation.
+     * @param options The optional parameters
+     * @param callback The callback
+     */
+    listNext(nextPageLink: string, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.ManagedClusterListResult>): void;
+    /**
+     * Lists managed clusters in the specified subscription and resource group. The operation returns
+     * properties of each managed cluster.
+     * @summary Lists managed clusters in the specified subscription and resource group.
+     * @param nextPageLink The NextLink from the previous successful call to List operation.
+     * @param [options] The optional parameters
+     * @returns Promise<Models.ManagedClustersListByResourceGroupNextResponse>
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: msRest.RequestOptionsBase): Promise<Models.ManagedClustersListByResourceGroupNextResponse>;
+    /**
+     * @param nextPageLink The NextLink from the previous successful call to List operation.
+     * @param callback The callback
+     */
+    listByResourceGroupNext(nextPageLink: string, callback: msRest.ServiceCallback<Models.ManagedClusterListResult>): void;
+    /**
+     * @param nextPageLink The NextLink from the previous successful call to List operation.
+     * @param options The optional parameters
+     * @param callback The callback
+     */
+    listByResourceGroupNext(nextPageLink: string, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.ManagedClusterListResult>): void;
+}
+//# sourceMappingURL=managedClusters.d.ts.map

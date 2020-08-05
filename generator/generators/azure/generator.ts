@@ -28,6 +28,7 @@ const dummyAst = createSourceFile(
 );
 
 export function extractSDKData(sdkFiles, methods) {
+  const specifiedMethods = JSON.parse(JSON.stringify(methods));
   sdkFiles.map(sdkFile => {
     sdkFile.ast.members.map(member => {
       if (SyntaxKind[member.kind] === "Constructor") {
@@ -69,6 +70,10 @@ export function extractSDKData(sdkFiles, methods) {
       }
     });
   });
+
+  if (JSON.stringify(methods) === JSON.stringify(specifiedMethods)) {
+    throw new Error("Data extraction unsuccessful");
+  }
 
   const groupedMethods = groupers.azure(methods);
   methods = filters.azure(groupedMethods);

@@ -49,6 +49,7 @@ const dummyAst = createSourceFile(
 );
 
 export function extractClassBasedSDKData(methods, sdkFiles): any {
+  const specifiedMethods = JSON.parse(JSON.stringify(methods));
   return new Promise(async (resolve, reject) => {
     try {
       let classes: ClassData[] = [];
@@ -154,8 +155,11 @@ export function extractClassBasedSDKData(methods, sdkFiles): any {
         classes,
         methods
       };
-
-      resolve(extractedData);
+      if (JSON.stringify(methods) === JSON.stringify(specifiedMethods)) {
+        reject(new Error("Data extraction unsuccessful"));
+      } else {
+        resolve(extractedData);
+      }
     } catch (error) {
       reject(error);
     }
@@ -163,6 +167,7 @@ export function extractClassBasedSDKData(methods, sdkFiles): any {
 }
 
 export function extractClientBasedSDKdata(methods, sdkFiles): any {
+  const specifiedMethods = JSON.parse(JSON.stringify(methods));
   return new Promise(async (resolve, reject) => {
     try {
       sdkFiles.map(sdkFile => {
@@ -203,7 +208,12 @@ export function extractClientBasedSDKdata(methods, sdkFiles): any {
           }
         });
       });
-      resolve(methods);
+
+      if (JSON.stringify(methods) === JSON.stringify(specifiedMethods)) {
+        reject(new Error("Data extraction unsuccessful"));
+      } else {
+        resolve(methods);
+      }
     } catch (error) {
       reject(error);
     }

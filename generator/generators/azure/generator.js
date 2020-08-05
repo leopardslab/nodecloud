@@ -147,6 +147,7 @@ var dummyAst = typescript_1.createSourceFile(
   true
 );
 function extractSDKData(sdkFiles, methods) {
+  var specifiedMethods = JSON.parse(JSON.stringify(methods));
   sdkFiles.map(function(sdkFile) {
     sdkFile.ast.members.map(function(member) {
       if (typescript_1.SyntaxKind[member.kind] === "Constructor") {
@@ -185,6 +186,9 @@ function extractSDKData(sdkFiles, methods) {
       }
     });
   });
+  if (JSON.stringify(methods) === JSON.stringify(specifiedMethods)) {
+    throw new Error("Data extraction unsuccessful");
+  }
   var groupedMethods = helper_1.groupers.azure(methods);
   methods = helper_1.filters.azure(groupedMethods);
   var classData = {
