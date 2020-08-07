@@ -56,9 +56,11 @@ export async function generateAzureClass(serviceClass) {
     };
   });
 
-  await sdkFiles.map(async file => {
-    file.ast = await getAST(file);
-  });
+  await Promise.all(
+    sdkFiles.map(async file => {
+      file.ast = await getAST(file);
+    })
+  );
 
   sdkFiles.map(sdkFile => {
     sdkFile.ast.members.map(member => {

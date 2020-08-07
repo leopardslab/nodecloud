@@ -67,9 +67,11 @@ function extractClientBasedSDKdata(methods): any {
         };
       });
 
-      await sdkFiles.map(async file => {
-        file.ast = await getAST(file);
-      });
+      await Promise.all(
+        sdkFiles.map(async file => {
+          file.ast = await getAST(file);
+        })
+      );
 
       sdkFiles.map(sdkFile => {
         sdkFile.client = sdkFile.ast.name.text;

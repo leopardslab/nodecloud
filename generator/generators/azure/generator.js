@@ -189,21 +189,23 @@ function generateAzureClass(serviceClass) {
           });
           return [
             4 /*yield*/,
-            sdkFiles.map(function(file) {
-              return __awaiter(_this, void 0, void 0, function() {
-                var _a;
-                return __generator(this, function(_b) {
-                  switch (_b.label) {
-                    case 0:
-                      _a = file;
-                      return [4 /*yield*/, parser_1.getAST(file)];
-                    case 1:
-                      _a.ast = _b.sent();
-                      return [2 /*return*/];
-                  }
+            Promise.all(
+              sdkFiles.map(function(file) {
+                return __awaiter(_this, void 0, void 0, function() {
+                  var _a;
+                  return __generator(this, function(_b) {
+                    switch (_b.label) {
+                      case 0:
+                        _a = file;
+                        return [4 /*yield*/, parser_1.getAST(file)];
+                      case 1:
+                        _a.ast = _b.sent();
+                        return [2 /*return*/];
+                    }
+                  });
                 });
-              });
-            })
+              })
+            )
           ];
         case 1:
           _a.sent();

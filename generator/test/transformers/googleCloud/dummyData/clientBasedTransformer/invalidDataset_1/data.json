@@ -1,0 +1,124 @@
+{
+  "functions": [
+    {
+      "functionName": "create",
+      "SDKFunctionName": "createOrUpdate",
+      "params": [
+        {
+          "name": "resourceGroupName",
+          "optional": false,
+          "type": "StringKeyword"
+        },
+        {
+          "name": "resourceName",
+          "optional": false,
+          "type": "StringKeyword"
+        },
+        {
+          "name": "parameters",
+          "optional": false,
+          "type": "TypeReference"
+        },
+        {
+          "name": "options",
+          "optional": true,
+          "type": "TypeReference"
+        }
+      ],
+      "pkgName": "arm-containerservice",
+      "fileName": "managedClusters.d.ts",
+      "client": "ContainerServiceClient",
+      "returnType": "TypeReference"
+    },
+    {
+      "functionName": "delete",
+      "SDKFunctionName": "deleteMethod",
+      "params": [
+        {
+          "name": "resourceGroupName",
+          "optional": false,
+          "type": "StringKeyword"
+        },
+        {
+          "name": "resourceName",
+          "optional": false,
+          "type": "StringKeyword"
+        },
+        {
+          "name": "options",
+          "optional": true,
+          "type": "TypeReference"
+        }
+      ],
+      "pkgName": "arm-containerservice",
+      "fileName": "managedClusters.d.ts",
+      "client": "ContainerServiceClient",
+      "returnType": "TypeReference"
+    },
+    {
+      "functionName": "updateTags",
+      "SDKFunctionName": "updateTags",
+      "params": [
+        {
+          "name": "resourceGroupName",
+          "optional": false,
+          "type": "StringKeyword"
+        },
+        {
+          "name": "resourceName",
+          "optional": false,
+          "type": "StringKeyword"
+        },
+        {
+          "name": "parameters",
+          "optional": false,
+          "type": "TypeReference"
+        },
+        {
+          "name": "options",
+          "optional": true,
+          "type": "TypeReference"
+        }
+      ],
+      "pkgName": "arm-containerservice",
+      "fileName": "managedClusters.d.ts",
+      "client": "ContainerServiceClient",
+      "returnType": "TypeReference"
+    },
+    {
+      "functionName": "listByResourceGroup",
+      "SDKFunctionName": "listByResourceGroup",
+      "params": [
+        {
+          "name": "resourceGroupName",
+          "optional": false,
+          "type": "StringKeyword"
+        },
+        {
+          "name": "options",
+          "optional": true,
+          "type": "TypeReference"
+        }
+      ],
+      "pkgName": "arm-containerservice",
+      "fileName": "managedClusters.d.ts",
+      "client": "ContainerServiceClient",
+      "returnType": "TypeReference"
+    },
+    {
+      "functionName": "listClusters",
+      "SDKFunctionName": "list",
+      "params": [
+        {
+          "name": "options",
+          "optional": true,
+          "type": "TypeReference"
+        }
+      ],
+      "pkgName": "arm-containerservice",
+      "fileName": "managedClusters.d.ts",
+      "client": "ContainerServiceClient",
+      "returnType": "TypeReference"
+    }
+  ]
+}

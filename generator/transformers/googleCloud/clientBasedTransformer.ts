@@ -155,6 +155,16 @@ const addIdentifiers = <T extends ts.Node>(
 };
 
 export function clientBasedTransform(code: ts.SourceFile, data: any): string {
+  const node: any = code.statements.find(stm => ts.isClassDeclaration(stm));
+
+  if (!data.functions) {
+    throw new Error("Input is invalid");
+  }
+
+  if (!node || !node.members.some(member => ts.isMethodDeclaration(member))) {
+    throw new Error("Code is invalid");
+  }
+
   code = cloneDeep(code);
   classData = data;
   const printer: ts.Printer = ts.createPrinter({
