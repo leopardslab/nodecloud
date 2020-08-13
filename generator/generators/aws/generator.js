@@ -36,11 +36,16 @@ function generateAWSClass(serviceClass) {
           var parameters_1 = [];
           method.parameters.map(function(param) {
             if (param.name.text !== "callback") {
-              parameters_1.push({
+              var parameter = {
                 name: param.name.text,
                 optional: param.questionToken ? true : false,
-                type: typescript_1.SyntaxKind[param.type.kind]
-              });
+                type: typescript_1.SyntaxKind[param.type.kind],
+                typeName: null
+              };
+              if (parameter.type === "TypeReference" && param.type.typeName) {
+                parameter.typeName = param.type.typeName.right.text;
+              }
+              parameters_1.push(parameter);
             }
           });
           methods.push({
@@ -52,15 +57,19 @@ function generateAWSClass(serviceClass) {
       });
       var groupedMethods = helper_1.groupers.aws(methods);
       methods = helper_1.filters.aws(groupedMethods);
-      var classData = {
+      var classData_1 = {
         className: sdkClassAst.name.text,
         functions: methods
       };
-      var output = transformer_1.transform(dummyAst, classData);
-      helper_1.printFile(
-        process.cwd() + "/generatedClasses/AWS/" + classData.className + ".js",
-        output
-      );
+      transformer_1.transform(dummyAst, classData_1).then(function(result) {
+        helper_1.printFile(
+          process.cwd() +
+            "/generatedClasses/AWS/" +
+            classData_1.className +
+            ".js",
+          result
+        );
+      });
     } catch (e) {
       console.error(e);
     }

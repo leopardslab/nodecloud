@@ -17,12 +17,12 @@ describe("AWS transformer transform", () => {
     });
 
     it("Should return a String", async () => {
-      const result = transform(testData.AST, testData.data);
+      const result = await transform(testData.AST, testData.data);
       expect(result).to.be.string;
     });
 
     it("Should return a Javascript code in String format", async () => {
-      const result = transform(testData.AST, testData.data);
+      const result = await transform(testData.AST, testData.data);
       try {
         const sourceCode = createSourceFile(
           "someClass.js",
@@ -43,9 +43,9 @@ describe("AWS transformer transform", () => {
       testData.data = await readJsonData("invalidDataset_1", "aws");
     });
 
-    it("Should return a validation Error", () => {
+    it("Should return a validation Error", async () => {
       try {
-        transform(testData.AST, testData.data);
+        await transform(testData.AST, testData.data);
       } catch (error) {
         expect(error.message).to.eql("Code is invalid");
       }
@@ -59,9 +59,9 @@ describe("AWS transformer transform", () => {
       testData.data = await readJsonData("invalidDataset_2", "aws");
     });
 
-    it("Should return a validation Error", () => {
+    it("Should return a validation Error", async () => {
       try {
-        transform(testData.AST, testData.data);
+        await transform(testData.AST, testData.data);
       } catch (error) {
         expect(error.message).to.eql("Input is invalid");
       }

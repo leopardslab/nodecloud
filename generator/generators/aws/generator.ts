@@ -9,9 +9,11 @@ interface FunctionData {
   SDKFunctionName: string;
   params: param[];
 }
+
 interface param {
   name: string;
   type: string;
+  typeName: string;
 }
 
 interface ClassData {
@@ -53,11 +55,18 @@ export function generateAWSClass(serviceClass) {
           const parameters = [];
           method.parameters.map(param => {
             if (param.name.text !== "callback") {
-              parameters.push({
+              const parameter = {
                 name: param.name.text,
                 optional: param.questionToken ? true : false,
-                type: SyntaxKind[param.type.kind]
-              });
+                type: SyntaxKind[param.type.kind],
+                typeName: null
+              };
+
+              if (parameter.type === "TypeReference" && param.type.typeName) {
+                parameter.typeName = param.type.typeName.right.text;
+              }
+
+              parameters.push(parameter);
             }
           });
 
@@ -76,11 +85,16 @@ export function generateAWSClass(serviceClass) {
         className: sdkClassAst.name.text,
         functions: methods
       };
-      const output = transform(dummyAst, classData);
-      printFile(
-        process.cwd() + "/generatedClasses/AWS/" + classData.className + ".js",
-        output
-      );
+
+      transform(dummyAst, classData).then(result => {
+        printFile(
+          process.cwd() +
+            "/generatedClasses/AWS/" +
+            classData.className +
+            ".js",
+          result
+        );
+      });
     } catch (e) {
       console.error(e);
     }

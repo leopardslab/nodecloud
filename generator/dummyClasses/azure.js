@@ -1,6 +1,10 @@
 const { ClientName } = require("pkgName");
 
 class ClassName {
+  /**
+   *
+   * @param {module} azureRestSdk Azure Rest SDK
+   */
   constructor(azureRestSdk) {
     this._azureRestSdk = azureRestSdk;
   }

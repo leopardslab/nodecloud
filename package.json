@@ -9,7 +9,8 @@
   "scripts": {
     "test": "lerna run test",
     "lint": "lerna run lint",
-    "prettier": "lerna run prettier"
+    "prettier": "lerna run prettier",
+    "doc": "jsdoc -c jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "chai": "^4.2.0",
     "cross-env": "^7.0.2",
     "husky": "^1.3.1",
+    "jsdoc": "^3.6.5",
     "lerna": "^3.22.1",
     "mocha": "^8.0.1",
     "nock": "^9.6.1",

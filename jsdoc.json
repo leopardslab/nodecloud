@@ -1,0 +1,21 @@
+{
+  "source": {
+    "include": [
+      "generator/generatedClasses/AWS",
+      "generator/generatedClasses/Azure",
+      "generator/generatedClasses/googleCloud"
+    ],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true
+  },
+  "opts": {
+    "recurse": true,
+    "destination": "./docs/",
+    "readme": "README.md"
+  }
+}
