@@ -1,7 +1,8 @@
-const { ContainerServiceClient } = require("pkgName");
+const { ContainerServiceClient } = require("@azure/arm-containerservice");
 /*This is an auto generated class, please do not change.*/
 /**
  * Class to create a containerservice object
+ * @category Azure
  */
 class containerservice {
   /**

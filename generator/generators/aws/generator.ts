@@ -28,73 +28,72 @@ const dummyAst = createSourceFile(
   ScriptTarget.Latest,
   true
 );
-let sdkClassAst;
-let sdkFile;
 
-export function generateAWSClass(serviceClass) {
-  const functions = [];
+export function extractSDKData(sdkClassAst, serviceClass) {
   let methods: FunctionData[] = [];
+  const functions = [];
 
   Object.keys(serviceClass).map((key, index) => {
     functions.push(serviceClass[key].split(" ")[1]);
-    sdkFile = serviceClass[key].split(" ")[0];
   });
 
-  getAST(sdkFile).then(result => {
-    sdkClassAst = result;
-    try {
-      sdkClassAst.members.map(method => {
-        if (method.name && functions.includes(method.name.text)) {
-          let name;
-          Object.keys(serviceClass).map((key, index) => {
-            if (serviceClass[key].split(" ")[1] === method.name.text) {
-              name = key;
-            }
-          });
-
-          const parameters = [];
-          method.parameters.map(param => {
-            if (param.name.text !== "callback") {
-              const parameter = {
-                name: param.name.text,
-                optional: param.questionToken ? true : false,
-                type: SyntaxKind[param.type.kind],
-                typeName: null
-              };
-
-              if (parameter.type === "TypeReference" && param.type.typeName) {
-                parameter.typeName = param.type.typeName.right.text;
-              }
-
-              parameters.push(parameter);
-            }
-          });
-
-          methods.push({
-            functionName: name.toString(),
-            SDKFunctionName: method.name.text.toString(),
-            params: parameters
-          });
+  sdkClassAst.members.map(method => {
+    if (method.name && functions.includes(method.name.text)) {
+      let name;
+      Object.keys(serviceClass).map((key, index) => {
+        if (serviceClass[key].split(" ")[1] === method.name.text) {
+          name = key;
         }
       });
 
-      const groupedMethods = groupers.aws(methods);
-      methods = filters.aws(groupedMethods);
+      const parameters = [];
+      method.parameters.map(param => {
+        if (param.name.text !== "callback") {
+          const parameter = {
+            name: param.name.text,
+            optional: param.questionToken ? true : false,
+            type: SyntaxKind[param.type.kind],
+            typeName: null
+          };
 
-      const classData: ClassData = {
-        className: sdkClassAst.name.text,
-        functions: methods
-      };
+          if (parameter.type === "TypeReference" && param.type.typeName) {
+            parameter.typeName = param.type.typeName.right.text;
+          }
 
-      transform(dummyAst, classData).then(result => {
-        printFile(
-          process.cwd() +
-            "/generatedClasses/AWS/" +
-            classData.className +
-            ".js",
-          result
-        );
+          parameters.push(parameter);
+        }
       });
+
+      methods.push({
+        functionName: name.toString(),
+        SDKFunctionName: method.name.text.toString(),
+        params: parameters
+      });
+    }
+  });
+
+  const groupedMethods = groupers.aws(methods);
+  methods = filters.aws(groupedMethods);
+
+  const classData: ClassData = {
+    className: sdkClassAst.name.text,
+    functions: methods
+  };
+
+  return classData;
+}
+
+export function generateAWSClass(serviceClass) {
+  const sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(" ")[0];
+  getAST(sdkFile).then(async result => {
+    const sdkClassAst = result;
+    try {
+      const classData = extractSDKData(sdkClassAst, serviceClass);
+      const output = await transform(dummyAst, classData);
+      printFile(
+        process.cwd() + "/generatedClasses/AWS/" + classData.className + ".js",
+        output
+      );
     } catch (e) {
       console.error(e);
     }

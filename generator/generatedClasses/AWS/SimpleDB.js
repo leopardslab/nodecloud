@@ -1,6 +1,7 @@
 /*This is an auto generated class, please do not change.*/
 /**
  * Class to create a SimpleDB object
+ * @category AWS
  */
 class SimpleDB {
   /**

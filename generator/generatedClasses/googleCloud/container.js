@@ -1,9 +1,23 @@
 const { ClusterManagerClient } = require("@google-cloud/container");
-/*The below JavaScript class is an auto generated code for NodeCloud GCP plugin, Please do not change*/
+/*This is an auto generated class, please do not change.*/
+/**
+ * Class to create a container object
+ * @category Google Cloud
+ */
 class container {
+  /**
+   *
+   * @param {object} config Configuration object
+   */
   constructor(config) {
     this._clusterManagerClient = new ClusterManagerClient(config);
   }
+  /**
+   * Trigers the createCluster function of undefined
+   * @param {TypeReference} request - Data required for createCluster
+   * @param {TypeReference} [options] - Data required for createCluster
+   * @returns {Promise<createClusterResponse>}
+   */
   create(request, options = undefined) {
     return new Promise((resolve, reject) => {
       this._clusterManagerClient
@@ -16,6 +30,12 @@ class container {
         });
     });
   }
+  /**
+   * Trigers the deleteCluster function of undefined
+   * @param {TypeReference} request - Data required for deleteCluster
+   * @param {TypeReference} [options] - Data required for deleteCluster
+   * @returns {Promise<deleteClusterResponse>}
+   */
   delete(request, options = undefined) {
     return new Promise((resolve, reject) => {
       this._clusterManagerClient
@@ -28,6 +48,12 @@ class container {
         });
     });
   }
+  /**
+   * Trigers the listClusters function of undefined
+   * @param {TypeReference} request - Data required for listClusters
+   * @param {TypeReference} [options] - Data required for listClusters
+   * @returns {Promise<listClustersResponse>}
+   */
   listClusters(request, options = undefined) {
     return new Promise((resolve, reject) => {
       this._clusterManagerClient

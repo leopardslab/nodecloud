@@ -1,0 +1,9 @@
+import * as msRest from "@azure/ms-rest-js";
+import * as msRestAzure from "@azure/ms-rest-azure-js";
+import * as Models from "../models";
+import { ContainerServiceClientContext } from "../containerServiceClientContext";
+/** Class representing a ManagedClusters. */
+export declare class ManagedClusters {
+    
+}
+//# sourceMappingURL=managedClusters.d.ts.map

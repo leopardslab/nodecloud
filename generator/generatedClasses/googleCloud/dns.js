@@ -1,9 +1,22 @@
 const { DNS } = require("@google-cloud/dns");
-/*The below JavaScript class is an auto generated code for NodeCloud GCP plugin, Please do not change*/
+/*This is an auto generated class, please do not change.*/
+/**
+ * Class to create a dns object
+ * @category Google Cloud
+ */
 class dns {
+  /**
+   *
+   * @param {object} config Configuration object
+   */
   constructor(config) {
     this._dns = new DNS(config);
   }
+  /**
+   * Trigers the getZones function of dns
+   * @param {TypeReference} [query] - Optional parameter
+   * @returns {Promise<getZonesResponse>}
+   */
   listZones(query = undefined) {
     return new Promise((resolve, reject) => {
       this._dns
@@ -16,6 +29,13 @@ class dns {
         });
     });
   }
+  /**
+   * Trigers the create function of dns
+   * @param {string} [identifier] - Optional parameter
+   * @param {DNS} dns - Mandatory parameter
+   * @param {TypeReference} config - Mandatory parameter
+   * @returns {Promise<createResponse>}
+   */
   createZone(dns, config, identifier = undefined) {
     return new Promise((resolve, reject) => {
       dns

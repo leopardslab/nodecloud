@@ -133,7 +133,7 @@ var __generator =
     }
   };
 exports.__esModule = true;
-exports.generateAzureClass = void 0;
+exports.generateAzureClass = exports.extractSDKData = void 0;
 var fs = require("fs");
 var typescript_1 = require("typescript");
 var parser_1 = require("../../parsers/azure/parser");
@@ -146,9 +146,60 @@ var dummyAst = typescript_1.createSourceFile(
   typescript_1.ScriptTarget.Latest,
   true
 );
+function extractSDKData(sdkFiles, methods) {
+  var specifiedMethods = JSON.parse(JSON.stringify(methods));
+  sdkFiles.map(function(sdkFile) {
+    sdkFile.ast.members.map(function(member) {
+      if (typescript_1.SyntaxKind[member.kind] === "Constructor") {
+        member.parameters.map(function(param) {
+          var tempStr = param.type.typeName.text.split(/(?=[A-Z])/);
+          tempStr.pop();
+          sdkFile.client = tempStr.join("");
+        });
+      }
+      if (
+        typescript_1.SyntaxKind[member.kind] === "MethodDeclaration" &&
+        sdkFile.sdkFunctionNames.includes(member.name.text)
+      ) {
+        var method = methods.find(function(methd) {
+          return methd.SDKFunctionName === member.name.text;
+        });
+        var parameters = member.parameters.map(function(param) {
+          return {
+            name: param.name.text,
+            optional: param.questionToken ? true : false,
+            type: typescript_1.SyntaxKind[param.type.kind]
+          };
+        });
+        var returnType = typescript_1.SyntaxKind[member.type.kind];
+        if (!method.returnType) {
+          method.params = parameters;
+          method.returnType = returnType;
+          method.client = sdkFile.client;
+        } else {
+          var clone = JSON.parse(JSON.stringify(method));
+          clone.params = parameters;
+          clone.returnType = returnType;
+          clone.client = sdkFile.client;
+          methods.push(clone);
+        }
+      }
+    });
+  });
+  if (JSON.stringify(methods) === JSON.stringify(specifiedMethods)) {
+    throw new Error("Data extraction unsuccessful");
+  }
+  var groupedMethods = helper_1.groupers.azure(methods);
+  methods = helper_1.filters.azure(groupedMethods);
+  var classData = {
+    functions: methods
+  };
+  return classData;
+}
+exports.extractSDKData = extractSDKData;
 function generateAzureClass(serviceClass) {
   return __awaiter(this, void 0, void 0, function() {
-    var methods, files, sdkFiles, groupedMethods, classData;
+    var methods, files, sdkFiles, classData, output;
     var _this = this;
     return __generator(this, function(_a) {
       switch (_a.label) {
@@ -209,58 +260,17 @@ function generateAzureClass(serviceClass) {
           ];
         case 1:
           _a.sent();
-          sdkFiles.map(function(sdkFile) {
-            sdkFile.ast.members.map(function(member) {
-              if (typescript_1.SyntaxKind[member.kind] === "Constructor") {
-                member.parameters.map(function(param) {
-                  var tempStr = param.type.typeName.text.split(/(?=[A-Z])/);
-                  tempStr.pop();
-                  sdkFile.client = tempStr.join("");
-                });
-              }
-              if (
-                typescript_1.SyntaxKind[member.kind] === "MethodDeclaration" &&
-                sdkFile.sdkFunctionNames.includes(member.name.text)
-              ) {
-                var method = methods.find(function(methd) {
-                  return methd.SDKFunctionName === member.name.text;
-                });
-                var parameters = member.parameters.map(function(param) {
-                  return {
-                    name: param.name.text,
-                    optional: param.questionToken ? true : false,
-                    type: typescript_1.SyntaxKind[param.type.kind]
-                  };
-                });
-                var returnType = typescript_1.SyntaxKind[member.type.kind];
-                if (!method.returnType) {
-                  method.params = parameters;
-                  method.returnType = returnType;
-                  method.client = sdkFile.client;
-                } else {
-                  var clone = JSON.parse(JSON.stringify(method));
-                  clone.params = parameters;
-                  clone.returnType = returnType;
-                  clone.client = sdkFile.client;
-                  methods.push(clone);
-                }
-              }
-            });
-          });
-          groupedMethods = helper_1.groupers.azure(methods);
-          methods = helper_1.filters.azure(groupedMethods);
-          classData = {
-            functions: methods
-          };
-          transformer_1.transform(dummyAst, classData).then(function(result) {
-            helper_1.printFile(
-              process.cwd() +
-                "/generatedClasses/Azure/" +
-                classData.functions[0].pkgName.split("-")[1] +
-                ".js",
-              result
-            );
-          });
+          classData = extractSDKData(sdkFiles, methods);
+          return [4 /*yield*/, transformer_1.transform(dummyAst, classData)];
+        case 2:
+          output = _a.sent();
+          helper_1.printFile(
+            process.cwd() +
+              "/generatedClasses/Azure/" +
+              classData.functions[0].pkgName.split("-")[1] +
+              ".js",
+            output
+          );
           return [2 /*return*/];
       }
     });

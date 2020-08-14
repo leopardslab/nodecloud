@@ -1,6 +1,10 @@
 const { ClientName } = require("pkgName");
 
 class ClassName {
+  /**
+   *
+   * @param {object} config Configuration object
+   */
   constructor(config) {
     this._clientObj = new Client(config);
   }

@@ -9,6 +9,9 @@ container:
     create: container v1 cluster_manager_client.d.ts createCluster
     delete: container v1 cluster_manager_client.d.ts deleteCluster
     listClusters: container v1 cluster_manager_client.d.ts listClusters
+  AWS:
+    create: eks.d.ts createCluster
+    delete: eks.d.ts deleteCluster
 
 noSqlIndexed:
   AWS:
