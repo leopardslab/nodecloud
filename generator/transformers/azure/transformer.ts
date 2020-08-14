@@ -11,22 +11,16 @@ const dummyIdentifiers = [
   "functionClient"
 ];
 
+const printer: ts.Printer = ts.createPrinter({
+  newLine: ts.NewLineKind.LineFeed,
+  removeComments: false
+});
+
 const addFunctions = <T extends ts.Node>(context: ts.TransformationContext) => (
   rootNode: T
 ) => {
   function visit(node: ts.Node): ts.Node {
     if (ts.isClassDeclaration(node)) {
-      ts.setSyntheticLeadingComments(node, [
-        {
-          pos: -1,
-          end: -1,
-          hasTrailingNewLine: true,
-          text:
-            "The below JavaScript class is an auto generated code for NodeCloud Azure plugin, Please do not change",
-          kind: ts.SyntaxKind.MultiLineCommentTrivia
-        }
-      ]);
-
       let functions: any = [];
       classData.functions.map(method => {
         const clonedNode = Object.assign({}, node.members[1]);
@@ -134,7 +128,108 @@ const addIdentifiers = <T extends ts.Node>(
   return ts.visitNode(rootNode, visit);
 };
 
-export function transform(code: ts.SourceFile, data: any): string {
+const addComments = <T extends ts.Node>(context: ts.TransformationContext) => (
+  rootNode: T
+) => {
+  let count = 0;
+
+  function visit(node: ts.Node): ts.Node {
+    if (ts.isClassDeclaration(node)) {
+      addMultiLineComment(
+        node,
+        "This is an auto generated class, please do not change."
+      );
+      const comment = `*
+ * Class to create a ${classData.functions[0].pkgName.split("-")[1]} object
+ `;
+      addMultiLineComment(node, comment);
+    }
+
+    if (ts.isMethodDeclaration(node)) {
+      let parameters = classData.functions[count].params.map(param => {
+        let statment;
+
+        if (param.optional) {
+          statment = `* @param {${param.type}} [${param.name}] - Optional parameter`;
+        } else {
+          statment = `* @param {${param.type}} ${param.name} - Mandatory parameter`;
+        }
+        return statment;
+      });
+
+      let comment;
+      if (parameters.length > 0) {
+        let paramStatments: string = "";
+        parameters.map(param => {
+          paramStatments = paramStatments.concat(
+            paramStatments === "" ? `${param}` : `\n ${param}`
+          );
+        });
+
+        comment = `*
+ * Trigers the ${classData.functions[count].SDKFunctionName} function of ${
+          classData.functions[0].pkgName.split("-")[1]
+        }
+ ${paramStatments}
+ * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
+ `;
+      } else {
+        comment = `*
+ * Trigers the ${classData.functions[count].SDKFunctionName} function of ${
+          classData.functions[0].pkgName.split("-")[1]
+        }
+ * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
+ `;
+      }
+
+      addMultiLineComment(node, comment);
+      count++;
+    }
+
+    return ts.visitEachChild(node, visit, context);
+  }
+  return ts.visitNode(rootNode, visit);
+};
+
+function addMultiLineComment(node, comment: string) {
+  ts.addSyntheticLeadingComment(
+    node,
+    ts.SyntaxKind.MultiLineCommentTrivia,
+    comment,
+    true
+  );
+}
+
+function runTransformation(sourceCode, transformMethod): Promise<string> {
+  return new Promise((resolve, reject) => {
+    try {
+      const result = ts.transform(sourceCode, [transformMethod]);
+      const transformedNodes = result.transformed[0];
+      const output = printer.printNode(
+        ts.EmitHint.SourceFile,
+        transformedNodes,
+        sourceCode
+      );
+      resolve(output);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+function toSourceFile(sourceCode: string): ts.SourceFile {
+  return ts.createSourceFile(
+    "dummyClass.js",
+    sourceCode,
+    ts.ScriptTarget.Latest,
+    true
+  );
+}
+
+export async function transform(
+  code: ts.SourceFile,
+  data: any
+): Promise<string> {
   const node: any = code.statements.find(stm => ts.isClassDeclaration(stm));
 
   if (!data.functions) {
@@ -148,11 +243,6 @@ export function transform(code: ts.SourceFile, data: any): string {
   code = cloneDeep(code);
   classData = data;
 
-  const printer: ts.Printer = ts.createPrinter({
-    newLine: ts.NewLineKind.LineFeed,
-    removeComments: false
-  });
-
   // import related
   clients = Array.from(
     new Set(classData.functions.map(method => method.client))
@@ -162,20 +252,11 @@ export function transform(code: ts.SourceFile, data: any): string {
   code.statements = importStatments.concat(code.statements.slice(1));
   // import related
 
-  const result = ts.transform(code, [addFunctions]);
-  const transformedNodes = result.transformed[0];
-  const outputOne = printer.printNode(
-    ts.EmitHint.SourceFile,
-    transformedNodes,
-    code
+  const result_1 = await runTransformation(code, addFunctions);
+  const result_2 = await runTransformation(
+    toSourceFile(result_1),
+    addIdentifiers
   );
-
-  code = ts.createSourceFile(
-    "azureDummyClass.js",
-    outputOne,
-    ts.ScriptTarget.Latest
-  );
-  const result2 = ts.transform(code, [addIdentifiers]);
-  const transformedNodes2 = result2.transformed[0];
-  return printer.printNode(ts.EmitHint.SourceFile, transformedNodes2, code);
+  const result_3 = await runTransformation(toSourceFile(result_2), addComments);
+  return result_3;
 }

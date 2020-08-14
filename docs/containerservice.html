@@ -28,10 +28,16 @@
             >containerservice<span class="signature">(azureRestSdk)</span
             ><span class="type-signature"></span>
           </h2>
+
+          <div class="class-description">
+            <p>Class to create a containerservice object</p>
+          </div>
         </header>
 
         <article>
           <div class="container-overview">
+            <h2>Constructor</h2>
+
             <h4 class="name" id="containerservice">
               <span class="type-signature"></span>new containerservice<span
                 class="signature"
@@ -72,12 +78,472 @@
                   <li>
                     <a href="Azure_containerservice.js.html"
                       >Azure/containerservice.js</a
-                    >, <a href="Azure_containerservice.js.html#line8">line 8</a>
+                    >,
+                    <a href="Azure_containerservice.js.html#line11">line 11</a>
                   </li>
                 </ul>
               </dd>
             </dl>
           </div>
+
+          <h3 class="subsection-title">Methods</h3>
+
+          <h4 class="name" id="create">
+            <span class="type-signature"></span>create<span class="signature"
+              >(resourceGroupName, resourceName, parameters, options<span
+                class="signature-attributes"
+                >opt</span
+              >)</span
+            ><span class="type-signature">
+              &rarr; {Promise.&lt;createOrUpdateResponse>}</span
+            >
+          </h4>
+
+          <div class="description">
+            <p>Trigers the createOrUpdate function of containerservice</p>
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th>Attributes</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>resourceGroupName</code></td>
+
+                <td class="type">
+                  <span class="param-type">StringKeyword</span>
+                </td>
+
+                <td class="attributes"></td>
+
+                <td class="description last"><p>Mandatory parameter</p></td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>resourceName</code></td>
+
+                <td class="type">
+                  <span class="param-type">StringKeyword</span>
+                </td>
+
+                <td class="attributes"></td>
+
+                <td class="description last"><p>Mandatory parameter</p></td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>parameters</code></td>
+
+                <td class="type">
+                  <span class="param-type">TypeReference</span>
+                </td>
+
+                <td class="attributes"></td>
+
+                <td class="description last"><p>Mandatory parameter</p></td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>options</code></td>
+
+                <td class="type">
+                  <span class="param-type">TypeReference</span>
+                </td>
+
+                <td class="attributes">&lt;optional><br /></td>
+
+                <td class="description last"><p>Optional parameter</p></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="Azure_containerservice.js.html"
+                    >Azure/containerservice.js</a
+                  >, <a href="Azure_containerservice.js.html#line22">line 22</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <dl>
+            <dt>
+              Type
+            </dt>
+            <dd>
+              <span class="param-type"
+                >Promise.&lt;createOrUpdateResponse></span
+              >
+            </dd>
+          </dl>
+
+          <h4 class="name" id="delete">
+            <span class="type-signature"></span>delete<span class="signature"
+              >(resourceGroupName, resourceName, options<span
+                class="signature-attributes"
+                >opt</span
+              >)</span
+            ><span class="type-signature">
+              &rarr; {Promise.&lt;deleteMethodResponse>}</span
+            >
+          </h4>
+
+          <div class="description">
+            <p>Trigers the deleteMethod function of containerservice</p>
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th>Attributes</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>resourceGroupName</code></td>
+
+                <td class="type">
+                  <span class="param-type">StringKeyword</span>
+                </td>
+
+                <td class="attributes"></td>
+
+                <td class="description last"><p>Mandatory parameter</p></td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>resourceName</code></td>
+
+                <td class="type">
+                  <span class="param-type">StringKeyword</span>
+                </td>
+
+                <td class="attributes"></td>
+
+                <td class="description last"><p>Mandatory parameter</p></td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>options</code></td>
+
+                <td class="type">
+                  <span class="param-type">TypeReference</span>
+                </td>
+
+                <td class="attributes">&lt;optional><br /></td>
+
+                <td class="description last"><p>Optional parameter</p></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="Azure_containerservice.js.html"
+                    >Azure/containerservice.js</a
+                  >, <a href="Azure_containerservice.js.html#line44">line 44</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <dl>
+            <dt>
+              Type
+            </dt>
+            <dd>
+              <span class="param-type">Promise.&lt;deleteMethodResponse></span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="listByResourceGroup">
+            <span class="type-signature"></span>listByResourceGroup<span
+              class="signature"
+              >(resourceGroupName, options<span class="signature-attributes"
+                >opt</span
+              >)</span
+            ><span class="type-signature">
+              &rarr; {Promise.&lt;listByResourceGroupResponse>}</span
+            >
+          </h4>
+
+          <div class="description">
+            <p>Trigers the listByResourceGroup function of containerservice</p>
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th>Attributes</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>resourceGroupName</code></td>
+
+                <td class="type">
+                  <span class="param-type">StringKeyword</span>
+                </td>
+
+                <td class="attributes"></td>
+
+                <td class="description last"><p>Mandatory parameter</p></td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>options</code></td>
+
+                <td class="type">
+                  <span class="param-type">TypeReference</span>
+                </td>
+
+                <td class="attributes">&lt;optional><br /></td>
+
+                <td class="description last"><p>Optional parameter</p></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="Azure_containerservice.js.html"
+                    >Azure/containerservice.js</a
+                  >, <a href="Azure_containerservice.js.html#line88">line 88</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <dl>
+            <dt>
+              Type
+            </dt>
+            <dd>
+              <span class="param-type"
+                >Promise.&lt;listByResourceGroupResponse></span
+              >
+            </dd>
+          </dl>
+
+          <h4 class="name" id="listClusters">
+            <span class="type-signature"></span>listClusters<span
+              class="signature"
+              >(options<span class="signature-attributes">opt</span>)</span
+            ><span class="type-signature">
+              &rarr; {Promise.&lt;listResponse>}</span
+            >
+          </h4>
+
+          <div class="description">
+            <p>Trigers the list function of containerservice</p>
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th>Attributes</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>options</code></td>
+
+                <td class="type">
+                  <span class="param-type">TypeReference</span>
+                </td>
+
+                <td class="attributes">&lt;optional><br /></td>
+
+                <td class="description last"><p>Optional parameter</p></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="Azure_containerservice.js.html"
+                    >Azure/containerservice.js</a
+                  >,
+                  <a href="Azure_containerservice.js.html#line108">line 108</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <dl>
+            <dt>
+              Type
+            </dt>
+            <dd>
+              <span class="param-type">Promise.&lt;listResponse></span>
+            </dd>
+          </dl>
+
+          <h4 class="name" id="updateTags">
+            <span class="type-signature"></span>updateTags<span
+              class="signature"
+              >(resourceGroupName, resourceName, parameters, options<span
+                class="signature-attributes"
+                >opt</span
+              >)</span
+            ><span class="type-signature">
+              &rarr; {Promise.&lt;updateTagsResponse>}</span
+            >
+          </h4>
+
+          <div class="description">
+            <p>Trigers the updateTags function of containerservice</p>
+          </div>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th>Attributes</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>resourceGroupName</code></td>
+
+                <td class="type">
+                  <span class="param-type">StringKeyword</span>
+                </td>
+
+                <td class="attributes"></td>
+
+                <td class="description last"><p>Mandatory parameter</p></td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>resourceName</code></td>
+
+                <td class="type">
+                  <span class="param-type">StringKeyword</span>
+                </td>
+
+                <td class="attributes"></td>
+
+                <td class="description last"><p>Mandatory parameter</p></td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>parameters</code></td>
+
+                <td class="type">
+                  <span class="param-type">TypeReference</span>
+                </td>
+
+                <td class="attributes"></td>
+
+                <td class="description last"><p>Mandatory parameter</p></td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>options</code></td>
+
+                <td class="type">
+                  <span class="param-type">TypeReference</span>
+                </td>
+
+                <td class="attributes">&lt;optional><br /></td>
+
+                <td class="description last"><p>Optional parameter</p></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source">
+              <ul class="dummy">
+                <li>
+                  <a href="Azure_containerservice.js.html"
+                    >Azure/containerservice.js</a
+                  >, <a href="Azure_containerservice.js.html#line67">line 67</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h5>Returns:</h5>
+
+          <dl>
+            <dt>
+              Type
+            </dt>
+            <dd>
+              <span class="param-type">Promise.&lt;updateTagsResponse></span>
+            </dd>
+          </dl>
         </article>
       </section>
     </div>
@@ -95,8 +561,8 @@
 
     <footer>
       Documentation generated by
-      <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Thu Aug 13
-      2020 22:49:05 GMT+0530 (India Standard Time)
+      <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Fri Aug 14
+      2020 14:01:48 GMT+0530 (India Standard Time)
     </footer>
 
     <script>

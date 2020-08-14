@@ -111,12 +111,13 @@ export async function generateAzureClass(serviceClass) {
     functions: methods
   };
 
-  const output = transform(dummyAst, classData);
-  printFile(
-    process.cwd() +
-      "/generatedClasses/Azure/" +
-      classData.functions[0].pkgName.split("-")[1] +
-      ".js",
-    output
-  );
+  transform(dummyAst, classData).then(result => {
+    printFile(
+      process.cwd() +
+        "/generatedClasses/Azure/" +
+        classData.functions[0].pkgName.split("-")[1] +
+        ".js",
+      result
+    );
+  });
 }

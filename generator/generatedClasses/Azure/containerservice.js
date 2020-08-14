@@ -1,5 +1,8 @@
-const { ContainerServiceClient } = require("@azure/arm-containerservice");
-/*The below JavaScript class is an auto generated code for NodeCloud Azure plugin, Please do not change*/
+const { ContainerServiceClient } = require("pkgName");
+/*This is an auto generated class, please do not change.*/
+/**
+ * Class to create a containerservice object
+ */
 class containerservice {
   /**
    *
@@ -8,6 +11,14 @@ class containerservice {
   constructor(azureRestSdk) {
     this._azureRestSdk = azureRestSdk;
   }
+  /**
+   * Trigers the createOrUpdate function of containerservice
+   * @param {StringKeyword} resourceGroupName - Mandatory parameter
+   * @param {StringKeyword} resourceName - Mandatory parameter
+   * @param {TypeReference} parameters - Mandatory parameter
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise<createOrUpdateResponse>}
+   */
   create(resourceGroupName, resourceName, parameters, options = undefined) {
     return new Promise((resolve, reject) => {
       this._azureRestSdk
@@ -37,6 +48,13 @@ class containerservice {
         });
     });
   }
+  /**
+   * Trigers the deleteMethod function of containerservice
+   * @param {StringKeyword} resourceGroupName - Mandatory parameter
+   * @param {StringKeyword} resourceName - Mandatory parameter
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise<deleteMethodResponse>}
+   */
   delete(resourceGroupName, resourceName, options = undefined) {
     return new Promise((resolve, reject) => {
       this._azureRestSdk
@@ -61,6 +79,14 @@ class containerservice {
         });
     });
   }
+  /**
+   * Trigers the updateTags function of containerservice
+   * @param {StringKeyword} resourceGroupName - Mandatory parameter
+   * @param {StringKeyword} resourceName - Mandatory parameter
+   * @param {TypeReference} parameters - Mandatory parameter
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise<updateTagsResponse>}
+   */
   updateTags(resourceGroupName, resourceName, parameters, options = undefined) {
     return new Promise((resolve, reject) => {
       this._azureRestSdk
@@ -85,6 +111,12 @@ class containerservice {
         });
     });
   }
+  /**
+   * Trigers the listByResourceGroup function of containerservice
+   * @param {StringKeyword} resourceGroupName - Mandatory parameter
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise<listByResourceGroupResponse>}
+   */
   listByResourceGroup(resourceGroupName, options = undefined) {
     return new Promise((resolve, reject) => {
       this._azureRestSdk
@@ -109,6 +141,11 @@ class containerservice {
         });
     });
   }
+  /**
+   * Trigers the list function of containerservice
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise<listResponse>}
+   */
   listClusters(options = undefined) {
     return new Promise((resolve, reject) => {
       this._azureRestSdk

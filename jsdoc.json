@@ -1,10 +1,6 @@
 {
   "source": {
-    "include": [
-      "generator/generatedClasses/AWS",
-      "generator/generatedClasses/Azure",
-      "generator/generatedClasses/googleCloud"
-    ],
+    "include": ["generator/generatedClasses/"],
     "includePattern": ".js$",
     "excludePattern": "(node_modules/|docs)"
   },

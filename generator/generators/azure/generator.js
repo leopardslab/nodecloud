@@ -148,7 +148,7 @@ var dummyAst = typescript_1.createSourceFile(
 );
 function generateAzureClass(serviceClass) {
   return __awaiter(this, void 0, void 0, function() {
-    var methods, files, sdkFiles, groupedMethods, classData, output;
+    var methods, files, sdkFiles, groupedMethods, classData;
     var _this = this;
     return __generator(this, function(_a) {
       switch (_a.label) {
@@ -252,14 +252,15 @@ function generateAzureClass(serviceClass) {
           classData = {
             functions: methods
           };
-          output = transformer_1.transform(dummyAst, classData);
-          helper_1.printFile(
-            process.cwd() +
-              "/generatedClasses/Azure/" +
-              classData.functions[0].pkgName.split("-")[1] +
-              ".js",
-            output
-          );
+          transformer_1.transform(dummyAst, classData).then(function(result) {
+            helper_1.printFile(
+              process.cwd() +
+                "/generatedClasses/Azure/" +
+                classData.functions[0].pkgName.split("-")[1] +
+                ".js",
+              result
+            );
+          });
           return [2 /*return*/];
       }
     });
