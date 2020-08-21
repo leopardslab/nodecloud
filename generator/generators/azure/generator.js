@@ -197,9 +197,9 @@ function extractSDKData(sdkFiles, methods) {
   return classData;
 }
 exports.extractSDKData = extractSDKData;
-function generateAzureClass(serviceClass) {
+function generateAzureClass(serviceClass, serviceName) {
   return __awaiter(this, void 0, void 0, function() {
-    var methods, files, sdkFiles, classData, output;
+    var methods, files, sdkFiles, classData, output, filePath;
     var _this = this;
     return __generator(this, function(_a) {
       switch (_a.label) {
@@ -261,16 +261,22 @@ function generateAzureClass(serviceClass) {
         case 1:
           _a.sent();
           classData = extractSDKData(sdkFiles, methods);
+          classData.serviceName = serviceName;
           return [4 /*yield*/, transformer_1.transform(dummyAst, classData)];
         case 2:
           output = _a.sent();
-          helper_1.printFile(
-            process.cwd() +
+          if (/^[A-Z]*$/.test(serviceName)) {
+            filePath =
+              process.cwd() + "/generatedClasses/Azure/" + serviceName + ".js";
+          } else {
+            filePath =
+              process.cwd() +
               "/generatedClasses/Azure/" +
-              classData.functions[0].pkgName.split("-")[1] +
-              ".js",
-            output
-          );
+              serviceName.charAt(0).toLowerCase() +
+              serviceName.slice(1) +
+              ".js";
+          }
+          helper_1.printFile(filePath, output);
           return [2 /*return*/];
       }
     });

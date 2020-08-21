@@ -2,10 +2,10 @@ const { AlertPolicyServiceClient } = require("@google-cloud/monitoring");
 const { MetricServiceClient } = require("@google-cloud/monitoring");
 /*This is an auto generated class, please do not change.*/
 /**
- * Class to create a monitoring object
+ * Class to create a Monitoring object
  * @category Google Cloud
  */
-class monitoring {
+class Monitoring {
   /**
    *
    * @param {object} config Configuration object
@@ -113,4 +113,4 @@ class monitoring {
     return this._alertPolicyServiceClient.projectPath(project);
   }
 }
-module.exports = monitoring;
+module.exports = Monitoring;

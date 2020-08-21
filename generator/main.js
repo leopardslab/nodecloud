@@ -10,11 +10,11 @@ try {
   Object.keys(services_1).map(function(service, index) {
     Object.keys(services_1[service]).map(function(provider, index1) {
       if (provider === "Azure") {
-        generator_2.generateAzureClass(services_1[service][provider]);
+        generator_2.generateAzureClass(services_1[service][provider], service);
       } else if (provider === "AWS") {
-        generator_1.generateAWSClass(services_1[service][provider]);
+        generator_1.generateAWSClass(services_1[service][provider], service);
       } else if (provider === "GCP") {
-        generator_3.generateGCPClass(services_1[service][provider]);
+        generator_3.generateGCPClass(services_1[service][provider], service);
       }
     });
   });

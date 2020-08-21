@@ -3,7 +3,7 @@
  * Class to create a EKS object
  * @category AWS
  */
-class EKS {
+class Container {
   /**
    *
    * @param {module} aws AWS SDK
@@ -49,4 +49,4 @@ class EKS {
     });
   }
 }
-module.exports = EKS;
+module.exports = Container;

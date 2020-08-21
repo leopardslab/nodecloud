@@ -1,10 +1,10 @@
 const { ClusterManagerClient } = require("@google-cloud/container");
 /*This is an auto generated class, please do not change.*/
 /**
- * Class to create a container object
+ * Class to create a Container object
  * @category Google Cloud
  */
-class container {
+class Container {
   /**
    *
    * @param {object} config Configuration object
@@ -67,4 +67,4 @@ class container {
     });
   }
 }
-module.exports = container;
+module.exports = Container;

@@ -3,7 +3,7 @@
  * Class to create a SimpleDB object
  * @category AWS
  */
-class SimpleDB {
+class NoSqlIndexed {
   /**
    *
    * @param {module} aws AWS SDK
@@ -161,4 +161,4 @@ class SimpleDB {
     });
   }
 }
-module.exports = SimpleDB;
+module.exports = NoSqlIndexed;

@@ -1,4 +1,4 @@
-container:
+Container:
   Azure:
     create: arm-containerservice managedClusters.d.ts createOrUpdate
     delete: arm-containerservice managedClusters.d.ts deleteMethod
@@ -13,7 +13,7 @@ container:
     create: eks.d.ts createCluster
     delete: eks.d.ts deleteCluster
 
-noSqlIndexed:
+NoSqlIndexed:
   AWS:
     createCollection: SimpleDB.d.ts createDomain
     deleteCollection: SimpleDB.d.ts deleteDomain
@@ -24,7 +24,8 @@ noSqlIndexed:
     setAttribute: SimpleDB.d.ts putAttributes
     deleteAttribute: SimpleDB.d.ts deleteAttributes
     getAttributes: SimpleDB.d.ts getAttributes
-monitoring:
+
+Monitoring:
   GCP:
     createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
     deleteAlarm: monitoring v3 alert_policy_service_client.d.ts deleteAlertPolicy

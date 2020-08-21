@@ -139,7 +139,7 @@ export async function transform(
         switch (node.text) {
           case "ClassName":
             updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier(classData.functions[0].pkgName.split("-")[1])
+              ts.createIdentifier(classData.serviceName)
             );
             break;
           case "SDKClassName":
@@ -200,7 +200,7 @@ export async function transform(
           "This is an auto generated class, please do not change."
         );
         const comment = `*
- * Class to create a ${classData.functions[0].pkgName.split("-")[1]} object
+ * Class to create a ${classData.serviceName} object
  * @category Azure
  `;
         addMultiLineComment(node, comment);

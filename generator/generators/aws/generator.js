@@ -186,17 +186,18 @@ function extractSDKData(sdkClassAst, serviceClass) {
   methods = helper_1.filters.aws(groupedMethods);
   var classData = {
     className: sdkClassAst.name.text,
-    functions: methods
+    functions: methods,
+    serviceName: null
   };
   return classData;
 }
 exports.extractSDKData = extractSDKData;
-function generateAWSClass(serviceClass) {
+function generateAWSClass(serviceClass, serviceName) {
   var _this = this;
   var sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(" ")[0];
   parser_1.getAST(sdkFile).then(function(result) {
     return __awaiter(_this, void 0, void 0, function() {
-      var sdkClassAst, classData, output, e_1;
+      var sdkClassAst, classData, output, filePath, e_1;
       return __generator(this, function(_a) {
         switch (_a.label) {
           case 0:
@@ -205,16 +206,23 @@ function generateAWSClass(serviceClass) {
           case 1:
             _a.trys.push([1, 3, , 4]);
             classData = extractSDKData(sdkClassAst, serviceClass);
+            classData.serviceName = serviceName;
             return [4 /*yield*/, transformer_1.transform(dummyAst, classData)];
           case 2:
             output = _a.sent();
-            helper_1.printFile(
-              process.cwd() +
+            filePath = void 0;
+            if (/^[A-Z]*$/.test(serviceName)) {
+              filePath =
+                process.cwd() + "/generatedClasses/AWS/" + serviceName + ".js";
+            } else {
+              filePath =
+                process.cwd() +
                 "/generatedClasses/AWS/" +
-                classData.className +
-                ".js",
-              output
-            );
+                serviceName.charAt(0).toLowerCase() +
+                serviceName.slice(1) +
+                ".js";
+            }
+            helper_1.printFile(filePath, output);
             return [3 /*break*/, 4];
           case 3:
             e_1 = _a.sent();

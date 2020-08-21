@@ -302,7 +302,7 @@ function clientBasedTransform(code, classData) {
                   switch (node.text) {
                     case "ClassName":
                       updatedIdentifier = ts.updateIdentifier(
-                        ts.createIdentifier(classData.functions[0].pkgName)
+                        ts.createIdentifier(classData.serviceName)
                       );
                       break;
                     case "ClientName":
@@ -381,7 +381,7 @@ function clientBasedTransform(code, classData) {
                   );
                   var comment =
                     "*\n * Class to create a " +
-                    classData.functions[0].pkgName +
+                    classData.serviceName +
                     " object\n * @category Google Cloud\n ";
                   addMultiLineComment(node, comment);
                 }

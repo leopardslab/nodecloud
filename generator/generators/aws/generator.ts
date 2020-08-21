@@ -19,6 +19,7 @@ interface param {
 interface ClassData {
   className: string;
   functions: FunctionData[];
+  serviceName: string;
 }
 
 const dummyFile = process.cwd() + "/dummyClasses/aws.js";
@@ -77,23 +78,34 @@ export function extractSDKData(sdkClassAst, serviceClass) {
 
   const classData: ClassData = {
     className: sdkClassAst.name.text,
-    functions: methods
+    functions: methods,
+    serviceName: null
   };
 
   return classData;
 }
 
-export function generateAWSClass(serviceClass) {
+export function generateAWSClass(serviceClass, serviceName) {
   const sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(" ")[0];
   getAST(sdkFile).then(async result => {
     const sdkClassAst = result;
     try {
-      const classData = extractSDKData(sdkClassAst, serviceClass);
+      const classData: ClassData = extractSDKData(sdkClassAst, serviceClass);
+      classData.serviceName = serviceName;
       const output = await transform(dummyAst, classData);
-      printFile(
-        process.cwd() + "/generatedClasses/AWS/" + classData.className + ".js",
-        output
-      );
+      let filePath;
+      if (/^[A-Z]*$/.test(serviceName)) {
+        filePath =
+          process.cwd() + "/generatedClasses/AWS/" + serviceName + ".js";
+      } else {
+        filePath =
+          process.cwd() +
+          "/generatedClasses/AWS/" +
+          serviceName.charAt(0).toLowerCase() +
+          serviceName.slice(1) +
+          ".js";
+      }
+      printFile(filePath, output);
     } catch (e) {
       console.error(e);
     }

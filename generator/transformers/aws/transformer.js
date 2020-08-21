@@ -247,7 +247,7 @@ function transform(code, classData) {
                   switch (node.text) {
                     case "ClassName":
                       updatedIdentifier = ts.updateIdentifier(
-                        ts.createIdentifier(classData.className)
+                        ts.createIdentifier(classData.serviceName)
                       );
                       break;
                     case "_sdkClassName":

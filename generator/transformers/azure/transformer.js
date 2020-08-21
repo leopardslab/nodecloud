@@ -281,9 +281,7 @@ function transform(code, classData) {
                   switch (node.text) {
                     case "ClassName":
                       updatedIdentifier = ts.updateIdentifier(
-                        ts.createIdentifier(
-                          classData.functions[0].pkgName.split("-")[1]
-                        )
+                        ts.createIdentifier(classData.serviceName)
                       );
                       break;
                     case "SDKClassName":
@@ -345,7 +343,7 @@ function transform(code, classData) {
                   );
                   var comment =
                     "*\n * Class to create a " +
-                    classData.functions[0].pkgName.split("-")[1] +
+                    classData.serviceName +
                     " object\n * @category Azure\n ";
                   addMultiLineComment(node, comment);
                 }

@@ -156,7 +156,7 @@ export async function clientBasedTransform(
         switch (node.text) {
           case "ClassName":
             updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier(classData.functions[0].pkgName)
+              ts.createIdentifier(classData.serviceName)
             );
             break;
           case "ClientName":
@@ -230,7 +230,7 @@ export async function clientBasedTransform(
           "This is an auto generated class, please do not change."
         );
         const comment = `*
- * Class to create a ${classData.functions[0].pkgName} object
+ * Class to create a ${classData.serviceName} object
  * @category Google Cloud
  `;
         addMultiLineComment(node, comment);
