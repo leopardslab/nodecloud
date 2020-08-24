@@ -3,7 +3,7 @@
  * Class to create a CloudWatch object
  * @category AWS
  */
-class Monitoring {
+class AWS_Monitoring {
   /**
    *
    * @param {module} aws AWS SDK
@@ -81,4 +81,4 @@ class Monitoring {
     });
   }
 }
-module.exports = Monitoring;
+module.exports = AWS_Monitoring;

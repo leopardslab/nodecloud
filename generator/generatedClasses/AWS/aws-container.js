@@ -3,7 +3,7 @@
  * Class to create a ECS object
  * @category AWS
  */
-class Container {
+class AWS_Container {
   /**
    *
    * @param {module} aws AWS SDK
@@ -81,4 +81,4 @@ class Container {
     });
   }
 }
-module.exports = Container;
+module.exports = AWS_Container;

@@ -4,7 +4,7 @@ const { NetworkManagementClient } = require("@azure/arm-network");
  * Class to create a LoadBalancer object
  * @category Azure
  */
-class LoadBalancer {
+class Azure_LoadBalancer {
   /**
    *
    * @param {module} azureRestSdk Azure Rest SDK
@@ -182,4 +182,4 @@ class LoadBalancer {
     });
   }
 }
-module.exports = LoadBalancer;
+module.exports = Azure_LoadBalancer;

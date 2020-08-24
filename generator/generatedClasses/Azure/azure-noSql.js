@@ -4,7 +4,7 @@ const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
  * Class to create a NoSql object
  * @category Azure
  */
-class NoSql {
+class Azure_NoSql {
   /**
    *
    * @param {module} azureRestSdk Azure Rest SDK
@@ -208,4 +208,4 @@ class NoSql {
     });
   }
 }
-module.exports = NoSql;
+module.exports = Azure_NoSql;

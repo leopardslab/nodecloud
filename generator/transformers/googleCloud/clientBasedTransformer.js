@@ -302,7 +302,7 @@ function clientBasedTransform(code, classData) {
                   switch (node.text) {
                     case "ClassName":
                       updatedIdentifier = ts.updateIdentifier(
-                        ts.createIdentifier(classData.serviceName)
+                        ts.createIdentifier("GCP_" + classData.serviceName)
                       );
                       break;
                     case "ClientName":

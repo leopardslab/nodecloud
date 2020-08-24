@@ -1,10 +1,10 @@
-const { CosmosDBManagementClient } = require("@azure/arm-cosmosdb");
+const { KeyVaultManagementClient } = require("@azure/arm-keyvault");
 /*This is an auto generated class, please do not change.*/
 /**
- * Class to create a NoSqlIndexed object
+ * Class to create a KeyManagement object
  * @category Azure
  */
-class NoSqlIndexed {
+class Azure_KeyManagement {
   /**
    *
    * @param {module} azureRestSdk Azure Rest SDK
@@ -13,19 +13,145 @@ class NoSqlIndexed {
     this._azureRestSdk = azureRestSdk;
   }
   /**
-   * Trigers the createUpdateTable function of cosmosdb
+   * Trigers the createOrUpdate function of keyvault
    * @param {StringKeyword} resourceGroupName - Mandatory parameter
-   * @param {StringKeyword} accountName - Mandatory parameter
-   * @param {StringKeyword} tableName - Mandatory parameter
-   * @param {TypeReference} createUpdateTableParameters - Mandatory parameter
+   * @param {StringKeyword} vaultName - Mandatory parameter
+   * @param {TypeReference} parameters - Mandatory parameter
    * @param {TypeReference} [options] - Optional parameter
-   * @returns {Promise<createUpdateTableResponse>}
+   * @returns {Promise<createOrUpdateResponse>}
    */
-  createCollection(
+  createKey(resourceGroupName, vaultName, parameters, options = undefined) {
+    return new Promise((resolve, reject) => {
+      this._azureRestSdk
+        .loginWithServicePrincipalSecretWithAuthResponse(
+          process.env.AZURE_CLIENT_ID,
+          process.env.AZURE_CLIENT_SECRET,
+          process.env.AZURE_TENANT_ID
+        )
+        .then(authres => {
+          const client = new KeyVaultManagementClient(
+            authres.credentials,
+            process.env.AZURE_SUBSCRIPTION_ID
+          );
+          client.vaults
+            .createOrUpdate(resourceGroupName, vaultName, parameters, options)
+            .then(result => {
+              resolve(result);
+            });
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+  /**
+   * Trigers the deleteMethod function of keyvault
+   * @param {StringKeyword} resourceGroupName - Mandatory parameter
+   * @param {StringKeyword} vaultName - Mandatory parameter
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise<deleteMethodResponse>}
+   */
+  deleteKey(resourceGroupName, vaultName, options = undefined) {
+    return new Promise((resolve, reject) => {
+      this._azureRestSdk
+        .loginWithServicePrincipalSecretWithAuthResponse(
+          process.env.AZURE_CLIENT_ID,
+          process.env.AZURE_CLIENT_SECRET,
+          process.env.AZURE_TENANT_ID
+        )
+        .then(authres => {
+          const client = new KeyVaultManagementClient(
+            authres.credentials,
+            process.env.AZURE_SUBSCRIPTION_ID
+          );
+          client.vaults
+            .deleteMethod(resourceGroupName, vaultName, options)
+            .then(result => {
+              resolve(result);
+            });
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+  /**
+   * Trigers the update function of keyvault
+   * @param {StringKeyword} resourceGroupName - Mandatory parameter
+   * @param {StringKeyword} vaultName - Mandatory parameter
+   * @param {TypeReference} parameters - Mandatory parameter
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise<updateResponse>}
+   */
+  update(resourceGroupName, vaultName, parameters, options = undefined) {
+    return new Promise((resolve, reject) => {
+      this._azureRestSdk
+        .loginWithServicePrincipalSecretWithAuthResponse(
+          process.env.AZURE_CLIENT_ID,
+          process.env.AZURE_CLIENT_SECRET,
+          process.env.AZURE_TENANT_ID
+        )
+        .then(authres => {
+          const client = new KeyVaultManagementClient(
+            authres.credentials,
+            process.env.AZURE_SUBSCRIPTION_ID
+          );
+          client.vaults
+            .update(resourceGroupName, vaultName, parameters, options)
+            .then(result => {
+              resolve(result);
+            });
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+  /**
+   * Trigers the get function of keyvault
+   * @param {StringKeyword} resourceGroupName - Mandatory parameter
+   * @param {StringKeyword} vaultName - Mandatory parameter
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise<getResponse>}
+   */
+  describeKey(resourceGroupName, vaultName, options = undefined) {
+    return new Promise((resolve, reject) => {
+      this._azureRestSdk
+        .loginWithServicePrincipalSecretWithAuthResponse(
+          process.env.AZURE_CLIENT_ID,
+          process.env.AZURE_CLIENT_SECRET,
+          process.env.AZURE_TENANT_ID
+        )
+        .then(authres => {
+          const client = new KeyVaultManagementClient(
+            authres.credentials,
+            process.env.AZURE_SUBSCRIPTION_ID
+          );
+          client.vaults
+            .get(resourceGroupName, vaultName, options)
+            .then(result => {
+              resolve(result);
+            });
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+  /**
+   * Trigers the updateAccessPolicy function of keyvault
+   * @param {StringKeyword} resourceGroupName - Mandatory parameter
+   * @param {StringKeyword} vaultName - Mandatory parameter
+   * @param {TypeReference} operationKind - Mandatory parameter
+   * @param {TypeReference} parameters - Mandatory parameter
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise<updateAccessPolicyResponse>}
+   */
+  putKeyPolicy(
     resourceGroupName,
-    accountName,
-    tableName,
-    createUpdateTableParameters,
+    vaultName,
+    operationKind,
+    parameters,
     options = undefined
   ) {
     return new Promise((resolve, reject) => {
@@ -36,168 +162,18 @@ class NoSqlIndexed {
           process.env.AZURE_TENANT_ID
         )
         .then(authres => {
-          const client = new CosmosDBManagementClient(
+          const client = new KeyVaultManagementClient(
             authres.credentials,
             process.env.AZURE_SUBSCRIPTION_ID
           );
-          client.tableResources
-            .createUpdateTable(
+          client.vaults
+            .updateAccessPolicy(
               resourceGroupName,
-              accountName,
-              tableName,
-              createUpdateTableParameters,
+              vaultName,
+              operationKind,
+              parameters,
               options
             )
-            .then(result => {
-              resolve(result);
-            });
-        })
-        .catch(err => {
-          reject(err);
-        });
-    });
-  }
-  /**
-   * Trigers the deleteTable function of cosmosdb
-   * @param {StringKeyword} resourceGroupName - Mandatory parameter
-   * @param {StringKeyword} accountName - Mandatory parameter
-   * @param {StringKeyword} tableName - Mandatory parameter
-   * @param {TypeReference} [options] - Optional parameter
-   * @returns {Promise<deleteTableResponse>}
-   */
-  deleteCollection(
-    resourceGroupName,
-    accountName,
-    tableName,
-    options = undefined
-  ) {
-    return new Promise((resolve, reject) => {
-      this._azureRestSdk
-        .loginWithServicePrincipalSecretWithAuthResponse(
-          process.env.AZURE_CLIENT_ID,
-          process.env.AZURE_CLIENT_SECRET,
-          process.env.AZURE_TENANT_ID
-        )
-        .then(authres => {
-          const client = new CosmosDBManagementClient(
-            authres.credentials,
-            process.env.AZURE_SUBSCRIPTION_ID
-          );
-          client.tableResources
-            .deleteTable(resourceGroupName, accountName, tableName, options)
-            .then(result => {
-              resolve(result);
-            });
-        })
-        .catch(err => {
-          reject(err);
-        });
-    });
-  }
-  /**
-   * Trigers the listTables function of cosmosdb
-   * @param {StringKeyword} resourceGroupName - Mandatory parameter
-   * @param {StringKeyword} accountName - Mandatory parameter
-   * @param {TypeReference} [options] - Optional parameter
-   * @returns {Promise<listTablesResponse>}
-   */
-  listCollections(resourceGroupName, accountName, options = undefined) {
-    return new Promise((resolve, reject) => {
-      this._azureRestSdk
-        .loginWithServicePrincipalSecretWithAuthResponse(
-          process.env.AZURE_CLIENT_ID,
-          process.env.AZURE_CLIENT_SECRET,
-          process.env.AZURE_TENANT_ID
-        )
-        .then(authres => {
-          const client = new CosmosDBManagementClient(
-            authres.credentials,
-            process.env.AZURE_SUBSCRIPTION_ID
-          );
-          client.tableResources
-            .listTables(resourceGroupName, accountName, options)
-            .then(result => {
-              resolve(result);
-            });
-        })
-        .catch(err => {
-          reject(err);
-        });
-    });
-  }
-  /**
-   * Trigers the updateTableThroughput function of cosmosdb
-   * @param {StringKeyword} resourceGroupName - Mandatory parameter
-   * @param {StringKeyword} accountName - Mandatory parameter
-   * @param {StringKeyword} tableName - Mandatory parameter
-   * @param {TypeReference} updateThroughputParameters - Mandatory parameter
-   * @param {TypeReference} [options] - Optional parameter
-   * @returns {Promise<updateTableThroughputResponse>}
-   */
-  setAttribute(
-    resourceGroupName,
-    accountName,
-    tableName,
-    updateThroughputParameters,
-    options = undefined
-  ) {
-    return new Promise((resolve, reject) => {
-      this._azureRestSdk
-        .loginWithServicePrincipalSecretWithAuthResponse(
-          process.env.AZURE_CLIENT_ID,
-          process.env.AZURE_CLIENT_SECRET,
-          process.env.AZURE_TENANT_ID
-        )
-        .then(authres => {
-          const client = new CosmosDBManagementClient(
-            authres.credentials,
-            process.env.AZURE_SUBSCRIPTION_ID
-          );
-          client.tableResources
-            .updateTableThroughput(
-              resourceGroupName,
-              accountName,
-              tableName,
-              updateThroughputParameters,
-              options
-            )
-            .then(result => {
-              resolve(result);
-            });
-        })
-        .catch(err => {
-          reject(err);
-        });
-    });
-  }
-  /**
-   * Trigers the getTable function of cosmosdb
-   * @param {StringKeyword} resourceGroupName - Mandatory parameter
-   * @param {StringKeyword} accountName - Mandatory parameter
-   * @param {StringKeyword} tableName - Mandatory parameter
-   * @param {TypeReference} [options] - Optional parameter
-   * @returns {Promise<getTableResponse>}
-   */
-  getAttributes(
-    resourceGroupName,
-    accountName,
-    tableName,
-    options = undefined
-  ) {
-    return new Promise((resolve, reject) => {
-      this._azureRestSdk
-        .loginWithServicePrincipalSecretWithAuthResponse(
-          process.env.AZURE_CLIENT_ID,
-          process.env.AZURE_CLIENT_SECRET,
-          process.env.AZURE_TENANT_ID
-        )
-        .then(authres => {
-          const client = new CosmosDBManagementClient(
-            authres.credentials,
-            process.env.AZURE_SUBSCRIPTION_ID
-          );
-          client.tableResources
-            .getTable(resourceGroupName, accountName, tableName, options)
             .then(result => {
               resolve(result);
             });
@@ -208,4 +184,4 @@ class NoSqlIndexed {
     });
   }
 }
-module.exports = NoSqlIndexed;
+module.exports = Azure_KeyManagement;

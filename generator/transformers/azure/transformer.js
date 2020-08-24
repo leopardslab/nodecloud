@@ -281,7 +281,7 @@ function transform(code, classData) {
                   switch (node.text) {
                     case "ClassName":
                       updatedIdentifier = ts.updateIdentifier(
-                        ts.createIdentifier(classData.serviceName)
+                        ts.createIdentifier("Azure_" + classData.serviceName)
                       );
                       break;
                     case "SDKClassName":

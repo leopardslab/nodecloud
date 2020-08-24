@@ -3,7 +3,7 @@
  * Class to create a DynamoDB object
  * @category AWS
  */
-class NoSql {
+class AWS_NoSql {
   /**
    *
    * @param {module} aws AWS SDK
@@ -113,4 +113,4 @@ class NoSql {
     });
   }
 }
-module.exports = NoSql;
+module.exports = AWS_NoSql;

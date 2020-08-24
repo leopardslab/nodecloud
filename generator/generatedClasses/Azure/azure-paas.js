@@ -1,10 +1,10 @@
 const { WebSiteManagementClient } = require("@azure/arm-appservice");
 /*This is an auto generated class, please do not change.*/
 /**
- * Class to create a paas object
+ * Class to create a PaaS object
  * @category Azure
  */
-class paas {
+class Azure_PaaS {
   /**
    *
    * @param {module} azureRestSdk Azure Rest SDK
@@ -419,4 +419,4 @@ class paas {
     });
   }
 }
-module.exports = paas;
+module.exports = Azure_PaaS;

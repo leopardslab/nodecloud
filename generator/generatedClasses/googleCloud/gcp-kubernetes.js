@@ -4,7 +4,7 @@ const { ClusterManagerClient } = require("@google-cloud/container");
  * Class to create a Kubernetes object
  * @category Google Cloud
  */
-class Kubernetes {
+class GCP_Kubernetes {
   /**
    *
    * @param {object} config Configuration object
@@ -175,4 +175,4 @@ class Kubernetes {
     });
   }
 }
-module.exports = Kubernetes;
+module.exports = GCP_Kubernetes;

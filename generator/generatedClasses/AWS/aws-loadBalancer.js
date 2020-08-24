@@ -3,7 +3,7 @@
  * Class to create a ELB object
  * @category AWS
  */
-class LoadBalancer {
+class AWS_LoadBalancer {
   /**
    *
    * @param {module} aws AWS SDK
@@ -97,4 +97,4 @@ class LoadBalancer {
     });
   }
 }
-module.exports = LoadBalancer;
+module.exports = AWS_LoadBalancer;

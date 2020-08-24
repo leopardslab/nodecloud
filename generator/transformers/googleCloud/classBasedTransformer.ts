@@ -166,7 +166,7 @@ export async function classBasedTransform(
         switch (node.text) {
           case "ClassName":
             updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier(data.functions[0].pkgName)
+              ts.createIdentifier("GCP_" + data.functions[0].pkgName)
             );
             break;
           case "ClientName":

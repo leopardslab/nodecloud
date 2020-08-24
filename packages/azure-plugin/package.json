@@ -17,6 +17,7 @@
     "@azure/arm-containerservice": "^11.0.0",
     "@azure/arm-dns": "^4.0.0",
     "@azure/arm-network": "^22.0.0",
+    "@azure/arm-resources": "^4.0.0",
     "@azure/ms-rest-js": "^2.0.7",
     "@azure/ms-rest-nodeauth": "^3.0.5"
   }

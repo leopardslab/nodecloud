@@ -3,7 +3,7 @@
  * Class to create a Route53 object
  * @category AWS
  */
-class DNS {
+class AWS_DNS {
   /**
    *
    * @param {module} aws AWS SDK
@@ -81,4 +81,4 @@ class DNS {
     });
   }
 }
-module.exports = DNS;
+module.exports = AWS_DNS;

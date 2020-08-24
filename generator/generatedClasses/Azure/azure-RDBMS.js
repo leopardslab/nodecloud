@@ -4,7 +4,7 @@ const { SqlManagementClient } = require("@azure/arm-sql");
  * Class to create a RDBMS object
  * @category Azure
  */
-class RDBMS {
+class Azure_RDBMS {
   /**
    *
    * @param {module} azureRestSdk Azure Rest SDK
@@ -230,4 +230,4 @@ class RDBMS {
     });
   }
 }
-module.exports = RDBMS;
+module.exports = Azure_RDBMS;

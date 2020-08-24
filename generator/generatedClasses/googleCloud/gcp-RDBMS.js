@@ -4,7 +4,7 @@ const { DatabaseAdminClient } = require("@google-cloud/spanner");
  * Class to create a RDBMS object
  * @category Google Cloud
  */
-class RDBMS {
+class GCP_RDBMS {
   /**
    *
    * @param {object} config Configuration object
@@ -131,4 +131,4 @@ class RDBMS {
     return this._databaseAdminClient.databasePath(project, instance, database);
   }
 }
-module.exports = RDBMS;
+module.exports = GCP_RDBMS;

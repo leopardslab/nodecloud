@@ -302,7 +302,7 @@ function classBasedTransform(code, data) {
                   switch (node.text) {
                     case "ClassName":
                       updatedIdentifier = ts.updateIdentifier(
-                        ts.createIdentifier(data.functions[0].pkgName)
+                        ts.createIdentifier("GCP_" + data.functions[0].pkgName)
                       );
                       break;
                     case "ClientName":

@@ -3,7 +3,7 @@
  * Class to create a S3 object
  * @category AWS
  */
-class StorageBucket {
+class AWS_StorageBucket {
   /**
    *
    * @param {module} aws AWS SDK
@@ -96,4 +96,4 @@ class StorageBucket {
     });
   }
 }
-module.exports = StorageBucket;
+module.exports = AWS_StorageBucket;

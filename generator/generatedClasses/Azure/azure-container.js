@@ -4,7 +4,7 @@ const { ContainerServiceClient } = require("@azure/arm-containerservice");
  * Class to create a Container object
  * @category Azure
  */
-class Container {
+class Azure_Container {
   /**
    *
    * @param {module} azureRestSdk Azure Rest SDK
@@ -144,4 +144,4 @@ class Container {
     });
   }
 }
-module.exports = Container;
+module.exports = Azure_Container;

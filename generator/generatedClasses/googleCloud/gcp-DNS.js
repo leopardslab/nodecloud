@@ -4,7 +4,7 @@ const { DNS } = require("@google-cloud/dns");
  * Class to create a dns object
  * @category Google Cloud
  */
-class dns {
+class GCP_dns {
   /**
    *
    * @param {object} config Configuration object
@@ -101,4 +101,4 @@ class dns {
     return this.dns.record(type, metadata);
   }
 }
-module.exports = dns;
+module.exports = GCP_dns;

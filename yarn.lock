@@ -74,6 +74,15 @@
     "@azure/ms-rest-js" "^2.0.4"
     tslib "^1.10.0"
 
+"@azure/arm-resources@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@azure/arm-resources/-/arm-resources-4.0.0.tgz#5b0dd7cbb4327a5a2ce184dd4e170459ac41f485"
+  integrity sha512-Dd2tsKnTJ62D/LYsr2njnj+/1HsUclJwBGZ+tVVfmdQir9pnGA11k2jhsuhHiCRU0auEKgMDNfhip7q/TpSrXQ==
+  dependencies:
+    "@azure/ms-rest-azure-js" "^2.0.1"
+    "@azure/ms-rest-js" "^2.0.4"
+    tslib "^1.10.0"
+
 "@azure/arm-sql@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@azure/arm-sql/-/arm-sql-7.0.0.tgz#434c46635916a82309d43c13b764ea425ba69585"
@@ -537,6 +546,13 @@
     fast-deep-equal "^3.1.1"
     functional-red-black-tree "^1.0.1"
     google-gax "^2.2.0"
+
+"@google-cloud/kms@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@google-cloud/kms/-/kms-2.1.2.tgz#681ef6fe4e968adb96a4ac8e76efb12e61af8dd8"
+  integrity sha512-sjqOPQNDnfW7lacd8QndR9REAcQKUK66nm6OpgraHItatLevyRbC5/V1p7vg7CVk4LtkzHjSJdDr+pEHdzOwSQ==
+  dependencies:
+    google-gax "^2.1.0"
 
 "@google-cloud/monitoring@^2.0.0":
   version "2.1.0"

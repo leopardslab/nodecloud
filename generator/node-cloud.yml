@@ -38,7 +38,7 @@ StorageBucket:
     upload: storage bucket.d.ts upload
     makePublic: storage file.d.ts makePublic
 
-paas:
+PaaS:
   AWS:
     create: elasticbeanstalk.d.ts createApplication
     update: elasticbeanstalk.d.ts updateApplication
@@ -224,17 +224,96 @@ LoadBalancer:
     list: arm-network loadBalancers.d.ts list
     addTags: arm-network loadBalancers.d.ts updateTags
     describe: arm-network loadBalancers.d.ts get
-# IAM:
 
-# ArchivalStorage:
+IAM:
+  AWS:
+    createGroup: iam.d.ts createGroup
+    deleteGroup: iam.d.ts deleteGroup
+    attachGroupPolicy: iam.d.ts attachGroupPolicy
+    detachGroupPolicy: iam.d.ts detachGroupPolicy
+    describe: iam.d.ts getGroup
 
-# Translation:
+ArchivalStorage:
+  AWS:
+    create: glacier.d.ts createVault
+    delete: glacier.d.ts deleteVault
+    list: glacier.d.ts listParts
+    upload: glacier.d.ts initiateMultipartUpload
+    deleteFiles: glacier.d.ts deleteArchive
 
-# KeyManagement:
+  GCP:
+    # Use storage class as coldline
+    mainClass: Storage
+    create: storage storage.d.ts createBucket
+    deleteFiles: storage bucket.d.ts deleteFiles
+    delete: storage bucket.d.ts delete
+    list: storage storage.d.ts getBuckets
+    upload: storage bucket.d.ts upload
+    makePublic: storage file.d.ts makePublic
 
-# NotificationService:
+Translation:
+  AWS:
+    translate: translate.d.ts translateText
+    batchTranslate: translate.d.ts startTextTranslationJob
+    getGlossary: translate.d.ts getTerminology
+    createGlossary: translate.d.ts importTerminology
+    deleteGlossary: translate.d.ts deleteTerminology
+  GCP:
+    translate: translate v3 translation_service_client.d.ts translateText
+    batchTranslate: translate v3 translation_service_client.d.ts batchTranslateText
+    getGlossary: translate v3 translation_service_client.d.ts getGlossary
+    createGlossary: translate v3 translation_service_client.d.ts createGlossary
+    detectLanguage: translate v3 translation_service_client.d.ts detectLanguage
 
-# No gcp
-# StreamDataIngest:
+KeyManagement:
+  AWS:
+    createKey: kms.d.ts createKey
+    deleteKey: kms.d.ts deleteCustomKeyStore
+    update: kms.d.ts updateKeyDescription
+    describeKey: kms.d.ts describeKey
+    putKeyPolicy: kms.d.ts putKeyPolicy
+  Azure:
+    createKey: arm-keyvault vaults.d.ts createOrUpdate
+    deleteKey: arm-keyvault vaults.d.ts deleteMethod
+    update: arm-keyvault vaults.d.ts update
+    describeKey: arm-keyvault vaults.d.ts get
+    putKeyPolicy: arm-keyvault vaults.d.ts updateAccessPolicy
+  GCP:
+    createKey: kms v1 key_management_service_client.d.ts createCryptoKey
+    deleteKey: kms v1 key_management_service_client.d.ts destroyCryptoKeyVersion
+    update: kms v1 key_management_service_client.d.ts updateCryptoKey
+    describeKey: kms v1 key_management_service_client.d.ts getCryptoKey
+    putKeyPolicy: kms v1 key_management_service_client.d.ts setIamPolicy
 
-# BlockStorage:
+NotificationService:
+  AWS:
+    createTopic: sns.d.ts createTopic
+    deleteTopic: sns.d.ts deleteTopic
+    getTopicAttributes: sns.d.ts getTopicAttributes
+    listSubscriptions: sns.d.ts listSubscriptions
+    publish: sns.d.ts publish
+    subscribe: sns.d.ts subscribe
+    listTopics: sns.d.ts listTopics
+    unsubscribe: sns.d.ts unsubscribe
+  GCP:
+    createTopic: pubsub v1 publisher_client.d.ts createTopic
+    deleteTopic: pubsub v1 publisher_client.d.ts deleteTopic
+    getTopicAttributes: pubsub v1 publisher_client.d.ts getTopic
+    listSubscriptions: pubsub v1 publisher_client.d.ts listTopicSubscriptions
+    subscribe: pubsub v1 subscriber_client.d.ts createSubscription
+    publish: pubsub v1 publisher_client.d.ts publish
+    listTopics: pubsub v1 publisher_client.d.ts listTopics
+    unsubscribe: pubsub v1 subscriber_client.d.ts deleteSubscription
+
+BlockStorage:
+  AWS:
+    create: ec2.d.ts createVolume
+    delete: ec2.d.ts deleteVolume
+    describe: ec2.d.ts describeVolumeAttribute
+    list: ec2.d.ts describeVolumes
+  Azure:
+    create: arm-compute disks.d.ts createOrUpdate
+    delete: arm-compute disks.d.ts deleteMethod
+    describe: arm-compute disks.d.ts get
+    list: arm-compute disks.d.ts list
+    update: arm-compute disks.d.ts update

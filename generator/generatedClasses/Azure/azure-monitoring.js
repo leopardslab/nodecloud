@@ -4,7 +4,7 @@ const { MonitorManagementClient } = require("@azure/arm-monitor");
  * Class to create a Monitoring object
  * @category Azure
  */
-class Monitoring {
+class Azure_Monitoring {
   /**
    *
    * @param {module} azureRestSdk Azure Rest SDK
@@ -171,4 +171,4 @@ class Monitoring {
     });
   }
 }
-module.exports = Monitoring;
+module.exports = Azure_Monitoring;

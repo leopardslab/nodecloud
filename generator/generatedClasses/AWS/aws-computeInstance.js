@@ -3,7 +3,7 @@
  * Class to create a EC2 object
  * @category AWS
  */
-class ComputeInstance {
+class AWS_ComputeInstance {
   /**
    *
    * @param {module} aws AWS SDK
@@ -161,4 +161,4 @@ class ComputeInstance {
     });
   }
 }
-module.exports = ComputeInstance;
+module.exports = AWS_ComputeInstance;

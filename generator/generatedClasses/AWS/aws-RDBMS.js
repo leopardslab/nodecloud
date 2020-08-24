@@ -3,7 +3,7 @@
  * Class to create a RDS object
  * @category AWS
  */
-class RDBMS {
+class AWS_RDBMS {
   /**
    *
    * @param {module} aws AWS SDK
@@ -113,4 +113,4 @@ class RDBMS {
     });
   }
 }
-module.exports = RDBMS;
+module.exports = AWS_RDBMS;

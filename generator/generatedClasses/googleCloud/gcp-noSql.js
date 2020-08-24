@@ -4,7 +4,7 @@ const { FirestoreClient } = require("@google-cloud/firestore");
  * Class to create a NoSql object
  * @category Google Cloud
  */
-class NoSql {
+class GCP_NoSql {
   /**
    *
    * @param {object} config Configuration object
@@ -76,4 +76,4 @@ class NoSql {
     return this._firestoreClient.runQuery(request, options);
   }
 }
-module.exports = NoSql;
+module.exports = GCP_NoSql;

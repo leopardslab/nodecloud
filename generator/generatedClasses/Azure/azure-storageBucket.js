@@ -4,7 +4,7 @@ const { StorageManagementClient } = require("@azure/arm-storage");
  * Class to create a StorageBucket object
  * @category Azure
  */
-class StorageBucket {
+class Azure_StorageBucket {
   /**
    *
    * @param {module} azureRestSdk Azure Rest SDK
@@ -126,4 +126,4 @@ class StorageBucket {
     });
   }
 }
-module.exports = StorageBucket;
+module.exports = Azure_StorageBucket;

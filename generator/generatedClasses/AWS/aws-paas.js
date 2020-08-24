@@ -3,7 +3,7 @@
  * Class to create a ElasticBeanstalk object
  * @category AWS
  */
-class paas {
+class AWS_PaaS {
   /**
    *
    * @param {module} aws AWS SDK
@@ -280,4 +280,4 @@ class paas {
     });
   }
 }
-module.exports = paas;
+module.exports = AWS_PaaS;

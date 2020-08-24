@@ -3,7 +3,7 @@
  * Class to create a EKS object
  * @category AWS
  */
-class Kubernetes {
+class AWS_Kubernetes {
   /**
    *
    * @param {module} aws AWS SDK
@@ -177,4 +177,4 @@ class Kubernetes {
     });
   }
 }
-module.exports = Kubernetes;
+module.exports = AWS_Kubernetes;

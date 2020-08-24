@@ -4,7 +4,7 @@ const { ComputeManagementClient } = require("@azure/arm-compute");
  * Class to create a ComputeInstance object
  * @category Azure
  */
-class ComputeInstance {
+class Azure_ComputeInstance {
   /**
    *
    * @param {module} azureRestSdk Azure Rest SDK
@@ -199,4 +199,4 @@ class ComputeInstance {
     });
   }
 }
-module.exports = ComputeInstance;
+module.exports = Azure_ComputeInstance;

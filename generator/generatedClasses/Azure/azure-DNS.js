@@ -4,7 +4,7 @@ const { DnsManagementClient } = require("@azure/arm-dns");
  * Class to create a DNS object
  * @category Azure
  */
-class DNS {
+class Azure_DNS {
   /**
    *
    * @param {module} azureRestSdk Azure Rest SDK
@@ -151,4 +151,4 @@ class DNS {
     });
   }
 }
-module.exports = DNS;
+module.exports = Azure_DNS;

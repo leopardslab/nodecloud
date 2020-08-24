@@ -4,7 +4,7 @@ const { ContainerServiceClient } = require("@azure/arm-containerservice");
  * Class to create a Kubernetes object
  * @category Azure
  */
-class Kubernetes {
+class Azure_Kubernetes {
   /**
    *
    * @param {module} azureRestSdk Azure Rest SDK
@@ -357,4 +357,4 @@ class Kubernetes {
     });
   }
 }
-module.exports = Kubernetes;
+module.exports = Azure_Kubernetes;
