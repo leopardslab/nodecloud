@@ -4,7 +4,6 @@
   "description": "NodeCloud Azure plugin",
   "main": "index.js",
   "scripts": {
-    "test": "mocha \"./**/*.test.js\"",
     "prettier": "yarn pretty-quick"
   },
   "keywords": [
@@ -14,10 +13,16 @@
   "author": "Scorelab",
   "license": "Apache-2.0",
   "dependencies": {
+    "@azure/arm-appservice": "^6.0.0",
+    "@azure/arm-compute": "^14.0.0",
     "@azure/arm-containerservice": "^11.0.0",
+    "@azure/arm-cosmosdb": "^9.1.0",
     "@azure/arm-dns": "^4.0.0",
+    "@azure/arm-keyvault": "^1.2.1",
+    "@azure/arm-monitor": "^6.0.0",
     "@azure/arm-network": "^22.0.0",
-    "@azure/arm-resources": "^4.0.0",
+    "@azure/arm-sql": "^7.0.2",
+    "@azure/arm-storage": "^15.1.0",
     "@azure/ms-rest-js": "^2.0.7",
     "@azure/ms-rest-nodeauth": "^3.0.5"
   }

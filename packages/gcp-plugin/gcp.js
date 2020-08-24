@@ -1,9 +1,15 @@
-const googleCompute = require("./compute/google");
-const googleStorage = require("./storage/google-compute");
-const googleStorageBucket = require("./storage/google-storage");
-const googleDNS = require("./network/google-dns");
-const googleDatastore = require("./database/google-datastore");
+const googleComputeEngine = require("./compute/computeEngine");
+const kubernetes = require("./compute/gcp-kubernetes");
+const googleStorageBucket = require("./storage/gcp-storageBucket");
+const googleDNS = require("./network/gcp-DNS");
+const fireStore = require("./database/gcp-noSql");
+const spanner = require("./database/gcp-RDBMS");
 const googleAutoML = require("./artificialInteligence/autoML");
+const pubSub = require("./appServices/gcp-notificationService");
+const translate = require("./appServices/gcp-translation");
+const kms = require("./security/gcp-keyManagement");
+const stackdriverMonitor = require("./managment/gcp-monitoring");
+const archivalStorage = require("./storage/gcp-archivalStorage");
 
 class Google {
   /**
@@ -23,11 +29,17 @@ class Google {
     return {
       getSDK: () => this._googleSDK,
       getConfig: () => this._config,
-      compute: this.googleCompute,
-      storage: this.googleStorage,
-      bucket: this.googleStorageBucket,
+      compute: this.googleComputeEngine,
+      storageBucket: this.googleStorageBucket,
       dns: this.googleDNS,
-      nosql: this.googleDatastore,
+      rdbms: this.spanner,
+      noSql: this.fireStore,
+      kubernetes: this.kubernetes,
+      archivalStorage: this.archivalStorage,
+      monitoring: this.stackdriverMonitor,
+      notificationService: this.pubSub,
+      keyManagment: this.kms,
+      translation: this.translate,
       autoML: this.googleAutoML
     };
   }
@@ -37,55 +49,96 @@ class Google {
    * @googleCompute
    * @param {object} params - { apiVersion }
    */
-  googleCompute(params) {
-    return new googleCompute(this.getSDK(), this._config);
+  googleComputeEngine(params) {
+    return new googleComputeEngine(this.getSDK(), this._config);
   }
 
   /**
-   * GCP storage Wrapper
-   * @googleCompute
-   * @param {object} params - { apiVersion }
+   * GCP stackdriverMonitor Wrapper
+   * @stackdriverMonitor
    */
-  googleStorage(params) {
-    return new googleStorage(this.getSDK(), this._config);
+  stackdriverMonitor() {
+    return new stackdriverMonitor(this.getConfig());
   }
 
   /**
-   * GCP storage bucket Wrapper
-   * @googleStorageBucket
-   * @param {object} params - { apiVersion }
+   * GCP kubernetes Wrapper
+   * @kubernetes
    */
-  googleStorageBucket(params) {
-    if (params === undefined) {
-      return new googleStorageBucket(this.getSDK(), this._config);
-    }
-    return new googleStorageBucket(
-      this.getSDK(),
-      this._config,
-      params.bucketName
-    );
+  kubernetes() {
+    return new kubernetes(this.getConfig());
   }
 
   /**
-   * GCP DNS wrapper
+   * GCP googleStorageBucket Wrapper
+   * @kubernetes
+   */
+  googleStorageBucket() {
+    return new googleStorageBucket(this.getConfig());
+  }
+
+  /**
+   * GCP googleDNS Wrapper
    * @googleDNS
-   * @param {object} params - { apiVersion }
    */
-
-  googleDNS(params) {
-    if (params === undefined) {
-      return new googleDNS(this.getSDK(), this._config);
-    }
-    return new googleDNS(this.getSDK(), this._config);
+  googleDNS() {
+    return new googleDNS(this.getConfig());
   }
 
   /**
-   * GCP Datastore wrapper
-   * @googleDatastore
-   * @param {object} params - { apiVersion }
+   * GCP spanner Wrapper
+   * @spanner
    */
-  googleDatastore(params) {
-    return new googleDatastore(this.getSDK());
+  spanner() {
+    return new spanner(this.getConfig());
+  }
+
+  /**
+   * GCP stackdriverMonitor Wrapper
+   * @stackdriverMonitor
+   */
+  stackdriverMonitor() {
+    return new stackdriverMonitor(this.getConfig());
+  }
+
+  /**
+   * GCP pubSub Wrapper
+   * @pubSub
+   */
+  pubSub() {
+    return new pubSub(this.getConfig());
+  }
+
+  /**
+   * GCP fireStore Wrapper
+   * @fireStore
+   */
+  fireStore() {
+    return new fireStore(this.getConfig());
+  }
+
+  /**
+   * GCP translate Wrapper
+   * @translate
+   */
+  translate() {
+    return new translate(this.getConfig());
+  }
+
+  /**
+   * GCP kms Wrapper
+   * @kms
+   */
+  kms() {
+    return new kms(this.getConfig());
+  }
+
+  /**
+   * GCP archivalStorage Wrapper
+   * @archivalStorage
+   */
+  archivalStorage() {
+    return new archivalStorage(this.getConfig());
   }
 
   /**
