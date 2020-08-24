@@ -44,7 +44,9 @@ export function extractSDKData(sdkFiles, methods) {
         sdkFile.sdkFunctionNames.includes(member.name.text)
       ) {
         const method = methods.find(
-          methd => methd.SDKFunctionName === member.name.text
+          methd =>
+            methd.SDKFunctionName === member.name.text &&
+            methd.fileName === sdkFile.fileName
         );
         const parameters = member.parameters.map(param => {
           return {
@@ -55,7 +57,6 @@ export function extractSDKData(sdkFiles, methods) {
         });
 
         const returnType = SyntaxKind[member.type.kind];
-
         if (!method.returnType) {
           method.params = parameters;
           method.returnType = returnType;
@@ -125,11 +126,12 @@ export async function generateAzureClass(serviceClass, serviceName) {
   const output = await transform(dummyAst, classData);
   let filePath;
   if (/^[A-Z]*$/.test(serviceName)) {
-    filePath = process.cwd() + "/generatedClasses/Azure/" + serviceName + ".js";
+    filePath =
+      process.cwd() + "/generatedClasses/Azure/azure-" + serviceName + ".js";
   } else {
     filePath =
       process.cwd() +
-      "/generatedClasses/Azure/" +
+      "/generatedClasses/Azure/azure-" +
       serviceName.charAt(0).toLowerCase() +
       serviceName.slice(1) +
       ".js";

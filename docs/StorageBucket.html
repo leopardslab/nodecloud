@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Container</title>
+    <title>StorageBucket</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -108,19 +108,19 @@
         <div class="content">
           <header class="page-title">
             <p>Class</p>
-            <h1>Container</h1>
+            <h1>StorageBucket</h1>
           </header>
 
           <section>
             <header>
               <h2>
                 <span class="attribs"><span class="type-signature"></span></span
-                >Container<span class="signature">(aws, options)</span
+                >StorageBucket<span class="signature">(aws, options)</span
                 ><span class="type-signature"></span>
               </h2>
 
               <div class="class-description">
-                <p>Class to create a ECS object</p>
+                <p>Class to create a S3 object</p>
               </div>
             </header>
 
@@ -133,11 +133,11 @@
                         <span class="tag">Constructor</span>
                       </div>
 
-                      <h4 class="name" id="Container">
-                        <a class="href-link" href="#Container">#</a>
+                      <h4 class="name" id="StorageBucket">
+                        <a class="href-link" href="#StorageBucket">#</a>
 
                         <span class="code-name">
-                          new Container<span class="signature"
+                          new StorageBucket<span class="signature"
                             >(aws, options)</span
                           ><span class="type-signature"></span>
                         </span>
@@ -185,14 +185,14 @@
 
                       <dl class="details">
                         <p class="tag-source">
-                          <a href="AWS_aws-container.js.html" class="button"
+                          <a href="AWS_aws-storageBucket.js.html" class="button"
                             >View Source</a
                           >
                           <span>
-                            <a href="AWS_aws-container.js.html"
-                              >AWS/aws-container.js</a
+                            <a href="AWS_aws-storageBucket.js.html"
+                              >AWS/aws-storageBucket.js</a
                             >,
-                            <a href="AWS_aws-container.js.html#line12"
+                            <a href="AWS_aws-storageBucket.js.html#line12"
                               >line 12</a
                             >
                           </span>
@@ -213,13 +213,13 @@
                       <span class="code-name">
                         create<span class="signature">(params)</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;createClusterResponse>}</span
+                          &rarr; {Promise.&lt;createBucketResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>Trigers the createCluster function of ECS</p>
+                      <p>Trigers the createBucket function of S3</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -242,12 +242,12 @@
 
                             <td class="type">
                               <span class="param-type"
-                                >CreateClusterRequest</span
+                                >CreateBucketRequest</span
                               >
                             </td>
 
                             <td class="description last">
-                              <p>Data required for createCluster</p>
+                              <p>Data required for createBucket</p>
                             </td>
                           </tr>
                         </tbody>
@@ -256,14 +256,16 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="AWS_aws-container.js.html" class="button"
+                        <a href="AWS_aws-storageBucket.js.html" class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="AWS_aws-container.js.html"
-                            >AWS/aws-container.js</a
+                          <a href="AWS_aws-storageBucket.js.html"
+                            >AWS/aws-storageBucket.js</a
                           >,
-                          <a href="AWS_aws-container.js.html#line24">line 24</a>
+                          <a href="AWS_aws-storageBucket.js.html#line24"
+                            >line 24</a
+                          >
                         </span>
                       </p>
                     </dl>
@@ -276,7 +278,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;createClusterResponse></span
+                              >Promise.&lt;createBucketResponse></span
                             >
                           </div>
                         </div>
@@ -290,19 +292,19 @@
 
                       <span class="code-name">
                         create<span class="signature"
-                          >(resourceGroupName, containerServiceName, parameters,
-                          options<span class="signature-attributes">opt</span
+                          >(resourceGroupName, accountName, containerName,
+                          blobContainer, options<span
+                            class="signature-attributes"
+                            >opt</span
                           >)</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;createOrUpdateResponse>}</span
+                          &rarr; {Promise.&lt;createResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>
-                        Trigers the createOrUpdate function of containerservice
-                      </p>
+                      <p>Trigers the create function of storage</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -337,9 +339,7 @@
                           </tr>
 
                           <tr class="deep-level-0">
-                            <td class="name">
-                              <code>containerServiceName</code>
-                            </td>
+                            <td class="name"><code>accountName</code></td>
 
                             <td class="type">
                               <span class="param-type">StringKeyword</span>
@@ -353,7 +353,21 @@
                           </tr>
 
                           <tr class="deep-level-0">
-                            <td class="name"><code>parameters</code></td>
+                            <td class="name"><code>containerName</code></td>
+
+                            <td class="type">
+                              <span class="param-type">StringKeyword</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Mandatory parameter</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>blobContainer</code></td>
 
                             <td class="type">
                               <span class="param-type">TypeReference</span>
@@ -385,15 +399,17 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="Azure_azure-container.js.html" class="button"
+                        <a
+                          href="Azure_azure-storageBucket.js.html"
+                          class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="Azure_azure-container.js.html"
-                            >Azure/azure-container.js</a
+                          <a href="Azure_azure-storageBucket.js.html"
+                            >Azure/azure-storageBucket.js</a
                           >,
-                          <a href="Azure_azure-container.js.html#line23"
-                            >line 23</a
+                          <a href="Azure_azure-storageBucket.js.html#line24"
+                            >line 24</a
                           >
                         </span>
                       </p>
@@ -407,7 +423,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;createOrUpdateResponse></span
+                              >Promise.&lt;createResponse></span
                             >
                           </div>
                         </div>
@@ -422,13 +438,13 @@
                       <span class="code-name">
                         delete<span class="signature">(params)</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;deleteClusterResponse>}</span
+                          &rarr; {Promise.&lt;deleteBucketResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>Trigers the deleteCluster function of ECS</p>
+                      <p>Trigers the deleteBucket function of S3</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -451,12 +467,12 @@
 
                             <td class="type">
                               <span class="param-type"
-                                >DeleteClusterRequest</span
+                                >DeleteBucketRequest</span
                               >
                             </td>
 
                             <td class="description last">
-                              <p>Data required for deleteCluster</p>
+                              <p>Data required for deleteBucket</p>
                             </td>
                           </tr>
                         </tbody>
@@ -465,14 +481,16 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="AWS_aws-container.js.html" class="button"
+                        <a href="AWS_aws-storageBucket.js.html" class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="AWS_aws-container.js.html"
-                            >AWS/aws-container.js</a
+                          <a href="AWS_aws-storageBucket.js.html"
+                            >AWS/aws-storageBucket.js</a
                           >,
-                          <a href="AWS_aws-container.js.html#line41">line 41</a>
+                          <a href="AWS_aws-storageBucket.js.html#line41"
+                            >line 41</a
+                          >
                         </span>
                       </p>
                     </dl>
@@ -485,7 +503,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;deleteClusterResponse></span
+                              >Promise.&lt;deleteBucketResponse></span
                             >
                           </div>
                         </div>
@@ -499,7 +517,7 @@
 
                       <span class="code-name">
                         delete<span class="signature"
-                          >(resourceGroupName, containerServiceName,
+                          >(resourceGroupName, accountName, containerName,
                           options<span class="signature-attributes">opt</span
                           >)</span
                         ><span class="type-signature">
@@ -509,9 +527,7 @@
                     </h4>
 
                     <div class="description">
-                      <p>
-                        Trigers the deleteMethod function of containerservice
-                      </p>
+                      <p>Trigers the deleteMethod function of storage</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -546,9 +562,21 @@
                           </tr>
 
                           <tr class="deep-level-0">
-                            <td class="name">
-                              <code>containerServiceName</code>
+                            <td class="name"><code>accountName</code></td>
+
+                            <td class="type">
+                              <span class="param-type">StringKeyword</span>
                             </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Mandatory parameter</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>containerName</code></td>
 
                             <td class="type">
                               <span class="param-type">StringKeyword</span>
@@ -580,15 +608,17 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="Azure_azure-container.js.html" class="button"
+                        <a
+                          href="Azure_azure-storageBucket.js.html"
+                          class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="Azure_azure-container.js.html"
-                            >Azure/azure-container.js</a
+                          <a href="Azure_azure-storageBucket.js.html"
+                            >Azure/azure-storageBucket.js</a
                           >,
-                          <a href="Azure_azure-container.js.html#line45"
-                            >line 45</a
+                          <a href="Azure_azure-storageBucket.js.html#line47"
+                            >line 47</a
                           >
                         </span>
                       </p>
@@ -611,19 +641,19 @@
                   </div>
 
                   <div class="member">
-                    <h4 class="name" id="describe">
-                      <a class="href-link" href="#describe">#</a>
+                    <h4 class="name" id="deleteFiles">
+                      <a class="href-link" href="#deleteFiles">#</a>
 
                       <span class="code-name">
-                        describe<span class="signature">(params)</span
+                        deleteFiles<span class="signature">(params)</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;describeClustersResponse>}</span
+                          &rarr; {Promise.&lt;deleteObjectsResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>Trigers the describeClusters function of ECS</p>
+                      <p>Trigers the deleteObjects function of S3</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -646,12 +676,12 @@
 
                             <td class="type">
                               <span class="param-type"
-                                >DescribeClustersRequest</span
+                                >DeleteObjectsRequest</span
                               >
                             </td>
 
                             <td class="description last">
-                              <p>Data required for describeClusters</p>
+                              <p>Data required for deleteObjects</p>
                             </td>
                           </tr>
                         </tbody>
@@ -660,14 +690,16 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="AWS_aws-container.js.html" class="button"
+                        <a href="AWS_aws-storageBucket.js.html" class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="AWS_aws-container.js.html"
-                            >AWS/aws-container.js</a
+                          <a href="AWS_aws-storageBucket.js.html"
+                            >AWS/aws-storageBucket.js</a
                           >,
-                          <a href="AWS_aws-container.js.html#line58">line 58</a>
+                          <a href="AWS_aws-storageBucket.js.html#line58"
+                            >line 58</a
+                          >
                         </span>
                       </p>
                     </dl>
@@ -680,7 +712,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;describeClustersResponse></span
+                              >Promise.&lt;deleteObjectsResponse></span
                             >
                           </div>
                         </div>
@@ -689,22 +721,71 @@
                   </div>
 
                   <div class="member">
-                    <h4 class="name" id="describe">
-                      <a class="href-link" href="#describe">#</a>
+                    <h4 class="name" id="list">
+                      <a class="href-link" href="#list">#</a>
 
                       <span class="code-name">
-                        describe<span class="signature"
-                          >(resourceGroupName, containerServiceName,
-                          options<span class="signature-attributes">opt</span
-                          >)</span
+                        list<span class="signature">()</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;getResponse>}</span
+                          &rarr; {Promise.&lt;listBucketsResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>Trigers the get function of containerservice</p>
+                      <p>Trigers the listBuckets function of S3</p>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a href="AWS_aws-storageBucket.js.html" class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="AWS_aws-storageBucket.js.html"
+                            >AWS/aws-storageBucket.js</a
+                          >,
+                          <a href="AWS_aws-storageBucket.js.html#line74"
+                            >line 74</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;listBucketsResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="list">
+                      <a class="href-link" href="#list">#</a>
+
+                      <span class="code-name">
+                        list<span class="signature"
+                          >(resourceGroupName, accountName, options<span
+                            class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;listResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Trigers the list function of storage</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -739,9 +820,7 @@
                           </tr>
 
                           <tr class="deep-level-0">
-                            <td class="name">
-                              <code>containerServiceName</code>
-                            </td>
+                            <td class="name"><code>accountName</code></td>
 
                             <td class="type">
                               <span class="param-type">StringKeyword</span>
@@ -773,15 +852,17 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="Azure_azure-container.js.html" class="button"
+                        <a
+                          href="Azure_azure-storageBucket.js.html"
+                          class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="Azure_azure-container.js.html"
-                            >Azure/azure-container.js</a
+                          <a href="Azure_azure-storageBucket.js.html"
+                            >Azure/azure-storageBucket.js</a
                           >,
-                          <a href="Azure_azure-container.js.html#line67"
-                            >line 67</a
+                          <a href="Azure_azure-storageBucket.js.html#line69"
+                            >line 69</a
                           >
                         </span>
                       </p>
@@ -795,7 +876,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;getResponse></span
+                              >Promise.&lt;listResponse></span
                             >
                           </div>
                         </div>
@@ -804,19 +885,19 @@
                   </div>
 
                   <div class="member">
-                    <h4 class="name" id="list">
-                      <a class="href-link" href="#list">#</a>
+                    <h4 class="name" id="upload">
+                      <a class="href-link" href="#upload">#</a>
 
                       <span class="code-name">
-                        list<span class="signature">(params)</span
+                        upload<span class="signature">(params)</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;listClustersResponse>}</span
+                          &rarr; {Promise.&lt;uploadPartResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>Trigers the listClusters function of ECS</p>
+                      <p>Trigers the uploadPart function of S3</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -838,13 +919,11 @@
                             <td class="name"><code>params</code></td>
 
                             <td class="type">
-                              <span class="param-type"
-                                >ListClustersRequest</span
-                              >
+                              <span class="param-type">UploadPartRequest</span>
                             </td>
 
                             <td class="description last">
-                              <p>Data required for listClusters</p>
+                              <p>Data required for uploadPart</p>
                             </td>
                           </tr>
                         </tbody>
@@ -853,97 +932,15 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="AWS_aws-container.js.html" class="button"
+                        <a href="AWS_aws-storageBucket.js.html" class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="AWS_aws-container.js.html"
-                            >AWS/aws-container.js</a
+                          <a href="AWS_aws-storageBucket.js.html"
+                            >AWS/aws-storageBucket.js</a
                           >,
-                          <a href="AWS_aws-container.js.html#line75">line 75</a>
-                        </span>
-                      </p>
-                    </dl>
-
-                    <div class="columns method-parameter">
-                      <div class="column is-2"><label>Returns:</label></div>
-                      <div class="column is-10">
-                        <div class="columns">
-                          <div class="column is-5 has-text-left">
-                            <label>Type: </label>
-
-                            <span class="param-type"
-                              >Promise.&lt;listClustersResponse></span
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="member">
-                    <h4 class="name" id="list">
-                      <a class="href-link" href="#list">#</a>
-
-                      <span class="code-name">
-                        list<span class="signature"
-                          >(options<span class="signature-attributes">opt</span
-                          >)</span
-                        ><span class="type-signature">
-                          &rarr; {Promise.&lt;listResponse>}</span
-                        >
-                      </span>
-                    </h4>
-
-                    <div class="description">
-                      <p>Trigers the list function of containerservice</p>
-                    </div>
-
-                    <h5>Parameters:</h5>
-
-                    <div class="table-container">
-                      <table class="params table">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-
-                            <th>Type</th>
-
-                            <th>Attributes</th>
-
-                            <th class="last">Description</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                          <tr class="deep-level-0">
-                            <td class="name"><code>options</code></td>
-
-                            <td class="type">
-                              <span class="param-type">TypeReference</span>
-                            </td>
-
-                            <td class="attributes">&lt;optional><br /></td>
-
-                            <td class="description last">
-                              <p>Optional parameter</p>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <dl class="details">
-                      <p class="tag-source">
-                        <a href="Azure_azure-container.js.html" class="button"
-                          >View Source</a
-                        >
-                        <span>
-                          <a href="Azure_azure-container.js.html"
-                            >Azure/azure-container.js</a
-                          >,
-                          <a href="Azure_azure-container.js.html#line87"
-                            >line 87</a
+                          <a href="AWS_aws-storageBucket.js.html#line91"
+                            >line 91</a
                           >
                         </span>
                       </p>
@@ -957,7 +954,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;listResponse></span
+                              >Promise.&lt;uploadPartResponse></span
                             >
                           </div>
                         </div>
@@ -973,12 +970,12 @@
             <header>
               <h2>
                 <span class="attribs"><span class="type-signature"></span></span
-                >Container<span class="signature">(azureRestSdk)</span
+                >StorageBucket<span class="signature">(azureRestSdk)</span
                 ><span class="type-signature"></span>
               </h2>
 
               <div class="class-description">
-                <p>Class to create a Container object</p>
+                <p>Class to create a StorageBucket object</p>
               </div>
             </header>
 
@@ -991,11 +988,11 @@
                         <span class="tag">Constructor</span>
                       </div>
 
-                      <h4 class="name" id="Container">
-                        <a class="href-link" href="#Container">#</a>
+                      <h4 class="name" id="StorageBucket">
+                        <a class="href-link" href="#StorageBucket">#</a>
 
                         <span class="code-name">
-                          new Container<span class="signature"
+                          new StorageBucket<span class="signature"
                             >(azureRestSdk)</span
                           ><span class="type-signature"></span>
                         </span>
@@ -1033,14 +1030,16 @@
 
                       <dl class="details">
                         <p class="tag-source">
-                          <a href="Azure_azure-container.js.html" class="button"
+                          <a
+                            href="Azure_azure-storageBucket.js.html"
+                            class="button"
                             >View Source</a
                           >
                           <span>
-                            <a href="Azure_azure-container.js.html"
-                              >Azure/azure-container.js</a
+                            <a href="Azure_azure-storageBucket.js.html"
+                              >Azure/azure-storageBucket.js</a
                             >,
-                            <a href="Azure_azure-container.js.html#line12"
+                            <a href="Azure_azure-storageBucket.js.html#line12"
                               >line 12</a
                             >
                           </span>
@@ -1061,13 +1060,13 @@
                       <span class="code-name">
                         create<span class="signature">(params)</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;createClusterResponse>}</span
+                          &rarr; {Promise.&lt;createBucketResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>Trigers the createCluster function of ECS</p>
+                      <p>Trigers the createBucket function of S3</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -1090,12 +1089,12 @@
 
                             <td class="type">
                               <span class="param-type"
-                                >CreateClusterRequest</span
+                                >CreateBucketRequest</span
                               >
                             </td>
 
                             <td class="description last">
-                              <p>Data required for createCluster</p>
+                              <p>Data required for createBucket</p>
                             </td>
                           </tr>
                         </tbody>
@@ -1104,14 +1103,16 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="AWS_aws-container.js.html" class="button"
+                        <a href="AWS_aws-storageBucket.js.html" class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="AWS_aws-container.js.html"
-                            >AWS/aws-container.js</a
+                          <a href="AWS_aws-storageBucket.js.html"
+                            >AWS/aws-storageBucket.js</a
                           >,
-                          <a href="AWS_aws-container.js.html#line24">line 24</a>
+                          <a href="AWS_aws-storageBucket.js.html#line24"
+                            >line 24</a
+                          >
                         </span>
                       </p>
                     </dl>
@@ -1124,7 +1125,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;createClusterResponse></span
+                              >Promise.&lt;createBucketResponse></span
                             >
                           </div>
                         </div>
@@ -1138,19 +1139,19 @@
 
                       <span class="code-name">
                         create<span class="signature"
-                          >(resourceGroupName, containerServiceName, parameters,
-                          options<span class="signature-attributes">opt</span
+                          >(resourceGroupName, accountName, containerName,
+                          blobContainer, options<span
+                            class="signature-attributes"
+                            >opt</span
                           >)</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;createOrUpdateResponse>}</span
+                          &rarr; {Promise.&lt;createResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>
-                        Trigers the createOrUpdate function of containerservice
-                      </p>
+                      <p>Trigers the create function of storage</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -1185,9 +1186,7 @@
                           </tr>
 
                           <tr class="deep-level-0">
-                            <td class="name">
-                              <code>containerServiceName</code>
-                            </td>
+                            <td class="name"><code>accountName</code></td>
 
                             <td class="type">
                               <span class="param-type">StringKeyword</span>
@@ -1201,7 +1200,21 @@
                           </tr>
 
                           <tr class="deep-level-0">
-                            <td class="name"><code>parameters</code></td>
+                            <td class="name"><code>containerName</code></td>
+
+                            <td class="type">
+                              <span class="param-type">StringKeyword</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Mandatory parameter</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>blobContainer</code></td>
 
                             <td class="type">
                               <span class="param-type">TypeReference</span>
@@ -1233,15 +1246,17 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="Azure_azure-container.js.html" class="button"
+                        <a
+                          href="Azure_azure-storageBucket.js.html"
+                          class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="Azure_azure-container.js.html"
-                            >Azure/azure-container.js</a
+                          <a href="Azure_azure-storageBucket.js.html"
+                            >Azure/azure-storageBucket.js</a
                           >,
-                          <a href="Azure_azure-container.js.html#line23"
-                            >line 23</a
+                          <a href="Azure_azure-storageBucket.js.html#line24"
+                            >line 24</a
                           >
                         </span>
                       </p>
@@ -1255,7 +1270,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;createOrUpdateResponse></span
+                              >Promise.&lt;createResponse></span
                             >
                           </div>
                         </div>
@@ -1270,13 +1285,13 @@
                       <span class="code-name">
                         delete<span class="signature">(params)</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;deleteClusterResponse>}</span
+                          &rarr; {Promise.&lt;deleteBucketResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>Trigers the deleteCluster function of ECS</p>
+                      <p>Trigers the deleteBucket function of S3</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -1299,12 +1314,12 @@
 
                             <td class="type">
                               <span class="param-type"
-                                >DeleteClusterRequest</span
+                                >DeleteBucketRequest</span
                               >
                             </td>
 
                             <td class="description last">
-                              <p>Data required for deleteCluster</p>
+                              <p>Data required for deleteBucket</p>
                             </td>
                           </tr>
                         </tbody>
@@ -1313,14 +1328,16 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="AWS_aws-container.js.html" class="button"
+                        <a href="AWS_aws-storageBucket.js.html" class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="AWS_aws-container.js.html"
-                            >AWS/aws-container.js</a
+                          <a href="AWS_aws-storageBucket.js.html"
+                            >AWS/aws-storageBucket.js</a
                           >,
-                          <a href="AWS_aws-container.js.html#line41">line 41</a>
+                          <a href="AWS_aws-storageBucket.js.html#line41"
+                            >line 41</a
+                          >
                         </span>
                       </p>
                     </dl>
@@ -1333,7 +1350,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;deleteClusterResponse></span
+                              >Promise.&lt;deleteBucketResponse></span
                             >
                           </div>
                         </div>
@@ -1347,7 +1364,7 @@
 
                       <span class="code-name">
                         delete<span class="signature"
-                          >(resourceGroupName, containerServiceName,
+                          >(resourceGroupName, accountName, containerName,
                           options<span class="signature-attributes">opt</span
                           >)</span
                         ><span class="type-signature">
@@ -1357,9 +1374,7 @@
                     </h4>
 
                     <div class="description">
-                      <p>
-                        Trigers the deleteMethod function of containerservice
-                      </p>
+                      <p>Trigers the deleteMethod function of storage</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -1394,9 +1409,21 @@
                           </tr>
 
                           <tr class="deep-level-0">
-                            <td class="name">
-                              <code>containerServiceName</code>
+                            <td class="name"><code>accountName</code></td>
+
+                            <td class="type">
+                              <span class="param-type">StringKeyword</span>
                             </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Mandatory parameter</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>containerName</code></td>
 
                             <td class="type">
                               <span class="param-type">StringKeyword</span>
@@ -1428,15 +1455,17 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="Azure_azure-container.js.html" class="button"
+                        <a
+                          href="Azure_azure-storageBucket.js.html"
+                          class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="Azure_azure-container.js.html"
-                            >Azure/azure-container.js</a
+                          <a href="Azure_azure-storageBucket.js.html"
+                            >Azure/azure-storageBucket.js</a
                           >,
-                          <a href="Azure_azure-container.js.html#line45"
-                            >line 45</a
+                          <a href="Azure_azure-storageBucket.js.html#line47"
+                            >line 47</a
                           >
                         </span>
                       </p>
@@ -1459,19 +1488,19 @@
                   </div>
 
                   <div class="member">
-                    <h4 class="name" id="describe">
-                      <a class="href-link" href="#describe">#</a>
+                    <h4 class="name" id="deleteFiles">
+                      <a class="href-link" href="#deleteFiles">#</a>
 
                       <span class="code-name">
-                        describe<span class="signature">(params)</span
+                        deleteFiles<span class="signature">(params)</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;describeClustersResponse>}</span
+                          &rarr; {Promise.&lt;deleteObjectsResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>Trigers the describeClusters function of ECS</p>
+                      <p>Trigers the deleteObjects function of S3</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -1494,12 +1523,12 @@
 
                             <td class="type">
                               <span class="param-type"
-                                >DescribeClustersRequest</span
+                                >DeleteObjectsRequest</span
                               >
                             </td>
 
                             <td class="description last">
-                              <p>Data required for describeClusters</p>
+                              <p>Data required for deleteObjects</p>
                             </td>
                           </tr>
                         </tbody>
@@ -1508,14 +1537,16 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="AWS_aws-container.js.html" class="button"
+                        <a href="AWS_aws-storageBucket.js.html" class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="AWS_aws-container.js.html"
-                            >AWS/aws-container.js</a
+                          <a href="AWS_aws-storageBucket.js.html"
+                            >AWS/aws-storageBucket.js</a
                           >,
-                          <a href="AWS_aws-container.js.html#line58">line 58</a>
+                          <a href="AWS_aws-storageBucket.js.html#line58"
+                            >line 58</a
+                          >
                         </span>
                       </p>
                     </dl>
@@ -1528,7 +1559,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;describeClustersResponse></span
+                              >Promise.&lt;deleteObjectsResponse></span
                             >
                           </div>
                         </div>
@@ -1537,22 +1568,71 @@
                   </div>
 
                   <div class="member">
-                    <h4 class="name" id="describe">
-                      <a class="href-link" href="#describe">#</a>
+                    <h4 class="name" id="list">
+                      <a class="href-link" href="#list">#</a>
 
                       <span class="code-name">
-                        describe<span class="signature"
-                          >(resourceGroupName, containerServiceName,
-                          options<span class="signature-attributes">opt</span
-                          >)</span
+                        list<span class="signature">()</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;getResponse>}</span
+                          &rarr; {Promise.&lt;listBucketsResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>Trigers the get function of containerservice</p>
+                      <p>Trigers the listBuckets function of S3</p>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a href="AWS_aws-storageBucket.js.html" class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="AWS_aws-storageBucket.js.html"
+                            >AWS/aws-storageBucket.js</a
+                          >,
+                          <a href="AWS_aws-storageBucket.js.html#line74"
+                            >line 74</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;listBucketsResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="list">
+                      <a class="href-link" href="#list">#</a>
+
+                      <span class="code-name">
+                        list<span class="signature"
+                          >(resourceGroupName, accountName, options<span
+                            class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;listResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Trigers the list function of storage</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -1587,9 +1667,7 @@
                           </tr>
 
                           <tr class="deep-level-0">
-                            <td class="name">
-                              <code>containerServiceName</code>
-                            </td>
+                            <td class="name"><code>accountName</code></td>
 
                             <td class="type">
                               <span class="param-type">StringKeyword</span>
@@ -1621,15 +1699,17 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="Azure_azure-container.js.html" class="button"
+                        <a
+                          href="Azure_azure-storageBucket.js.html"
+                          class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="Azure_azure-container.js.html"
-                            >Azure/azure-container.js</a
+                          <a href="Azure_azure-storageBucket.js.html"
+                            >Azure/azure-storageBucket.js</a
                           >,
-                          <a href="Azure_azure-container.js.html#line67"
-                            >line 67</a
+                          <a href="Azure_azure-storageBucket.js.html#line69"
+                            >line 69</a
                           >
                         </span>
                       </p>
@@ -1643,7 +1723,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;getResponse></span
+                              >Promise.&lt;listResponse></span
                             >
                           </div>
                         </div>
@@ -1652,19 +1732,19 @@
                   </div>
 
                   <div class="member">
-                    <h4 class="name" id="list">
-                      <a class="href-link" href="#list">#</a>
+                    <h4 class="name" id="upload">
+                      <a class="href-link" href="#upload">#</a>
 
                       <span class="code-name">
-                        list<span class="signature">(params)</span
+                        upload<span class="signature">(params)</span
                         ><span class="type-signature">
-                          &rarr; {Promise.&lt;listClustersResponse>}</span
+                          &rarr; {Promise.&lt;uploadPartResponse>}</span
                         >
                       </span>
                     </h4>
 
                     <div class="description">
-                      <p>Trigers the listClusters function of ECS</p>
+                      <p>Trigers the uploadPart function of S3</p>
                     </div>
 
                     <h5>Parameters:</h5>
@@ -1686,13 +1766,11 @@
                             <td class="name"><code>params</code></td>
 
                             <td class="type">
-                              <span class="param-type"
-                                >ListClustersRequest</span
-                              >
+                              <span class="param-type">UploadPartRequest</span>
                             </td>
 
                             <td class="description last">
-                              <p>Data required for listClusters</p>
+                              <p>Data required for uploadPart</p>
                             </td>
                           </tr>
                         </tbody>
@@ -1701,97 +1779,15 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="AWS_aws-container.js.html" class="button"
+                        <a href="AWS_aws-storageBucket.js.html" class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="AWS_aws-container.js.html"
-                            >AWS/aws-container.js</a
+                          <a href="AWS_aws-storageBucket.js.html"
+                            >AWS/aws-storageBucket.js</a
                           >,
-                          <a href="AWS_aws-container.js.html#line75">line 75</a>
-                        </span>
-                      </p>
-                    </dl>
-
-                    <div class="columns method-parameter">
-                      <div class="column is-2"><label>Returns:</label></div>
-                      <div class="column is-10">
-                        <div class="columns">
-                          <div class="column is-5 has-text-left">
-                            <label>Type: </label>
-
-                            <span class="param-type"
-                              >Promise.&lt;listClustersResponse></span
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="member">
-                    <h4 class="name" id="list">
-                      <a class="href-link" href="#list">#</a>
-
-                      <span class="code-name">
-                        list<span class="signature"
-                          >(options<span class="signature-attributes">opt</span
-                          >)</span
-                        ><span class="type-signature">
-                          &rarr; {Promise.&lt;listResponse>}</span
-                        >
-                      </span>
-                    </h4>
-
-                    <div class="description">
-                      <p>Trigers the list function of containerservice</p>
-                    </div>
-
-                    <h5>Parameters:</h5>
-
-                    <div class="table-container">
-                      <table class="params table">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-
-                            <th>Type</th>
-
-                            <th>Attributes</th>
-
-                            <th class="last">Description</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                          <tr class="deep-level-0">
-                            <td class="name"><code>options</code></td>
-
-                            <td class="type">
-                              <span class="param-type">TypeReference</span>
-                            </td>
-
-                            <td class="attributes">&lt;optional><br /></td>
-
-                            <td class="description last">
-                              <p>Optional parameter</p>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <dl class="details">
-                      <p class="tag-source">
-                        <a href="Azure_azure-container.js.html" class="button"
-                          >View Source</a
-                        >
-                        <span>
-                          <a href="Azure_azure-container.js.html"
-                            >Azure/azure-container.js</a
-                          >,
-                          <a href="Azure_azure-container.js.html#line87"
-                            >line 87</a
+                          <a href="AWS_aws-storageBucket.js.html#line91"
+                            >line 91</a
                           >
                         </span>
                       </p>
@@ -1805,7 +1801,7 @@
                             <label>Type: </label>
 
                             <span class="param-type"
-                              >Promise.&lt;listResponse></span
+                              >Promise.&lt;uploadPartResponse></span
                             >
                           </div>
                         </div>

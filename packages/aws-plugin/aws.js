@@ -1,4 +1,5 @@
-const ec2 = require("./compute/aws-ec2");
+const ec2 = require("./compute/computeInstance");
+
 const ecs = require("./compute/aws-ecs");
 const ebs = require("./storage/aws-ebs");
 const s3 = require("./storage/aws-s3");
@@ -57,8 +58,11 @@ class AWS {
    * @param {object} options - { apiVersion }
    */
   ec2(options) {
-    this._apiVersion = options.apiVersion;
-    return new ec2(this.getSDK(), this._apiVersion);
+    if (options.apiVersion) {
+      this._apiVersion = options.apiVersion;
+      return new ec2(this.getSDK(), options);
+    }
+    return new ec2(this.getSDK());
   }
 
   /**

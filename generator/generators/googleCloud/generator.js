@@ -406,13 +406,13 @@ function generateClassBasedCode(methods, data, serviceName) {
           if (/^[A-Z]*$/.test(serviceName)) {
             filePath =
               process.cwd() +
-              "/generatedClasses/googleCloud/" +
+              "/generatedClasses/googleCloud/gcp-" +
               serviceName +
               ".js";
           } else {
             filePath =
               process.cwd() +
-              "/generatedClasses/googleCloud/" +
+              "/generatedClasses/googleCloud/gcp-" +
               serviceName.charAt(0).toLowerCase() +
               serviceName.slice(1) +
               ".js";
@@ -498,13 +498,13 @@ function generateClientBasedCode(methods, serviceName) {
           if (/^[A-Z]*$/.test(serviceName)) {
             filePath =
               process.cwd() +
-              "/generatedClasses/googleCloud/" +
+              "/generatedClasses/googleCloud/gcp-" +
               serviceName +
               ".js";
           } else {
             filePath =
               process.cwd() +
-              "/generatedClasses/googleCloud/" +
+              "/generatedClasses/googleCloud/gcp-" +
               serviceName.charAt(0).toLowerCase() +
               serviceName.slice(1) +
               ".js";

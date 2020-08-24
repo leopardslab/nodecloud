@@ -1,6 +1,6 @@
 {
   "name": "@nodecloud/azure-plugin",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "NodeCloud Azure plugin",
   "main": "index.js",
   "scripts": {
@@ -15,14 +15,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@azure/arm-containerservice": "^11.0.0",
+    "@azure/arm-dns": "^4.0.0",
+    "@azure/arm-network": "^22.0.0",
     "@azure/ms-rest-js": "^2.0.7",
-    "@azure/ms-rest-nodeauth": "^3.0.5",
-    "azure-arm-apimanagement": "^5.1.0",
-    "azure-arm-compute": "^10.0.0",
-    "azure-arm-network": "^13.0.0",
-    "azure-arm-sql": "^5.7.0",
-    "azure-arm-website": "^5.7.0",
-    "azure-storage": "^2.10.3",
-    "ms-rest-azure": "^3.0.0"
+    "@azure/ms-rest-nodeauth": "^3.0.5"
   }
 }

@@ -68,24 +68,37 @@
             <h2>AWS</h2>
             <h3>Classes</h3>
             <ul>
-              <li><a href="EKS.html">EKS</a></li>
-              <li><a href="SimpleDB.html">SimpleDB</a></li>
+              <li><a href="ComputeInstance.html">ComputeInstance</a></li>
+              <li><a href="Container.html">Container</a></li>
+              <li><a href="Kubernetes.html">Kubernetes</a></li>
+              <li><a href="Monitoring.html">Monitoring</a></li>
+              <li><a href="NoSqlIndexed.html">NoSqlIndexed</a></li>
+              <li><a href="paas.html">paas</a></li>
+              <li><a href="RDBMS.html">RDBMS</a></li>
+              <li><a href="StorageBucket.html">StorageBucket</a></li>
             </ul>
           </div>
           <div class="category">
             <h2>Azure</h2>
             <h3>Classes</h3>
             <ul>
-              <li><a href="containerservice.html">containerservice</a></li>
+              <li><a href="ComputeInstance.html">ComputeInstance</a></li>
+              <li><a href="Container.html">Container</a></li>
+              <li><a href="Kubernetes.html">Kubernetes</a></li>
+              <li><a href="Monitoring.html">Monitoring</a></li>
+              <li><a href="NoSqlIndexed.html">NoSqlIndexed</a></li>
+              <li><a href="paas.html">paas</a></li>
+              <li><a href="RDBMS.html">RDBMS</a></li>
+              <li><a href="StorageBucket.html">StorageBucket</a></li>
             </ul>
           </div>
           <div class="category">
             <h2>Google Cloud</h2>
             <h3>Classes</h3>
             <ul>
-              <li><a href="container.html">container</a></li>
-              <li><a href="dns.html">dns</a></li>
-              <li><a href="monitoring.html">monitoring</a></li>
+              <li><a href="Kubernetes.html">Kubernetes</a></li>
+              <li><a href="Monitoring.html">Monitoring</a></li>
+              <li><a href="RDBMS.html">RDBMS</a></li>
               <li><a href="storage.html">storage</a></li>
             </ul>
           </div>
@@ -161,14 +174,17 @@
 
                       <dl class="details">
                         <p class="tag-source">
-                          <a href="googleCloud_storage.js.html" class="button"
+                          <a
+                            href="googleCloud_gcp-storageBucket.js.html"
+                            class="button"
                             >View Source</a
                           >
                           <span>
-                            <a href="googleCloud_storage.js.html"
-                              >googleCloud/storage.js</a
+                            <a href="googleCloud_gcp-storageBucket.js.html"
+                              >googleCloud/gcp-storageBucket.js</a
                             >,
-                            <a href="googleCloud_storage.js.html#line12"
+                            <a
+                              href="googleCloud_gcp-storageBucket.js.html#line12"
                               >line 12</a
                             >
                           </span>
@@ -182,6 +198,310 @@
               <div class="vertical-section">
                 <h1>Methods</h1>
                 <div class="members">
+                  <div class="member">
+                    <h4 class="name" id="create">
+                      <a class="href-link" href="#create">#</a>
+
+                      <span class="code-name">
+                        create<span class="signature"
+                          >(name, metadata<span class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;createBucketResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Trigers the createBucket function of storage</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>name</code></td>
+
+                            <td class="type">
+                              <span class="param-type">StringKeyword</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Mandatory parameter</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>metadata</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Optional parameter</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-storageBucket.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-storageBucket.js.html"
+                            >googleCloud/gcp-storageBucket.js</a
+                          >,
+                          <a href="googleCloud_gcp-storageBucket.js.html#line75"
+                            >line 75</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;createBucketResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="deleteFiles">
+                      <a class="href-link" href="#deleteFiles">#</a>
+
+                      <span class="code-name">
+                        deleteFiles<span class="signature"
+                          >(identifier<span class="signature-attributes"
+                            >opt</span
+                          >, storage, query<span class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;deleteFilesResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Trigers the deleteFiles function of storage</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>identifier</code></td>
+
+                            <td class="type">
+                              <span class="param-type">string</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Optional parameter</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>storage</code></td>
+
+                            <td class="type">
+                              <span class="param-type">Storage</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Mandatory parameter</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>query</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Optional parameter</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-storageBucket.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-storageBucket.js.html"
+                            >googleCloud/gcp-storageBucket.js</a
+                          >,
+                          <a href="googleCloud_gcp-storageBucket.js.html#line22"
+                            >line 22</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;deleteFilesResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="list">
+                      <a class="href-link" href="#list">#</a>
+
+                      <span class="code-name">
+                        list<span class="signature"
+                          >(options<span class="signature-attributes">opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;getBucketsResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Trigers the getBuckets function of storage</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>options</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Optional parameter</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-storageBucket.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-storageBucket.js.html"
+                            >googleCloud/gcp-storageBucket.js</a
+                          >,
+                          <a href="googleCloud_gcp-storageBucket.js.html#line91"
+                            >line 91</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;getBucketsResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="member">
                     <h4 class="name" id="makePublic">
                       <a class="href-link" href="#makePublic">#</a>
@@ -251,15 +571,17 @@
 
                     <dl class="details">
                       <p class="tag-source">
-                        <a href="googleCloud_storage.js.html" class="button"
+                        <a
+                          href="googleCloud_gcp-storageBucket.js.html"
+                          class="button"
                           >View Source</a
                         >
                         <span>
-                          <a href="googleCloud_storage.js.html"
-                            >googleCloud/storage.js</a
+                          <a href="googleCloud_gcp-storageBucket.js.html"
+                            >googleCloud/gcp-storageBucket.js</a
                           >,
-                          <a href="googleCloud_storage.js.html#line21"
-                            >line 21</a
+                          <a href="googleCloud_gcp-storageBucket.js.html#line58"
+                            >line 58</a
                           >
                         </span>
                       </p>
@@ -274,6 +596,138 @@
 
                             <span class="param-type"
                               >Promise.&lt;makePublicResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="upload">
+                      <a class="href-link" href="#upload">#</a>
+
+                      <span class="code-name">
+                        upload<span class="signature"
+                          >(identifier<span class="signature-attributes"
+                            >opt</span
+                          >, storage, pathString, options<span
+                            class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;uploadResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Trigers the upload function of storage</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>identifier</code></td>
+
+                            <td class="type">
+                              <span class="param-type">string</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Optional parameter</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>storage</code></td>
+
+                            <td class="type">
+                              <span class="param-type">Storage</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Mandatory parameter</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>pathString</code></td>
+
+                            <td class="type">
+                              <span class="param-type">StringKeyword</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Mandatory parameter</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>options</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Optional parameter</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-storageBucket.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-storageBucket.js.html"
+                            >googleCloud/gcp-storageBucket.js</a
+                          >,
+                          <a href="googleCloud_gcp-storageBucket.js.html#line41"
+                            >line 41</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;uploadResponse></span
                             >
                           </div>
                         </div>

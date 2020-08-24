@@ -162,7 +162,10 @@ function extractSDKData(sdkFiles, methods) {
         sdkFile.sdkFunctionNames.includes(member.name.text)
       ) {
         var method = methods.find(function(methd) {
-          return methd.SDKFunctionName === member.name.text;
+          return (
+            methd.SDKFunctionName === member.name.text &&
+            methd.fileName === sdkFile.fileName
+          );
         });
         var parameters = member.parameters.map(function(param) {
           return {
@@ -267,11 +270,14 @@ function generateAzureClass(serviceClass, serviceName) {
           output = _a.sent();
           if (/^[A-Z]*$/.test(serviceName)) {
             filePath =
-              process.cwd() + "/generatedClasses/Azure/" + serviceName + ".js";
+              process.cwd() +
+              "/generatedClasses/Azure/azure-" +
+              serviceName +
+              ".js";
           } else {
             filePath =
               process.cwd() +
-              "/generatedClasses/Azure/" +
+              "/generatedClasses/Azure/azure-" +
               serviceName.charAt(0).toLowerCase() +
               serviceName.slice(1) +
               ".js";

@@ -24,7 +24,7 @@ class Azure {
     }
 
     return {
-      getSDK: () => this._azureRestSdk,
+      getRestSDK: () => this._azureRestSdk,
       compute: this.virtualmachine,
       blob: this.blobstorage,
       queue: this.queuestorage,
@@ -38,11 +38,11 @@ class Azure {
   }
 
   virtualmachine() {
-    return new virtualmachine(this.getSDK());
+    return new virtualmachine(this.getRestSDK());
   }
 
   container() {
-    return new container(this.getSDK());
+    return new container(this.getRestSDK());
   }
 
   blobstorage() {
@@ -58,19 +58,19 @@ class Azure {
   }
 
   virtualnetwork() {
-    return new virtualNetwork(this.getSDK());
+    return new virtualNetwork(this.getRestSDK());
   }
 
   website() {
-    return new webSite(this.getSDK());
+    return new webSite(this.getRestSDK());
   }
 
   sql() {
-    return new database(this.getSDK());
+    return new database(this.getRestSDK());
   }
 
   api() {
-    return new api(this.getSDK());
+    return new api(this.getRestSDK());
   }
 }
 
