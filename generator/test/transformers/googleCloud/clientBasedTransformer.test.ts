@@ -23,12 +23,12 @@ describe("Google Cloud transformer clientBasedTransform", () => {
     });
 
     it("Should return a String", async () => {
-      const result = clientBasedTransform(testData.AST, testData.data);
+      const result = await clientBasedTransform(testData.AST, testData.data);
       expect(result).to.be.string;
     });
 
     it("Should return a Javascript code in String format", async () => {
-      const result = clientBasedTransform(testData.AST, testData.data);
+      const result = await clientBasedTransform(testData.AST, testData.data);
       try {
         const sourceCode = createSourceFile(
           "someClass.js",
@@ -55,9 +55,9 @@ describe("Google Cloud transformer clientBasedTransform", () => {
       );
     });
 
-    it("Should return a validation Error", () => {
+    it("Should return a validation Error", async () => {
       try {
-        clientBasedTransform(testData.AST, testData.data);
+        await clientBasedTransform(testData.AST, testData.data);
       } catch (error) {
         expect(error.message).to.eql("Code is invalid");
       }
@@ -77,9 +77,9 @@ describe("Google Cloud transformer clientBasedTransform", () => {
       );
     });
 
-    it("Should return a validation Error", () => {
+    it("Should return a validation Error", async () => {
       try {
-        clientBasedTransform(testData.AST, testData.data);
+        await clientBasedTransform(testData.AST, testData.data);
       } catch (error) {
         expect(error.message).to.eql("Input is invalid");
       }

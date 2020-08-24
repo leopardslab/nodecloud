@@ -220,7 +220,7 @@ export function extractClientBasedSDKdata(methods, sdkFiles): any {
   });
 }
 
-async function generateClassBasedCode(methods, data) {
+async function generateClassBasedCode(methods, data, serviceName) {
   const dirPath = `../../../node_modules/@google-cloud/${methods[0].pkgName}/build/src/`;
   let files = fs.readdirSync(path.join(__dirname, dirPath));
   files = files.filter(
@@ -252,18 +252,28 @@ async function generateClassBasedCode(methods, data) {
   methods = filters.gcp(groupedMethods);
   data.functions = methods;
   data.classData = extractedData.classes;
+  data.serviceName = serviceName;
 
-  const output = classBasedTransform(dummyAst, data);
-  printFile(
-    process.cwd() +
-      "/generatedClasses/googleCloud/" +
-      data.functions[0].pkgName +
-      ".js",
-    output
-  );
+  const output = await classBasedTransform(dummyAst, data);
+  let filePath;
+  if (/^[A-Z]*$/.test(serviceName)) {
+    filePath =
+      process.cwd() +
+      "/generatedClasses/googleCloud/gcp-" +
+      serviceName +
+      ".js";
+  } else {
+    filePath =
+      process.cwd() +
+      "/generatedClasses/googleCloud/gcp-" +
+      serviceName.charAt(0).toLowerCase() +
+      serviceName.slice(1) +
+      ".js";
+  }
+  printFile(filePath, output);
 }
 
-async function generateClientBasedCode(methods) {
+async function generateClientBasedCode(methods, serviceName) {
   const files = Array.from(
     new Set(methods.map(method => method.fileName + " " + method.version))
   );
@@ -293,20 +303,30 @@ async function generateClientBasedCode(methods) {
   methods = filters.gcp(groupedMethods);
 
   const classData = {
-    functions: methods
+    functions: methods,
+    serviceName
   };
 
-  const output = clientBasedTransform(dummyAst, classData);
-  printFile(
-    process.cwd() +
-      "/generatedClasses/googleCloud/" +
-      classData.functions[0].pkgName +
-      ".js",
-    output
-  );
+  const output = await clientBasedTransform(dummyAst, classData);
+  let filePath;
+  if (/^[A-Z]*$/.test(serviceName)) {
+    filePath =
+      process.cwd() +
+      "/generatedClasses/googleCloud/gcp-" +
+      serviceName +
+      ".js";
+  } else {
+    filePath =
+      process.cwd() +
+      "/generatedClasses/googleCloud/gcp-" +
+      serviceName.charAt(0).toLowerCase() +
+      serviceName.slice(1) +
+      ".js";
+  }
+  printFile(filePath, output);
 }
 
-export async function generateGCPClass(serviceClass) {
+export async function generateGCPClass(serviceClass, serviceName) {
   let methods: FunctionData[] = [];
   const data: any = {};
 
@@ -344,8 +364,8 @@ export async function generateGCPClass(serviceClass) {
   });
 
   if (methods[0].version) {
-    generateClientBasedCode(methods);
+    generateClientBasedCode(methods, serviceName);
   } else {
-    generateClassBasedCode(methods, data);
+    generateClassBasedCode(methods, data, serviceName);
   }
 }

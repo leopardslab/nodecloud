@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo"></div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link">
+              API Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar " id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category"></div>
+          <div class="category">
+            <h2>AWS</h2>
+            <h3>Classes</h3>
+            <ul>
+              <li>
+                <a href="AWS_ArchivalStorage.html">AWS_ArchivalStorage</a>
+              </li>
+              <li><a href="AWS_BlockStorage.html">AWS_BlockStorage</a></li>
+              <li>
+                <a href="AWS_ComputeInstance.html">AWS_ComputeInstance</a>
+              </li>
+              <li><a href="AWS_Container.html">AWS_Container</a></li>
+              <li><a href="AWS_DNS.html">AWS_DNS</a></li>
+              <li><a href="AWS_IAM.html">AWS_IAM</a></li>
+              <li><a href="AWS_KeyManagement.html">AWS_KeyManagement</a></li>
+              <li><a href="AWS_Kubernetes.html">AWS_Kubernetes</a></li>
+              <li><a href="AWS_LoadBalancer.html">AWS_LoadBalancer</a></li>
+              <li><a href="AWS_Monitoring.html">AWS_Monitoring</a></li>
+              <li><a href="AWS_NoSql.html">AWS_NoSql</a></li>
+              <li><a href="AWS_NoSqlIndexed.html">AWS_NoSqlIndexed</a></li>
+              <li>
+                <a href="AWS_NotificationService.html"
+                  >AWS_NotificationService</a
+                >
+              </li>
+              <li><a href="AWS_PaaS.html">AWS_PaaS</a></li>
+              <li><a href="AWS_RDBMS.html">AWS_RDBMS</a></li>
+              <li><a href="AWS_StorageBucket.html">AWS_StorageBucket</a></li>
+              <li><a href="AWS_Translation.html">AWS_Translation</a></li>
+            </ul>
+          </div>
+          <div class="category">
+            <h2>Azure</h2>
+            <h3>Classes</h3>
+            <ul>
+              <li><a href="Azure_BlockStorage.html">Azure_BlockStorage</a></li>
+              <li>
+                <a href="Azure_ComputeInstance.html">Azure_ComputeInstance</a>
+              </li>
+              <li><a href="Azure_Container.html">Azure_Container</a></li>
+              <li><a href="Azure_DNS.html">Azure_DNS</a></li>
+              <li>
+                <a href="Azure_KeyManagement.html">Azure_KeyManagement</a>
+              </li>
+              <li><a href="Azure_Kubernetes.html">Azure_Kubernetes</a></li>
+              <li><a href="Azure_LoadBalancer.html">Azure_LoadBalancer</a></li>
+              <li><a href="Azure_Monitoring.html">Azure_Monitoring</a></li>
+              <li><a href="Azure_NoSql.html">Azure_NoSql</a></li>
+              <li><a href="Azure_PaaS.html">Azure_PaaS</a></li>
+              <li><a href="Azure_RDBMS.html">Azure_RDBMS</a></li>
+              <li>
+                <a href="Azure_StorageBucket.html">Azure_StorageBucket</a>
+              </li>
+            </ul>
+          </div>
+          <div class="category">
+            <h2>Google Cloud</h2>
+            <h3>Classes</h3>
+            <ul>
+              <li><a href="GCP_dns.html">GCP_dns</a></li>
+              <li><a href="GCP_KeyManagement.html">GCP_KeyManagement</a></li>
+              <li><a href="GCP_Kubernetes.html">GCP_Kubernetes</a></li>
+              <li><a href="GCP_Monitoring.html">GCP_Monitoring</a></li>
+              <li><a href="GCP_NoSql.html">GCP_NoSql</a></li>
+              <li>
+                <a href="GCP_NotificationService.html"
+                  >GCP_NotificationService</a
+                >
+              </li>
+              <li><a href="GCP_RDBMS.html">GCP_RDBMS</a></li>
+              <li><a href="GCP_storage.html">GCP_storage</a></li>
+              <li><a href="GCP_Translation.html">GCP_Translation</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p></p>
+            <h1>Home</h1>
+          </header>
+
+          <h3></h3>
+
+          <section>
+            <article>
+              <!-- <p align="center">
+  <img src="assets/logo.png">
+</p>
+
+# NodeCloud
+
+![nodecloud CI](https://github.com/cloudlibz/nodecloud/workflows/nodecloud%20CI/badge.svg)
+
+[![npm version](https://badge.fury.io/js/nodecloud.svg)](https://badge.fury.io/js/nodecloud)
+
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b94b1fe2ac724e8083f8237de3473c8a)](https://www.codacy.com/app/rehrumesh/nodecloud?utm_source=github.com&utm_medium=referral&utm_content=cloudlibz/nodecloud&utm_campaign=Badge_Grade)
+
+[![Build Status](https://travis-ci.org/cloudlibz/nodecloud.svg?branch=master)](https://travis-ci.org/cloudlibz/nodecloud)
+
+NodeCloud is a standard library to get a single API on the open cloud with multiple providers.
+Making open cloud easily accessible and managed.
+
+## 🚀 Install
+
+```
+npm install nodecloud
+       or
+yarn add nodecloud
+```
+
+## 📘 Service Providers
+
+* AliCloud
+* Amazon Web Services (AWS)
+* Azure
+* DigitalOcean
+* Google Cloud Platform (GCP)
+
+## 📟 Service Types
+
+* \*yet to be implemented
+
+| Service Category        | Service                             |                  AWS                  |                GCP                |                                  Azure                                  |               DigitalOcean                |                       AliCloud                        |
+| ----------------------- | ----------------------------------- | :-----------------------------------: | :-------------------------------: | :---------------------------------------------------------------------: | :---------------------------------------: | :---------------------------------------------------: |
+| Compute                 | IaaS                                |                  EC2                  |          Compute Engine           |                             Virtual Machine                             |                 Droplets                  |                          ECS                          |
+|                         | Faas                                |             AWS Lambda\*              |         Cloud Functions\*         |                            Azure Functions\*                            |                     -                     |                  Function Compute\*                   |
+|                         | Containers                          |              ECS, EKS\*               |    Google Kubernetes Engine\*     |                       AKS*, Azure Service Fabric*                       |              DO Kubernetes\*              | Container Service*, Container Service for Kubernetes* |
+|                         | Containers (without infrastructure) |             AWS Fargate\*             |            Cloud Run\*            |                                    -                                    |                     -                     |                         ECI\*                         |
+|                         | Paas                                |        AWS Elastic Beanstalk\*        |           App Engine\*            |                              App Service\*                              |                     -                     |              Simple Application Server\*              |
+| Storage                 | Object Storage                      |                  S3                   |           Cloud Storage           |                           Azure Blob Storage                            |                 Spaces\*                  |                     Bucket (OSS)                      |
+|                         | Block Storage                       |                  EBS                  |         Persistent Disks          |                              Disk Storage                               |                  Volumes                  |                         NAS\*                         |
+| Networking              | Load Balancer                       |                  ELB                  |      Cloud Load Balancing\*       |                          Azure Load Balancer\*                          |             DO Load Balancer              |                          SLB                          |
+|                         | Peering/Dedicated Interconnect      |            Direct Connect             |       Cloud Interconnect\*        |                             ExpressRoute\*                              |                     -                     |                   Express Connect\*                   |
+|                         | DNS                                 |                Route53                |    Google Domains, Cloud DNS\*    |                               Azure DNS\*                               |                 DO DNS\*                  |                  Alibaba Cloud DNS\*                  |
+| Databases               | RDBMS                               | RDS, Amazon Aurora*, Amazon Redshift* |    Cloud SQL*, Cloud Spanner*     | SQL Database, Azure Database for MySQL*, Azure Database for PostgreSQL* | Managed Databases(PostgreSQL* and MySQL*) | ApsaraDB (MySQL, MariaDB TX, SQL Server, PostgreSQL)  |
+|                         | NoSQL: key-value                    |               DynamoDB                | Cloud Firestore*, Cloud Bigtable* |                              Table Storage                              |        Managed Databases(Redis)\*         |                 ApsaraDB for Redis\*                  |
+|                         | NoSQL: indexed                      |           Amazon SimpleDB\*           |         Cloud Firestore\*         |                               Cosmos DB\*                               |                     -                     |                ApsaraDB for MongoDB\*                 |
+| Security/ Authorization | Identity Access Management          |                AWS IAM                |            Cloud IAM\*            |        Azure Active Directory*, Azure Role Based Access Control*        |                     -                     |             Resource Access Management\*              |
+
+# ✌️ How to setup
+
+Make sure you have `.nc.config.js` file in the project root.
+
+Content of `.nc.config.js` file is assumed as the following structure.
+It is an array of supported providers.
+
+1. `name` : Provider identifier, this can be used to identify the plugin at a glance.
+2. `tag` : Tag name that will be used to load the given provider internally.
+3. `plugin` : Plugin module
+4. `configPath` : Provider configuration file
+
+This config file can contain array of objects for all providers and all will be loaded.
+Supported values for `name` : aws, azure, alicloud, digitalocean, google
+
+``` js
+const nodeCloudAwsPlugin = require("nodecloud-aws-plugin");
+
+const providers = [{
+    name: "aws",
+    tag: "aws",
+    plugin: nodeCloudAwsPlugin,
+    configPath: "./aws-config.json"
+}];
+
+module.exports = providers;
+```
+
+## [Supported providers](https://github.com/cloudlibz/nodecloud/blob/master/lib/core/providers-list.js)
+
+## 📣 Usage
+
+``` js
+const nodeCloud = require("nodecloud");
+const optionsProvider = {
+    overrideProviders: false
+};
+const ncProviders = nodeCloud.getProviders(optionsProvider);
+const options = {
+    apiVersion: "2016-11-15"
+};
+
+const params = {
+    ImageId: "ami-10fd7020", // amzn-ami-2011.09.1.x86_64-ebs
+    InstanceType: "t1.micro",
+    KeyName: "nodeCloud", // key name of Key pair
+    MinCount: 1,
+    MaxCount: 1
+};
+const instanceParams = {
+    Key: "Name",
+    Value: "Node Cloud demo"
+};
+
+const ec2 = ncProviders.aws.compute(options);
+ec2
+    .createInstance(params, instanceParams)
+    .then(res => {
+        console.log( `All done ! ${res}` );
+    })
+    .catch(err => {
+        console.log( `Oops something happened ${err}` );
+    });
+```
+
+## Override providers
+
+NodeCloud officialy supports AWS, GCP, Azure, DigitalOcean and AliCloud. If you want to use a community driven plugin override the providers list as follows.
+
+``` js
+const nodeCloud = require("nodecloud");
+const options = {
+    overrideProviders: true
+};
+const ncProviders = nodeCloud.getProviders(options);
+```
+
+## 💻 Development setup
+
+```
+$ git clone https://github.com/cloudlibz/nodecloud
+$ cd nodecloud
+$ yarn install
+```
+
+## ✒️ Run unit tests
+
+```
+$ yarn test
+```
+
+## 📜 License
+
+MIT -->
+              <p align="center">
+                <img src="../assets/logo.png" />
+              </p>
+              <h1 align="center">NodeCloud</h1>
+              <p align="center">
+                Making open cloud easily accessible and managed.
+              </p>
+              <!-- BADGES -->
+              <p>
+                <img
+                  src="https://github.com/cloudlibz/nodecloud/workflows/nodecloud%20CI/badge.svg"
+                  alt="nodecloud CI"
+                />
+              </p>
+              <p>
+                <a href="https://badge.fury.io/js/nodecloud"
+                  ><img
+                    src="https://badge.fury.io/js/nodecloud.svg"
+                    alt="npm version"
+                /></a>
+                <a
+                  href="https://www.codacy.com/app/rehrumesh/nodecloud?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cloudlibz/nodecloud&amp;utm_campaign=Badge_Grade"
+                  ><img
+                    src="https://api.codacy.com/project/badge/Grade/b94b1fe2ac724e8083f8237de3473c8a"
+                    alt="Codacy Badge"
+                /></a>
+                <a href="https://lerna.js.org/"
+                  ><img
+                    src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg"
+                    alt="lerna"
+                /></a>
+                <a href="https://gitter.im/cloudlibz/cloudlibz"
+                  ><img
+                    src="https://img.shields.io/badge/chat-on%20gitter-brightgreen"
+                    alt="Gitter"
+                /></a>
+                <a href="https://medium.com/leopards-lab"
+                  ><img
+                    src="https://img.shields.io/badge/Read%20on-Medium-black.svg"
+                    alt="Read on : Medium"
+                /></a>
+                <a href="https://groups.google.com/g/score-community"
+                  ><img
+                    src="https://img.shields.io/badge/Mailing%20list-Scorelab-blue.svg"
+                    alt="Mailing list : Scorelab"
+                /></a>
+                <a href="https://github.com/leopardslab/nodecloud/issues"
+                  ><img
+                    src="https://img.shields.io/badge/contributions-welcome-ff69b4.svg?style=flat"
+                    alt="contributions welcome"
+                /></a>
+              </p>
+              <h2>Introduction</h2>
+              <p>
+                <strong><code>NodeCloud ☁️</code></strong> is standard library
+                to get a single API on the open cloud with multiple providers.
+                It is a NodeJs library which comes with plugins for each cloud
+                provider. NodeCloud's aim is to abstract away the differences
+                between different cloud providers. It provides an easy to use
+                API for developers in order to interact with different cloud
+                providers.
+              </p>
+              <p>NodeCloud will be useful to you if:</p>
+              <ul>
+                <li>
+                  you work on a project which uses multiple cloud providers
+                </li>
+                <li>
+                  you are looking for an abstract cloud API which can switch
+                  between cloud providers with less code changes
+                </li>
+                <li>
+                  you are an open source enthusiast who is into cloud
+                  engineering or code generation
+                </li>
+                <li>
+                  you want to improve your skills in NodeJS, Typescript and
+                  cloud service providers
+                </li>
+              </ul>
+              <h2>📘 Supported Service Providers</h2>
+              <ul>
+                <li>Amazon Web Services (AWS)</li>
+                <li>Azure</li>
+                <li>Google Cloud Platform (GCP)</li>
+                <li>DigitalOcean</li>
+                <li>AliCloud</li>
+              </ul>
+              <p>
+                If your required cloud service provider is not listed here, we'd
+                love your help to add it :)
+              </p>
+              <h2>Getting Started</h2>
+              <p>
+                In order to use <code>NodeCloud</code> , you will need to follow
+                the following steps:
+              </p>
+              <p>
+                <strong>1️⃣ Download NodeCloud common module</strong><br />
+                Head on over to <a href="https://atom.io/">NPM</a> or Yarn to
+                download the latest version of NodeCloud.
+              </p>
+              <pre
+                class="prettyprint source"
+              ><code>npm i @nodecloud/common --save
+or
+yarn add @nodecloud/common
+</code></pre>
+              <p>
+                <strong
+                  >2️⃣ Download atleast one NodeClod cloud provider
+                  plugin</strong
+                ><br />
+                Once installed <code>@nodecloud/common</code>,
+              </p>
+              <h2>Contributing ❤️</h2>
+              <p>
+                NodeCloud relies on the passionate members of its community to
+                keep delivering impactful tools to people all over the world.
+              </p>
+              <p>
+                Before contributing, be sure to consult NodeClouds's
+                contribution guidelines. As a member of our community, you must
+                abide by our Code Of Conduct.
+              </p>
+              <h3>💻 Development setup</h3>
+              <p>
+                <strong>1️⃣ Fork the leopardslab/nodecloud repository</strong
+                ><br />
+                Follow these instructions on
+                <a href="https://help.github.com/en/articles/fork-a-repo"
+                  >how to fork a repository</a
+                >
+              </p>
+              <p>
+                <strong>2️⃣ Cloning the repository</strong><br />
+                Once you have set up your fork of the
+                <code>leopardslab/nodecloud</code> repository, you'll want to
+                clone it to your local machine. This is so you can make and test
+                all of your personal edits before adding it to the master
+                version of <code>leopardslab/nodecloud</code> .
+              </p>
+              <p>
+                Navigate to the location on your computer where you want to host
+                your code. Once in the appropriate folder, run the following
+                command to clone the repository to your local machine.
+              </p>
+              <pre
+                class="prettyprint source"
+              ><code>git clone git@github.com:your-username/nodecloud.git
+</code></pre>
+              <p>
+                <strong>3️⃣ Bootstrapping the repository</strong><br />
+                You'll then want to navigate within the folder that was just
+                created that contains all of the content of the forked
+                repository. There you'll want to run the installation script to
+                get the updated version of all the third party dependencies.
+              </p>
+              <pre class="prettyprint source"><code>cd nodecloud
+yarn install
+</code></pre>
+              <h3>Test Changes</h3>
+              <p>
+                When you start making changes to the code on your local branch,
+                you'll need to test those changes. Before your code can be
+                accepted into the master branch, it will have to pass all of the
+                tests in yarn workspaces. To test changes, run the following
+                commands:
+              </p>
+              <p>
+                <strong>1️⃣ Save Current Changes</strong><br />
+                When you get to a point when you want to test the functionality
+                of the code, make sure all your changes are saved. They don't
+                necessarily have to be <em>committed</em> changes in order to
+                test them.
+              </p>
+              <p>
+                <strong>2️⃣ Test changes</strong><br />
+                To make sure that the application is properly updated, run the
+                tests. If you add elements that do not have tests to prove
+                whether they work correctly or not, please include them in your
+                pull request.
+              </p>
+              <pre class="prettyprint source"><code>yarn test
+</code></pre>
+              <h2>NodeCloud Plugins</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Plugin</th>
+                    <th>Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>AWS plugin</td>
+                    <td>
+                      Contains Amazon web services NodeCloud, JavaScript classes
+                      are automatically generated by a code generator
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Azure plugin</td>
+                    <td>Azuren</td>
+                  </tr>
+                  <tr>
+                    <td>Google Cloud plugin</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Alibaba plugin</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Digital Ocean plugin</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h2>NodeCloud Code Generation Component</h2>
+              <h2>Contributors 🌟</h2>
+              <p>
+                Contributions of any kind welcome! You can help us in many ways.
+                Including new features, bug fixing, error reporting and
+                documentation.
+              </p>
+              <h2>📜 License</h2>
+              <p>MIT</p>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

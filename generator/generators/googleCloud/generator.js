@@ -325,9 +325,15 @@ function extractClientBasedSDKdata(methods, sdkFiles) {
   });
 }
 exports.extractClientBasedSDKdata = extractClientBasedSDKdata;
-function generateClassBasedCode(methods, data) {
+function generateClassBasedCode(methods, data, serviceName) {
   return __awaiter(this, void 0, void 0, function() {
-    var dirPath, files, sdkFiles, extractedData, groupedMethods, output;
+    var dirPath,
+      files,
+      sdkFiles,
+      extractedData,
+      groupedMethods,
+      output,
+      filePath;
     var _this = this;
     return __generator(this, function(_a) {
       switch (_a.label) {
@@ -390,22 +396,36 @@ function generateClassBasedCode(methods, data) {
           methods = helper_1.filters.gcp(groupedMethods);
           data.functions = methods;
           data.classData = extractedData.classes;
-          output = classBasedTransformer_1.classBasedTransform(dummyAst, data);
-          helper_1.printFile(
-            process.cwd() +
-              "/generatedClasses/googleCloud/" +
-              data.functions[0].pkgName +
-              ".js",
-            output
-          );
+          data.serviceName = serviceName;
+          return [
+            4 /*yield*/,
+            classBasedTransformer_1.classBasedTransform(dummyAst, data)
+          ];
+        case 3:
+          output = _a.sent();
+          if (/^[A-Z]*$/.test(serviceName)) {
+            filePath =
+              process.cwd() +
+              "/generatedClasses/googleCloud/gcp-" +
+              serviceName +
+              ".js";
+          } else {
+            filePath =
+              process.cwd() +
+              "/generatedClasses/googleCloud/gcp-" +
+              serviceName.charAt(0).toLowerCase() +
+              serviceName.slice(1) +
+              ".js";
+          }
+          helper_1.printFile(filePath, output);
           return [2 /*return*/];
       }
     });
   });
 }
-function generateClientBasedCode(methods) {
+function generateClientBasedCode(methods, serviceName) {
   return __awaiter(this, void 0, void 0, function() {
-    var files, sdkFiles, groupedMethods, classData, output;
+    var files, sdkFiles, groupedMethods, classData, output, filePath;
     var _this = this;
     return __generator(this, function(_a) {
       switch (_a.label) {
@@ -466,25 +486,36 @@ function generateClientBasedCode(methods) {
           groupedMethods = helper_1.groupers.gcp(methods);
           methods = helper_1.filters.gcp(groupedMethods);
           classData = {
-            functions: methods
+            functions: methods,
+            serviceName: serviceName
           };
-          output = clientBasedTransformer_1.clientBasedTransform(
-            dummyAst,
-            classData
-          );
-          helper_1.printFile(
-            process.cwd() +
-              "/generatedClasses/googleCloud/" +
-              classData.functions[0].pkgName +
-              ".js",
-            output
-          );
+          return [
+            4 /*yield*/,
+            clientBasedTransformer_1.clientBasedTransform(dummyAst, classData)
+          ];
+        case 3:
+          output = _a.sent();
+          if (/^[A-Z]*$/.test(serviceName)) {
+            filePath =
+              process.cwd() +
+              "/generatedClasses/googleCloud/gcp-" +
+              serviceName +
+              ".js";
+          } else {
+            filePath =
+              process.cwd() +
+              "/generatedClasses/googleCloud/gcp-" +
+              serviceName.charAt(0).toLowerCase() +
+              serviceName.slice(1) +
+              ".js";
+          }
+          helper_1.printFile(filePath, output);
           return [2 /*return*/];
       }
     });
   });
 }
-function generateGCPClass(serviceClass) {
+function generateGCPClass(serviceClass, serviceName) {
   return __awaiter(this, void 0, void 0, function() {
     var methods, data;
     return __generator(this, function(_a) {
@@ -523,9 +554,9 @@ function generateGCPClass(serviceClass) {
         }
       });
       if (methods[0].version) {
-        generateClientBasedCode(methods);
+        generateClientBasedCode(methods, serviceName);
       } else {
-        generateClassBasedCode(methods, data);
+        generateClassBasedCode(methods, data, serviceName);
       }
       return [2 /*return*/];
     });

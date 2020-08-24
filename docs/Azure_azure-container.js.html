@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Azure/azure-container.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo"></div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link">
+              API Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar " id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category"></div>
+          <div class="category">
+            <h2>AWS</h2>
+            <h3>Classes</h3>
+            <ul>
+              <li>
+                <a href="AWS_ArchivalStorage.html">AWS_ArchivalStorage</a>
+              </li>
+              <li><a href="AWS_BlockStorage.html">AWS_BlockStorage</a></li>
+              <li>
+                <a href="AWS_ComputeInstance.html">AWS_ComputeInstance</a>
+              </li>
+              <li><a href="AWS_Container.html">AWS_Container</a></li>
+              <li><a href="AWS_DNS.html">AWS_DNS</a></li>
+              <li><a href="AWS_IAM.html">AWS_IAM</a></li>
+              <li><a href="AWS_KeyManagement.html">AWS_KeyManagement</a></li>
+              <li><a href="AWS_Kubernetes.html">AWS_Kubernetes</a></li>
+              <li><a href="AWS_LoadBalancer.html">AWS_LoadBalancer</a></li>
+              <li><a href="AWS_Monitoring.html">AWS_Monitoring</a></li>
+              <li><a href="AWS_NoSql.html">AWS_NoSql</a></li>
+              <li><a href="AWS_NoSqlIndexed.html">AWS_NoSqlIndexed</a></li>
+              <li>
+                <a href="AWS_NotificationService.html"
+                  >AWS_NotificationService</a
+                >
+              </li>
+              <li><a href="AWS_PaaS.html">AWS_PaaS</a></li>
+              <li><a href="AWS_RDBMS.html">AWS_RDBMS</a></li>
+              <li><a href="AWS_StorageBucket.html">AWS_StorageBucket</a></li>
+              <li><a href="AWS_Translation.html">AWS_Translation</a></li>
+            </ul>
+          </div>
+          <div class="category">
+            <h2>Azure</h2>
+            <h3>Classes</h3>
+            <ul>
+              <li><a href="Azure_BlockStorage.html">Azure_BlockStorage</a></li>
+              <li>
+                <a href="Azure_ComputeInstance.html">Azure_ComputeInstance</a>
+              </li>
+              <li><a href="Azure_Container.html">Azure_Container</a></li>
+              <li><a href="Azure_DNS.html">Azure_DNS</a></li>
+              <li>
+                <a href="Azure_KeyManagement.html">Azure_KeyManagement</a>
+              </li>
+              <li><a href="Azure_Kubernetes.html">Azure_Kubernetes</a></li>
+              <li><a href="Azure_LoadBalancer.html">Azure_LoadBalancer</a></li>
+              <li><a href="Azure_Monitoring.html">Azure_Monitoring</a></li>
+              <li><a href="Azure_NoSql.html">Azure_NoSql</a></li>
+              <li><a href="Azure_PaaS.html">Azure_PaaS</a></li>
+              <li><a href="Azure_RDBMS.html">Azure_RDBMS</a></li>
+              <li>
+                <a href="Azure_StorageBucket.html">Azure_StorageBucket</a>
+              </li>
+            </ul>
+          </div>
+          <div class="category">
+            <h2>Google Cloud</h2>
+            <h3>Classes</h3>
+            <ul>
+              <li><a href="GCP_dns.html">GCP_dns</a></li>
+              <li><a href="GCP_KeyManagement.html">GCP_KeyManagement</a></li>
+              <li><a href="GCP_Kubernetes.html">GCP_Kubernetes</a></li>
+              <li><a href="GCP_Monitoring.html">GCP_Monitoring</a></li>
+              <li><a href="GCP_NoSql.html">GCP_NoSql</a></li>
+              <li>
+                <a href="GCP_NotificationService.html"
+                  >GCP_NotificationService</a
+                >
+              </li>
+              <li><a href="GCP_RDBMS.html">GCP_RDBMS</a></li>
+              <li><a href="GCP_storage.html">GCP_storage</a></li>
+              <li><a href="GCP_Translation.html">GCP_Translation</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Source</p>
+            <h1>Azure/azure-container.js</h1>
+          </header>
+
+          <section>
+            <article>
+              <pre
+                class="prettyprint source linenums"
+              ><code>const { ContainerServiceClient } = require("@azure/arm-containerservice");
+/*This is an auto generated class, please do not change.*/
+/**
+ * Class to create a Container object
+ * @category Azure
+ */
+class Azure_Container {
+  /**
+   *
+   * @param {module} azureRestSdk Azure Rest SDK
+   */
+  constructor(azureRestSdk) {
+    this._azureRestSdk = azureRestSdk;
+  }
+  /**
+   * Trigers the createOrUpdate function of containerservice
+   * @param {StringKeyword} resourceGroupName - Mandatory parameter
+   * @param {StringKeyword} containerServiceName - Mandatory parameter
+   * @param {TypeReference} parameters - Mandatory parameter
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise&lt;createOrUpdateResponse>}
+   */
+  create(
+    resourceGroupName,
+    containerServiceName,
+    parameters,
+    options = undefined
+  ) {
+    return new Promise((resolve, reject) => {
+      this._azureRestSdk
+        .loginWithServicePrincipalSecretWithAuthResponse(
+          process.env.AZURE_CLIENT_ID,
+          process.env.AZURE_CLIENT_SECRET,
+          process.env.AZURE_TENANT_ID
+        )
+        .then(authres => {
+          const client = new ContainerServiceClient(
+            authres.credentials,
+            process.env.AZURE_SUBSCRIPTION_ID
+          );
+          client.containerServices
+            .createOrUpdate(
+              resourceGroupName,
+              containerServiceName,
+              parameters,
+              options
+            )
+            .then(result => {
+              resolve(result);
+            });
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+  /**
+   * Trigers the deleteMethod function of containerservice
+   * @param {StringKeyword} resourceGroupName - Mandatory parameter
+   * @param {StringKeyword} containerServiceName - Mandatory parameter
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise&lt;deleteMethodResponse>}
+   */
+  delete(resourceGroupName, containerServiceName, options = undefined) {
+    return new Promise((resolve, reject) => {
+      this._azureRestSdk
+        .loginWithServicePrincipalSecretWithAuthResponse(
+          process.env.AZURE_CLIENT_ID,
+          process.env.AZURE_CLIENT_SECRET,
+          process.env.AZURE_TENANT_ID
+        )
+        .then(authres => {
+          const client = new ContainerServiceClient(
+            authres.credentials,
+            process.env.AZURE_SUBSCRIPTION_ID
+          );
+          client.containerServices
+            .deleteMethod(resourceGroupName, containerServiceName, options)
+            .then(result => {
+              resolve(result);
+            });
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+  /**
+   * Trigers the get function of containerservice
+   * @param {StringKeyword} resourceGroupName - Mandatory parameter
+   * @param {StringKeyword} containerServiceName - Mandatory parameter
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise&lt;getResponse>}
+   */
+  describe(resourceGroupName, containerServiceName, options = undefined) {
+    return new Promise((resolve, reject) => {
+      this._azureRestSdk
+        .loginWithServicePrincipalSecretWithAuthResponse(
+          process.env.AZURE_CLIENT_ID,
+          process.env.AZURE_CLIENT_SECRET,
+          process.env.AZURE_TENANT_ID
+        )
+        .then(authres => {
+          const client = new ContainerServiceClient(
+            authres.credentials,
+            process.env.AZURE_SUBSCRIPTION_ID
+          );
+          client.containerServices
+            .get(resourceGroupName, containerServiceName, options)
+            .then(result => {
+              resolve(result);
+            });
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+  /**
+   * Trigers the list function of containerservice
+   * @param {TypeReference} [options] - Optional parameter
+   * @returns {Promise&lt;listResponse>}
+   */
+  list(options = undefined) {
+    return new Promise((resolve, reject) => {
+      this._azureRestSdk
+        .loginWithServicePrincipalSecretWithAuthResponse(
+          process.env.AZURE_CLIENT_ID,
+          process.env.AZURE_CLIENT_SECRET,
+          process.env.AZURE_TENANT_ID
+        )
+        .then(authres => {
+          const client = new ContainerServiceClient(
+            authres.credentials,
+            process.env.AZURE_SUBSCRIPTION_ID
+          );
+          client.containerServices.list(options).then(result => {
+            resolve(result);
+          });
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+}
+module.exports = Azure_Container;
+</code></pre>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

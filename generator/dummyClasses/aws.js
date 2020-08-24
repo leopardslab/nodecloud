@@ -1,4 +1,9 @@
 class ClassName {
+  /**
+   *
+   * @param {module} aws AWS SDK
+   * @param {object} options SDK options
+   */
   constructor(aws, options) {
     this._AWS = aws;
     this._apiVersion = options.apiVersion;

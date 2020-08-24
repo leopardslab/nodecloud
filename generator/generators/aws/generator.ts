@@ -9,14 +9,17 @@ interface FunctionData {
   SDKFunctionName: string;
   params: param[];
 }
+
 interface param {
   name: string;
   type: string;
+  typeName: string;
 }
 
 interface ClassData {
   className: string;
   functions: FunctionData[];
+  serviceName: string;
 }
 
 const dummyFile = process.cwd() + "/dummyClasses/aws.js";
@@ -47,11 +50,18 @@ export function extractSDKData(sdkClassAst, serviceClass) {
       const parameters = [];
       method.parameters.map(param => {
         if (param.name.text !== "callback") {
-          parameters.push({
+          const parameter = {
             name: param.name.text,
             optional: param.questionToken ? true : false,
-            type: SyntaxKind[param.type.kind]
-          });
+            type: SyntaxKind[param.type.kind],
+            typeName: null
+          };
+
+          if (parameter.type === "TypeReference" && param.type.typeName) {
+            parameter.typeName = param.type.typeName.right.text;
+          }
+
+          parameters.push(parameter);
         }
       });
 
@@ -68,23 +78,34 @@ export function extractSDKData(sdkClassAst, serviceClass) {
 
   const classData: ClassData = {
     className: sdkClassAst.name.text,
-    functions: methods
+    functions: methods,
+    serviceName: null
   };
 
   return classData;
 }
 
-export function generateAWSClass(serviceClass) {
+export function generateAWSClass(serviceClass, serviceName) {
   const sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(" ")[0];
-  getAST(sdkFile).then(result => {
+  getAST(sdkFile).then(async result => {
     const sdkClassAst = result;
     try {
-      const classData = extractSDKData(sdkClassAst, serviceClass);
-      const output = transform(dummyAst, classData);
-      printFile(
-        process.cwd() + "/generatedClasses/AWS/" + classData.className + ".js",
-        output
-      );
+      const classData: ClassData = extractSDKData(sdkClassAst, serviceClass);
+      classData.serviceName = serviceName;
+      const output = await transform(dummyAst, classData);
+      let filePath;
+      if (/^[A-Z]*$/.test(serviceName)) {
+        filePath =
+          process.cwd() + "/generatedClasses/AWS/aws-" + serviceName + ".js";
+      } else {
+        filePath =
+          process.cwd() +
+          "/generatedClasses/AWS/aws-" +
+          serviceName.charAt(0).toLowerCase() +
+          serviceName.slice(1) +
+          ".js";
+      }
+      printFile(filePath, output);
     } catch (e) {
       console.error(e);
     }

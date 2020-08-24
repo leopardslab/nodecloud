@@ -44,7 +44,9 @@ export function extractSDKData(sdkFiles, methods) {
         sdkFile.sdkFunctionNames.includes(member.name.text)
       ) {
         const method = methods.find(
-          methd => methd.SDKFunctionName === member.name.text
+          methd =>
+            methd.SDKFunctionName === member.name.text &&
+            methd.fileName === sdkFile.fileName
         );
         const parameters = member.parameters.map(param => {
           return {
@@ -55,7 +57,6 @@ export function extractSDKData(sdkFiles, methods) {
         });
 
         const returnType = SyntaxKind[member.type.kind];
-
         if (!method.returnType) {
           method.params = parameters;
           method.returnType = returnType;
@@ -85,7 +86,7 @@ export function extractSDKData(sdkFiles, methods) {
   return classData;
 }
 
-export async function generateAzureClass(serviceClass) {
+export async function generateAzureClass(serviceClass, serviceName) {
   let methods: FunctionData[] = [];
 
   Object.keys(serviceClass).map((key, index) => {
@@ -120,13 +121,20 @@ export async function generateAzureClass(serviceClass) {
     })
   );
 
-  const classData = extractSDKData(sdkFiles, methods);
-  const output = transform(dummyAst, classData);
-  printFile(
-    process.cwd() +
-      "/generatedClasses/Azure/" +
-      classData.functions[0].pkgName.split("-")[1] +
-      ".js",
-    output
-  );
+  const classData: any = extractSDKData(sdkFiles, methods);
+  classData.serviceName = serviceName;
+  const output = await transform(dummyAst, classData);
+  let filePath;
+  if (/^[A-Z]*$/.test(serviceName)) {
+    filePath =
+      process.cwd() + "/generatedClasses/Azure/azure-" + serviceName + ".js";
+  } else {
+    filePath =
+      process.cwd() +
+      "/generatedClasses/Azure/azure-" +
+      serviceName.charAt(0).toLowerCase() +
+      serviceName.slice(1) +
+      ".js";
+  }
+  printFile(filePath, output);
 }

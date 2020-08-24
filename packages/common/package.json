@@ -1,6 +1,6 @@
 {
   "name": "@nodecloud/common",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "NodeCloud core",
   "main": "index.js",
   "scripts": {
