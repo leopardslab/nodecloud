@@ -1,0 +1,22 @@
+name: Host Docs
+on:
+  push:
+    branches:
+      - nodecloud-next
+jobs:
+  host-documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Generate Docs
+        run: |
+          yarn
+          yarn doc
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.JSDoc_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs
