@@ -2,7 +2,7 @@ name: Host Docs
 on:
   push:
     branches:
-      - nodecloud-next
+      - master
 jobs:
   host-documentation:
     runs-on: ubuntu-latest
