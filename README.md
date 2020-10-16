@@ -19,13 +19,13 @@
 
 # Introduction
 
-**`NodeCloud ☁️`** is standard library to get a single API on the open cloud with multiple providers. It is a NodeJs library which comes with plugins for each cloud provider. NodeCloud's aim is to abstract away the differences between different cloud providers. It provides an easy to use API for developers in order to interact with different cloud providers.
+**`NodeCloud ☁️`** is a standard library to get a single API on the open cloud with multiple providers. It is a NodeJs library which comes with plugins for each cloud provider. NodeCloud's aim is to abstract away the differences between different cloud providers. It provides an easy to use API for developers in order to interact with different cloud providers.
 
 NodeCloud will be useful to you if:
 
 - you work on a project which uses multiple cloud providers
-- you are looking for an abstract cloud API which can switch between cloud providers with less code changes
-- you are an open source enthusiast who is into cloud engineering or code generation
+- you are looking for an abstract cloud API which can switch between cloud providers with fewer code changes
+- you are an open-source enthusiast who is into cloud engineering or code generation
 - you want to improve your skills in NodeJS, Typescript and cloud service providers
 
 ## 📘 Supported Service Providers
@@ -36,11 +36,11 @@ NodeCloud will be useful to you if:
 - DigitalOcean
 - AliCloud
 
-_📢 if your requird cloud provider plugin is not listed here, we'd love your help to add it :)_
+_📢 if your required cloud provider plugin is not listed here, we'd love your help to add it :)_
 
 # Getting Started
 
-In order to use `NodeCloud` , you will need to follow the following steps:
+In order to use `NodeCloud`, you will need to follow the following steps:
 
 **1️⃣ Download NodeCloud common module**  
 Head on over to NPM or Yarn to download the latest version of NodeCloud.
@@ -51,8 +51,8 @@ or
 yarn add @nodecloud/common
 ```
 
-**2️⃣ Download atleast one NodeCloud plugin**  
-Once `@nodecloud/common` is installed, you need to install the plugins to interact with different cloud providers. The below table shows the available plugins maintained by ScoRe Lab. There can be other community driven plugins which you will be able to use with NodeCloud.
+**2️⃣ Download at least one NodeCloud plugin**  
+Once `@nodecloud/common` is installed, you need to install the plugins to interact with different cloud providers. The below table shows the available plugins maintained by ScoRe Lab. There can be other community-driven plugins that you will be able to use with NodeCloud.
 
 ### NodeCloud Plugins
 
@@ -75,7 +75,7 @@ Content of .nc.config.js file is assumed as the following structure. It is an ar
 3. `plugin` : Plugin module
 4. `configPath` : Provider configuration file
 
-This config file can contain array of objects for all providers and all will be loaded. Supported values for name : aws, azure, alicloud, digitalocean, google
+This config file can contain an array of objects for all providers and all will be loaded. Supported values for name : aws, azure, alicloud, digitalocean, google
 
 ### Example
 
@@ -111,9 +111,9 @@ module.exports = providers;
 
 **4️⃣ Enjoy the awesomeness of NodeCloud**
 
-Congratulations! you just configured NodeCloud in your project. Let's start with some cloud interactions .
+Congratulations! You just configured NodeCloud in your project. Let's start with some cloud interactions.
 
-The below code is an example usage in AWS.
+The below code is an example of usage in AWS.
 
 ```
 const nc = require("@nodecloud/common"); // NodeCloud common module
@@ -166,9 +166,9 @@ function stopInstance() {
 
 ```
 
-## Overiding Providers
+## Overriding Providers
 
-NodeCloud officialy supports AWS, GCP, Azure, DigitalOcean and AliCloud. If you want to use a community driven plugin override the providers list as follows.
+NodeCloud officially supports AWS, GCP, Azure, DigitalOcean and AliCloud. If you want to use a community-driven plugin override the providers' list as follows.
 
 ```
 const nodeCloud = require("nodecloud");
@@ -221,7 +221,7 @@ git clone https://github.com/your-username/nodecloud.git
 ```
 
 **3️⃣ Bootstrapping the repository**  
-You'll then want to navigate within the folder that was just created that contains all of the content of the forked repository. There you'll want to run the installation script to get the updated version of all the third party dependencies.
+You'll then want to navigate within the folder that was just created that contains all of the content of the forked repository. There you'll want to run the installation script to get the updated version of all the third-party dependencies.
 
 ```
 cd nodecloud
@@ -230,11 +230,11 @@ yarn
 
 ### Important Notes for Developers 😎
 
-❇️ This project is based on [Lerna](https://lerna.js.org/) and Yarn workspaces where there are multiple projects in the same repository. It's better to get some background knowlege on these before making any changes in the code. Check the `lerna.json` for the current configuration.
+❇️ This project is based on [Lerna](https://lerna.js.org/) and Yarn workspaces where there are multiple projects in the same repository. It's better to get some background knowledge about these before making any changes in the code. Check the `lerna.json` for the current configuration.
 
 ❇️ `@nodecloud/aws-plugin` , `@nodecloud/gcp-plugin` , `@nodecloud/azure-plugin` and `@nodecloud/common` are `Lerna` managed yarn workspaces where the `generator` is another standalone yarn workspace.
 
-❇️ **Never use NPM client to install thirdparty dependencies**. This project does not contain a `package-lock.json` instead it contains a `yarn.lock` file. Using `npm i` to install NPM modules will harm the project structure.
+❇️ **Never use NPM client to install third-party dependencies**. This project does not contain a `package-lock.json` instead it contains a `yarn.lock` file. Using `npm i` to install NPM modules will harm the project structure.
 
 ❇️ Use `lerna` commands when installing third-party libraries in Lerna managed yarn workspaces. For example, the below command will add the `@google-cloud/translate` npm module to the project `@nodecloud/gcp-plugin` .
 
@@ -281,7 +281,7 @@ Now that our package is symlinked, run the following command to link the package
 yarn link @nodecloud/gcp-plugin
 ```
 
-❇️ The API docummentation is generated using JSDoc. Be mindful when making any changes to the auto generated comments in JavaScript classes. If you have generated new classes run the following command to generate the API documentation.
+❇️ The API documentation is generated using JSDoc. Be mindful when making any changes to the auto-generated comments in JavaScript classes. If you have generated new classes run the following command to generate the API documentation.
 
 ```
 yarn doc or `jsdoc -c jsdoc.json`
@@ -289,9 +289,9 @@ yarn doc or `jsdoc -c jsdoc.json`
 
 ❇️ The JSDoc configuration can be found in the `jsdoc.json` file. Currently, it is configured with the [better-docs](https://www.npmjs.com/package/better-docs) template.
 
-❇️ The code generation component ( `generator` yarn workspace) is developed using the TypeScript compiler API. It is better to have an understanding of Abstract Syntax trees, Parsers, and transformers when making code changes in the `generator` .
+❇️ The code generation component ( `generator` yarn workspace) is developed using the TypeScript compiler API. It is better to have an understanding of Abstract Syntax trees, Parsers, and transformers when making code changes in the `generator`.
 
-❇️ Please run prettier before commiting code to put it in a nice looking format.
+❇️ Please run prettier before committing code to put it in a nice looking format.
 
 ```
 lerna run prettier or yarn pretty-quick
@@ -313,7 +313,7 @@ yarn test
 
 ## NodeCloud Code Generation tool
 
-This is where magic happens✨. We don't code any JavaScript classes in NodeCloud plugins, instead they are automactically generated by a code generation tool. This automating proccess is currenty working for AWS, Azure and Google Cloud. Once you add a service in `node-cloud.yml` in the required format for the generator, run `tsc main && node main` to generate the service. You will immediatly see the output in `generatedClasses` directory inside the `generator` . More information about the generation tool can be found in the `ReadME` of `generator` workspace.
+This is where the magic happens✨. We don't code any JavaScript classes in NodeCloud plugins, instead, they are automatically generated by a code generation tool. This automating process is currently working for AWS, Azure and Google Cloud. Once you add a service in `node-cloud.yml` in the required format for the generator, run `tsc main && node main` to generate the service. You will immediately see the output in `generatedClasses` directory inside the `generator` . More information about the generation tool can be found in the `ReadME` of `generator` workspace.
 
 ## 📜 License
 
