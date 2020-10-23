@@ -26,6 +26,7 @@
   ],
   "author": "scorelab",
   "license": "Apache-2.0",
+  "format": "prettier --write ."
   "bugs": {
     "url": "https://github.com/cloudlibz/nodecloud/issues"
   },
