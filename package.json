@@ -10,6 +10,7 @@
     "test": "lerna run test",
     "lint": "lerna run lint",
     "prettier": "lerna run prettier",
+    "format": "prettier --write",
     "doc": "jsdoc -c jsdoc.json"
   },
   "repository": {
