@@ -79,7 +79,7 @@ This config file can contain an array of objects for all providers and all will 
 
 ### Example
 
-```
+```js
 const nodeCloudAwsPlugin = require("@nodecloud/aws-plugin");
 const nodeCloudGcpPlugin = require("@nodecloud/gcp-plugin");
 const nodeCloudAzurePlugin = require("@nodecloud/azure-plugin");
@@ -89,7 +89,7 @@ const providers = [
     name: "aws",
     tag: "aws",
     plugin: nodeCloudAwsPlugin,
-    configPath: "C:\\Users\\Rajitha\\opensource\\aws_cred.json"
+    configPath: "C:\\Users\\Rajitha\\opensource\\aws_cred.json",
   },
   {
     name: "google",
@@ -97,13 +97,13 @@ const providers = [
     plugin: nodeCloudGcpPlugin,
     configPath: {
       projectId: "astral-hold-276807",
-      keyFilename: "C:\\Users\\Rajitha\\opensource\\gcp_cred.json"
-    }
+      keyFilename: "C:\\Users\\Rajitha\\opensource\\gcp_cred.json",
+    },
   },
   {
     name: "azure",
     tag: "azure",
-    plugin: nodeCloudAzurePlugin
+    plugin: nodeCloudAzurePlugin,
   },
 ];
 module.exports = providers;
@@ -115,68 +115,66 @@ Congratulations! You just configured NodeCloud in your project. Let's start with
 
 The below code is an example of usage in AWS.
 
-```
+```js
 const nc = require("@nodecloud/common"); // NodeCloud common module
 const optionsProvider = {
-    overrideProviders: false
+  overrideProviders: false,
 };
 const ncProviders = nc.getProviders(optionsProvider);
 const options = {
-    apiVersion: "2017-11-01"
+  apiVersion: "2017-11-01",
 };
 
 const computeModule = ncProviders.aws.compute(options);
 
 function launchInstance() {
-    const instanceParams = {
-        ImageId: "ami-07ebfd5b3428b6f4d", // Image of Ubuntu Server 18.04 LTS
-        InstanceType: "t2.micro",
-        KeyName: "nodeCloud", // key name of Key pair
-        MinCount: 1,
-        MaxCount: 1
-    };
+  const instanceParams = {
+    ImageId: "ami-07ebfd5b3428b6f4d", // Image of Ubuntu Server 18.04 LTS
+    InstanceType: "t2.micro",
+    KeyName: "nodeCloud", // key name of Key pair
+    MinCount: 1,
+    MaxCount: 1,
+  };
 
-    // create AWS EC2 instance
-    computeModule
-        .create(instanceParams)
-        .then(res => {
-            console.log( `All done ! ${res}` );
-        })
-        .catch(err => {
-            console.log( `Oops something happened ${err}` );
-        });
+  // create AWS EC2 instance
+  computeModule
+    .create(instanceParams)
+    .then((res) => {
+      console.log(`All done ! ${res}`);
+    })
+    .catch((err) => {
+      console.log(`Oops something happened ${err}`);
+    });
 }
 
 function stopInstance() {
-    const params = {
-        InstanceIds: ["i-0928af5c626f85da9"],
-        DryRun: false
-    };
+  const params = {
+    InstanceIds: ["i-0928af5c626f85da9"],
+    DryRun: false,
+  };
 
-    // stop AWS EC2 instance
-    computeModule
-        .stop(params)
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => {
-            console.log(err);
-        });
+  // stop AWS EC2 instance
+  computeModule
+    .stop(params)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
-
 ```
 
 ## Overriding Providers
 
 NodeCloud officially supports AWS, GCP, Azure, DigitalOcean and AliCloud. If you want to use a community-driven plugin override the providers' list as follows.
 
-```
+```js
 const nodeCloud = require("nodecloud");
 const options = {
-  overrideProviders: true
+  overrideProviders: true,
 };
 const ncProviders = nodeCloud.getProviders(options);
-
 ```
 
 ## 📟 Service Types
@@ -317,4 +315,4 @@ This is where the magic happens✨. We don't code any JavaScript classes in Node
 
 ## 📜 License
 
-MIT
+MIT @ leopardslab
