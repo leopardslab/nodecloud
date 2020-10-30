@@ -1,0 +1,28 @@
+{
+  "name": "@nodecloud/gcp-plugin",
+  "version": "2.0.0",
+  "description": "NodeCloud GCP plugin",
+  "main": "index.js",
+  "scripts": {
+    "prettier": "yarn pretty-quick"
+  },
+  "keywords": [
+    "nodecloud",
+    "nodecloud-gcp"
+  ],
+  "author": "Scorelab",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@google-cloud/automl": "^2.2.0",
+    "@google-cloud/compute": "^2.0.1",
+    "@google-cloud/container": "^2.1.1",
+    "@google-cloud/dns": "^2.0.1",
+    "@google-cloud/firestore": "^4.2.0",
+    "@google-cloud/kms": "^2.1.2",
+    "@google-cloud/monitoring": "^2.1.1",
+    "@google-cloud/pubsub": "^2.5.0",
+    "@google-cloud/spanner": "^5.2.1",
+    "@google-cloud/storage": "^5.1.1",
+    "@google-cloud/translate": "^6.0.2"
+  }
+}

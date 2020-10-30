@@ -1,0 +1,19 @@
+{
+  "name": "@nodecloud/common",
+  "version": "2.0.0",
+  "description": "NodeCloud core",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha \"./**/*.test.js\"",
+    "prettier": "yarn pretty-quick"
+  },
+  "keywords": [
+    "nodecloud"
+  ],
+  "author": "Scorelab",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "config": "^1.26.1",
+    "key-mirror": "^1.0.1"
+  }
+}

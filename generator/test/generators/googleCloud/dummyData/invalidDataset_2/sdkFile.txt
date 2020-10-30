@@ -1,0 +1,13 @@
+/// <reference types="node" />
+import * as gax from 'google-gax';
+import { Callback, Descriptors, ClientOptions, PaginationCallback } from 'google-gax';
+import { Transform } from 'stream';
+import * as protos from '../../protos/protos';
+/**
+ *  Google Kubernetes Engine Cluster Manager v1
+ * @class
+ * @memberof v1
+ */
+export declare class ClusterManagerClient {
+    
+}

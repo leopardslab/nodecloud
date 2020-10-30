@@ -1,0 +1,15 @@
+{
+  "functions": [
+    {
+      "SDKFunctionName": "batchDeleteAttributes",
+      "params": [
+        {
+          "name": "params",
+          "optional": false,
+          "type": "TypeReference",
+          "invalid": true
+        }
+      ]
+    }
+  ]
+}

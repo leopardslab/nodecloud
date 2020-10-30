@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GCP_NotificationService</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo"></div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link">
+              API Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar " id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category"></div>
+          <div class="category">
+            <h2>AWS</h2>
+            <h3>Classes</h3>
+            <ul>
+              <li>
+                <a href="AWS_ArchivalStorage.html">AWS_ArchivalStorage</a>
+              </li>
+              <li><a href="AWS_BlockStorage.html">AWS_BlockStorage</a></li>
+              <li>
+                <a href="AWS_ComputeInstance.html">AWS_ComputeInstance</a>
+              </li>
+              <li><a href="AWS_Container.html">AWS_Container</a></li>
+              <li><a href="AWS_DNS.html">AWS_DNS</a></li>
+              <li><a href="AWS_IAM.html">AWS_IAM</a></li>
+              <li><a href="AWS_KeyManagement.html">AWS_KeyManagement</a></li>
+              <li><a href="AWS_Kubernetes.html">AWS_Kubernetes</a></li>
+              <li><a href="AWS_LoadBalancer.html">AWS_LoadBalancer</a></li>
+              <li><a href="AWS_Monitoring.html">AWS_Monitoring</a></li>
+              <li><a href="AWS_NoSql.html">AWS_NoSql</a></li>
+              <li><a href="AWS_NoSqlIndexed.html">AWS_NoSqlIndexed</a></li>
+              <li>
+                <a href="AWS_NotificationService.html"
+                  >AWS_NotificationService</a
+                >
+              </li>
+              <li><a href="AWS_PaaS.html">AWS_PaaS</a></li>
+              <li><a href="AWS_RDBMS.html">AWS_RDBMS</a></li>
+              <li><a href="AWS_StorageBucket.html">AWS_StorageBucket</a></li>
+              <li><a href="AWS_Translation.html">AWS_Translation</a></li>
+            </ul>
+          </div>
+          <div class="category">
+            <h2>Azure</h2>
+            <h3>Classes</h3>
+            <ul>
+              <li><a href="Azure_BlockStorage.html">Azure_BlockStorage</a></li>
+              <li>
+                <a href="Azure_ComputeInstance.html">Azure_ComputeInstance</a>
+              </li>
+              <li><a href="Azure_Container.html">Azure_Container</a></li>
+              <li><a href="Azure_DNS.html">Azure_DNS</a></li>
+              <li>
+                <a href="Azure_KeyManagement.html">Azure_KeyManagement</a>
+              </li>
+              <li><a href="Azure_Kubernetes.html">Azure_Kubernetes</a></li>
+              <li><a href="Azure_LoadBalancer.html">Azure_LoadBalancer</a></li>
+              <li><a href="Azure_Monitoring.html">Azure_Monitoring</a></li>
+              <li><a href="Azure_NoSql.html">Azure_NoSql</a></li>
+              <li><a href="Azure_PaaS.html">Azure_PaaS</a></li>
+              <li><a href="Azure_RDBMS.html">Azure_RDBMS</a></li>
+              <li>
+                <a href="Azure_StorageBucket.html">Azure_StorageBucket</a>
+              </li>
+            </ul>
+          </div>
+          <div class="category">
+            <h2>Google Cloud</h2>
+            <h3>Classes</h3>
+            <ul>
+              <li><a href="GCP_dns.html">GCP_dns</a></li>
+              <li><a href="GCP_KeyManagement.html">GCP_KeyManagement</a></li>
+              <li><a href="GCP_Kubernetes.html">GCP_Kubernetes</a></li>
+              <li><a href="GCP_Monitoring.html">GCP_Monitoring</a></li>
+              <li><a href="GCP_NoSql.html">GCP_NoSql</a></li>
+              <li>
+                <a href="GCP_NotificationService.html"
+                  >GCP_NotificationService</a
+                >
+              </li>
+              <li><a href="GCP_RDBMS.html">GCP_RDBMS</a></li>
+              <li><a href="GCP_storage.html">GCP_storage</a></li>
+              <li><a href="GCP_Translation.html">GCP_Translation</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Class</p>
+            <h1>GCP_NotificationService</h1>
+          </header>
+
+          <section>
+            <header>
+              <h2>
+                <span class="attribs"><span class="type-signature"></span></span
+                >GCP_NotificationService<span class="signature">(config)</span
+                ><span class="type-signature"></span>
+              </h2>
+
+              <div class="class-description">
+                <p>Class to create a NotificationService object</p>
+              </div>
+            </header>
+
+            <article>
+              <div class="container-overview">
+                <div class="vertical-section">
+                  <div class="members">
+                    <div class="member">
+                      <div class="name">
+                        <span class="tag">Constructor</span>
+                      </div>
+
+                      <h4 class="name" id="GCP_NotificationService">
+                        <a class="href-link" href="#GCP_NotificationService"
+                          >#</a
+                        >
+
+                        <span class="code-name">
+                          new GCP_NotificationService<span class="signature"
+                            >(config)</span
+                          ><span class="type-signature"></span>
+                        </span>
+                      </h4>
+
+                      <h5>Parameters:</h5>
+
+                      <div class="table-container">
+                        <table class="params table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+
+                              <th>Type</th>
+
+                              <th class="last">Description</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <tr class="deep-level-0">
+                              <td class="name"><code>config</code></td>
+
+                              <td class="type">
+                                <span class="param-type">object</span>
+                              </td>
+
+                              <td class="description last">
+                                <p>Configuration object</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <dl class="details">
+                        <p class="tag-source">
+                          <a
+                            href="googleCloud_gcp-notificationService.js.html"
+                            class="button"
+                            >View Source</a
+                          >
+                          <span>
+                            <a
+                              href="googleCloud_gcp-notificationService.js.html"
+                              >googleCloud/gcp-notificationService.js</a
+                            >,
+                            <a
+                              href="googleCloud_gcp-notificationService.js.html#line13"
+                              >line 13</a
+                            >
+                          </span>
+                        </p>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vertical-section">
+                <h1>Methods</h1>
+                <div class="members">
+                  <div class="member">
+                    <h4 class="name" id="createTopic">
+                      <a class="href-link" href="#createTopic">#</a>
+
+                      <span class="code-name">
+                        createTopic<span class="signature"
+                          >(request, options<span class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;createTopicResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Trigers the createTopic function of undefined</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>request</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Data required for createTopic</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>options</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Data required for createTopic</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-notificationService.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-notificationService.js.html"
+                            >googleCloud/gcp-notificationService.js</a
+                          >,
+                          <a
+                            href="googleCloud_gcp-notificationService.js.html#line23"
+                            >line 23</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;createTopicResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="deleteTopic">
+                      <a class="href-link" href="#deleteTopic">#</a>
+
+                      <span class="code-name">
+                        deleteTopic<span class="signature"
+                          >(request, options<span class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;deleteTopicResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Trigers the deleteTopic function of undefined</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>request</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Data required for deleteTopic</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>options</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Data required for deleteTopic</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-notificationService.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-notificationService.js.html"
+                            >googleCloud/gcp-notificationService.js</a
+                          >,
+                          <a
+                            href="googleCloud_gcp-notificationService.js.html#line41"
+                            >line 41</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;deleteTopicResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="getTopicAttributes">
+                      <a class="href-link" href="#getTopicAttributes">#</a>
+
+                      <span class="code-name">
+                        getTopicAttributes<span class="signature"
+                          >(request, options<span class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;getTopicResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Trigers the getTopic function of undefined</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>request</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Data required for getTopic</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>options</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Data required for getTopic</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-notificationService.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-notificationService.js.html"
+                            >googleCloud/gcp-notificationService.js</a
+                          >,
+                          <a
+                            href="googleCloud_gcp-notificationService.js.html#line59"
+                            >line 59</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;getTopicResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="listSubscriptions">
+                      <a class="href-link" href="#listSubscriptions">#</a>
+
+                      <span class="code-name">
+                        listSubscriptions<span class="signature"
+                          >(request, options<span class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr;
+                          {Promise.&lt;listTopicSubscriptionsResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>
+                        Trigers the listTopicSubscriptions function of undefined
+                      </p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>request</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Data required for listTopicSubscriptions</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>options</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Data required for listTopicSubscriptions</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-notificationService.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-notificationService.js.html"
+                            >googleCloud/gcp-notificationService.js</a
+                          >,
+                          <a
+                            href="googleCloud_gcp-notificationService.js.html#line77"
+                            >line 77</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;listTopicSubscriptionsResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="listTopics">
+                      <a class="href-link" href="#listTopics">#</a>
+
+                      <span class="code-name">
+                        listTopics<span class="signature"
+                          >(request, options<span class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;listTopicsResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Trigers the listTopics function of undefined</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>request</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Data required for listTopics</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>options</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Data required for listTopics</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-notificationService.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-notificationService.js.html"
+                            >googleCloud/gcp-notificationService.js</a
+                          >,
+                          <a
+                            href="googleCloud_gcp-notificationService.js.html#line131"
+                            >line 131</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;listTopicsResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="publish">
+                      <a class="href-link" href="#publish">#</a>
+
+                      <span class="code-name">
+                        publish<span class="signature"
+                          >(request, options<span class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;publishResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Trigers the publish function of undefined</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>request</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Data required for publish</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>options</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Data required for publish</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-notificationService.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-notificationService.js.html"
+                            >googleCloud/gcp-notificationService.js</a
+                          >,
+                          <a
+                            href="googleCloud_gcp-notificationService.js.html#line113"
+                            >line 113</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;publishResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="subscribe">
+                      <a class="href-link" href="#subscribe">#</a>
+
+                      <span class="code-name">
+                        subscribe<span class="signature"
+                          >(request, options<span class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;createSubscriptionResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>
+                        Trigers the createSubscription function of undefined
+                      </p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>request</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Data required for createSubscription</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>options</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Data required for createSubscription</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-notificationService.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-notificationService.js.html"
+                            >googleCloud/gcp-notificationService.js</a
+                          >,
+                          <a
+                            href="googleCloud_gcp-notificationService.js.html#line95"
+                            >line 95</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;createSubscriptionResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="unsubscribe">
+                      <a class="href-link" href="#unsubscribe">#</a>
+
+                      <span class="code-name">
+                        unsubscribe<span class="signature"
+                          >(request, options<span class="signature-attributes"
+                            >opt</span
+                          >)</span
+                        ><span class="type-signature">
+                          &rarr; {Promise.&lt;deleteSubscriptionResponse>}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>
+                        Trigers the deleteSubscription function of undefined
+                      </p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Attributes</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>request</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes"></td>
+
+                            <td class="description last">
+                              <p>Data required for deleteSubscription</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>options</code></td>
+
+                            <td class="type">
+                              <span class="param-type">TypeReference</span>
+                            </td>
+
+                            <td class="attributes">&lt;optional><br /></td>
+
+                            <td class="description last">
+                              <p>Data required for deleteSubscription</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="googleCloud_gcp-notificationService.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="googleCloud_gcp-notificationService.js.html"
+                            >googleCloud/gcp-notificationService.js</a
+                          >,
+                          <a
+                            href="googleCloud_gcp-notificationService.js.html#line149"
+                            >line 149</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <span class="param-type"
+                              >Promise.&lt;deleteSubscriptionResponse></span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

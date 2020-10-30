@@ -1,0 +1,10 @@
+[
+  {
+    "fileName": "cluster_manager_client.d.ts",
+    "version": "v1",
+    "pkgName": "container",
+    "ast": null,
+    "client": null,
+    "sdkFunctionNames": ["createCluster", "deleteCluster", "listClusters"]
+  }
+]

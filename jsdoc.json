@@ -1,0 +1,21 @@
+{
+  "source": {
+    "include": ["generator/generatedClasses/"],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": ["plugins/markdown", "node_modules/better-docs/category"],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true
+  },
+  "opts": {
+    "template": "node_modules/better-docs",
+    "recurse": true,
+    "destination": "./docs/",
+    "readme": "README.md"
+  },
+  "tags": {
+    "allowUnknownTags": ["category"]
+  }
+}

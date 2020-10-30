@@ -1,20 +1,21 @@
 {
   "name": "nodecloud",
-  "version": "1.0.0-beta.3",
+  "private": "true",
+  "workspaces": [
+    "packages/*",
+    "generator"
+  ],
   "description": "⚡️ The Node.js API for open cloud",
-  "main": "lib/index.js",
   "scripts": {
-    "test": "mocha",
-    "prettier": "pretty-quick --staged",
-    "prepublish": "npm run test"
+    "test": "lerna run test",
+    "lint": "lerna run lint",
+    "prettier": "lerna run prettier",
+    "format": "prettier --write",
+    "doc": "jsdoc -c jsdoc.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cloudlibz/nodecloud.git"
-  },
-  "dependencies": {
-    "config": "^1.26.1",
-    "key-mirror": "^1.0.1"
   },
   "keywords": [
     "nodecloud",
@@ -31,17 +32,26 @@
   },
   "homepage": "https://github.com/cloudlibz/nodecloud#readme",
   "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/lodash": "^4.14.158",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^14.0.6",
+    "better-docs": "^2.3.0",
     "chai": "^4.2.0",
-    "husky": "^1.3.1",
-    "mocha": "^5.2.0",
+    "cross-env": "^7.0.2",
+    "husky": "^4.3.0",
+    "jsdoc": "^3.6.5",
+    "lerna": "^3.22.1",
+    "mocha": "^8.0.1",
     "nock": "^9.6.1",
     "prettier": "^1.15.3",
-    "pretty-quick": "^1.8.0"
+    "pretty-quick": "^1.8.0",
+    "ts-node": "^8.10.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test && npm run prettier",
-      "pre-push": "npm test"
+      "pre-commit": "lerna run test && lerna run prettier",
+      "pre-push": "lerna run test"
     }
   }
 }
