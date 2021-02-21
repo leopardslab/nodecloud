@@ -17,6 +17,21 @@
 [![Mailing list : Scorelab](https://img.shields.io/badge/Mailing%20list-Scorelab-blue.svg)](https://groups.google.com/g/score-community)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-ff69b4.svg?style=flat)](https://github.com/leopardslab/nodecloud/issues)
 
+Table of Content 
+
+- [Introduction](#introduction) 
+- [Supported Service Providers](#-supported-service-providers)
+- [Getting Started](#getting-started)
+  - [NodeCloud Plugins](#nodecloud-plugins)
+  - [Example](#example)
+- [Overriding Providers](#overriding-providers)
+- [Service Types](#-service-types)
+- [Development setup](#-development-setup)
+- [Important Notes for Developers](#important-notes-for-developers-)
+- [Test Changes](#test-changes)
+- [NodeCloud Code Generation tool](#nodecloud-code-generation-tool)
+- [License](#-license)
+
 # Introduction
 
 **`NodeCloud ☁️`** is a standard library to get a single API on the open cloud with multiple providers. It is a NodeJs library which comes with plugins for each cloud provider. NodeCloud's aim is to abstract away the differences between different cloud providers. It provides an easy to use API for developers in order to interact with different cloud providers.
