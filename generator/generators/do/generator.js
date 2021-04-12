@@ -36,13 +36,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.generateAWSClass = exports.extractSDKData = void 0;
+exports.generateDOClass = exports.extractSDKData = void 0;
 var fs = require("fs");
 var typescript_1 = require("typescript");
-var parser_1 = require("../../parsers/aws/parser");
-var transformer_1 = require("../../transformers/aws/transformer");
+var parser_1 = require("../../parsers/do/parser");
+var transformer_1 = require("../../transformers/do/transformer");
 var helper_1 = require("../lib/helper");
-var dummyFile = process.cwd() + "/dummyClasses/aws.js";
+var dummyFile = process.cwd() + "/dummyClasses/do.js";
 var dummyAst = typescript_1.createSourceFile(dummyFile, fs.readFileSync(dummyFile).toString(), typescript_1.ScriptTarget.Latest, true);
 function extractSDKData(sdkClassAst, serviceClass) {
     var methods = [];
@@ -68,7 +68,7 @@ function extractSDKData(sdkClassAst, serviceClass) {
                         typeName: null
                     };
                     if (parameter.type === "TypeReference" && param.type.typeName) {
-                        parameter.typeName = param.type.typeName.right.text;
+                        parameter.typeName = param.type.typeName.text;
                     }
                     parameters_1.push(parameter);
                 }
@@ -80,8 +80,8 @@ function extractSDKData(sdkClassAst, serviceClass) {
             });
         }
     });
-    var groupedMethods = helper_1.groupers.aws(methods);
-    methods = helper_1.filters.aws(groupedMethods);
+    var groupedMethods = helper_1.groupers["do"](methods);
+    methods = helper_1.filters["do"](groupedMethods);
     var classData = {
         className: sdkClassAst.name.text,
         functions: methods,
@@ -90,7 +90,7 @@ function extractSDKData(sdkClassAst, serviceClass) {
     return classData;
 }
 exports.extractSDKData = extractSDKData;
-function generateAWSClass(serviceClass, serviceName) {
+function generateDOClass(serviceClass, serviceName) {
     var _this = this;
     var sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(" ")[0];
     parser_1.getAST(sdkFile).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
@@ -110,12 +110,12 @@ function generateAWSClass(serviceClass, serviceName) {
                     filePath = void 0;
                     if (/^[A-Z]*$/.test(serviceName)) {
                         filePath =
-                            process.cwd() + "/generatedClasses/AWS/aws-" + serviceName + ".js";
+                            process.cwd() + "/generatedClasses/DO/do-" + serviceName + ".js";
                     }
                     else {
                         filePath =
                             process.cwd() +
-                                "/generatedClasses/AWS/aws-" +
+                                "/generatedClasses/DO/do-" +
                                 serviceName.charAt(0).toLowerCase() +
                                 serviceName.slice(1) +
                                 ".js";
@@ -131,4 +131,4 @@ function generateAWSClass(serviceClass, serviceName) {
         });
     }); });
 }
-exports.generateAWSClass = generateAWSClass;
+exports.generateDOClass = generateDOClass;

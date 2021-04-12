@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
-exports.filterAWSMethods = exports.groupAWSMethods = void 0;
-function groupAWSMethods(methods) {
+exports.filterDOMethods = exports.groupDOMethods = void 0;
+function groupDOMethods(methods) {
     var methodArr = Object.values(methods.reduce(function (result, _a) {
         var functionName = _a.functionName, SDKFunctionName = _a.SDKFunctionName, params = _a.params;
         // Create new group
@@ -20,8 +20,8 @@ function groupAWSMethods(methods) {
     }, {}));
     return methodArr;
 }
-exports.groupAWSMethods = groupAWSMethods;
-function filterAWSMethods(groupedMethods) {
+exports.groupDOMethods = groupDOMethods;
+function filterDOMethods(groupedMethods) {
     var methods = [];
     groupedMethods.map(function (group) {
         group.array.sort(function (a, b) {
@@ -31,4 +31,4 @@ function filterAWSMethods(groupedMethods) {
     });
     return methods;
 }
-exports.filterAWSMethods = filterAWSMethods;
+exports.filterDOMethods = filterDOMethods;

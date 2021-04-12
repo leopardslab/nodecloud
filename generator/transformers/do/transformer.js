@@ -107,7 +107,7 @@ function transform(code, classData) {
                                 var updatedIdentifier = void 0;
                                 switch (node.text) {
                                     case "ClassName":
-                                        updatedIdentifier = ts.updateIdentifier(ts.createIdentifier("AWS_" + classData.serviceName));
+                                        updatedIdentifier = ts.updateIdentifier(ts.createIdentifier("DO_" + classData.serviceName));
                                         break;
                                     case "_sdkClassName":
                                         updatedIdentifier = ts.updateIdentifier(ts.createIdentifier("_" +
@@ -115,7 +115,8 @@ function transform(code, classData) {
                                             classData.className.substr(1)));
                                         break;
                                     case "SDKClassName":
-                                        updatedIdentifier = ts.updateIdentifier(ts.createIdentifier(classData.className));
+                                        updatedIdentifier = ts.updateIdentifier(ts.createIdentifier(classData.className.charAt(0).toLowerCase() +
+                                            classData.className.substr(1)));
                                         break;
                                     case "SDKFunctionName":
                                         updatedIdentifier = ts.updateIdentifier(ts.createIdentifier(classData.functions[count].SDKFunctionName));
@@ -143,17 +144,23 @@ function transform(code, classData) {
                         function visit(node) {
                             if (ts.isClassDeclaration(node)) {
                                 addMultiLineComment(node, "This is an auto generated class, please do not change.");
-                                var comment = "*\n * Class to create a " + classData.className + " object\n * @category AWS       \n ";
+                                var comment = "*\n * Class to create a " + classData.className + " object\n * @category Digital Ocean       \n ";
                                 addMultiLineComment(node, comment);
                             }
                             if (ts.isMethodDeclaration(node)) {
                                 var parameters = classData.functions[count].params.map(function (param) {
                                     var statment;
                                     if (param.optional) {
-                                        statment = "* @param {" + param.typeName + "} [" + param.name + "] - Data required for " + classData.functions[count].SDKFunctionName;
+                                        if (param.type == "TypeReference")
+                                            statment = "* @param {" + param.typeName + "} " + param.name + " - Data required for " + classData.functions[count].SDKFunctionName;
+                                        else
+                                            statment = "* @param {" + param.type + "} " + param.name + " - Data required for " + classData.functions[count].SDKFunctionName;
                                     }
                                     else {
-                                        statment = "* @param {" + param.typeName + "} " + param.name + " - Data required for " + classData.functions[count].SDKFunctionName;
+                                        if (param.type == "TypeReference")
+                                            statment = "* @param {" + param.typeName + "} " + param.name + " - Data required for " + classData.functions[count].SDKFunctionName;
+                                        else
+                                            statment = "* @param {" + param.type + "} " + param.name + " - Data required for " + classData.functions[count].SDKFunctionName;
                                     }
                                     return statment;
                                 });
