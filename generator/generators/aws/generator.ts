@@ -94,17 +94,24 @@ export function generateAWSClass(serviceClass, serviceName) {
       classData.serviceName = serviceName;
       const output = await transform(dummyAst, classData);
       let filePath;
-      const dir=getDir(serviceName);
-      if (!fs.existsSync(process.cwd() +"/generatedClasses/AWS/"+dir)){
-        fs.mkdirSync(process.cwd() +"/generatedClasses/AWS/"+dir);
+      const dir = getDir(serviceName);
+      if (!fs.existsSync(process.cwd() + "/generatedClasses/AWS/" + dir)) {
+        fs.mkdirSync(process.cwd() + "/generatedClasses/AWS/" + dir);
       }
       if (/^[A-Z]*$/.test(serviceName)) {
         filePath =
-          process.cwd() + "/generatedClasses/AWS/"+dir+"/aws-" + serviceName + ".js";
+          process.cwd() +
+          "/generatedClasses/AWS/" +
+          dir +
+          "/aws-" +
+          serviceName +
+          ".js";
       } else {
         filePath =
           process.cwd() +
-          "/generatedClasses/AWS/"+dir+"/aws-" +
+          "/generatedClasses/AWS/" +
+          dir +
+          "/aws-" +
           serviceName.charAt(0).toLowerCase() +
           serviceName.slice(1) +
           ".js";

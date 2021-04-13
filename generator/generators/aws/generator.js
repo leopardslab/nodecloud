@@ -114,12 +114,19 @@ function generateAWSClass(serviceClass, serviceName) {
                     }
                     if (/^[A-Z]*$/.test(serviceName)) {
                         filePath =
-                            process.cwd() + "/generatedClasses/AWS/" + dir + "/aws-" + serviceName + ".js";
+                            process.cwd() +
+                                "/generatedClasses/AWS/" +
+                                dir +
+                                "/aws-" +
+                                serviceName +
+                                ".js";
                     }
                     else {
                         filePath =
                             process.cwd() +
-                                "/generatedClasses/AWS/" + dir + "/aws-" +
+                                "/generatedClasses/AWS/" +
+                                dir +
+                                "/aws-" +
                                 serviceName.charAt(0).toLowerCase() +
                                 serviceName.slice(1) +
                                 ".js";
