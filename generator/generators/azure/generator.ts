@@ -125,17 +125,24 @@ export async function generateAzureClass(serviceClass, serviceName) {
   classData.serviceName = serviceName;
   const output = await transform(dummyAst, classData);
   let filePath;
-  const dir=getDir(serviceName);
-  if (!fs.existsSync(process.cwd() +"/generatedClasses/Azure/"+dir)){
-    fs.mkdirSync(process.cwd() +"/generatedClasses/Azure/"+dir);
+  const dir = getDir(serviceName);
+  if (!fs.existsSync(process.cwd() + "/generatedClasses/Azure/" + dir)) {
+    fs.mkdirSync(process.cwd() + "/generatedClasses/Azure/" + dir);
   }
   if (/^[A-Z]*$/.test(serviceName)) {
     filePath =
-      process.cwd() + "/generatedClasses/Azure/"+dir+"/azure-" + serviceName + ".js";
+      process.cwd() +
+      "/generatedClasses/Azure/" +
+      dir +
+      "/azure-" +
+      serviceName +
+      ".js";
   } else {
     filePath =
       process.cwd() +
-      "/generatedClasses/Azure/"+dir+"/azure-" +
+      "/generatedClasses/Azure/" +
+      dir +
+      "/azure-" +
       serviceName.charAt(0).toLowerCase() +
       serviceName.slice(1) +
       ".js";
