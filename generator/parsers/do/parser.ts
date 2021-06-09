@@ -7,7 +7,8 @@ export function getAST(sdkFileName) {
     try {
       const file = path.join(
         __dirname,
-        "../../../node_modules/do-wrapper/dist/modules/" + sdkFileName.toLowerCase()
+        "../../../node_modules/do-wrapper/dist/modules/" +
+          sdkFileName.toLowerCase()
       );
       const ast = createSourceFile(
         file,
@@ -17,14 +18,13 @@ export function getAST(sdkFileName) {
       );
 
       let cloned = null;
-      
-      await ast.forEachChild(child => {
 
+      await ast.forEachChild(child => {
         if (SyntaxKind[child.kind] === "ClassDeclaration") {
           cloned = Object.assign({}, child);
         }
       });
-      
+
       if (!cloned) {
         reject(new Error("Class not found!"));
       } else {
@@ -39,4 +39,3 @@ export function getAST(sdkFileName) {
     }
   });
 }
-
