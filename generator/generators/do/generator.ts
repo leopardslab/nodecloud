@@ -1,6 +1,8 @@
 import * as fs from "fs";
 import { createSourceFile, ScriptTarget, SyntaxKind } from "typescript";
 import { getAST } from "../../parsers/do/parser";
+import { transform } from "../../transformers/do/transformer";
+import { printFile, getDir } from "../lib/helper";
 
 
 interface FunctionData {
@@ -21,8 +23,8 @@ interface ClassData {
   serviceName: string;
 }
 
-// const dummyFile = process.cwd() + "/dummyClasses/do.js";
-const dummyFile = "../../dummyClasses/do.js";
+const dummyFile = process.cwd() + "/dummyClasses/do.js";
+
 
 const dummyAst = createSourceFile(
   dummyFile,
@@ -92,9 +94,30 @@ export function generateDOClass(serviceClass, serviceName) {
     try {
       const classData: ClassData = extractSDKData(sdkClassAst, serviceClass);
       classData.serviceName = serviceName;
+      const output = await transform(dummyAst, classData);
+      let filePath;
+      const dir = getDir(serviceName);
+      if (!fs.existsSync(process.cwd() + "/generatedClasses/DO/" + dir)) {
+        fs.mkdirSync(process.cwd() + "/generatedClasses/DO/" + dir);
+      }
+      if (/^[A-Z]*$/.test(serviceName)) {
+        filePath =
+          process.cwd() + "/generatedClasses/DO/"+
+          dir+
+          "/do-" + serviceName + ".js";
+      } else {
+        filePath =
+          process.cwd() +
+          "/generatedClasses/DO/"+
+          dir+
+          "/do-" +
+          serviceName.charAt(0).toLowerCase() +
+          serviceName.slice(1) +
+          ".js";
+      }
+      printFile(filePath, output);
     } catch (e) {
       console.error(e);
     }
   });
 }
-

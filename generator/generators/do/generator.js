@@ -40,8 +40,9 @@ exports.generateDOClass = exports.extractSDKData = void 0;
 var fs = require("fs");
 var typescript_1 = require("typescript");
 var parser_1 = require("../../parsers/do/parser");
-// const dummyFile = process.cwd() + "/dummyClasses/do.js";
-var dummyFile = "../../dummyClasses/do.js";
+var transformer_1 = require("../../transformers/do/transformer");
+var helper_1 = require("../lib/helper");
+var dummyFile = process.cwd() + "/dummyClasses/do.js";
 var dummyAst = typescript_1.createSourceFile(dummyFile, fs.readFileSync(dummyFile).toString(), typescript_1.ScriptTarget.Latest, true);
 function extractSDKData(sdkClassAst, serviceClass) {
     var methods = [];
@@ -91,28 +92,49 @@ function generateDOClass(serviceClass, serviceName) {
     var _this = this;
     var sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(" ")[0];
     parser_1.getAST(sdkFile).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-        var sdkClassAst, classData;
+        var sdkClassAst, classData, output, filePath, dir, e_1;
         return __generator(this, function (_a) {
-            sdkClassAst = result;
-            try {
-                classData = extractSDKData(sdkClassAst, serviceClass);
-                classData.serviceName = serviceName;
-                console.log(classData);
+            switch (_a.label) {
+                case 0:
+                    sdkClassAst = result;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    classData = extractSDKData(sdkClassAst, serviceClass);
+                    classData.serviceName = serviceName;
+                    return [4 /*yield*/, transformer_1.transform(dummyAst, classData)];
+                case 2:
+                    output = _a.sent();
+                    filePath = void 0;
+                    dir = helper_1.getDir(serviceName);
+                    if (!fs.existsSync(process.cwd() + "/generatedClasses/DO/" + dir)) {
+                        fs.mkdirSync(process.cwd() + "/generatedClasses/DO/" + dir);
+                    }
+                    if (/^[A-Z]*$/.test(serviceName)) {
+                        filePath =
+                            process.cwd() + "/generatedClasses/DO/" +
+                                dir +
+                                "/do-" + serviceName + ".js";
+                    }
+                    else {
+                        filePath =
+                            process.cwd() +
+                                "/generatedClasses/DO/" +
+                                dir +
+                                "/do-" +
+                                serviceName.charAt(0).toLowerCase() +
+                                serviceName.slice(1) +
+                                ".js";
+                    }
+                    helper_1.printFile(filePath, output);
+                    return [3 /*break*/, 4];
+                case 3:
+                    e_1 = _a.sent();
+                    console.error(e_1);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
-            catch (e) {
-                console.error(e);
-            }
-            return [2 /*return*/];
         });
     }); });
 }
 exports.generateDOClass = generateDOClass;
-var testclass = {
-    "create": "kubernetes.d.ts create",
-    "delete": "kubernetes.d.ts delete",
-    "listClusters": "kubernetes.d.ts getClusters",
-    "createNodeGroup": "kubernetes.d.ts addNodePool",
-    "deleteNodegroup": "kubernetes.d.ts deleteNodePool",
-    "listNodegroups": "kubernetes.d.ts getNodePools"
-};
-generateDOClass(testclass, "Kubernetes");

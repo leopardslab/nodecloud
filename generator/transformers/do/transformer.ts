@@ -181,9 +181,9 @@ export async function transform(code: ts.SourceFile, classData: any): Promise<st
           "This is an auto generated class, please do not change."
         );
         const comment = `*
-        * Class to create a ${classData.className} object
-        * @category Digital Ocean       
-        `;
+* Class to create a ${classData.className} object
+* @category Digital Ocean       
+`;
         addMultiLineComment(node, comment);
       }
 
@@ -210,20 +210,20 @@ export async function transform(code: ts.SourceFile, classData: any): Promise<st
           let paramStatments: string = "";
           parameters.map(param => {
             paramStatments = paramStatments.concat(
-              paramStatments === "" ? `${param}` : `\n ${param}`
+              paramStatments === "" ? `${param}` : `\n${param}`
             );
           });
 
         comment = `*
-          * Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
-          ${paramStatments}
-          * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
-          `;
+* Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
+${paramStatments}
+* @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
+`;
         } else {
           comment = `*
-          * Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
-          * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
-          `;
+* Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
+* @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
+`;
         }
 
         addMultiLineComment(node, comment);
@@ -235,6 +235,9 @@ export async function transform(code: ts.SourceFile, classData: any): Promise<st
     return ts.visitNode(rootNode, visit);
   };
 
+/*
+* Code to get node and run tranformations 
+*/
   const node: any = code.statements.find(stm => ts.isClassDeclaration(stm));
 
   if (!classData.className || !classData.functions) {
