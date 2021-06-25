@@ -23,6 +23,32 @@ function addMultiLineComment(node, comment: string) {
   );
 }
 
+function runTransformation(sourceCode, transformMethod): Promise<string> {
+  return new Promise((resolve, reject) => {
+    try {
+      const result = ts.transform(sourceCode, [transformMethod]);
+      const transformedNodes = result.transformed[0];
+      const output = printer.printNode(
+        ts.EmitHint.SourceFile,
+        transformedNodes,
+        sourceCode
+      );
+      resolve(output);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+function toSourceFile(sourceCode: string): ts.SourceFile {
+  return ts.createSourceFile(
+    "dummyClass.js",
+    sourceCode,
+    ts.ScriptTarget.Latest,
+    true
+  );
+}
+
 
 
 /*
@@ -209,5 +235,23 @@ export async function transform(code: ts.SourceFile, classData: any): Promise<st
     return ts.visitNode(rootNode, visit);
   };
 
- 
+  const node: any = code.statements.find(stm => ts.isClassDeclaration(stm));
+
+  if (!classData.className || !classData.functions) {
+    throw new Error("Input is invalid");
+  }
+
+  if (!node || !node.members.some(member => ts.isMethodDeclaration(member))) {
+    throw new Error("Code is invalid");
+  }
+
+  code = cloneDeep(code);
+
+  const result_1 = await runTransformation(code, addFunctions);
+  const result_2 = await runTransformation(
+    toSourceFile(result_1),
+    addIdentifiers
+  );
+  const result_3 = await runTransformation(toSourceFile(result_2), addComments);
+  return result_3;
 }
