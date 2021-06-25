@@ -107,7 +107,7 @@ function generateDOClass(serviceClass, serviceName) {
     }); });
 }
 exports.generateDOClass = generateDOClass;
-var serviceClass = {
+var testclass = {
     "create": "kubernetes.d.ts create",
     "delete": "kubernetes.d.ts delete",
     "listClusters": "kubernetes.d.ts getClusters",
@@ -115,4 +115,4 @@ var serviceClass = {
     "deleteNodegroup": "kubernetes.d.ts deleteNodePool",
     "listNodegroups": "kubernetes.d.ts getNodePools"
 };
-generateDOClass(serviceClass, "Kubernetes");
+generateDOClass(testclass, "Kubernetes");

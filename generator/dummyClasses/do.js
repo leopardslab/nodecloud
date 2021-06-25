@@ -1,7 +1,7 @@
 class ClassName {
     /**
      *
-     * @param {module} aws DO SDK
+     * @param {module} do DO SDK
      * @param {object} options SDK options
      */
     constructor(dosdk, dotoken) {
