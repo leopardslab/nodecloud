@@ -14,6 +14,16 @@ const printer: ts.Printer = ts.createPrinter({
 });
 
 
+function addMultiLineComment(node, comment: string) {
+  ts.addSyntheticLeadingComment(
+    node,
+    ts.SyntaxKind.MultiLineCommentTrivia,
+    comment,
+    true
+  );
+}
+
+
 
 /*
 * The Transform function to be called from generator
@@ -22,7 +32,7 @@ const printer: ts.Printer = ts.createPrinter({
 export async function transform(code: ts.SourceFile, classData: any): Promise<string> {
 
 /*
-* Add Function Transformation function
+* Transformation function for adding Functions
 */
   const addFunctions = <T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
     function visit(node: ts.Node): ts.Node {
@@ -54,7 +64,7 @@ export async function transform(code: ts.SourceFile, classData: any): Promise<st
   };
 
 /*
-* Add Indentifier Transformation function
+*  Transformation function for adding Identifiers/Parameters
 */
   const addIdentifiers = <T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
     let count = 0;
@@ -124,6 +134,74 @@ export async function transform(code: ts.SourceFile, classData: any): Promise<st
             node.arguments = args.concat(node.arguments);
           }
         });
+      }
+
+      return ts.visitEachChild(node, visit, context);
+    }
+    return ts.visitNode(rootNode, visit);
+  };
+
+/*
+*Transformation function for adding comments
+*/
+
+  const addComments = <T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
+    let count = 0;
+
+    function visit(node: ts.Node): ts.Node {
+      if (ts.isClassDeclaration(node)) {
+        addMultiLineComment(
+          node,
+          "This is an auto generated class, please do not change."
+        );
+        const comment = `*
+        * Class to create a ${classData.className} object
+        * @category Digital Ocean       
+        `;
+        addMultiLineComment(node, comment);
+      }
+
+      if (ts.isMethodDeclaration(node)) {
+        let parameters = classData.functions[count].params.map(param => {
+          let statment;
+
+          if (param.optional) {
+            if(param.type=="TypeReference")
+                statment = `* @param {${param.typeName}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
+            else
+                statment = `* @param {${param.type}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
+          } else {
+            if(param.type=="TypeReference")
+                statment = `* @param {${param.typeName}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
+            else
+                statment = `* @param {${param.type}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
+          }
+          return statment;
+        });
+
+        let comment;
+        if (parameters.length > 0) {
+          let paramStatments: string = "";
+          parameters.map(param => {
+            paramStatments = paramStatments.concat(
+              paramStatments === "" ? `${param}` : `\n ${param}`
+            );
+          });
+
+        comment = `*
+          * Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
+          ${paramStatments}
+          * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
+          `;
+        } else {
+          comment = `*
+          * Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
+          * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
+          `;
+        }
+
+        addMultiLineComment(node, comment);
+        count++;
       }
 
       return ts.visitEachChild(node, visit, context);
