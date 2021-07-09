@@ -53,5 +53,18 @@ class DO_ComputeInstance {
                 .catch(err => reject(err));
         });
     }
+    /**
+    * Trigers the requestAction function of Droplets
+    * @param {StringKeyword} dropletId - Data required for requestAction
+    * @param {AnyKeyword} action - Data required for requestAction
+    * @returns {Promise<requestActionResponse>}
+    */
+    stop(dropletId, action) {
+        return new Promise((resolve, reject) => {
+            this._droplets.requestAction(dropletId, action)
+                .then(data => resolve(data))
+                .catch(err => reject(err));
+        });
+    }
 }
 module.exports = DO_ComputeInstance;

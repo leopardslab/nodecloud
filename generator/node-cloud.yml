@@ -17,13 +17,12 @@ ComputeInstance:
     reboot: arm-compute virtualMachines.d.ts restart
     destroy: arm-compute virtualMachines.d.ts deleteMethod
   # GCP: This SDK currenlty doesn't contain type definition files
-
   DO:
     create: droplets.d.ts create
     list: droplets.d.ts getAll
     destroy: droplets.d.ts deleteById
-
-
+    start: droplets.d.ts requestAction
+    stop: droplets.d.ts requestAction
 
 StorageBucket:
   AWS:
@@ -164,7 +163,7 @@ NoSqlIndexed:
     query: SimpleDB.d.ts select
     setAttribute: SimpleDB.d.ts putAttributes
     deleteAttribute: SimpleDB.d.ts deleteAttributes
-    getAttributes: SimpleDB.d.ts getAttributes
+    getAttributes: SimpleDB.d.ts getAttributes 
 
 RDBMS:
   AWS:
@@ -189,7 +188,10 @@ RDBMS:
     deleteDBSnapshot: spanner v1 database_admin_client.d.ts deleteBackup
     databasePath: spanner v1 database_admin_client.d.ts databasePath
   DO:
-    createDatabse: databases.d.ts createCluster
+    createCluster: databases.d.ts createCluster
+    getClusters: databases.d.ts getAllClusters
+    getCluster: databases.d.ts getClusterById
+    updateCluster: databases.d.ts resizeCluster
 
 
 NoSql:
@@ -212,7 +214,10 @@ NoSql:
     updateItem: firestore v1 firestore_client.d.ts updateDocument
     query: firestore v1 firestore_client.d.ts runQuery
   DO:
-    createDatabse: databases.d.ts createCluster
+    createCluster: databases.d.ts createCluster
+    getClusters: databases.d.ts getAllClusters
+    getCluster: databases.d.ts getClusterById
+    updateCluster: databases.d.ts resizeCluster
 
 DNS:
   AWS:
@@ -232,6 +237,12 @@ DNS:
     listZones: dns index.d.ts getZones
     changeRecordSets: dns zone.d.ts createChange
     record: dns zone.d.ts record
+  DO:
+    createRecord: domains.d.ts createRecord
+    deleteRecord: domains.d.ts deleteRecord
+    getRecords: domains.d.ts getAllRecords
+    getRecord: domains.d.ts getRecord
+    changeRecordSets: domains.d.ts updateRecord
 
 LoadBalancer:
   AWS:
