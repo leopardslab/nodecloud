@@ -366,10 +366,4 @@ BlockStorage:
     list: volumes.d.ts getAll
     describe: volumes.d.ts getById
 
-CDN:
-  DO:
-    createEndpoint: cdn.d.ts createEndpoint
-    deleteEndpoint: cdn.d.ts deleteEndpoint
-    listEndpoints: cdn.d.ts getAllEndpoints
-    describeEndpoint: cdn.d.ts getEndpointById
 
