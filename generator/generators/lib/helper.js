@@ -13,7 +13,7 @@ var dirMap = {
     compute: ["ComputeInstance", "Kubernetes", "Container"],
     database: ["NoSqlIndexed", "RDBMS", "NoSql"],
     management: ["Monitoring", "KeyManagement", "NotificationService"],
-    network: ["DNS", "LoadBalancer", "CDN"],
+    network: ["DNS", "LoadBalancer"],
     security: ["IAM"],
     storage: ["StorageBucket", "BlockStorage", "ArchivalStorage"],
     artificialinteligence: ["Translation"]
