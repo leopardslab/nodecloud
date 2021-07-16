@@ -1,4 +1,3 @@
-const dosdk = require("do-wrapper").default;
 const droplet = require("./compute/do-computeInstance");
 const kubernetes = require("./compute/do-kubernetes");
 const doSql = require("./database/do-RDBMS");
@@ -9,13 +8,13 @@ const keyVault = require("./security/do-keyManagement");
 const volume = require("./storage/do-blockStorage");
 
 class Do {
-  constructor() {
+  constructor(dosdk) {
     this._dosdk = dosdk;
 
     if (!process.env.DO_TOKEN) {
       throw new Error("Provide credentials");
     }
-    
+
     this.token = process.env.DO_TOKEN;
     return {
       getSDK: () => this._dosdk,
