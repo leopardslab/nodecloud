@@ -18,7 +18,7 @@ class Do {
     this.token = process.env.DO_TOKEN;
     return {
       getSDK: () => this._dosdk,
-      getToken:()=>this._token,
+      getToken: () => this._token,
       compute: this.droplet,
       blockStorage: this.volume,
       loadbalancer: this.loadBalancer,
@@ -31,35 +31,35 @@ class Do {
   }
 
   droplet() {
-    return new droplet(this.getSDK(),this.token);
+    return new droplet(this.getSDK(), this.token);
   }
 
   kubernetes() {
-    return new kubernetes(this.getSDK(),this.token);
+    return new kubernetes(this.getSDK(), this.token);
   }
 
   doSql() {
-    return new doSql(this.getSDK(),this.token);
+    return new doSql(this.getSDK(), this.token);
   }
 
   doDNS() {
-    return new doDNS(this.getSDK(),this.token);
+    return new doDNS(this.getSDK(), this.token);
   }
 
   doNosql() {
-    return new doNosql(this.getSDK(),this.token);
+    return new doNosql(this.getSDK(), this.token);
   }
 
   loadBalancer() {
-    return new loadBalancer(this.getSDK(),this.token);
+    return new loadBalancer(this.getSDK(), this.token);
   }
 
   keyVault() {
-    return new keyVault(this.getSDK(),this.token);
+    return new keyVault(this.getSDK(), this.token);
   }
 
   volume() {
-    return new volume(this.getSDK(),this.token);
+    return new volume(this.getSDK(), this.token);
   }
 }
 

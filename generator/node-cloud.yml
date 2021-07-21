@@ -44,7 +44,6 @@ StorageBucket:
     upload: storage bucket.d.ts upload
     makePublic: storage file.d.ts makePublic
 
-
 PaaS:
   AWS:
     create: elasticbeanstalk.d.ts createApplication
@@ -111,7 +110,7 @@ Kubernetes:
     listNodegroups: eks.d.ts listNodegroups
     updateConfig: eks.d.ts updateClusterConfig
   DO:
-    create: kubernetes.d.ts create 
+    create: kubernetes.d.ts create
     delete: kubernetes.d.ts delete
     listClusters: kubernetes.d.ts getClusters
     describeCluster: kubernetes.d.ts getById
@@ -163,7 +162,7 @@ NoSqlIndexed:
     query: SimpleDB.d.ts select
     setAttribute: SimpleDB.d.ts putAttributes
     deleteAttribute: SimpleDB.d.ts deleteAttributes
-    getAttributes: SimpleDB.d.ts getAttributes 
+    getAttributes: SimpleDB.d.ts getAttributes
 
 RDBMS:
   AWS:
@@ -192,7 +191,6 @@ RDBMS:
     getClusters: databases.d.ts getAllClusters
     getCluster: databases.d.ts getClusterById
     updateCluster: databases.d.ts resizeCluster
-
 
 NoSql:
   AWS:
@@ -257,7 +255,7 @@ LoadBalancer:
     list: arm-network loadBalancers.d.ts list
     addTags: arm-network loadBalancers.d.ts updateTags
     describe: arm-network loadBalancers.d.ts get
-  DO:  
+  DO:
     create: load-balancers.d.ts create
     delete: load-balancers.d.ts delete
     list: load-balancers.d.ts getAll
@@ -326,7 +324,7 @@ KeyManagement:
     createKey: keys.d.ts add
     deleteKey: keys.d.ts delete
     list: keys.d.ts getAll
-    describeKey: keys.d.ts getById  
+    describeKey: keys.d.ts getById
 
 NotificationService:
   AWS:
@@ -365,5 +363,3 @@ BlockStorage:
     delete: volumes.d.ts deleteById
     list: volumes.d.ts getAll
     describe: volumes.d.ts getById
-
-
