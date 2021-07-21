@@ -1,7 +1,7 @@
-const doSDK = require("do-wrapper");
+const doSDK = require("do-wrapper").default;
 const doPlugin = require("./do");
 
-const ncDoPlugin = options => {
+const ncDoPlugin = () => {
   return new doPlugin(doSDK);
 };
 
