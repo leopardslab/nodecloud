@@ -30,5 +30,4 @@ describe("Digital Ocean parser getAST", () => {
       }
     });
   });
-
 });

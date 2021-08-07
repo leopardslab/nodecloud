@@ -24,7 +24,6 @@ describe("Digital Ocean generator extractSDKData", () => {
         expect(result).to.be.an("object");
         expect(result.functions).to.be.an("array");
         expect(result.className).to.be.string;
-        
       } else {
         console.error("Error in cloning class");
       }
