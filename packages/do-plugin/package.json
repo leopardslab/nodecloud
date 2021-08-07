@@ -1,0 +1,11 @@
+{
+  "name": "do-plugin",
+  "version": "1.0.0",
+  "description": "Nodecloud Plugin for Digital Ocean",
+  "main": "index.js",
+  "author": "leaopardsLab",
+  "license": "MIT",
+  "dependencies": {
+    "do-wrapper": "^4.5.1"
+  }
+}
