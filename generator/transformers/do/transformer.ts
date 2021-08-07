@@ -13,7 +13,6 @@ const printer: ts.Printer = ts.createPrinter({
   removeComments: false
 });
 
-
 function addMultiLineComment(node, comment: string) {
   ts.addSyntheticLeadingComment(
     node,
@@ -49,18 +48,20 @@ function toSourceFile(sourceCode: string): ts.SourceFile {
   );
 }
 
-
-
 /*
-* The Transform function to be called from generator
-*/
+ * The Transform function to be called from generator
+ */
 
-export async function transform(code: ts.SourceFile, classData: any): Promise<string> {
-
-/*
-* Transformation function for adding Functions
-*/
-  const addFunctions = <T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
+export async function transform(
+  code: ts.SourceFile,
+  classData: any
+): Promise<string> {
+  /*
+   * Transformation function for adding Functions
+   */
+  const addFunctions = <T extends ts.Node>(
+    context: ts.TransformationContext
+  ) => (rootNode: T) => {
     function visit(node: ts.Node): ts.Node {
       if (ts.isClassDeclaration(node)) {
         let functions: any = [];
@@ -89,10 +90,12 @@ export async function transform(code: ts.SourceFile, classData: any): Promise<st
     return ts.visitNode(rootNode, visit);
   };
 
-/*
-*  Transformation function for adding Identifiers/Parameters
-*/
-  const addIdentifiers = <T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
+  /*
+   *  Transformation function for adding Identifiers/Parameters
+   */
+  const addIdentifiers = <T extends ts.Node>(
+    context: ts.TransformationContext
+  ) => (rootNode: T) => {
     let count = 0;
     function visit(node: ts.Node): ts.Node {
       if (ts.isMethodDeclaration(node)) {
@@ -134,8 +137,10 @@ export async function transform(code: ts.SourceFile, classData: any): Promise<st
             break;
           case "SDKClassName":
             updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier(classData.className.charAt(0).toLowerCase()+
-              classData.className.substr(1))
+              ts.createIdentifier(
+                classData.className.charAt(0).toLowerCase() +
+                  classData.className.substr(1)
+              )
             );
             break;
           case "SDKFunctionName":
@@ -167,11 +172,13 @@ export async function transform(code: ts.SourceFile, classData: any): Promise<st
     return ts.visitNode(rootNode, visit);
   };
 
-/*
-*Transformation function for adding comments
-*/
+  /*
+   *Transformation function for adding comments
+   */
 
-  const addComments = <T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
+  const addComments = <T extends ts.Node>(
+    context: ts.TransformationContext
+  ) => (rootNode: T) => {
     let count = 0;
 
     function visit(node: ts.Node): ts.Node {
@@ -192,15 +199,15 @@ export async function transform(code: ts.SourceFile, classData: any): Promise<st
           let statment;
 
           if (param.optional) {
-            if(param.type=="TypeReference")
-                statment = `* @param {${param.typeName}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
+            if (param.type == "TypeReference")
+              statment = `* @param {${param.typeName}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
             else
-                statment = `* @param {${param.type}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
+              statment = `* @param {${param.type}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
           } else {
-            if(param.type=="TypeReference")
-                statment = `* @param {${param.typeName}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
+            if (param.type == "TypeReference")
+              statment = `* @param {${param.typeName}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
             else
-                statment = `* @param {${param.type}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
+              statment = `* @param {${param.type}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
           }
           return statment;
         });
@@ -214,7 +221,7 @@ export async function transform(code: ts.SourceFile, classData: any): Promise<st
             );
           });
 
-        comment = `*
+          comment = `*
 * Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
 ${paramStatments}
 * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
@@ -235,9 +242,9 @@ ${paramStatments}
     return ts.visitNode(rootNode, visit);
   };
 
-/*
-* Code to get node and run tranformations 
-*/
+  /*
+   * Code to get node and run tranformations
+   */
   const node: any = code.statements.find(stm => ts.isClassDeclaration(stm));
 
   if (!classData.className || !classData.functions) {

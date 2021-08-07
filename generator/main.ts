@@ -15,7 +15,7 @@ try {
         generateAWSClass(services[service][provider], service);
       } else if (provider === "GCP") {
         generateGCPClass(services[service][provider], service);
-      } else if(provider=="DO"){
+      } else if (provider == "DO") {
         generateDOClass(services[service][provider], service);
       }
     });
