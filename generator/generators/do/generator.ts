@@ -4,7 +4,6 @@ import { getAST } from "../../parsers/do/parser";
 import { transform } from "../../transformers/do/transformer";
 import { printFile, getDir } from "../lib/helper";
 
-
 interface FunctionData {
   functionName: string;
   SDKFunctionName: string;
@@ -25,7 +24,6 @@ interface ClassData {
 
 const dummyFile = process.cwd() + "/dummyClasses/do.js";
 
-
 const dummyAst = createSourceFile(
   dummyFile,
   fs.readFileSync(dummyFile).toString(),
@@ -41,10 +39,8 @@ export function extractSDKData(sdkClassAst, serviceClass) {
     functions.push(serviceClass[key].split(" ")[1]);
   });
 
-
   sdkClassAst.members.map(method => {
     if (method.name && functions.includes(method.name.text)) {
-
       let name;
       Object.keys(serviceClass).map((key, index) => {
         if (serviceClass[key].split(" ")[1] === method.name.text) {
@@ -90,7 +86,7 @@ export function extractSDKData(sdkClassAst, serviceClass) {
 export function generateDOClass(serviceClass, serviceName) {
   const sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(" ")[0];
   getAST(sdkFile).then(async result => {
-  const sdkClassAst = result;
+    const sdkClassAst = result;
     try {
       const classData: ClassData = extractSDKData(sdkClassAst, serviceClass);
       classData.serviceName = serviceName;
@@ -102,14 +98,17 @@ export function generateDOClass(serviceClass, serviceName) {
       }
       if (/^[A-Z]*$/.test(serviceName)) {
         filePath =
-          process.cwd() + "/generatedClasses/DO/"+
-          dir+
-          "/do-" + serviceName + ".js";
+          process.cwd() +
+          "/generatedClasses/DO/" +
+          dir +
+          "/do-" +
+          serviceName +
+          ".js";
       } else {
         filePath =
           process.cwd() +
-          "/generatedClasses/DO/"+
-          dir+
+          "/generatedClasses/DO/" +
+          dir +
           "/do-" +
           serviceName.charAt(0).toLowerCase() +
           serviceName.slice(1) +
