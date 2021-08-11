@@ -4,7 +4,7 @@ const doSql = require("./database/do-RDBMS");
 const doNosql = require("./database/do-noSql");
 const loadBalancer = require("./network/do-loadBalancer");
 const doDNS = require("./network/do-DNS");
-const keyVault = require("./security/do-keyManagement");
+const keyVault = require("./management/do-keyManagement");
 const volume = require("./storage/do-blockStorage");
 
 class Do {
