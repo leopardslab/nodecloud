@@ -6,7 +6,6 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 
 
 const kubernetes = ncProviders.do.kubernetes(options);
-let clusterID;
 
 function createCluster() {
   const clusterDetails = {
@@ -25,7 +24,6 @@ function createCluster() {
   kubernetes.create(clusterDetails).then(
     result => {
       console.log("Output :", result);
-      clusterID=result.id;
     },
     error => {
       console.error("Error :", error);
@@ -34,7 +32,7 @@ function createCluster() {
 }
 
 function getClusterDetails() {
-
+  let clusterID="bd5f5959-5e1e-4205-a714-a914373942af";
   kubernetes.describeCluster(clusterID).then(
     result => {
       console.log("Output :", result);
@@ -68,7 +66,7 @@ function getAllClusters() {
 }
 
 
-var nodePoolID;
+
 
 function createNodeGroup() {
   const groupDetails = {
@@ -87,7 +85,6 @@ function createNodeGroup() {
   kubernetes.createNodeGroup(clusterID,groupDetails).then(
     result => {
       console.log("Output :", result);
-      nodePoolID=result.id;
     },
     error => {
       console.error("Error :", error);
@@ -96,7 +93,8 @@ function createNodeGroup() {
 }
 
 function deleteNodeGroup() {
-
+  let nodePoolID="bd5f5959-5e1e-4205-a714-a914373942af";
+  let clusterID="bd5f5959-5e1e-4205-a714-a914373942af";
   kubernetes.deleteNodegroup(clusterID,nodePoolID).then(
     result => {
       console.log("Output :", result);
@@ -108,7 +106,7 @@ function deleteNodeGroup() {
 }
 
 function deleteCluster() {
-
+  let clusterID="bd5f5959-5e1e-4205-a714-a914373942af";
   kubernetes.deleteCluster(clusterID).then(
     result => {
       console.log("Output :", result);

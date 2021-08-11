@@ -20,13 +20,12 @@ const domainCreateOptions={
 }
 
 const domainName="example.com";
-var recordID;
+
 function createRecord(){
 
     dns.createRecord(domainName,domainCreateOptions)
     .then((result) => {
         console.log("Output is: ",result);
-        recordID = result.id;
     })
     .catch((err) => {
         console.log("Error is: ",err);
@@ -43,6 +42,7 @@ function getAllRecords(){
 }
 
 function getRecords(){
+    var recordID="3352896";
     dns.getRecord(domainName,recordID)
     .then((result)=>{
         console.log("Record are: ",result);
