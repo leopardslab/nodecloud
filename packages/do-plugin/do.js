@@ -18,7 +18,7 @@ class Do {
     this.token = process.env.DO_TOKEN;
     return {
       getSDK: () => this._dosdk,
-      getToken: () => this._token,
+      getToken: () => this.token,
       compute: this.droplet,
       blockStorage: this.volume,
       loadbalancer: this.loadBalancer,
