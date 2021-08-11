@@ -31,35 +31,35 @@ class Do {
   }
 
   droplet() {
-    return new droplet(this.getSDK(), this.token);
+    return new droplet(this.getSDK(), this.getToken());
   }
 
   kubernetes() {
-    return new kubernetes(this.getSDK(), this.token);
+    return new kubernetes(this.getSDK(), this.getToken());
   }
 
   doSql() {
-    return new doSql(this.getSDK(), this.token);
+    return new doSql(this.getSDK(), this.getToken());
   }
 
   doDNS() {
-    return new doDNS(this.getSDK(), this.token);
+    return new doDNS(this.getSDK(), this.getToken());
   }
 
   doNosql() {
-    return new doNosql(this.getSDK(), this.token);
+    return new doNosql(this.getSDK(), this.getToken());
   }
 
   loadBalancer() {
-    return new loadBalancer(this.getSDK(), this.token);
+    return new loadBalancer(this.getSDK(), this.getToken());
   }
 
   keyVault() {
-    return new keyVault(this.getSDK(), this.token);
+    return new keyVault(this.getSDK(), this.getToken());
   }
 
   volume() {
-    return new volume(this.getSDK(), this.token);
+    return new volume(this.getSDK(), this.getToken());
   }
 }
 
