@@ -22,7 +22,6 @@ const domainCreateOptions={
 const domainName="example.com";
 
 function createRecord(){
-
     dns.createRecord(domainName,domainCreateOptions)
     .then((result) => {
         console.log("Output is: ",result);
@@ -41,8 +40,8 @@ function getAllRecords(){
     });
 }
 
-function getRecords(){
-    var recordID="3352896";
+function getRecord(){
+    let recordID="3352896";
     dns.getRecord(domainName,recordID)
     .then((result)=>{
         console.log("Record are: ",result);
@@ -52,5 +51,29 @@ function getRecords(){
     })
 }
 
+function deleteRecord(){
+    let recordID="3352896";
+    dns.deleteRecord(domainName,recordID)
+    .then((result)=>{
+        console.log("Output is: ",result);
+    })
+    .catch((err)=>{
+        console.log("Error is: ",err);
+    })
+}
 
+function changeRecord(){
+    let recordID="3352896";
+    let options={
+        "name": "blog",
+        "type": "CNAME"
+      }
+    changeRecordSets(domainName, recordID, options)
+    .then((result)=>{
+        console.log("Output is: ",result);
+    })
+    .catch((err)=>{
+        console.log("Error is: ",err);
+    })
+}
 
