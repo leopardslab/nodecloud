@@ -3,12 +3,10 @@ const optionsProvider = {
   overrideProviders: false
 };
 const ncProviders = nodeCloud.getProviders(optionsProvider);
-
-
-const kubernetes = ncProviders.do.kubernetes(options);
+const kubernetes = ncProviders.do.kubernetes();
 
 function createCluster() {
-  const clusterDetails = {
+  let clusterDetails = {
     "name": "Nodecloud",
     "region": "nyc1",
     "version": "1.18.6-do.0",
@@ -66,10 +64,21 @@ function getAllClusters() {
 }
 
 
+function deleteCluster() {
+  let clusterID="bd5f5959-5e1e-4205-a714-a914373942af";
+  kubernetes.deleteCluster(clusterID).then(
+    result => {
+      console.log("Output :", result);
+    },
+    error => {
+      console.error("Error :", error);
+    }
+  );
+}
 
 
 function createNodeGroup() {
-  const groupDetails = {
+  let groupDetails = {
     "size": "s-1vcpu-2gb",
     "count": 3,
     "name": "new-pool",
@@ -105,9 +114,23 @@ function deleteNodeGroup() {
   );
 }
 
-function deleteCluster() {
+
+function describeNodeGroup() {
+  let nodePoolID="bd5f5959-5e1e-4205-a714-a914373942af";
   let clusterID="bd5f5959-5e1e-4205-a714-a914373942af";
-  kubernetes.deleteCluster(clusterID).then(
+  kubernetes.describeNodeGroup(clusterID,nodePoolID).then(
+    result => {
+      console.log("Output :", result);
+    },
+    error => {
+      console.error("Error :", error);
+    }
+  );
+}
+
+function listNodeGroups() {
+  let clusterID="bd5f5959-5e1e-4205-a714-a914373942af";
+  kubernetes.listNodegroups(clusterID).then(
     result => {
       console.log("Output :", result);
     },

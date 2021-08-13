@@ -5,7 +5,7 @@ const optionsProvider = {
 const ncProviders = nodeCloud.getProviders(optionsProvider);
 
 
-const volume = ncProviders.do.blockStorage(options);
+const volume = ncProviders.do.blockStorage();
 
 function listVolumes(){
     let region="nyc1";

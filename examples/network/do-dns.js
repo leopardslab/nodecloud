@@ -5,7 +5,7 @@ const optionsProvider = {
 const ncProviders = nodeCloud.getProviders(optionsProvider);
 
 
-const dns = ncProviders.do.dns(options);
+const dns = ncProviders.do.dns();
 
 const domainCreateOptions={
     "type": "A",

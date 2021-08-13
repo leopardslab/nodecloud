@@ -3,7 +3,7 @@ const optionsProvider = {
   overrideProviders: false
 };
 const ncProviders = nodeCloud.getProviders(optionsProvider);
-const lb = ncProviders.do.loadbalancer(options);
+const lb = ncProviders.do.loadbalancer();
 
 
 function create(){
