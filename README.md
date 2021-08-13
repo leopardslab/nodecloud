@@ -75,10 +75,9 @@ Once `@nodecloud/common` is installed, you need to install the plugins to intera
 | -------------------- | --------------------------------------------------------------------------------- |
 | AWS plugin           | `yarn add @nodecloud/aws-plugin` or `npm i @nodecloud/aws-plugin`                 |
 | Azure plugin         | `yarn add @nodecloud/gcp-plugin` or `npm i @nodecloud/gcp-plugin`                 |
-| Google Cloud plugin  | `yarn add @nodecloud/azure-plugin` or `npm i @nodecloud/azure-plugin`             |
-| Alibaba plugin       | `yarn add nodecloud-ali-plugin` or `npm i nodecloud-ali-plugin`                   |
-| Digital Ocean plugin | `yarn add nodecloud-digitalocean-plugin` or `npm i nodecloud-digitalocean-plugin` |
-
+| Google Cloud plugin  | `yarn add @nodecloud/azure-plugin` or `npm i @nodecloud/azure-plugin`             |                   |
+| Digital Ocean plugin | `yarn add @nodecloud/do-plugin` or `npm i @nodecloud/do-plugin` |
+| Alibaba plugin       | `yarn add nodecloud-ali-plugin` or `npm i nodecloud-ali-plugin`
 **3️⃣ Create the NodeCloud config file**
 
 Create the `.nc.config.js` file in the project root in the following format.
@@ -98,6 +97,7 @@ This config file can contain an array of objects for all providers and all will 
 const nodeCloudAwsPlugin = require("@nodecloud/aws-plugin");
 const nodeCloudGcpPlugin = require("@nodecloud/gcp-plugin");
 const nodeCloudAzurePlugin = require("@nodecloud/azure-plugin");
+const nodeCloudDoPlugin = require("@nodecloud/do-plugin");
 
 const providers = [
   {
@@ -123,7 +123,7 @@ const providers = [
   {
     name: "digitalocean",
     tag: "do",
-    plugin: nodeCloudAzurePlugin,
+    plugin: nodeCloudDoPlugin,
   },
 ];
 module.exports = providers;
