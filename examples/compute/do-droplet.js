@@ -9,19 +9,17 @@ const droplet = ncProviders.do.compute();
 
 function launchInstance() {
   const instanceParams = {
-    "name": "digitalocean.fi",
-    "region": "nyc3",
-    "size": "s-1vcpu-1gb",
-    "image": "ubuntu-16-04-x64",
-    "ssh_keys": null,
-    "backups": false,
-    "ipv6": true,
-    "user_data": null,
-    "private_networking": null,
-    "volumes": null,
-    "tags": [
-      "web"
-    ]
+    name: "digitalocean.fi",
+    region: "nyc3",
+    size: "s-1vcpu-1gb",
+    image: "ubuntu-16-04-x64",
+    ssh_keys: null,
+    backups: false,
+    ipv6: true,
+    user_data: null,
+    private_networking: null,
+    volumes: null,
+    tags: ["web"]
   };
 
   // create DO Droplet instance
@@ -39,7 +37,7 @@ function listInstances() {
   droplet
     .list()
     .then(res => {
-      console.log("Instances are"+res);
+      console.log("Instances are" + res);
     })
     .catch(err => {
       console.log(`Oops something happened ${err}`);
@@ -47,14 +45,13 @@ function listInstances() {
 }
 
 function destroyInstance() {
-  let instanceId="3164444";
+  let instanceId = "3164444";
   droplet
     .destroy(instanceId)
     .then(res => {
-      console.log("Output is"+res);
+      console.log("Output is" + res);
     })
     .catch(err => {
       console.log(`Oops something happened ${err}`);
     });
 }
-

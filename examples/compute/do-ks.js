@@ -7,16 +7,16 @@ const kubernetes = ncProviders.do.kubernetes();
 
 function createCluster() {
   let clusterDetails = {
-    "name": "Nodecloud",
-    "region": "nyc1",
-    "version": "1.18.6-do.0",
-    "node_pools": [
-        {
-        "size": "s-1vcpu-2gb",
-        "count": 3,
-        "name": "worker-pool"
-        }
-    ]  
+    name: "Nodecloud",
+    region: "nyc1",
+    version: "1.18.6-do.0",
+    node_pools: [
+      {
+        size: "s-1vcpu-2gb",
+        count: 3,
+        name: "worker-pool"
+      }
+    ]
   };
 
   kubernetes.create(clusterDetails).then(
@@ -30,7 +30,7 @@ function createCluster() {
 }
 
 function getClusterDetails() {
-  let clusterID="bd5f5959-5e1e-4205-a714-a914373942af";
+  let clusterID = "bd5f5959-5e1e-4205-a714-a914373942af";
   kubernetes.describeCluster(clusterID).then(
     result => {
       console.log("Output :", result);
@@ -63,9 +63,8 @@ function getAllClusters() {
   );
 }
 
-
 function deleteCluster() {
-  let clusterID="bd5f5959-5e1e-4205-a714-a914373942af";
+  let clusterID = "bd5f5959-5e1e-4205-a714-a914373942af";
   kubernetes.deleteCluster(clusterID).then(
     result => {
       console.log("Output :", result);
@@ -76,22 +75,18 @@ function deleteCluster() {
   );
 }
 
-
 function createNodeGroup() {
   let groupDetails = {
-    "size": "s-1vcpu-2gb",
-    "count": 3,
-    "name": "new-pool",
-    "tags": [
-      "frontend"
-    ],
-    "auto_scale": true,
-    "min_nodes": 3,
-    "max_nodes": 6
-    
+    size: "s-1vcpu-2gb",
+    count: 3,
+    name: "new-pool",
+    tags: ["frontend"],
+    auto_scale: true,
+    min_nodes: 3,
+    max_nodes: 6
   };
 
-  kubernetes.createNodeGroup(clusterID,groupDetails).then(
+  kubernetes.createNodeGroup(clusterID, groupDetails).then(
     result => {
       console.log("Output :", result);
     },
@@ -102,9 +97,9 @@ function createNodeGroup() {
 }
 
 function deleteNodeGroup() {
-  let nodePoolID="bd5f5959-5e1e-4205-a714-a914373942af";
-  let clusterID="bd5f5959-5e1e-4205-a714-a914373942af";
-  kubernetes.deleteNodegroup(clusterID,nodePoolID).then(
+  let nodePoolID = "bd5f5959-5e1e-4205-a714-a914373942af";
+  let clusterID = "bd5f5959-5e1e-4205-a714-a914373942af";
+  kubernetes.deleteNodegroup(clusterID, nodePoolID).then(
     result => {
       console.log("Output :", result);
     },
@@ -114,11 +109,10 @@ function deleteNodeGroup() {
   );
 }
 
-
 function describeNodeGroup() {
-  let nodePoolID="bd5f5959-5e1e-4205-a714-a914373942af";
-  let clusterID="bd5f5959-5e1e-4205-a714-a914373942af";
-  kubernetes.describeNodeGroup(clusterID,nodePoolID).then(
+  let nodePoolID = "bd5f5959-5e1e-4205-a714-a914373942af";
+  let clusterID = "bd5f5959-5e1e-4205-a714-a914373942af";
+  kubernetes.describeNodeGroup(clusterID, nodePoolID).then(
     result => {
       console.log("Output :", result);
     },
@@ -129,7 +123,7 @@ function describeNodeGroup() {
 }
 
 function listNodeGroups() {
-  let clusterID="bd5f5959-5e1e-4205-a714-a914373942af";
+  let clusterID = "bd5f5959-5e1e-4205-a714-a914373942af";
   kubernetes.listNodegroups(clusterID).then(
     result => {
       console.log("Output :", result);
