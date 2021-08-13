@@ -82,6 +82,15 @@ GCP:
 
 For the class-based SDKs there is a minor change in the `node-cloud.yml` to record the main class of an SDK. For the above scenario, it’s the DNS class.
 
+* Digital Ocean
+
+``` 
+DO:
+    create: droplets.d.ts create
+```
+
+
+
 ## Code parsers
 
 This is the simplest part of the code generation tool. The SDK files are read from the relevant SDKs as specified in the `node-cloud.yml` file. Afterwards, it is converted to an **Abstract Syntax Tree**. Finally, the class declaration Node of that **Abstract Syntax Tree** is returned. This retured Node is another **Abstract Syntax Tree** since a class declaration itself is another **Abstract Syntax Tree**.
@@ -99,3 +108,22 @@ This is the most important part of the code generator tool. Currently, there are
 * `addIdentifiers`: In this transformation all the Identifier nodes are updated. After this transformation the code is logically compelete. All the neccessary code parts are added and finalized such as parameter names, parameter types, client names, class name, package names, SDK function names etc.
 
 * `addComments`: This transformation aims to auto-generate the API documentation. All the comments are added to the structure required by `JSDoc`. The `@category` is used to categorize the generated classes depending on the cloud provider. This tag is from the `better-docs` template used with `JSDoc`. 
+
+## Understanding the directory structure of generator
+
+The code generation component of nodecloud is present in generator folder. It is a separate workspace/module managed using lerna. 
+
+<p align="center">
+  <img src="../assets/generator/high_level_diagrams/directory_structure_diagram.png" />
+</p>
+
+## Understanding the code generator tool
+
+The code generation tool is using typescript compiler api to extract and analyse cloud SDK's and then making the classes for nodelcloud out of it.
+The tool works in this flow:
+<p align="center">
+  <img src="../assets/generator/high_level_diagrams/toolflow_diagram.png" />
+</p>
+
+## Running the code generation tool
+- To build classes run `tsc main && node main` or 'yarn run tool' if inside generator directory and `yarn run generator` if inside nodecloud directory.
