@@ -10,7 +10,8 @@
     "code-generation"
   ],
   "scripts": {
-    "test": "cross-env TS_NODE_FILES=true mocha --exit --require ts-node/register --colors test/**/*.ts"
+    "test": "cross-env TS_NODE_FILES=true mocha --exit --require ts-node/register --colors test/**/*.ts",
+    "tool": "tsc main && node main"
   },
   "dependencies": {
     "@azure/arm-appservice": "^6.0.0",
