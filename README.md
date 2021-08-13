@@ -120,6 +120,11 @@ const providers = [
     tag: "azure",
     plugin: nodeCloudAzurePlugin,
   },
+  {
+    name: "digitalocean",
+    tag: "do",
+    plugin: nodeCloudAzurePlugin,
+  },
 ];
 module.exports = providers;
 ```
