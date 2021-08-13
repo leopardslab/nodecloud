@@ -26,7 +26,7 @@ class Do {
       rdbms: this.doSql,
       noSql: this.doNosql,
       kubernetes: this.kubernetes,
-      keyManagment: this.keyVault
+      keyManagement: this.keyVault
     };
   }
 
