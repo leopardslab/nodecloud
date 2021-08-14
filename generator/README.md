@@ -86,9 +86,13 @@ For the class-based SDKs there is a minor change in the `node-cloud.yml` to reco
 
 ``` 
 DO:
-    create: droplets.d.ts create
+    describeCluster: kubernetes.d.ts getById
 ```
 
+<p align="center">
+  <img src="../assets/generator/high_level_diagrams/do.png" style="width:60%" />
+  <img src="../assets/generator/high_level_diagrams/do_diagram.png" />
+</p>
 
 
 ## Code parsers
@@ -124,6 +128,11 @@ The tool works in this flow:
 <p align="center">
   <img src="../assets/generator/high_level_diagrams/toolflow_diagram.png" />
 </p>
+
+The entry point of nodecloud is the main.ts file which you provide to typescript to generate the js file and then run the same. Inside the main file we fetch services from YML file and one by one pass the SDK file path and service name to generator function.
+
+Inside generator we first call the parser to get the needed class and extract functions, parameters,etc needed for building Nodecloud classes. All this data is then passed onto the
+transformer which transforms the dummy class into an working Nodecloud class for that specific service. All these classes are then written into the Js file.
 
 ## Running the code generation tool
 - To build classes run `tsc main && node main` or 'yarn run tool' if inside generator directory and `yarn run generator` if inside nodecloud directory.
