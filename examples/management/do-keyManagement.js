@@ -5,6 +5,7 @@ const optionsProvider = {
 const ncProviders = nodeCloud.getProviders(optionsProvider);
 const keyManagement = ncProviders.do.keyManagement();
 
+//Craete a Key
 function createKey() {
   let options = {
     public_key:
@@ -20,7 +21,7 @@ function createKey() {
       console.log(`Oops something happened ${err}`);
     });
 }
-
+//Delete a Key
 function deleteKey() {
   let keyIdentifier = "512189";
   keyManagement
@@ -33,6 +34,7 @@ function deleteKey() {
     });
 }
 
+//Get details of a key
 function getKey() {
   let keyIdentifier = "512189";
   keyManagement
@@ -45,6 +47,7 @@ function getKey() {
     });
 }
 
+//Get all keys
 function getAllKeys() {
   keyManagement
     .list()

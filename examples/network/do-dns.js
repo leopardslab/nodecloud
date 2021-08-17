@@ -6,21 +6,23 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 
 const dns = ncProviders.do.dns();
 
-const domainCreateOptions = {
-  type: "A",
-  name: "www",
-  data: "162.10.66.0",
-  priority: null,
-  port: null,
-  ttl: 1800,
-  weight: null,
-  flags: null,
-  tag: null
-};
-
 const domainName = "example.com";
 
+
+// Create a DNS Record
 function createRecord() {
+  let domainCreateOptions = {
+    type: "A",
+    name: "www",
+    data: "162.10.66.0",
+    priority: null,
+    port: null,
+    ttl: 1800,
+    weight: null,
+    flags: null,
+    tag: null
+  };
+
   dns
     .createRecord(domainName, domainCreateOptions)
     .then(result => {
@@ -31,6 +33,7 @@ function createRecord() {
     });
 }
 
+//Get all DNS records
 function getAllRecords() {
   dns
     .getRecords(domainName)
@@ -42,6 +45,7 @@ function getAllRecords() {
     });
 }
 
+//Get a DNS record
 function getRecord() {
   let recordID = "3352896";
   dns
@@ -54,6 +58,7 @@ function getRecord() {
     });
 }
 
+//Delete a DNS record
 function deleteRecord() {
   let recordID = "3352896";
   dns
@@ -66,6 +71,7 @@ function deleteRecord() {
     });
 }
 
+//Change a DNS record
 function changeRecord() {
   let recordID = "3352896";
   let options = {

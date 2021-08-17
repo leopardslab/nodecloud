@@ -6,6 +6,7 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 
 const volume = ncProviders.do.blockStorage();
 
+//List all volumes
 function listVolumes() {
   let region = "nyc1";
   volume
@@ -18,6 +19,7 @@ function listVolumes() {
     });
 }
 
+//Create a volume 
 function createVolume() {
   let option = {
     size_gigabytes: 10,
@@ -37,6 +39,7 @@ function createVolume() {
     });
 }
 
+//Get details of a Volume
 function describeVolume() {
   let volumeId = "506f78a4-e098-11e5-ad9f-000f53306ae1";
   volume
@@ -49,6 +52,7 @@ function describeVolume() {
     });
 }
 
+//Delete a volume
 function deleteVolume() {
   let volumeId = "506f78a4-e098-11e5-ad9f-000f53306ae1";
   volume

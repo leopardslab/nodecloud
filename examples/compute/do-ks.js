@@ -5,6 +5,7 @@ const optionsProvider = {
 const ncProviders = nodeCloud.getProviders(optionsProvider);
 const kubernetes = ncProviders.do.kubernetes();
 
+//Create Kubernetes cluster
 function createCluster() {
   let clusterDetails = {
     name: "Nodecloud",
@@ -29,6 +30,7 @@ function createCluster() {
   );
 }
 
+//Get Cluster details
 function getClusterDetails() {
   let clusterID = "bd5f5959-5e1e-4205-a714-a914373942af";
   kubernetes.describeCluster(clusterID).then(
@@ -41,6 +43,7 @@ function getClusterDetails() {
   );
 }
 
+// Get all clusters
 function getAllClusters() {
   /* The nextToken value returned from a previous ListClusters request where maxResults was used and the results
      exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the 
@@ -63,6 +66,7 @@ function getAllClusters() {
   );
 }
 
+//Delete cluster
 function deleteCluster() {
   let clusterID = "bd5f5959-5e1e-4205-a714-a914373942af";
   kubernetes.deleteCluster(clusterID).then(
@@ -75,6 +79,7 @@ function deleteCluster() {
   );
 }
 
+//Create a Node Group
 function createNodeGroup() {
   let groupDetails = {
     size: "s-1vcpu-2gb",
@@ -96,6 +101,7 @@ function createNodeGroup() {
   );
 }
 
+//Delete a node group
 function deleteNodeGroup() {
   let nodePoolID = "bd5f5959-5e1e-4205-a714-a914373942af";
   let clusterID = "bd5f5959-5e1e-4205-a714-a914373942af";
@@ -109,6 +115,7 @@ function deleteNodeGroup() {
   );
 }
 
+//Get details of Node Group
 function describeNodeGroup() {
   let nodePoolID = "bd5f5959-5e1e-4205-a714-a914373942af";
   let clusterID = "bd5f5959-5e1e-4205-a714-a914373942af";
@@ -122,6 +129,7 @@ function describeNodeGroup() {
   );
 }
 
+//Get all Nodegroups
 function listNodeGroups() {
   let clusterID = "bd5f5959-5e1e-4205-a714-a914373942af";
   kubernetes.listNodegroups(clusterID).then(

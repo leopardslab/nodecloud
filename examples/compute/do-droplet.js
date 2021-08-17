@@ -33,6 +33,7 @@ function launchInstance() {
     });
 }
 
+//list Instances
 function listInstances() {
   droplet
     .list()
@@ -44,6 +45,7 @@ function listInstances() {
     });
 }
 
+//destroy an Instance
 function destroyInstance() {
   let instanceId = "3164444";
   droplet
