@@ -5,6 +5,7 @@ const optionsProvider = {
 const ncProviders = nodeCloud.getProviders(optionsProvider);
 const lb = ncProviders.do.loadbalancer();
 
+//Create a LoadBalancer
 function create() {
   let options = {
     name: "example-lb-01",
@@ -36,6 +37,7 @@ function create() {
     });
 }
 
+//List all loadbalancers
 function listAllLoadBalancers() {
   lb.list()
     .then(result => {
@@ -46,6 +48,7 @@ function listAllLoadBalancers() {
     });
 }
 
+//Delete a loadbalancer
 function deleteLoadBalancer() {
   let lbId = "4de7ac8b-495b-4884-9a69-1050c6793cd6";
   lb.delete(lbId)
@@ -57,6 +60,7 @@ function deleteLoadBalancer() {
     });
 }
 
+//Update a loadbalancer
 function updateLoadBalancer() {
   let lbId = "4de7ac8b-495b-4884-9a69-1050c6793cd6";
   let options = {
