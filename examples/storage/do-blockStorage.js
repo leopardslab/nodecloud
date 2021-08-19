@@ -19,7 +19,7 @@ function listVolumes() {
     });
 }
 
-//Create a volume 
+//Create a volume
 function createVolume() {
   let option = {
     size_gigabytes: 10,

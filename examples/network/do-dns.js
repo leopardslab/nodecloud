@@ -8,7 +8,6 @@ const dns = ncProviders.do.dns();
 
 const domainName = "example.com";
 
-
 // Create a DNS Record
 function createRecord() {
   let domainCreateOptions = {
