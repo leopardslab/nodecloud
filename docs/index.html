@@ -347,17 +347,17 @@ yarn add @nodecloud/common
                     </td>
                   </tr>
                   <tr>
+                    <td>Digital Ocean plugin</td>
+                    <td>
+                      <code>yarn add @nodecloud/do-plugin</code> or
+                      <code>npm i @nodecloud/do-plugin</code>
+                    </td>
+                  </tr>
+                  <tr>
                     <td>Alibaba plugin</td>
                     <td>
                       <code>yarn add nodecloud-ali-plugin</code> or
                       <code>npm i nodecloud-ali-plugin</code>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Digital Ocean plugin</td>
-                    <td>
-                      <code>yarn add nodecloud-digitalocean-plugin</code> or
-                      <code>npm i nodecloud-digitalocean-plugin</code>
                     </td>
                   </tr>
                 </tbody>
@@ -394,13 +394,14 @@ yarn add @nodecloud/common
               ><code>const nodeCloudAwsPlugin = require(&quot;@nodecloud/aws-plugin&quot;);
 const nodeCloudGcpPlugin = require(&quot;@nodecloud/gcp-plugin&quot;);
 const nodeCloudAzurePlugin = require(&quot;@nodecloud/azure-plugin&quot;);
+const nodeCloudDoPlugin = require(&quot;@nodecloud/do-plugin&quot;);
 
 const providers = [
   {
     name: &quot;aws&quot;,
     tag: &quot;aws&quot;,
     plugin: nodeCloudAwsPlugin,
-    configPath: &quot;C:\\Users\\Rajitha\\opensource\\aws_cred.json&quot;,
+    configPath: &quot;C:\\Users\\Rajitha\\opensource\\aws_cred.json&quot;
   },
   {
     name: &quot;google&quot;,
@@ -408,14 +409,19 @@ const providers = [
     plugin: nodeCloudGcpPlugin,
     configPath: {
       projectId: &quot;astral-hold-276807&quot;,
-      keyFilename: &quot;C:\\Users\\Rajitha\\opensource\\gcp_cred.json&quot;,
-    },
+      keyFilename: &quot;C:\\Users\\Rajitha\\opensource\\gcp_cred.json&quot;
+    }
   },
   {
     name: &quot;azure&quot;,
     tag: &quot;azure&quot;,
-    plugin: nodeCloudAzurePlugin,
+    plugin: nodeCloudAzurePlugin
   },
+  {
+    name: &quot;digitalocean&quot;,
+    tag: &quot;do&quot;,
+    plugin: nodeCloudDoPlugin
+  }
 ];
 module.exports = providers;
 </code></pre>
@@ -429,11 +435,11 @@ module.exports = providers;
                 class="prettyprint source lang-js"
               ><code>const nc = require(&quot;@nodecloud/common&quot;); // NodeCloud common module
 const optionsProvider = {
-  overrideProviders: false,
+  overrideProviders: false
 };
 const ncProviders = nc.getProviders(optionsProvider);
 const options = {
-  apiVersion: &quot;2017-11-01&quot;,
+  apiVersion: &quot;2017-11-01&quot;
 };
 
 const computeModule = ncProviders.aws.compute(options);
@@ -444,16 +450,16 @@ function launchInstance() {
     InstanceType: &quot;t2.micro&quot;,
     KeyName: &quot;nodeCloud&quot;, // key name of Key pair
     MinCount: 1,
-    MaxCount: 1,
+    MaxCount: 1
   };
 
   // create AWS EC2 instance
   computeModule
     .create(instanceParams)
-    .then((res) => {
+    .then(res => {
       console.log(`All done ! ${res}`);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(`Oops something happened ${err}`);
     });
 }
@@ -461,16 +467,16 @@ function launchInstance() {
 function stopInstance() {
   const params = {
     InstanceIds: [&quot;i-0928af5c626f85da9&quot;],
-    DryRun: false,
+    DryRun: false
   };
 
   // stop AWS EC2 instance
   computeModule
     .stop(params)
-    .then((res) => {
+    .then(res => {
       console.log(res);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
     });
 }
@@ -485,7 +491,7 @@ function stopInstance() {
                 class="prettyprint source lang-js"
               ><code>const nodeCloud = require(&quot;nodecloud&quot;);
 const options = {
-  overrideProviders: true,
+  overrideProviders: true
 };
 const ncProviders = nodeCloud.getProviders(options);
 </code></pre>
@@ -529,7 +535,7 @@ const ncProviders = nodeCloud.getProviders(options);
                     <td style="text-align:center">
                       AKS, Azure Service Fabric*
                     </td>
-                    <td style="text-align:center">DO Kubernetes*</td>
+                    <td style="text-align:center">DO Kubernetes</td>
                     <td style="text-align:center">
                       Container Service*, Container Service for Kubernetes*
                     </td>
@@ -596,7 +602,7 @@ const ncProviders = nodeCloud.getProviders(options);
                     <td style="text-align:center">Route53</td>
                     <td style="text-align:center">Google Domains, Cloud DNS</td>
                     <td style="text-align:center">Azure DNS</td>
-                    <td style="text-align:center">DO DNS*</td>
+                    <td style="text-align:center">DO DNS</td>
                     <td style="text-align:center">Alibaba Cloud DNS*</td>
                   </tr>
                   <tr>
@@ -611,7 +617,7 @@ const ncProviders = nodeCloud.getProviders(options);
                       for PostgreSQL*
                     </td>
                     <td style="text-align:center">
-                      Managed Databases(PostgreSQL* and MySQL*)
+                      Managed Databases(PostgreSQL* and MySQL)
                     </td>
                     <td style="text-align:center">
                       ApsaraDB (MySQL, MariaDB TX, SQL Server, PostgreSQL)
@@ -649,6 +655,15 @@ const ncProviders = nodeCloud.getProviders(options);
                     <td style="text-align:center">
                       Resource Access Management*
                     </td>
+                  </tr>
+                  <tr>
+                    <td>Management</td>
+                    <td>Key Management</td>
+                    <td style="text-align:center">AWS-KMS</td>
+                    <td style="text-align:center">-</td>
+                    <td style="text-align:center">-</td>
+                    <td style="text-align:center">Do-Keys</td>
+                    <td style="text-align:center">-</td>
                   </tr>
                 </tbody>
               </table>

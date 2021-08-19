@@ -1,10 +1,17 @@
 {
-  "name": "do-plugin",
-  "version": "1.0.0",
-  "description": "Nodecloud Plugin for Digital Ocean",
+  "name": "@nodecloud/do-plugin",
+  "version": "2.0.0",
+  "description": "NodeCloud Digital Ocean plugin",
   "main": "index.js",
-  "author": "leaopardsLab",
-  "license": "MIT",
+  "scripts": {
+    "prettier": "yarn pretty-quick"
+  },
+  "keywords": [
+    "nodecloud",
+    "nodecloud-Digital-Ocean"
+  ],
+  "author": "Scorelab",
+  "license": "Apache-2.0",
   "dependencies": {
     "do-wrapper": "^4.5.1"
   }
