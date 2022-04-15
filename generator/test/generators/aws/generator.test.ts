@@ -1,7 +1,8 @@
 import { expect } from "chai";
-import { extractSDKData } from "../../../generators/aws/generator";
-import { readSourceFile, readJsonData } from "../lib/helper";
 import { SyntaxKind } from "typescript";
+
+import { extractSDKData } from "../../../generators/aws/generator";
+import { readJsonData,readSourceFile } from "../lib/helper";
 
 describe("AWS generator extractSDKData", () => {
   context("with valid methods and valid AST", () => {

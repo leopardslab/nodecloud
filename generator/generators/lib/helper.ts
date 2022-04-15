@@ -1,12 +1,11 @@
 import * as fs from "fs";
 
 import { groupAWSMethods } from "../lib/aws/awsHelper";
-import { groupGCPMethods } from "../lib/googleCloud/gcpHelper";
-import { groupAzureMethods } from "../lib/azure/azureHelper";
-
 import { filterAWSMethods } from "../lib/aws/awsHelper";
-import { filterGCPMethods } from "../lib/googleCloud/gcpHelper";
+import { groupAzureMethods } from "../lib/azure/azureHelper";
 import { filterAzureMethods } from "../lib/azure/azureHelper";
+import { groupGCPMethods } from "../lib/googleCloud/gcpHelper";
+import { filterGCPMethods } from "../lib/googleCloud/gcpHelper";
 
 const dirMap = {
   appServices: ["PaaS"],
@@ -38,7 +37,7 @@ const filters = {
 };
 
 const getDir = (service: string): string => {
-  for (var dir in dirMap) {
+  for (let dir in dirMap) {
     if (dirMap[dir].includes(service)) {
       return dir;
     }
@@ -46,4 +45,4 @@ const getDir = (service: string): string => {
   throw new Error("Not a valid service: " + service);
 };
 
-export { groupers, filters, getDir };
+export { filters, getDir,groupers };

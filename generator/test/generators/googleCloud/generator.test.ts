@@ -1,10 +1,11 @@
 import { expect } from "chai";
+import { SyntaxKind } from "typescript";
+
 import {
   extractClassBasedSDKData,
   extractClientBasedSDKdata
 } from "../../../generators/googleCloud/generator";
 import { readJsonData, readSourceFile } from "../lib/helper";
-import { SyntaxKind } from "typescript";
 
 describe("GCP generator extractClassBasedSDKData", () => {
   context("with valid methods and valid AST", () => {

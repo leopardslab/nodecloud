@@ -1,6 +1,7 @@
 import { expect } from "chai";
-import { getAST } from "../../../parsers/do/parser";
 import { SyntaxKind } from "typescript";
+
+import { getAST } from "../../../parsers/do/parser";
 
 describe("Digital Ocean parser getAST", () => {
   context("With existing file", () => {

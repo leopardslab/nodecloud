@@ -55,7 +55,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna run test && lerna run prettier",
+      "pre-commit": "lerna run test && lerna run prettier && lerna run lint",
       "pre-push": "lerna run test"
     }
   }

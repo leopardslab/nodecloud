@@ -1,8 +1,9 @@
 import * as fs from "fs";
 import { createSourceFile, ScriptTarget, SyntaxKind } from "typescript";
+
 import { getAST } from "../../parsers/do/parser";
 import { transform } from "../../transformers/do/transformer";
-import { printFile, getDir } from "../lib/helper";
+import { getDir,printFile } from "../lib/helper";
 
 interface FunctionData {
   functionName: string;

@@ -1,5 +1,5 @@
-import * as ts from "typescript";
 import { cloneDeep } from "lodash";
+import * as ts from "typescript";
 
 const dummyIdentifiers = [
   "ClassName",

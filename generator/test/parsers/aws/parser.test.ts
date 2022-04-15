@@ -1,6 +1,7 @@
 import { expect } from "chai";
-import { getAST } from "../../../parsers/aws/parser";
 import { SyntaxKind } from "typescript";
+
+import { getAST } from "../../../parsers/aws/parser";
 
 describe("AWS parser getAST", () => {
   context("with existing file", () => {

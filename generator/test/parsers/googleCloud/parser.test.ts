@@ -1,6 +1,7 @@
 import { expect } from "chai";
-import { getAST } from "../../../parsers/googleCloud/parser";
 import { SyntaxKind } from "typescript";
+
+import { getAST } from "../../../parsers/googleCloud/parser";
 
 describe("Google cloud parser getAST", () => {
   context("with existing file, multi:false", () => {
