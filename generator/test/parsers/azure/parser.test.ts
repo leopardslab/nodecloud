@@ -1,6 +1,7 @@
 import { expect } from "chai";
-import { getAST } from "../../../parsers/azure/parser";
 import { SyntaxKind } from "typescript";
+
+import { getAST } from "../../../parsers/azure/parser";
 
 describe("Azure parser getAST", () => {
   context("with existing file", () => {

@@ -1,7 +1,8 @@
 import { expect } from "chai";
-import { extractSDKData } from "../../../generators/azure/generator";
 import { SyntaxKind } from "typescript";
-import { readSourceFile, readJsonData } from "../lib/helper";
+
+import { extractSDKData } from "../../../generators/azure/generator";
+import { readJsonData,readSourceFile } from "../lib/helper";
 
 describe("Azure generator extractSDKData", () => {
   context("with valid methods and valid AST", () => {

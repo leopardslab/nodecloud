@@ -1,6 +1,7 @@
 import { expect } from "chai";
+import { createSourceFile, isSourceFile,ScriptTarget } from "typescript";
+
 import { clientBasedTransform } from "../../../transformers/googleCloud/clientBasedTransformer";
-import { createSourceFile, ScriptTarget, isSourceFile } from "typescript";
 import { readJsonData, readSourceFile } from "../lib/helper";
 
 interface TestData {

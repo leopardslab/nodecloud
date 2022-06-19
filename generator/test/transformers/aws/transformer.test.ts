@@ -1,6 +1,7 @@
 import { expect } from "chai";
+import { createSourceFile, isSourceFile,ScriptTarget } from "typescript";
+
 import { transform } from "../../../transformers/aws/transformer";
-import { createSourceFile, ScriptTarget, isSourceFile } from "typescript";
 import { readJsonData, readSourceFile } from "../lib/helper";
 
 interface TestData {

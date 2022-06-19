@@ -1,8 +1,9 @@
 import * as fs from "fs";
-import { SyntaxKind, createSourceFile, ScriptTarget } from "typescript";
+import { createSourceFile, ScriptTarget,SyntaxKind } from "typescript";
+
 import { getAST } from "../../parsers/azure/parser";
-import { groupers, filters, printFile, getDir } from "../lib/helper";
 import { transform } from "../../transformers/azure/transformer";
+import { filters, getDir,groupers, printFile } from "../lib/helper";
 
 interface FunctionData {
   pkgName: string;

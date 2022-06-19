@@ -1,0 +1,12 @@
+{
+	"extends": "../.eslintrc",
+	"ignorePatterns": [
+		"*.js",
+		"node_modules/",
+		"dummyClasses/",
+		"generatedClasses/"
+	],
+	"rules": {
+		"@typescript-eslint/no-empty-function": "warn"
+	}
+}
