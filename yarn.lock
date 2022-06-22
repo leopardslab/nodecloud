@@ -171,9 +171,9 @@
     xml2js "^0.4.19"
 
 "@azure/ms-rest-nodeauth@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@azure/ms-rest-nodeauth/-/ms-rest-nodeauth-3.0.5.tgz#f277ec6e323178fd13c05ca82321ba99c767d4bc"
-  integrity sha512-GoP9tn4rFNHJqE00+ARtHmPKufC3h4j7xEuyveOueUrguLT/Q0c5aEPgS9bmXWiHGoreRn2hVGGwd3m8oDdV3g==
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@azure/ms-rest-nodeauth/-/ms-rest-nodeauth-3.0.8.tgz#381938aca692e19daa6c9febb2cbb95a8e689243"
+  integrity sha512-HmEkzAUGWxWHrwHysX9vE00cuK2WjxCYvBWV6cbsvm+eSm3VXpkGHPSoCHXyqUQOGqu58LXI4XFVJxFT/s40pA==
   dependencies:
     "@azure/ms-rest-azure-env" "^2.0.0"
     "@azure/ms-rest-js" "^2.0.4"
