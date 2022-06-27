@@ -1,104 +1,104 @@
 {
-  "className": "SimpleDB",
-  "functions": [
-    {
-      "functionName": "batchDelete",
-      "SDKFunctionName": "batchDeleteAttributes",
-      "params": [
-        {
-          "name": "params",
-          "optional": false,
-          "type": "TypeReference"
-        }
-      ]
-    },
-    {
-      "functionName": "batchWrite",
-      "SDKFunctionName": "batchPutAttributes",
-      "params": [
-        {
-          "name": "params",
-          "optional": false,
-          "type": "TypeReference"
-        }
-      ]
-    },
-    {
-      "functionName": "createCollection",
-      "SDKFunctionName": "createDomain",
-      "params": [
-        {
-          "name": "params",
-          "optional": false,
-          "type": "TypeReference"
-        }
-      ]
-    },
-    {
-      "functionName": "deleteAttribute",
-      "SDKFunctionName": "deleteAttributes",
-      "params": [
-        {
-          "name": "params",
-          "optional": false,
-          "type": "TypeReference"
-        }
-      ]
-    },
-    {
-      "functionName": "deleteCollection",
-      "SDKFunctionName": "deleteDomain",
-      "params": [
-        {
-          "name": "params",
-          "optional": false,
-          "type": "TypeReference"
-        }
-      ]
-    },
-    {
-      "functionName": "getAttributes",
-      "SDKFunctionName": "getAttributes",
-      "params": [
-        {
-          "name": "params",
-          "optional": false,
-          "type": "TypeReference"
-        }
-      ]
-    },
-    {
-      "functionName": "listCollections",
-      "SDKFunctionName": "listDomains",
-      "params": [
-        {
-          "name": "params",
-          "optional": false,
-          "type": "TypeReference"
-        }
-      ]
-    },
-    {
-      "functionName": "setAttribute",
-      "SDKFunctionName": "putAttributes",
-      "params": [
-        {
-          "name": "params",
-          "optional": false,
-          "type": "TypeReference"
-        }
-      ]
-    },
-    {
-      "functionName": "query",
-      "SDKFunctionName": "select",
-      "params": [
-        {
-          "name": "params",
-          "optional": false,
-          "type": "TypeReference"
-        }
-      ]
-    }
-  ]
+	"className": "SimpleDB",
+	"functions": [
+		{
+			"functionName": "batchDelete",
+			"SDKFunctionName": "batchDeleteAttributes",
+			"params": [
+				{
+					"name": "params",
+					"optional": false,
+					"type": "TypeReference"
+				}
+			]
+		},
+		{
+			"functionName": "batchWrite",
+			"SDKFunctionName": "batchPutAttributes",
+			"params": [
+				{
+					"name": "params",
+					"optional": false,
+					"type": "TypeReference"
+				}
+			]
+		},
+		{
+			"functionName": "createCollection",
+			"SDKFunctionName": "createDomain",
+			"params": [
+				{
+					"name": "params",
+					"optional": false,
+					"type": "TypeReference"
+				}
+			]
+		},
+		{
+			"functionName": "deleteAttribute",
+			"SDKFunctionName": "deleteAttributes",
+			"params": [
+				{
+					"name": "params",
+					"optional": false,
+					"type": "TypeReference"
+				}
+			]
+		},
+		{
+			"functionName": "deleteCollection",
+			"SDKFunctionName": "deleteDomain",
+			"params": [
+				{
+					"name": "params",
+					"optional": false,
+					"type": "TypeReference"
+				}
+			]
+		},
+		{
+			"functionName": "getAttributes",
+			"SDKFunctionName": "getAttributes",
+			"params": [
+				{
+					"name": "params",
+					"optional": false,
+					"type": "TypeReference"
+				}
+			]
+		},
+		{
+			"functionName": "listCollections",
+			"SDKFunctionName": "listDomains",
+			"params": [
+				{
+					"name": "params",
+					"optional": false,
+					"type": "TypeReference"
+				}
+			]
+		},
+		{
+			"functionName": "setAttribute",
+			"SDKFunctionName": "putAttributes",
+			"params": [
+				{
+					"name": "params",
+					"optional": false,
+					"type": "TypeReference"
+				}
+			]
+		},
+		{
+			"functionName": "query",
+			"SDKFunctionName": "select",
+			"params": [
+				{
+					"name": "params",
+					"optional": false,
+					"type": "TypeReference"
+				}
+			]
+		}
+	]
 }

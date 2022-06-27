@@ -1,18 +1,18 @@
 {
-  "name": "@nodecloud/do-plugin",
-  "version": "2.0.0",
-  "description": "NodeCloud Digital Ocean plugin",
-  "main": "index.js",
-  "scripts": {
-    "prettier": "yarn pretty-quick"
-  },
-  "keywords": [
-    "nodecloud",
-    "nodecloud-Digital-Ocean"
-  ],
-  "author": "Scorelab",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "do-wrapper": "^4.5.1"
-  }
+	"name": "@nodecloud/do-plugin",
+	"version": "2.0.0",
+	"description": "NodeCloud Digital Ocean plugin",
+	"main": "index.js",
+	"scripts": {
+		"prettier": "yarn pretty-quick"
+	},
+	"keywords": [
+		"nodecloud",
+		"nodecloud-Digital-Ocean"
+	],
+	"author": "Scorelab",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"do-wrapper": "^4.5.1"
+	}
 }

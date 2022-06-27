@@ -1,18 +1,18 @@
 {
-  "name": "@nodecloud/aws-plugin",
-  "version": "2.0.0",
-  "description": "NodeCloud AWS plugin",
-  "main": "index.js",
-  "scripts": {
-    "prettier": "yarn pretty-quick"
-  },
-  "keywords": [
-    "nodecloud",
-    "nodecloud-aws"
-  ],
-  "author": "Scorelab",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "aws-sdk": "^2.686.0"
-  }
+	"name": "@nodecloud/aws-plugin",
+	"version": "2.0.0",
+	"description": "NodeCloud AWS plugin",
+	"main": "index.js",
+	"scripts": {
+		"prettier": "yarn pretty-quick"
+	},
+	"keywords": [
+		"nodecloud",
+		"nodecloud-aws"
+	],
+	"author": "Scorelab",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"aws-sdk": "^2.686.0"
+	}
 }
