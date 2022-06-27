@@ -1,4 +1,4 @@
-import { getAST } from '../../parsers/aliyun/parser';
+import { ClassData, extractSDKData, getAST } from '../../parsers/aliyun/parser';
 
 export const generateAliyunClass = (
 	serviceClass: unknown,
@@ -8,7 +8,15 @@ export const generateAliyunClass = (
 	getAST(sdkfile)
 		.then(async result => {
 			const sdkClassAst = result;
-			console.log(sdkClassAst);
+			try {
+				const classData: ClassData = extractSDKData(
+					sdkClassAst,
+					serviceClass
+				);
+				classData.serviceName = serviceName;
+			} catch (err) {
+				console.error('Error : ', err);
+			}
 		})
 		.catch(error => {
 			console.error('Error : ', error);
