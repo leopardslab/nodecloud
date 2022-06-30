@@ -43,25 +43,25 @@ export const getAST = (sdkFilePath: string) => {
 	});
 };
 
-export function extractSDKData(sdkClassAst, serviceClass) {
-	let methods: FunctionData[] = [];
+export const extractSDKData = (sdkClassAst, serviceClass): ClassData => {
+	const methods: FunctionData[] = [];
 	const functions = [];
 
-	Object.keys(serviceClass).map((key, index) => {
-		functions.push(serviceClass[key].split(' ')[1]);
+	Object.keys(serviceClass).forEach((key: string) => {
+		functions.push(serviceClass[key].split(' ')[2]);
 	});
 
-	sdkClassAst.members.map(method => {
+	sdkClassAst.members.forEach(method => {
 		if (method.name && functions.includes(method.name.text)) {
 			let name;
-			Object.keys(serviceClass).map((key, index) => {
-				if (serviceClass[key].split(' ')[1] === method.name.text) {
+			Object.keys(serviceClass).forEach((key: string) => {
+				if (serviceClass[key].split(' ')[2] === method.name.text) {
 					name = key;
 				}
 			});
 
 			const parameters = [];
-			method.parameters.map(param => {
+			method.parameters.forEach(param => {
 				if (param.name.text !== 'callback') {
 					const parameter = {
 						name: param.name.text,
@@ -96,7 +96,7 @@ export function extractSDKData(sdkClassAst, serviceClass) {
 	};
 
 	return classData;
-}
+};
 
 export interface ClassData {
 	className: string;
