@@ -31,6 +31,7 @@
     "@google-cloud/pubsub": "^2.1.0",
     "@google-cloud/storage": "^5.1.1",
     "@google-cloud/translate": "^6.0.0",
+    "aliyun-v2-typescript-sdk": "^0.1.1",
     "aws-sdk": "^2.686.0",
     "config": "^1.26.1",
     "do-wrapper": "^4.5.1",
