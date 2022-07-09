@@ -1,15 +1,15 @@
 {
-	"functions": [
-		{
-			"SDKFunctionName": "getClusters",
-			"params": [
-				{
-					"name": "includeAll",
-					"optional": false,
-					"type": "TypeReference",
-					"invalid": true
-				}
-			]
-		}
-	]
+  "functions": [
+    {
+      "SDKFunctionName": "getClusters",
+      "params": [
+        {
+          "name": "includeAll",
+          "optional": false,
+          "type": "TypeReference",
+          "invalid": true
+        }
+      ]
+    }
+  ]
 }

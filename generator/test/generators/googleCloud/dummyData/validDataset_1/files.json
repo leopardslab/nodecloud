@@ -1,26 +1,26 @@
 [
-	{
-		"fileName": "change.d.ts",
-		"pkgName": "dns",
-		"classes": null,
-		"sdkFunctionNames": []
-	},
-	{
-		"fileName": "index.d.ts",
-		"pkgName": "dns",
-		"classes": null,
-		"sdkFunctionNames": ["getZones"]
-	},
-	{
-		"fileName": "record.d.ts",
-		"pkgName": "dns",
-		"classes": null,
-		"sdkFunctionNames": []
-	},
-	{
-		"fileName": "zone.d.ts",
-		"pkgName": "dns",
-		"classes": null,
-		"sdkFunctionNames": ["create"]
-	}
+  {
+    "fileName": "change.d.ts",
+    "pkgName": "dns",
+    "classes": null,
+    "sdkFunctionNames": []
+  },
+  {
+    "fileName": "index.d.ts",
+    "pkgName": "dns",
+    "classes": null,
+    "sdkFunctionNames": ["getZones"]
+  },
+  {
+    "fileName": "record.d.ts",
+    "pkgName": "dns",
+    "classes": null,
+    "sdkFunctionNames": []
+  },
+  {
+    "fileName": "zone.d.ts",
+    "pkgName": "dns",
+    "classes": null,
+    "sdkFunctionNames": ["create"]
+  }
 ]

@@ -1,24 +1,24 @@
 [
-	{
-		"pkgName": "dns",
-		"version": null,
-		"fileName": "index.d.ts",
-		"functionName": "listZones",
-		"SDKFunctionName": "getZones",
-		"params": [],
-		"returnType": null,
-		"returnTypeName": null,
-		"client": null
-	},
-	{
-		"pkgName": "dns",
-		"version": null,
-		"fileName": "zone.d.ts",
-		"functionName": "createZone",
-		"SDKFunctionName": "create",
-		"params": [],
-		"returnType": null,
-		"returnTypeName": null,
-		"client": null
-	}
+  {
+    "pkgName": "dns",
+    "version": null,
+    "fileName": "index.d.ts",
+    "functionName": "listZones",
+    "SDKFunctionName": "getZones",
+    "params": [],
+    "returnType": null,
+    "returnTypeName": null,
+    "client": null
+  },
+  {
+    "pkgName": "dns",
+    "version": null,
+    "fileName": "zone.d.ts",
+    "functionName": "createZone",
+    "SDKFunctionName": "create",
+    "params": [],
+    "returnType": null,
+    "returnTypeName": null,
+    "client": null
+  }
 ]

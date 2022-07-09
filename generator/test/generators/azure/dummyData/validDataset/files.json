@@ -1,15 +1,15 @@
 [
-	{
-		"fileName": "managedClusters.d.ts",
-		"pkgName": "arm-containerservice",
-		"ast": null,
-		"client": null,
-		"sdkFunctionNames": [
-			"createOrUpdate",
-			"deleteMethod",
-			"updateTags",
-			"listByResourceGroup",
-			"list"
-		]
-	}
+  {
+    "fileName": "managedClusters.d.ts",
+    "pkgName": "arm-containerservice",
+    "ast": null,
+    "client": null,
+    "sdkFunctionNames": [
+      "createOrUpdate",
+      "deleteMethod",
+      "updateTags",
+      "listByResourceGroup",
+      "list"
+    ]
+  }
 ]

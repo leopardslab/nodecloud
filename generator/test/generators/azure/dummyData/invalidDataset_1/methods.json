@@ -1,47 +1,47 @@
 [
-	{
-		"pkgName": "arm-containerservice",
-		"fileName": "managedClusters.d.ts",
-		"functionName": "create",
-		"SDKFunctionName": "createOrUpdate",
-		"params": [],
-		"returnType": null,
-		"client": null
-	},
-	{
-		"pkgName": "arm-containerservice",
-		"fileName": "managedClusters.d.ts",
-		"functionName": "delete",
-		"SDKFunctionName": "deleteMethod",
-		"params": [],
-		"returnType": null,
-		"client": null
-	},
-	{
-		"pkgName": "arm-containerservice",
-		"fileName": "managedClusters.d.ts",
-		"functionName": "updateTags",
-		"SDKFunctionName": "updateTags",
-		"params": [],
-		"returnType": null,
-		"client": null
-	},
-	{
-		"pkgName": "arm-containerservice",
-		"fileName": "managedClusters.d.ts",
-		"functionName": "listByResourceGroup",
-		"SDKFunctionName": "listByResourceGroup",
-		"params": [],
-		"returnType": null,
-		"client": null
-	},
-	{
-		"pkgName": "arm-containerservice",
-		"fileName": "managedClusters.d.ts",
-		"functionName": "listClusters",
-		"SDKFunctionName": "list",
-		"params": [],
-		"returnType": null,
-		"client": null
-	}
+  {
+    "pkgName": "arm-containerservice",
+    "fileName": "managedClusters.d.ts",
+    "functionName": "create",
+    "SDKFunctionName": "createOrUpdate",
+    "params": [],
+    "returnType": null,
+    "client": null
+  },
+  {
+    "pkgName": "arm-containerservice",
+    "fileName": "managedClusters.d.ts",
+    "functionName": "delete",
+    "SDKFunctionName": "deleteMethod",
+    "params": [],
+    "returnType": null,
+    "client": null
+  },
+  {
+    "pkgName": "arm-containerservice",
+    "fileName": "managedClusters.d.ts",
+    "functionName": "updateTags",
+    "SDKFunctionName": "updateTags",
+    "params": [],
+    "returnType": null,
+    "client": null
+  },
+  {
+    "pkgName": "arm-containerservice",
+    "fileName": "managedClusters.d.ts",
+    "functionName": "listByResourceGroup",
+    "SDKFunctionName": "listByResourceGroup",
+    "params": [],
+    "returnType": null,
+    "client": null
+  },
+  {
+    "pkgName": "arm-containerservice",
+    "fileName": "managedClusters.d.ts",
+    "functionName": "listClusters",
+    "SDKFunctionName": "list",
+    "params": [],
+    "returnType": null,
+    "client": null
+  }
 ]

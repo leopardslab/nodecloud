@@ -1,3997 +1,3997 @@
 {
-	"mainClass": "Storage",
-	"functions": [
-		{
-			"functionName": "makePublic",
-			"SDKFunctionName": "makePublic",
-			"params": [],
-			"pkgName": "storage",
-			"fileName": "file.d.ts",
-			"client": "File",
-			"returnType": "TypeReference",
-			"returnTypeName": "Promise",
-			"classConstructorData": {
-				"parameters": [
-					{
-						"name": "bucket",
-						"optional": false,
-						"type": "TypeReference",
-						"typeRefName": "Bucket"
-					},
-					{
-						"name": "name",
-						"optional": false,
-						"type": "StringKeyword",
-						"typeRefName": null
-					},
-					{
-						"name": "options",
-						"optional": true,
-						"type": "TypeReference",
-						"typeRefName": "FileOptions"
-					}
-				]
-			}
-		}
-	],
-	"classData": [
-		{
-			"name": "AclRoleAccessorMethods",
-			"methods": [
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "_assignAccessMethods",
-					"params": [
-						{
-							"name": "role",
-							"optional": false,
-							"type": "StringKeyword"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "AclRoleAccessorMethods"
-				}
-			],
-			"properties": [
-				{
-					"name": "owners",
-					"type": "TypeLiteral",
-					"typeRefName": null
-				},
-				{
-					"name": "readers",
-					"type": "TypeLiteral",
-					"typeRefName": null
-				},
-				{
-					"name": "writers",
-					"type": "TypeLiteral",
-					"typeRefName": null
-				}
-			],
-			"constructor": {
-				"parameters": []
-			}
-		},
-		{
-			"name": "Acl",
-			"methods": [
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "add",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Acl"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "add",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Acl"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "delete",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Acl"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "delete",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Acl"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "get",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Acl"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "get",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Acl"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "get",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Acl"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "update",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Acl"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "update",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Acl"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makeAclObject_",
-					"params": [
-						{
-							"name": "accessControlObject",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "AccessControlObject",
-					"client": "Acl"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "acl.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "request",
-					"params": [
-						{
-							"name": "reqOpts",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Acl"
-				}
-			],
-			"properties": [
-				{
-					"name": "default",
-					"type": "TypeReference",
-					"typeRefName": "Acl"
-				},
-				{
-					"name": "pathPrefix",
-					"type": "StringKeyword",
-					"typeRefName": null
-				},
-				{
-					"name": "request_",
-					"type": "FunctionType",
-					"typeRefName": null
-				}
-			],
-			"constructor": {
-				"parameters": [
-					{
-						"name": "options",
-						"optional": false,
-						"type": "TypeReference",
-						"typeRefName": "AclOptions"
-					}
-				]
-			}
-		},
-		{
-			"name": "Bucket",
-			"methods": [
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "addLifecycleRule",
-					"params": [
-						{
-							"name": "rule",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "addLifecycleRule",
-					"params": [
-						{
-							"name": "rule",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "addLifecycleRule",
-					"params": [
-						{
-							"name": "rule",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "combine",
-					"params": [
-						{
-							"name": "sources",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "destination",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "combine",
-					"params": [
-						{
-							"name": "sources",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "destination",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "combine",
-					"params": [
-						{
-							"name": "sources",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "destination",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createChannel",
-					"params": [
-						{
-							"name": "id",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "config",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createChannel",
-					"params": [
-						{
-							"name": "id",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "config",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createChannel",
-					"params": [
-						{
-							"name": "id",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "config",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createNotification",
-					"params": [
-						{
-							"name": "topic",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createNotification",
-					"params": [
-						{
-							"name": "topic",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createNotification",
-					"params": [
-						{
-							"name": "topic",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "deleteFiles",
-					"params": [
-						{
-							"name": "query",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "deleteFiles",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "deleteFiles",
-					"params": [
-						{
-							"name": "query",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "deleteLabels",
-					"params": [
-						{
-							"name": "labels",
-							"optional": true,
-							"type": "UnionType"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "deleteLabels",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "deleteLabels",
-					"params": [
-						{
-							"name": "labels",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "disableRequesterPays",
-					"params": [],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "disableRequesterPays",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "enableLogging",
-					"params": [
-						{
-							"name": "config",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "enableLogging",
-					"params": [
-						{
-							"name": "config",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "enableRequesterPays",
-					"params": [],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "enableRequesterPays",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "file",
-					"params": [
-						{
-							"name": "name",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "File",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getFiles",
-					"params": [
-						{
-							"name": "query",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getFiles",
-					"params": [
-						{
-							"name": "query",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getFiles",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getLabels",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getLabels",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getLabels",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getNotifications",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getNotifications",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getNotifications",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getSignedUrl",
-					"params": [
-						{
-							"name": "cfg",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getSignedUrl",
-					"params": [
-						{
-							"name": "cfg",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "lock",
-					"params": [
-						{
-							"name": "metageneration",
-							"optional": false,
-							"type": "UnionType"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "lock",
-					"params": [
-						{
-							"name": "metageneration",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makePrivate",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makePrivate",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makePrivate",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makePublic",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makePublic",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makePublic",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "notification",
-					"params": [
-						{
-							"name": "id",
-							"optional": false,
-							"type": "StringKeyword"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Notification",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "removeRetentionPeriod",
-					"params": [],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "removeRetentionPeriod",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "request",
-					"params": [
-						{
-							"name": "reqOpts",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "request",
-					"params": [
-						{
-							"name": "reqOpts",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setLabels",
-					"params": [
-						{
-							"name": "labels",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setLabels",
-					"params": [
-						{
-							"name": "labels",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setLabels",
-					"params": [
-						{
-							"name": "labels",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setRetentionPeriod",
-					"params": [
-						{
-							"name": "duration",
-							"optional": false,
-							"type": "NumberKeyword"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setRetentionPeriod",
-					"params": [
-						{
-							"name": "duration",
-							"optional": false,
-							"type": "NumberKeyword"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setCorsConfiguration",
-					"params": [
-						{
-							"name": "corsConfiguration",
-							"optional": false,
-							"type": "ArrayType"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setCorsConfiguration",
-					"params": [
-						{
-							"name": "corsConfiguration",
-							"optional": false,
-							"type": "ArrayType"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setStorageClass",
-					"params": [
-						{
-							"name": "storageClass",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setStorageClass",
-					"params": [
-						{
-							"name": "storageClass",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setStorageClass",
-					"params": [
-						{
-							"name": "storageClass",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setUserProject",
-					"params": [
-						{
-							"name": "userProject",
-							"optional": false,
-							"type": "StringKeyword"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "upload",
-					"params": [
-						{
-							"name": "pathString",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "upload",
-					"params": [
-						{
-							"name": "pathString",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "upload",
-					"params": [
-						{
-							"name": "pathString",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makeAllFilesPublicPrivate_",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makeAllFilesPublicPrivate_",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makeAllFilesPublicPrivate_",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "bucket.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getId",
-					"params": [],
-					"returnType": "StringKeyword",
-					"returnTypeName": null,
-					"client": "Bucket"
-				}
-			],
-			"properties": [
-				{
-					"name": "name",
-					"type": "StringKeyword",
-					"typeRefName": null
-				},
-				{
-					"name": "storage",
-					"type": "TypeReference",
-					"typeRefName": "Storage"
-				},
-				{
-					"name": "userProject",
-					"type": "StringKeyword",
-					"typeRefName": null
-				},
-				{
-					"name": "acl",
-					"type": "TypeReference",
-					"typeRefName": "Acl"
-				},
-				{
-					"name": "iam",
-					"type": "TypeReference",
-					"typeRefName": "Iam"
-				},
-				{
-					"name": "getFilesStream",
-					"type": "TypeReference",
-					"typeRefName": "Function"
-				},
-				{
-					"name": "signer",
-					"type": "TypeReference",
-					"typeRefName": "URLSigner"
-				}
-			],
-			"constructor": {
-				"parameters": [
-					{
-						"name": "storage",
-						"optional": false,
-						"type": "TypeReference",
-						"typeRefName": "Storage"
-					},
-					{
-						"name": "name",
-						"optional": false,
-						"type": "StringKeyword",
-						"typeRefName": null
-					},
-					{
-						"name": "options",
-						"optional": true,
-						"type": "TypeReference",
-						"typeRefName": "BucketOptions"
-					}
-				]
-			}
-		},
-		{
-			"name": "Channel",
-			"methods": [
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "channel.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "stop",
-					"params": [],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Channel"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "channel.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "stop",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Channel"
-				}
-			],
-			"properties": [],
-			"constructor": {
-				"parameters": [
-					{
-						"name": "storage",
-						"optional": false,
-						"type": "TypeReference",
-						"typeRefName": "Storage"
-					},
-					{
-						"name": "id",
-						"optional": false,
-						"type": "StringKeyword",
-						"typeRefName": null
-					},
-					{
-						"name": "resourceId",
-						"optional": false,
-						"type": "StringKeyword",
-						"typeRefName": null
-					}
-				]
-			}
-		},
-		{
-			"name": "RequestError",
-			"methods": [],
-			"properties": [
-				{
-					"name": "code",
-					"type": "StringKeyword",
-					"typeRefName": null
-				},
-				{
-					"name": "errors",
-					"type": "ArrayType",
-					"typeRefName": null
-				}
-			],
-			"constructor": null
-		},
-		{
-			"name": "File",
-			"methods": [
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "copy",
-					"params": [
-						{
-							"name": "destination",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "copy",
-					"params": [
-						{
-							"name": "destination",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "copy",
-					"params": [
-						{
-							"name": "destination",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createReadStream",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Readable",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createResumableUpload",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createResumableUpload",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createResumableUpload",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createWriteStream",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Writable",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "deleteResumableCache",
-					"params": [],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "download",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "download",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "download",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setEncryptionKey",
-					"params": [
-						{
-							"name": "encryptionKey",
-							"optional": false,
-							"type": "UnionType"
-						}
-					],
-					"returnType": "ThisType",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getExpirationDate",
-					"params": [],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getExpirationDate",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getSignedPolicy",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getSignedPolicy",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getSignedPolicy",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "generateSignedPostPolicyV2",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "generateSignedPostPolicyV2",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "generateSignedPostPolicyV2",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "generateSignedPostPolicyV4",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "generateSignedPostPolicyV4",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "generateSignedPostPolicyV4",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getSignedUrl",
-					"params": [
-						{
-							"name": "cfg",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getSignedUrl",
-					"params": [
-						{
-							"name": "cfg",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "isPublic",
-					"params": [],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "isPublic",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makePrivate",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makePrivate",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "makePrivate",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": "makePublic",
-					"SDKFunctionName": "makePublic",
-					"params": [],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File",
-					"classConstructorData": {
-						"parameters": [
-							{
-								"name": "bucket",
-								"optional": false,
-								"type": "TypeReference",
-								"typeRefName": "Bucket"
-							},
-							{
-								"name": "name",
-								"optional": false,
-								"type": "StringKeyword",
-								"typeRefName": null
-							},
-							{
-								"name": "options",
-								"optional": true,
-								"type": "TypeReference",
-								"typeRefName": "FileOptions"
-							}
-						]
-					}
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": "makePublic",
-					"SDKFunctionName": "makePublic",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File",
-					"classConstructorData": {
-						"parameters": [
-							{
-								"name": "bucket",
-								"optional": false,
-								"type": "TypeReference",
-								"typeRefName": "Bucket"
-							},
-							{
-								"name": "name",
-								"optional": false,
-								"type": "StringKeyword",
-								"typeRefName": null
-							},
-							{
-								"name": "options",
-								"optional": true,
-								"type": "TypeReference",
-								"typeRefName": "FileOptions"
-							}
-						]
-					}
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "move",
-					"params": [
-						{
-							"name": "destination",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "move",
-					"params": [
-						{
-							"name": "destination",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "move",
-					"params": [
-						{
-							"name": "destination",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "request",
-					"params": [
-						{
-							"name": "reqOpts",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "request",
-					"params": [
-						{
-							"name": "reqOpts",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "rotateEncryptionKey",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "rotateEncryptionKey",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "rotateEncryptionKey",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "save",
-					"params": [
-						{
-							"name": "data",
-							"optional": false,
-							"type": "AnyKeyword"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "save",
-					"params": [
-						{
-							"name": "data",
-							"optional": false,
-							"type": "AnyKeyword"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "save",
-					"params": [
-						{
-							"name": "data",
-							"optional": false,
-							"type": "AnyKeyword"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setStorageClass",
-					"params": [
-						{
-							"name": "storageClass",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setStorageClass",
-					"params": [
-						{
-							"name": "storageClass",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setStorageClass",
-					"params": [
-						{
-							"name": "storageClass",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "callback",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setUserProject",
-					"params": [
-						{
-							"name": "userProject",
-							"optional": false,
-							"type": "StringKeyword"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "startResumableUpload_",
-					"params": [
-						{
-							"name": "dup",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "file.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "startSimpleUpload_",
-					"params": [
-						{
-							"name": "dup",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "File"
-				}
-			],
-			"properties": [
-				{
-					"name": "acl",
-					"type": "TypeReference",
-					"typeRefName": "Acl"
-				},
-				{
-					"name": "bucket",
-					"type": "TypeReference",
-					"typeRefName": "Bucket"
-				},
-				{
-					"name": "storage",
-					"type": "TypeReference",
-					"typeRefName": "Storage"
-				},
-				{
-					"name": "kmsKeyName",
-					"type": "StringKeyword",
-					"typeRefName": null
-				},
-				{
-					"name": "userProject",
-					"type": "StringKeyword",
-					"typeRefName": null
-				},
-				{
-					"name": "signer",
-					"type": "TypeReference",
-					"typeRefName": "URLSigner"
-				},
-				{
-					"name": "name",
-					"type": "StringKeyword",
-					"typeRefName": null
-				},
-				{
-					"name": "generation",
-					"type": "NumberKeyword",
-					"typeRefName": null
-				},
-				{
-					"name": "parent",
-					"type": "TypeReference",
-					"typeRefName": "Bucket"
-				}
-			],
-			"constructor": {
-				"parameters": [
-					{
-						"name": "bucket",
-						"optional": false,
-						"type": "TypeReference",
-						"typeRefName": "Bucket"
-					},
-					{
-						"name": "name",
-						"optional": false,
-						"type": "StringKeyword",
-						"typeRefName": null
-					},
-					{
-						"name": "options",
-						"optional": true,
-						"type": "TypeReference",
-						"typeRefName": "FileOptions"
-					}
-				]
-			}
-		},
-		{
-			"name": "HmacKey",
-			"methods": [],
-			"properties": [
-				{
-					"name": "metadata",
-					"type": "UnionType",
-					"typeRefName": null
-				}
-			],
-			"constructor": {
-				"parameters": [
-					{
-						"name": "storage",
-						"optional": false,
-						"type": "TypeReference",
-						"typeRefName": "Storage"
-					},
-					{
-						"name": "accessId",
-						"optional": false,
-						"type": "StringKeyword",
-						"typeRefName": null
-					},
-					{
-						"name": "options",
-						"optional": true,
-						"type": "TypeReference",
-						"typeRefName": "HmacKeyOptions"
-					}
-				]
-			}
-		},
-		{
-			"name": "Iam",
-			"methods": [
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "iam.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getPolicy",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Iam"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "iam.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getPolicy",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Iam"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "iam.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getPolicy",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Iam"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "iam.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setPolicy",
-					"params": [
-						{
-							"name": "policy",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Iam"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "iam.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setPolicy",
-					"params": [
-						{
-							"name": "policy",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Iam"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "iam.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "setPolicy",
-					"params": [
-						{
-							"name": "policy",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Iam"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "iam.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "testPermissions",
-					"params": [
-						{
-							"name": "permissions",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Iam"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "iam.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "testPermissions",
-					"params": [
-						{
-							"name": "permissions",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Iam"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "iam.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "testPermissions",
-					"params": [
-						{
-							"name": "permissions",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Iam"
-				}
-			],
-			"properties": [],
-			"constructor": {
-				"parameters": [
-					{
-						"name": "bucket",
-						"optional": false,
-						"type": "TypeReference",
-						"typeRefName": "Bucket"
-					}
-				]
-			}
-		},
-		{
-			"name": "Notification",
-			"methods": [
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "notification.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "delete",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Notification"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "notification.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "delete",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Notification"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "notification.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "delete",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Notification"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "notification.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "get",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Notification"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "notification.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "get",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Notification"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "notification.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "get",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Notification"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "notification.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getMetadata",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Notification"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "notification.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getMetadata",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Notification"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "notification.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getMetadata",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Notification"
-				}
-			],
-			"properties": [],
-			"constructor": {
-				"parameters": [
-					{
-						"name": "bucket",
-						"optional": false,
-						"type": "TypeReference",
-						"typeRefName": "Bucket"
-					},
-					{
-						"name": "id",
-						"optional": false,
-						"type": "StringKeyword",
-						"typeRefName": null
-					}
-				]
-			}
-		},
-		{
-			"name": "URLSigner",
-			"methods": [
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "signer.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getSignedUrl",
-					"params": [
-						{
-							"name": "cfg",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "URLSigner"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "signer.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getCanonicalHeaders",
-					"params": [
-						{
-							"name": "headers",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "StringKeyword",
-					"returnTypeName": null,
-					"client": "URLSigner"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "signer.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getCanonicalRequest",
-					"params": [
-						{
-							"name": "method",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "path",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "query",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "headers",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "signedHeaders",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "contentSha256",
-							"optional": true,
-							"type": "StringKeyword"
-						}
-					],
-					"returnType": "StringKeyword",
-					"returnTypeName": null,
-					"client": "URLSigner"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "signer.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getCanonicalQueryParams",
-					"params": [
-						{
-							"name": "query",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "StringKeyword",
-					"returnTypeName": null,
-					"client": "URLSigner"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "signer.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getResourcePath",
-					"params": [
-						{
-							"name": "cname",
-							"optional": false,
-							"type": "BooleanKeyword"
-						},
-						{
-							"name": "bucket",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "file",
-							"optional": true,
-							"type": "StringKeyword"
-						}
-					],
-					"returnType": "StringKeyword",
-					"returnTypeName": null,
-					"client": "URLSigner"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "signer.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "parseExpires",
-					"params": [
-						{
-							"name": "expires",
-							"optional": false,
-							"type": "UnionType"
-						},
-						{
-							"name": "current",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "NumberKeyword",
-					"returnTypeName": null,
-					"client": "URLSigner"
-				}
-			],
-			"properties": [],
-			"constructor": {
-				"parameters": [
-					{
-						"name": "authClient",
-						"optional": false,
-						"type": "TypeReference",
-						"typeRefName": "AuthClient"
-					},
-					{
-						"name": "bucket",
-						"optional": false,
-						"type": "TypeReference",
-						"typeRefName": "BucketI"
-					},
-					{
-						"name": "file",
-						"optional": true,
-						"type": "TypeReference",
-						"typeRefName": "FileI"
-					}
-				]
-			}
-		},
-		{
-			"name": "SigningError",
-			"methods": [],
-			"properties": [
-				{
-					"name": "name",
-					"type": "StringKeyword",
-					"typeRefName": null
-				}
-			],
-			"constructor": null
-		},
-		{
-			"name": "Storage",
-			"methods": [
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "bucket",
-					"params": [
-						{
-							"name": "name",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Bucket",
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "channel",
-					"params": [
-						{
-							"name": "id",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "resourceId",
-							"optional": false,
-							"type": "StringKeyword"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Channel",
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createBucket",
-					"params": [
-						{
-							"name": "name",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "metadata",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createBucket",
-					"params": [
-						{
-							"name": "name",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createBucket",
-					"params": [
-						{
-							"name": "name",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "metadata",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createBucket",
-					"params": [
-						{
-							"name": "name",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "metadata",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createHmacKey",
-					"params": [
-						{
-							"name": "serviceAccountEmail",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createHmacKey",
-					"params": [
-						{
-							"name": "serviceAccountEmail",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "createHmacKey",
-					"params": [
-						{
-							"name": "serviceAccountEmail",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getBuckets",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getBuckets",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getBuckets",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getHmacKeys",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getHmacKeys",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getHmacKeys",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getServiceAccount",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getServiceAccount",
-					"params": [
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "Promise",
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getServiceAccount",
-					"params": [
-						{
-							"name": "options",
-							"optional": false,
-							"type": "TypeReference"
-						},
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "getServiceAccount",
-					"params": [
-						{
-							"name": "callback",
-							"optional": false,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "VoidKeyword",
-					"returnTypeName": null,
-					"client": "Storage"
-				},
-				{
-					"pkgName": "storage",
-					"version": null,
-					"fileName": "storage.d.ts",
-					"functionName": null,
-					"SDKFunctionName": "hmacKey",
-					"params": [
-						{
-							"name": "accessId",
-							"optional": false,
-							"type": "StringKeyword"
-						},
-						{
-							"name": "options",
-							"optional": true,
-							"type": "TypeReference"
-						}
-					],
-					"returnType": "TypeReference",
-					"returnTypeName": "HmacKey",
-					"client": "Storage"
-				}
-			],
-			"properties": [
-				{
-					"name": "Bucket",
-					"type": "TypeQuery",
-					"typeRefName": null
-				},
-				{
-					"name": "Channel",
-					"type": "TypeQuery",
-					"typeRefName": null
-				},
-				{
-					"name": "File",
-					"type": "TypeQuery",
-					"typeRefName": null
-				},
-				{
-					"name": "HmacKey",
-					"type": "TypeQuery",
-					"typeRefName": null
-				},
-				{
-					"name": "acl",
-					"type": "TypeLiteral",
-					"typeRefName": null
-				},
-				{
-					"name": "acl",
-					"type": "TypeQuery",
-					"typeRefName": null
-				},
-				{
-					"name": "getBucketsStream",
-					"type": "FunctionType",
-					"typeRefName": null
-				},
-				{
-					"name": "getHmacKeysStream",
-					"type": "FunctionType",
-					"typeRefName": null
-				}
-			],
-			"constructor": {
-				"parameters": [
-					{
-						"name": "options",
-						"optional": true,
-						"type": "TypeReference",
-						"typeRefName": "StorageOptions"
-					}
-				]
-			}
-		}
-	]
+  "mainClass": "Storage",
+  "functions": [
+    {
+      "functionName": "makePublic",
+      "SDKFunctionName": "makePublic",
+      "params": [],
+      "pkgName": "storage",
+      "fileName": "file.d.ts",
+      "client": "File",
+      "returnType": "TypeReference",
+      "returnTypeName": "Promise",
+      "classConstructorData": {
+        "parameters": [
+          {
+            "name": "bucket",
+            "optional": false,
+            "type": "TypeReference",
+            "typeRefName": "Bucket"
+          },
+          {
+            "name": "name",
+            "optional": false,
+            "type": "StringKeyword",
+            "typeRefName": null
+          },
+          {
+            "name": "options",
+            "optional": true,
+            "type": "TypeReference",
+            "typeRefName": "FileOptions"
+          }
+        ]
+      }
+    }
+  ],
+  "classData": [
+    {
+      "name": "AclRoleAccessorMethods",
+      "methods": [
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "_assignAccessMethods",
+          "params": [
+            {
+              "name": "role",
+              "optional": false,
+              "type": "StringKeyword"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "AclRoleAccessorMethods"
+        }
+      ],
+      "properties": [
+        {
+          "name": "owners",
+          "type": "TypeLiteral",
+          "typeRefName": null
+        },
+        {
+          "name": "readers",
+          "type": "TypeLiteral",
+          "typeRefName": null
+        },
+        {
+          "name": "writers",
+          "type": "TypeLiteral",
+          "typeRefName": null
+        }
+      ],
+      "constructor": {
+        "parameters": []
+      }
+    },
+    {
+      "name": "Acl",
+      "methods": [
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "add",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Acl"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "add",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Acl"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "delete",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Acl"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "delete",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Acl"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "get",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Acl"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "get",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Acl"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "get",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Acl"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "update",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Acl"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "update",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Acl"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makeAclObject_",
+          "params": [
+            {
+              "name": "accessControlObject",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "AccessControlObject",
+          "client": "Acl"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "acl.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "request",
+          "params": [
+            {
+              "name": "reqOpts",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Acl"
+        }
+      ],
+      "properties": [
+        {
+          "name": "default",
+          "type": "TypeReference",
+          "typeRefName": "Acl"
+        },
+        {
+          "name": "pathPrefix",
+          "type": "StringKeyword",
+          "typeRefName": null
+        },
+        {
+          "name": "request_",
+          "type": "FunctionType",
+          "typeRefName": null
+        }
+      ],
+      "constructor": {
+        "parameters": [
+          {
+            "name": "options",
+            "optional": false,
+            "type": "TypeReference",
+            "typeRefName": "AclOptions"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Bucket",
+      "methods": [
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "addLifecycleRule",
+          "params": [
+            {
+              "name": "rule",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "addLifecycleRule",
+          "params": [
+            {
+              "name": "rule",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "addLifecycleRule",
+          "params": [
+            {
+              "name": "rule",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "combine",
+          "params": [
+            {
+              "name": "sources",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "destination",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "combine",
+          "params": [
+            {
+              "name": "sources",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "destination",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "combine",
+          "params": [
+            {
+              "name": "sources",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "destination",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createChannel",
+          "params": [
+            {
+              "name": "id",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "config",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createChannel",
+          "params": [
+            {
+              "name": "id",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "config",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createChannel",
+          "params": [
+            {
+              "name": "id",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "config",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createNotification",
+          "params": [
+            {
+              "name": "topic",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createNotification",
+          "params": [
+            {
+              "name": "topic",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createNotification",
+          "params": [
+            {
+              "name": "topic",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "deleteFiles",
+          "params": [
+            {
+              "name": "query",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "deleteFiles",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "deleteFiles",
+          "params": [
+            {
+              "name": "query",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "deleteLabels",
+          "params": [
+            {
+              "name": "labels",
+              "optional": true,
+              "type": "UnionType"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "deleteLabels",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "deleteLabels",
+          "params": [
+            {
+              "name": "labels",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "disableRequesterPays",
+          "params": [],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "disableRequesterPays",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "enableLogging",
+          "params": [
+            {
+              "name": "config",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "enableLogging",
+          "params": [
+            {
+              "name": "config",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "enableRequesterPays",
+          "params": [],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "enableRequesterPays",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "file",
+          "params": [
+            {
+              "name": "name",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "File",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getFiles",
+          "params": [
+            {
+              "name": "query",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getFiles",
+          "params": [
+            {
+              "name": "query",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getFiles",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getLabels",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getLabels",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getLabels",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getNotifications",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getNotifications",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getNotifications",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getSignedUrl",
+          "params": [
+            {
+              "name": "cfg",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getSignedUrl",
+          "params": [
+            {
+              "name": "cfg",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "lock",
+          "params": [
+            {
+              "name": "metageneration",
+              "optional": false,
+              "type": "UnionType"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "lock",
+          "params": [
+            {
+              "name": "metageneration",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makePrivate",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makePrivate",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makePrivate",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makePublic",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makePublic",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makePublic",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "notification",
+          "params": [
+            {
+              "name": "id",
+              "optional": false,
+              "type": "StringKeyword"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Notification",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "removeRetentionPeriod",
+          "params": [],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "removeRetentionPeriod",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "request",
+          "params": [
+            {
+              "name": "reqOpts",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "request",
+          "params": [
+            {
+              "name": "reqOpts",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setLabels",
+          "params": [
+            {
+              "name": "labels",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setLabels",
+          "params": [
+            {
+              "name": "labels",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setLabels",
+          "params": [
+            {
+              "name": "labels",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setRetentionPeriod",
+          "params": [
+            {
+              "name": "duration",
+              "optional": false,
+              "type": "NumberKeyword"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setRetentionPeriod",
+          "params": [
+            {
+              "name": "duration",
+              "optional": false,
+              "type": "NumberKeyword"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setCorsConfiguration",
+          "params": [
+            {
+              "name": "corsConfiguration",
+              "optional": false,
+              "type": "ArrayType"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setCorsConfiguration",
+          "params": [
+            {
+              "name": "corsConfiguration",
+              "optional": false,
+              "type": "ArrayType"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setStorageClass",
+          "params": [
+            {
+              "name": "storageClass",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setStorageClass",
+          "params": [
+            {
+              "name": "storageClass",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setStorageClass",
+          "params": [
+            {
+              "name": "storageClass",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setUserProject",
+          "params": [
+            {
+              "name": "userProject",
+              "optional": false,
+              "type": "StringKeyword"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "upload",
+          "params": [
+            {
+              "name": "pathString",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "upload",
+          "params": [
+            {
+              "name": "pathString",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "upload",
+          "params": [
+            {
+              "name": "pathString",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makeAllFilesPublicPrivate_",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makeAllFilesPublicPrivate_",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makeAllFilesPublicPrivate_",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "bucket.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getId",
+          "params": [],
+          "returnType": "StringKeyword",
+          "returnTypeName": null,
+          "client": "Bucket"
+        }
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "type": "StringKeyword",
+          "typeRefName": null
+        },
+        {
+          "name": "storage",
+          "type": "TypeReference",
+          "typeRefName": "Storage"
+        },
+        {
+          "name": "userProject",
+          "type": "StringKeyword",
+          "typeRefName": null
+        },
+        {
+          "name": "acl",
+          "type": "TypeReference",
+          "typeRefName": "Acl"
+        },
+        {
+          "name": "iam",
+          "type": "TypeReference",
+          "typeRefName": "Iam"
+        },
+        {
+          "name": "getFilesStream",
+          "type": "TypeReference",
+          "typeRefName": "Function"
+        },
+        {
+          "name": "signer",
+          "type": "TypeReference",
+          "typeRefName": "URLSigner"
+        }
+      ],
+      "constructor": {
+        "parameters": [
+          {
+            "name": "storage",
+            "optional": false,
+            "type": "TypeReference",
+            "typeRefName": "Storage"
+          },
+          {
+            "name": "name",
+            "optional": false,
+            "type": "StringKeyword",
+            "typeRefName": null
+          },
+          {
+            "name": "options",
+            "optional": true,
+            "type": "TypeReference",
+            "typeRefName": "BucketOptions"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Channel",
+      "methods": [
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "channel.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "stop",
+          "params": [],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Channel"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "channel.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "stop",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Channel"
+        }
+      ],
+      "properties": [],
+      "constructor": {
+        "parameters": [
+          {
+            "name": "storage",
+            "optional": false,
+            "type": "TypeReference",
+            "typeRefName": "Storage"
+          },
+          {
+            "name": "id",
+            "optional": false,
+            "type": "StringKeyword",
+            "typeRefName": null
+          },
+          {
+            "name": "resourceId",
+            "optional": false,
+            "type": "StringKeyword",
+            "typeRefName": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "RequestError",
+      "methods": [],
+      "properties": [
+        {
+          "name": "code",
+          "type": "StringKeyword",
+          "typeRefName": null
+        },
+        {
+          "name": "errors",
+          "type": "ArrayType",
+          "typeRefName": null
+        }
+      ],
+      "constructor": null
+    },
+    {
+      "name": "File",
+      "methods": [
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "copy",
+          "params": [
+            {
+              "name": "destination",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "copy",
+          "params": [
+            {
+              "name": "destination",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "copy",
+          "params": [
+            {
+              "name": "destination",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createReadStream",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Readable",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createResumableUpload",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createResumableUpload",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createResumableUpload",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createWriteStream",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Writable",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "deleteResumableCache",
+          "params": [],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "download",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "download",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "download",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setEncryptionKey",
+          "params": [
+            {
+              "name": "encryptionKey",
+              "optional": false,
+              "type": "UnionType"
+            }
+          ],
+          "returnType": "ThisType",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getExpirationDate",
+          "params": [],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getExpirationDate",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getSignedPolicy",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getSignedPolicy",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getSignedPolicy",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "generateSignedPostPolicyV2",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "generateSignedPostPolicyV2",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "generateSignedPostPolicyV2",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "generateSignedPostPolicyV4",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "generateSignedPostPolicyV4",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "generateSignedPostPolicyV4",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getSignedUrl",
+          "params": [
+            {
+              "name": "cfg",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getSignedUrl",
+          "params": [
+            {
+              "name": "cfg",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "isPublic",
+          "params": [],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "isPublic",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makePrivate",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makePrivate",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "makePrivate",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": "makePublic",
+          "SDKFunctionName": "makePublic",
+          "params": [],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File",
+          "classConstructorData": {
+            "parameters": [
+              {
+                "name": "bucket",
+                "optional": false,
+                "type": "TypeReference",
+                "typeRefName": "Bucket"
+              },
+              {
+                "name": "name",
+                "optional": false,
+                "type": "StringKeyword",
+                "typeRefName": null
+              },
+              {
+                "name": "options",
+                "optional": true,
+                "type": "TypeReference",
+                "typeRefName": "FileOptions"
+              }
+            ]
+          }
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": "makePublic",
+          "SDKFunctionName": "makePublic",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File",
+          "classConstructorData": {
+            "parameters": [
+              {
+                "name": "bucket",
+                "optional": false,
+                "type": "TypeReference",
+                "typeRefName": "Bucket"
+              },
+              {
+                "name": "name",
+                "optional": false,
+                "type": "StringKeyword",
+                "typeRefName": null
+              },
+              {
+                "name": "options",
+                "optional": true,
+                "type": "TypeReference",
+                "typeRefName": "FileOptions"
+              }
+            ]
+          }
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "move",
+          "params": [
+            {
+              "name": "destination",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "move",
+          "params": [
+            {
+              "name": "destination",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "move",
+          "params": [
+            {
+              "name": "destination",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "request",
+          "params": [
+            {
+              "name": "reqOpts",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "request",
+          "params": [
+            {
+              "name": "reqOpts",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "rotateEncryptionKey",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "rotateEncryptionKey",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "rotateEncryptionKey",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "save",
+          "params": [
+            {
+              "name": "data",
+              "optional": false,
+              "type": "AnyKeyword"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "save",
+          "params": [
+            {
+              "name": "data",
+              "optional": false,
+              "type": "AnyKeyword"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "save",
+          "params": [
+            {
+              "name": "data",
+              "optional": false,
+              "type": "AnyKeyword"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setStorageClass",
+          "params": [
+            {
+              "name": "storageClass",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setStorageClass",
+          "params": [
+            {
+              "name": "storageClass",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setStorageClass",
+          "params": [
+            {
+              "name": "storageClass",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "callback",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setUserProject",
+          "params": [
+            {
+              "name": "userProject",
+              "optional": false,
+              "type": "StringKeyword"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "startResumableUpload_",
+          "params": [
+            {
+              "name": "dup",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "file.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "startSimpleUpload_",
+          "params": [
+            {
+              "name": "dup",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "File"
+        }
+      ],
+      "properties": [
+        {
+          "name": "acl",
+          "type": "TypeReference",
+          "typeRefName": "Acl"
+        },
+        {
+          "name": "bucket",
+          "type": "TypeReference",
+          "typeRefName": "Bucket"
+        },
+        {
+          "name": "storage",
+          "type": "TypeReference",
+          "typeRefName": "Storage"
+        },
+        {
+          "name": "kmsKeyName",
+          "type": "StringKeyword",
+          "typeRefName": null
+        },
+        {
+          "name": "userProject",
+          "type": "StringKeyword",
+          "typeRefName": null
+        },
+        {
+          "name": "signer",
+          "type": "TypeReference",
+          "typeRefName": "URLSigner"
+        },
+        {
+          "name": "name",
+          "type": "StringKeyword",
+          "typeRefName": null
+        },
+        {
+          "name": "generation",
+          "type": "NumberKeyword",
+          "typeRefName": null
+        },
+        {
+          "name": "parent",
+          "type": "TypeReference",
+          "typeRefName": "Bucket"
+        }
+      ],
+      "constructor": {
+        "parameters": [
+          {
+            "name": "bucket",
+            "optional": false,
+            "type": "TypeReference",
+            "typeRefName": "Bucket"
+          },
+          {
+            "name": "name",
+            "optional": false,
+            "type": "StringKeyword",
+            "typeRefName": null
+          },
+          {
+            "name": "options",
+            "optional": true,
+            "type": "TypeReference",
+            "typeRefName": "FileOptions"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HmacKey",
+      "methods": [],
+      "properties": [
+        {
+          "name": "metadata",
+          "type": "UnionType",
+          "typeRefName": null
+        }
+      ],
+      "constructor": {
+        "parameters": [
+          {
+            "name": "storage",
+            "optional": false,
+            "type": "TypeReference",
+            "typeRefName": "Storage"
+          },
+          {
+            "name": "accessId",
+            "optional": false,
+            "type": "StringKeyword",
+            "typeRefName": null
+          },
+          {
+            "name": "options",
+            "optional": true,
+            "type": "TypeReference",
+            "typeRefName": "HmacKeyOptions"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Iam",
+      "methods": [
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "iam.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getPolicy",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Iam"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "iam.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getPolicy",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Iam"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "iam.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getPolicy",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Iam"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "iam.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setPolicy",
+          "params": [
+            {
+              "name": "policy",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Iam"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "iam.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setPolicy",
+          "params": [
+            {
+              "name": "policy",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Iam"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "iam.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "setPolicy",
+          "params": [
+            {
+              "name": "policy",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Iam"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "iam.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "testPermissions",
+          "params": [
+            {
+              "name": "permissions",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Iam"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "iam.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "testPermissions",
+          "params": [
+            {
+              "name": "permissions",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Iam"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "iam.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "testPermissions",
+          "params": [
+            {
+              "name": "permissions",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Iam"
+        }
+      ],
+      "properties": [],
+      "constructor": {
+        "parameters": [
+          {
+            "name": "bucket",
+            "optional": false,
+            "type": "TypeReference",
+            "typeRefName": "Bucket"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Notification",
+      "methods": [
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "notification.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "delete",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Notification"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "notification.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "delete",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Notification"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "notification.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "delete",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Notification"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "notification.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "get",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Notification"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "notification.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "get",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Notification"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "notification.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "get",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Notification"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "notification.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getMetadata",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Notification"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "notification.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getMetadata",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Notification"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "notification.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getMetadata",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Notification"
+        }
+      ],
+      "properties": [],
+      "constructor": {
+        "parameters": [
+          {
+            "name": "bucket",
+            "optional": false,
+            "type": "TypeReference",
+            "typeRefName": "Bucket"
+          },
+          {
+            "name": "id",
+            "optional": false,
+            "type": "StringKeyword",
+            "typeRefName": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "URLSigner",
+      "methods": [
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "signer.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getSignedUrl",
+          "params": [
+            {
+              "name": "cfg",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "URLSigner"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "signer.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getCanonicalHeaders",
+          "params": [
+            {
+              "name": "headers",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "StringKeyword",
+          "returnTypeName": null,
+          "client": "URLSigner"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "signer.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getCanonicalRequest",
+          "params": [
+            {
+              "name": "method",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "path",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "query",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "headers",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "signedHeaders",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "contentSha256",
+              "optional": true,
+              "type": "StringKeyword"
+            }
+          ],
+          "returnType": "StringKeyword",
+          "returnTypeName": null,
+          "client": "URLSigner"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "signer.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getCanonicalQueryParams",
+          "params": [
+            {
+              "name": "query",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "StringKeyword",
+          "returnTypeName": null,
+          "client": "URLSigner"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "signer.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getResourcePath",
+          "params": [
+            {
+              "name": "cname",
+              "optional": false,
+              "type": "BooleanKeyword"
+            },
+            {
+              "name": "bucket",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "file",
+              "optional": true,
+              "type": "StringKeyword"
+            }
+          ],
+          "returnType": "StringKeyword",
+          "returnTypeName": null,
+          "client": "URLSigner"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "signer.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "parseExpires",
+          "params": [
+            {
+              "name": "expires",
+              "optional": false,
+              "type": "UnionType"
+            },
+            {
+              "name": "current",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "NumberKeyword",
+          "returnTypeName": null,
+          "client": "URLSigner"
+        }
+      ],
+      "properties": [],
+      "constructor": {
+        "parameters": [
+          {
+            "name": "authClient",
+            "optional": false,
+            "type": "TypeReference",
+            "typeRefName": "AuthClient"
+          },
+          {
+            "name": "bucket",
+            "optional": false,
+            "type": "TypeReference",
+            "typeRefName": "BucketI"
+          },
+          {
+            "name": "file",
+            "optional": true,
+            "type": "TypeReference",
+            "typeRefName": "FileI"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SigningError",
+      "methods": [],
+      "properties": [
+        {
+          "name": "name",
+          "type": "StringKeyword",
+          "typeRefName": null
+        }
+      ],
+      "constructor": null
+    },
+    {
+      "name": "Storage",
+      "methods": [
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "bucket",
+          "params": [
+            {
+              "name": "name",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Bucket",
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "channel",
+          "params": [
+            {
+              "name": "id",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "resourceId",
+              "optional": false,
+              "type": "StringKeyword"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Channel",
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createBucket",
+          "params": [
+            {
+              "name": "name",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "metadata",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createBucket",
+          "params": [
+            {
+              "name": "name",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createBucket",
+          "params": [
+            {
+              "name": "name",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "metadata",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createBucket",
+          "params": [
+            {
+              "name": "name",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "metadata",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createHmacKey",
+          "params": [
+            {
+              "name": "serviceAccountEmail",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createHmacKey",
+          "params": [
+            {
+              "name": "serviceAccountEmail",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "createHmacKey",
+          "params": [
+            {
+              "name": "serviceAccountEmail",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getBuckets",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getBuckets",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getBuckets",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getHmacKeys",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getHmacKeys",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getHmacKeys",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getServiceAccount",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getServiceAccount",
+          "params": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "Promise",
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getServiceAccount",
+          "params": [
+            {
+              "name": "options",
+              "optional": false,
+              "type": "TypeReference"
+            },
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "getServiceAccount",
+          "params": [
+            {
+              "name": "callback",
+              "optional": false,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "VoidKeyword",
+          "returnTypeName": null,
+          "client": "Storage"
+        },
+        {
+          "pkgName": "storage",
+          "version": null,
+          "fileName": "storage.d.ts",
+          "functionName": null,
+          "SDKFunctionName": "hmacKey",
+          "params": [
+            {
+              "name": "accessId",
+              "optional": false,
+              "type": "StringKeyword"
+            },
+            {
+              "name": "options",
+              "optional": true,
+              "type": "TypeReference"
+            }
+          ],
+          "returnType": "TypeReference",
+          "returnTypeName": "HmacKey",
+          "client": "Storage"
+        }
+      ],
+      "properties": [
+        {
+          "name": "Bucket",
+          "type": "TypeQuery",
+          "typeRefName": null
+        },
+        {
+          "name": "Channel",
+          "type": "TypeQuery",
+          "typeRefName": null
+        },
+        {
+          "name": "File",
+          "type": "TypeQuery",
+          "typeRefName": null
+        },
+        {
+          "name": "HmacKey",
+          "type": "TypeQuery",
+          "typeRefName": null
+        },
+        {
+          "name": "acl",
+          "type": "TypeLiteral",
+          "typeRefName": null
+        },
+        {
+          "name": "acl",
+          "type": "TypeQuery",
+          "typeRefName": null
+        },
+        {
+          "name": "getBucketsStream",
+          "type": "FunctionType",
+          "typeRefName": null
+        },
+        {
+          "name": "getHmacKeysStream",
+          "type": "FunctionType",
+          "typeRefName": null
+        }
+      ],
+      "constructor": {
+        "parameters": [
+          {
+            "name": "options",
+            "optional": true,
+            "type": "TypeReference",
+            "typeRefName": "StorageOptions"
+          }
+        ]
+      }
+    }
+  ]
 }
