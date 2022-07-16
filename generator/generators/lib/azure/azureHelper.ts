@@ -10,14 +10,14 @@ export function groupAzureMethods(methods): any {
           pkgName,
           fileName,
           client,
-          returnType
+          returnType,
         }
       ) => {
         // Create new group
         if (!result[functionName])
           result[functionName] = {
             functionName,
-            array: []
+            array: [],
           };
         // Append to group
         result[functionName].array.push({
@@ -27,7 +27,7 @@ export function groupAzureMethods(methods): any {
           pkgName,
           fileName,
           client,
-          returnType
+          returnType,
         });
         return result;
       },
@@ -46,7 +46,7 @@ export function filterAzureMethods(groupedMethods): any {
     } else {
       let methodPushed = false;
       group.array.map(method => {
-        if (!method.params.find(param => param.name === "callback")) {
+        if (!method.params.find(param => param.name === 'callback')) {
           methods.push(method);
           methodPushed = true;
         }

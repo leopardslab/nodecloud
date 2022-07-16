@@ -1,18 +1,18 @@
-import { cloneDeep } from "lodash";
-import * as ts from "typescript";
+import { cloneDeep } from 'lodash';
+import * as ts from 'typescript';
 
 const dummyIdentifiers = [
-  "ClassName",
-  "SDKFunctionName",
-  "ClientName",
-  "_client",
-  "_clientObj",
-  "Client"
+  'ClassName',
+  'SDKFunctionName',
+  'ClientName',
+  '_client',
+  '_clientObj',
+  'Client',
 ];
 
 const printer: ts.Printer = ts.createPrinter({
   newLine: ts.NewLineKind.LineFeed,
-  removeComments: false
+  removeComments: false,
 });
 
 function addMultiLineComment(node, comment: string) {
@@ -43,7 +43,7 @@ function runTransformation(sourceCode, transformMethod): Promise<string> {
 
 function toSourceFile(sourceCode: string): ts.SourceFile {
   return ts.createSourceFile(
-    "dummyClass.js",
+    'dummyClass.js',
     sourceCode,
     ts.ScriptTarget.Latest,
     true
@@ -57,11 +57,11 @@ export async function clientBasedTransform(
   const node: any = code.statements.find(stm => ts.isClassDeclaration(stm));
 
   if (!classData.functions) {
-    throw new Error("Input is invalid");
+    throw new Error('Input is invalid');
   }
 
   if (!node || !node.members.some(member => ts.isMethodDeclaration(member))) {
-    throw new Error("Code is invalid");
+    throw new Error('Code is invalid');
   }
 
   code = cloneDeep(code);
@@ -78,7 +78,7 @@ export async function clientBasedTransform(
     ts.isClassDeclaration(node)
   );
   let constructorNode: any = classDeclarationNode.members.find(
-    node => ts.SyntaxKind[node.kind] === "Constructor"
+    node => ts.SyntaxKind[node.kind] === 'Constructor'
   );
   const clientObjects: any = new Array(classData.clients.length);
   clientObjects.fill(Object.assign({}, constructorNode.body.statements[0]));
@@ -93,7 +93,7 @@ export async function clientBasedTransform(
         let functions: any = [];
         classData.functions.map(method => {
           let clonedNode;
-          if (method.returnTypeName === "Promise") {
+          if (method.returnTypeName === 'Promise') {
             clonedNode = Object.assign({}, node.members[1]);
           } else {
             clonedNode = Object.assign({}, node.members[2]);
@@ -136,7 +136,7 @@ export async function clientBasedTransform(
           );
 
           if (param.optional) {
-            paramNode.initializer = ts.createIdentifier("undefined");
+            paramNode.initializer = ts.createIdentifier('undefined');
           }
 
           return paramNode;
@@ -145,51 +145,51 @@ export async function clientBasedTransform(
         node.parameters = parameters;
       }
 
-      if (ts.isStringLiteral(node) && node.text === "pkgName") {
+      if (ts.isStringLiteral(node) && node.text === 'pkgName') {
         return ts.createStringLiteral(
-          "@google-cloud/" + classData.functions[0].pkgName
+          '@google-cloud/' + classData.functions[0].pkgName
         );
       }
 
       if (ts.isIdentifier(node) && dummyIdentifiers.includes(node.text)) {
         let updatedIdentifier;
         switch (node.text) {
-          case "ClassName":
+          case 'ClassName':
             updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier("GCP_" + classData.serviceName)
+              ts.createIdentifier('GCP_' + classData.serviceName)
             );
             break;
-          case "ClientName":
+          case 'ClientName':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(classData.clients[clientCount])
             );
             clientCount++;
             break;
-          case "SDKFunctionName":
+          case 'SDKFunctionName':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(classData.functions[count].SDKFunctionName)
             );
             count++;
             break;
-          case "_client":
+          case '_client':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(
-                "_" +
+                '_' +
                   classData.functions[count].client.toLowerCase().charAt(0) +
                   classData.functions[count].client.substr(1)
               )
             );
             break;
-          case "_clientObj":
+          case '_clientObj':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(
-                "_" +
+                '_' +
                   classData.clients[clientObjCount].toLowerCase().charAt(0) +
                   classData.clients[clientObjCount].substr(1)
               )
             );
             break;
-          case "Client":
+          case 'Client':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(classData.clients[clientObjCount])
             );
@@ -203,7 +203,7 @@ export async function clientBasedTransform(
         node.expression.forEachChild(childNode => {
           if (
             ts.isIdentifier(childNode) &&
-            childNode.text === "SDKFunctionName"
+            childNode.text === 'SDKFunctionName'
           ) {
             const args = classData.functions[count].params.map(param =>
               ts.createIdentifier(param.name)
@@ -227,7 +227,7 @@ export async function clientBasedTransform(
       if (ts.isClassDeclaration(node)) {
         addMultiLineComment(
           node,
-          "This is an auto generated class, please do not change."
+          'This is an auto generated class, please do not change.'
         );
         const comment = `*
  * Class to create a ${classData.serviceName} object
@@ -250,16 +250,16 @@ export async function clientBasedTransform(
 
         let comment;
         if (parameters.length > 0) {
-          let paramStatments: string = "";
+          let paramStatments: string = '';
           parameters.map(param => {
             paramStatments = paramStatments.concat(
-              paramStatments === "" ? `${param}` : `\n ${param}`
+              paramStatments === '' ? `${param}` : `\n ${param}`
             );
           });
 
           comment = `*
  * Trigers the ${classData.functions[count].SDKFunctionName} function of ${
-            classData.functions[0].pkgName.split("-")[1]
+            classData.functions[0].pkgName.split('-')[1]
           }
  ${paramStatments}
  * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
@@ -267,7 +267,7 @@ export async function clientBasedTransform(
         } else {
           comment = `*
  * Trigers the ${classData.functions[count].SDKFunctionName} function of ${
-            classData.functions[0].pkgName.split("-")[1]
+            classData.functions[0].pkgName.split('-')[1]
           }
  * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
  `;

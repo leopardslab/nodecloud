@@ -5,13 +5,13 @@ export function groupAWSMethods(methods): any {
       if (!result[functionName])
         result[functionName] = {
           functionName,
-          array: []
+          array: [],
         };
       // Append to group
       result[functionName].array.push({
         functionName,
         SDKFunctionName,
-        params
+        params,
       });
       return result;
     }, {})

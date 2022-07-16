@@ -1,11 +1,11 @@
-import * as fs from "fs";
-import * as path from "path";
-import { createSourceFile, ScriptTarget,SyntaxKind } from "typescript";
+import * as fs from 'fs';
+import * as path from 'path';
+import { createSourceFile, ScriptTarget, SyntaxKind } from 'typescript';
 
-import { getAST } from "../../parsers/googleCloud/parser";
-import { classBasedTransform } from "../../transformers/googleCloud/classBasedTransformer";
-import { clientBasedTransform } from "../../transformers/googleCloud/clientBasedTransformer";
-import { filters, getDir,groupers, printFile } from "../lib/helper";
+import { getAST } from '../../parsers/googleCloud/parser';
+import { classBasedTransform } from '../../transformers/googleCloud/classBasedTransformer';
+import { clientBasedTransform } from '../../transformers/googleCloud/clientBasedTransformer';
+import { filters, getDir, groupers, printFile } from '../lib/helper';
 
 interface ClassData {
   name: string;
@@ -41,7 +41,7 @@ interface param {
   optional: boolean;
 }
 
-const dummyFile = process.cwd() + "/dummyClasses/gcp.js";
+const dummyFile = process.cwd() + '/dummyClasses/gcp.js';
 const dummyAst = createSourceFile(
   dummyFile,
   fs.readFileSync(dummyFile).toString(),
@@ -61,18 +61,18 @@ export function extractClassBasedSDKData(methods, sdkFiles): any {
             name: classAst.name.text,
             methods: [],
             properties: [],
-            constructor: null
+            constructor: null,
           };
 
           classAst.members.map(member => {
-            if (SyntaxKind[member.kind] === "MethodDeclaration") {
+            if (SyntaxKind[member.kind] === 'MethodDeclaration') {
               const returnType = SyntaxKind[member.type.kind];
 
               const parameters = member.parameters.map(param => {
                 return {
                   name: param.name.text,
                   optional: param.questionToken ? true : false,
-                  type: SyntaxKind[param.type.kind]
+                  type: SyntaxKind[param.type.kind],
                 };
               });
               const method: FunctionData = {
@@ -84,10 +84,10 @@ export function extractClassBasedSDKData(methods, sdkFiles): any {
                 params: parameters,
                 returnType: returnType,
                 returnTypeName: null,
-                client: classAst.name.text // Class name
+                client: classAst.name.text, // Class name
               };
 
-              if (returnType === "TypeReference") {
+              if (returnType === 'TypeReference') {
                 method.returnTypeName = member.type.typeName.text;
               }
 
@@ -100,7 +100,7 @@ export function extractClassBasedSDKData(methods, sdkFiles): any {
               classInfo.methods.push(method);
             }
 
-            if (SyntaxKind[member.kind] === "Constructor") {
+            if (SyntaxKind[member.kind] === 'Constructor') {
               const parameters = member.parameters.map(param => {
                 return {
                   name: param.name.text,
@@ -108,20 +108,20 @@ export function extractClassBasedSDKData(methods, sdkFiles): any {
                   type: SyntaxKind[param.type.kind],
                   typeRefName: param.type.typeName
                     ? param.type.typeName.text
-                    : null
+                    : null,
                 };
               });
 
               classInfo.constructor = {
-                parameters
+                parameters,
               };
             }
 
-            if (SyntaxKind[member.kind] === "PropertyDeclaration") {
+            if (SyntaxKind[member.kind] === 'PropertyDeclaration') {
               const isPrivateProp =
                 member.modifiers &&
                 member.modifiers.some(
-                  modifier => SyntaxKind[modifier.kind] === "PrivateKeyword"
+                  modifier => SyntaxKind[modifier.kind] === 'PrivateKeyword'
                 );
               if (!isPrivateProp) {
                 const prop = {
@@ -129,7 +129,7 @@ export function extractClassBasedSDKData(methods, sdkFiles): any {
                   type: SyntaxKind[member.type.kind],
                   typeRefName: member.type.typeName
                     ? member.type.typeName.text
-                    : null
+                    : null,
                 };
                 classInfo.properties.push(prop);
               }
@@ -154,10 +154,10 @@ export function extractClassBasedSDKData(methods, sdkFiles): any {
 
       const extractedData = {
         classes,
-        methods
+        methods,
       };
       if (JSON.stringify(methods) === JSON.stringify(specifiedMethods)) {
-        reject(new Error("Data extraction unsuccessful"));
+        reject(new Error('Data extraction unsuccessful'));
       } else {
         resolve(extractedData);
       }
@@ -175,7 +175,7 @@ export function extractClientBasedSDKdata(methods, sdkFiles): any {
         sdkFile.client = sdkFile.ast.name.text;
         sdkFile.ast.members.map(member => {
           if (
-            SyntaxKind[member.kind] === "MethodDeclaration" &&
+            SyntaxKind[member.kind] === 'MethodDeclaration' &&
             sdkFile.sdkFunctionNames.includes(member.name.text)
           ) {
             const method = methods.find(
@@ -186,12 +186,12 @@ export function extractClientBasedSDKdata(methods, sdkFiles): any {
               return {
                 name: param.name.text,
                 optional: param.questionToken ? true : false,
-                type: SyntaxKind[param.type.kind]
+                type: SyntaxKind[param.type.kind],
               };
             });
 
             const returnType = SyntaxKind[member.type.kind];
-            if (returnType === "TypeReference") {
+            if (returnType === 'TypeReference') {
               method.returnTypeName = member.type.typeName.text;
             }
 
@@ -211,7 +211,7 @@ export function extractClientBasedSDKdata(methods, sdkFiles): any {
       });
 
       if (JSON.stringify(methods) === JSON.stringify(specifiedMethods)) {
-        reject(new Error("Data extraction unsuccessful"));
+        reject(new Error('Data extraction unsuccessful'));
       } else {
         resolve(methods);
       }
@@ -226,7 +226,7 @@ async function generateClassBasedCode(methods, data, serviceName) {
   let files = fs.readdirSync(path.join(__dirname, dirPath));
   files = files.filter(
     fileName =>
-      fileName.split(".")[1] === "d" && fileName.split(".")[2] === "ts"
+      fileName.split('.')[1] === 'd' && fileName.split('.')[2] === 'ts'
   );
 
   const sdkFiles = files.map(fileName => {
@@ -236,7 +236,7 @@ async function generateClassBasedCode(methods, data, serviceName) {
       classes: null,
       sdkFunctionNames: methods
         .filter(method => method.fileName === <string>fileName)
-        .map(method => method.SDKFunctionName)
+        .map(method => method.SDKFunctionName),
     };
   });
 
@@ -258,44 +258,44 @@ async function generateClassBasedCode(methods, data, serviceName) {
   const output = await classBasedTransform(dummyAst, data);
   let filePath;
   const dir = getDir(serviceName);
-  if (!fs.existsSync(process.cwd() + "/generatedClasses/googleCloud/" + dir)) {
-    fs.mkdirSync(process.cwd() + "/generatedClasses/googleCloud/" + dir);
+  if (!fs.existsSync(process.cwd() + '/generatedClasses/googleCloud/' + dir)) {
+    fs.mkdirSync(process.cwd() + '/generatedClasses/googleCloud/' + dir);
   }
   if (/^[A-Z]*$/.test(serviceName)) {
     filePath =
       process.cwd() +
-      "/generatedClasses/googleCloud/" +
+      '/generatedClasses/googleCloud/' +
       dir +
-      "/gcp-" +
+      '/gcp-' +
       serviceName +
-      ".js";
+      '.js';
   } else {
     filePath =
       process.cwd() +
-      "/generatedClasses/googleCloud/" +
+      '/generatedClasses/googleCloud/' +
       dir +
-      "/gcp-" +
+      '/gcp-' +
       serviceName.charAt(0).toLowerCase() +
       serviceName.slice(1) +
-      ".js";
+      '.js';
   }
   printFile(filePath, output);
 }
 
 async function generateClientBasedCode(methods, serviceName) {
   const files = Array.from(
-    new Set(methods.map(method => method.fileName + " " + method.version))
+    new Set(methods.map(method => method.fileName + ' ' + method.version))
   );
   const sdkFiles = files.map(file => {
     return {
-      fileName: (<string>file).split(" ")[0],
-      version: (<string>file).split(" ")[1],
+      fileName: (<string>file).split(' ')[0],
+      version: (<string>file).split(' ')[1],
       pkgName: methods[0].pkgName,
       ast: null,
       client: null,
       sdkFunctionNames: methods
-        .filter(method => method.fileName === (<string>file).split(" ")[0])
-        .map(method => method.SDKFunctionName)
+        .filter(method => method.fileName === (<string>file).split(' ')[0])
+        .map(method => method.SDKFunctionName),
     };
   });
 
@@ -313,32 +313,32 @@ async function generateClientBasedCode(methods, serviceName) {
 
   const classData = {
     functions: methods,
-    serviceName
+    serviceName,
   };
 
   const output = await clientBasedTransform(dummyAst, classData);
   let filePath;
   const dir = getDir(serviceName);
-  if (!fs.existsSync(process.cwd() + "/generatedClasses/googleCloud/" + dir)) {
-    fs.mkdirSync(process.cwd() + "/generatedClasses/googleCloud/" + dir);
+  if (!fs.existsSync(process.cwd() + '/generatedClasses/googleCloud/' + dir)) {
+    fs.mkdirSync(process.cwd() + '/generatedClasses/googleCloud/' + dir);
   }
   if (/^[A-Z]*$/.test(serviceName)) {
     filePath =
       process.cwd() +
-      "/generatedClasses/googleCloud/" +
+      '/generatedClasses/googleCloud/' +
       dir +
-      "/gcp-" +
+      '/gcp-' +
       serviceName +
-      ".js";
+      '.js';
   } else {
     filePath =
       process.cwd() +
-      "/generatedClasses/googleCloud/" +
+      '/generatedClasses/googleCloud/' +
       dir +
-      "/gcp-" +
+      '/gcp-' +
       serviceName.charAt(0).toLowerCase() +
       serviceName.slice(1) +
-      ".js";
+      '.js';
   }
   printFile(filePath, output);
 }
@@ -348,34 +348,34 @@ export async function generateGCPClass(serviceClass, serviceName) {
   const data: any = {};
 
   Object.keys(serviceClass).map((key, index) => {
-    if (key === "mainClass") {
+    if (key === 'mainClass') {
       data.mainClass = serviceClass[key];
     } else if (
-      serviceClass[key].split(" ")[1].length === 2 &&
-      serviceClass[key].split(" ")[1].charAt(0) === "v"
+      serviceClass[key].split(' ')[1].length === 2 &&
+      serviceClass[key].split(' ')[1].charAt(0) === 'v'
     ) {
       methods.push({
-        pkgName: serviceClass[key].split(" ")[0],
-        version: serviceClass[key].split(" ")[1],
-        fileName: serviceClass[key].split(" ")[2],
+        pkgName: serviceClass[key].split(' ')[0],
+        version: serviceClass[key].split(' ')[1],
+        fileName: serviceClass[key].split(' ')[2],
         functionName: key,
-        SDKFunctionName: serviceClass[key].split(" ")[3],
+        SDKFunctionName: serviceClass[key].split(' ')[3],
         params: [],
         returnType: null,
         returnTypeName: null,
-        client: null
+        client: null,
       });
     } else {
       methods.push({
-        pkgName: serviceClass[key].split(" ")[0],
+        pkgName: serviceClass[key].split(' ')[0],
         version: null,
-        fileName: serviceClass[key].split(" ")[1],
+        fileName: serviceClass[key].split(' ')[1],
         functionName: key,
-        SDKFunctionName: serviceClass[key].split(" ")[2],
+        SDKFunctionName: serviceClass[key].split(' ')[2],
         params: [],
         returnType: null,
         returnTypeName: null,
-        client: null
+        client: null,
       });
     }
   });

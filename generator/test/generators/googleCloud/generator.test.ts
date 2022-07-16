@@ -1,36 +1,36 @@
-import { expect } from "chai";
-import { SyntaxKind } from "typescript";
+import { expect } from 'chai';
+import { SyntaxKind } from 'typescript';
 
 import {
   extractClassBasedSDKData,
-  extractClientBasedSDKdata
-} from "../../../generators/googleCloud/generator";
-import { readJsonData, readSourceFile } from "../lib/helper";
+  extractClientBasedSDKdata,
+} from '../../../generators/googleCloud/generator';
+import { readJsonData, readSourceFile } from '../lib/helper';
 
-describe("GCP generator extractClassBasedSDKData", () => {
-  context("with valid methods and valid AST", () => {
-    it("should return class data", async () => {
+describe('GCP generator extractClassBasedSDKData', () => {
+  context('with valid methods and valid AST', () => {
+    it('should return class data', async () => {
       const methods: any = await readJsonData(
-        "validDataset_1",
-        "googleCloud",
-        "methods"
+        'validDataset_1',
+        'googleCloud',
+        'methods'
       );
 
       const sdkFiles: any = await readJsonData(
-        "validDataset_1",
-        "googleCloud",
-        "files"
+        'validDataset_1',
+        'googleCloud',
+        'files'
       );
 
       await Promise.all(
         sdkFiles.map(async file => {
           file.classes = [];
           const sdkFile: any = await readSourceFile(
-            "validDataset_1",
-            "googleCloud"
+            'validDataset_1',
+            'googleCloud'
           );
           sdkFile.forEachChild(child => {
-            if (SyntaxKind[child.kind] === "ClassDeclaration") {
+            if (SyntaxKind[child.kind] === 'ClassDeclaration') {
               let cloned = Object.assign({}, child);
               file.classes.push(cloned);
             }
@@ -39,35 +39,35 @@ describe("GCP generator extractClassBasedSDKData", () => {
       );
 
       extractClassBasedSDKData(methods, sdkFiles).then(result => {
-        expect(result).to.be.an("object");
-        expect(result.methods).to.be.an("array");
+        expect(result).to.be.an('object');
+        expect(result.methods).to.be.an('array');
       });
     });
   });
 
-  context("with invalid AST", () => {
-    it("should return Error", async () => {
+  context('with invalid AST', () => {
+    it('should return Error', async () => {
       const methods: any = await readJsonData(
-        "invalidDataset_1",
-        "googleCloud",
-        "methods"
+        'invalidDataset_1',
+        'googleCloud',
+        'methods'
       );
 
       const sdkFiles: any = await readJsonData(
-        "invalidDataset_1",
-        "googleCloud",
-        "files"
+        'invalidDataset_1',
+        'googleCloud',
+        'files'
       );
 
       await Promise.all(
         sdkFiles.map(async file => {
           file.classes = [];
           const sdkFile: any = await readSourceFile(
-            "invalidDataset_1",
-            "googleCloud"
+            'invalidDataset_1',
+            'googleCloud'
           );
           sdkFile.forEachChild(child => {
-            if (SyntaxKind[child.kind] === "ClassDeclaration") {
+            if (SyntaxKind[child.kind] === 'ClassDeclaration') {
               let cloned = Object.assign({}, child);
               file.classes.push(cloned);
             }
@@ -78,36 +78,36 @@ describe("GCP generator extractClassBasedSDKData", () => {
       extractClassBasedSDKData(methods, sdkFiles).then(
         result => {},
         error => {
-          expect(error.message).to.eql("Data extraction unsuccessful");
+          expect(error.message).to.eql('Data extraction unsuccessful');
         }
       );
     });
   });
 });
 
-describe("GCP generator extractClientBasedSDKdata", () => {
-  context("with valid methods and valid AST", () => {
-    it("should return class data", async () => {
+describe('GCP generator extractClientBasedSDKdata', () => {
+  context('with valid methods and valid AST', () => {
+    it('should return class data', async () => {
       const methods: any = await readJsonData(
-        "validDataset_2",
-        "googleCloud",
-        "methods"
+        'validDataset_2',
+        'googleCloud',
+        'methods'
       );
 
       const sdkFiles: any = await readJsonData(
-        "validDataset_2",
-        "googleCloud",
-        "files"
+        'validDataset_2',
+        'googleCloud',
+        'files'
       );
 
       await Promise.all(
         sdkFiles.map(async file => {
           const sdkFile: any = await readSourceFile(
-            "validDataset_2",
-            "googleCloud"
+            'validDataset_2',
+            'googleCloud'
           );
           sdkFile.forEachChild(child => {
-            if (SyntaxKind[child.kind] === "ClassDeclaration") {
+            if (SyntaxKind[child.kind] === 'ClassDeclaration') {
               file.ast = Object.assign({}, child);
             }
           });
@@ -115,33 +115,33 @@ describe("GCP generator extractClientBasedSDKdata", () => {
       );
 
       extractClientBasedSDKdata(methods, sdkFiles).then(result => {
-        expect(result).to.be.an("array");
+        expect(result).to.be.an('array');
       });
     });
   });
 
-  context("with invalid AST", () => {
-    it("should return Error", async () => {
+  context('with invalid AST', () => {
+    it('should return Error', async () => {
       const methods: any = await readJsonData(
-        "invalidDataset_2",
-        "googleCloud",
-        "methods"
+        'invalidDataset_2',
+        'googleCloud',
+        'methods'
       );
 
       const sdkFiles: any = await readJsonData(
-        "invalidDataset_2",
-        "googleCloud",
-        "files"
+        'invalidDataset_2',
+        'googleCloud',
+        'files'
       );
 
       await Promise.all(
         sdkFiles.map(async file => {
           const sdkFile: any = await readSourceFile(
-            "invalidDataset_2",
-            "googleCloud"
+            'invalidDataset_2',
+            'googleCloud'
           );
           sdkFile.forEachChild(child => {
-            if (SyntaxKind[child.kind] === "ClassDeclaration") {
+            if (SyntaxKind[child.kind] === 'ClassDeclaration') {
               file.ast = Object.assign({}, child);
             }
           });
@@ -151,7 +151,7 @@ describe("GCP generator extractClientBasedSDKdata", () => {
       extractClientBasedSDKdata(methods, sdkFiles).then(
         result => {},
         error => {
-          expect(error.message).to.eql("Data extraction unsuccessful");
+          expect(error.message).to.eql('Data extraction unsuccessful');
         }
       );
     });
