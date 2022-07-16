@@ -89,12 +89,10 @@ export const transform = async (
     const visit = (node: ts.Node): ts.Node => {
       if (ts.isClassDeclaration(node)) {
         const functions: Array<any> = classData.functions.map(method => {
-          // const clonedNode = Object.assign({}, node.members[1]);
           const clonedNode = { ...node.members[1] };
           clonedNode.name = ts.createIdentifier(method.functionName);
           return clonedNode;
         });
-        // console.log(functions);
         const updatedClass = ts.updateClassDeclaration(
           node,
           node.decorators,
