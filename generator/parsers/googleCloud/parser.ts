@@ -1,6 +1,6 @@
-import * as fs from "fs";
-import * as path from "path";
-import { createSourceFile, ScriptTarget, SyntaxKind } from "typescript";
+import * as fs from 'fs';
+import * as path from 'path';
+import { createSourceFile, ScriptTarget, SyntaxKind } from 'typescript';
 
 export function getAST(sdkFileInfo, multi?: boolean) {
   let filePath;
@@ -23,7 +23,7 @@ export function getAST(sdkFileInfo, multi?: boolean) {
       if (multi === true) {
         let classes = [];
         ast.forEachChild(child => {
-          if (SyntaxKind[child.kind] === "ClassDeclaration") {
+          if (SyntaxKind[child.kind] === 'ClassDeclaration') {
             let cloned = Object.assign({}, child);
             classes.push(cloned);
           }
@@ -32,21 +32,21 @@ export function getAST(sdkFileInfo, multi?: boolean) {
       } else {
         let cloned = null;
         await ast.forEachChild(child => {
-          if (SyntaxKind[child.kind] === "ClassDeclaration") {
+          if (SyntaxKind[child.kind] === 'ClassDeclaration') {
             let cloned = Object.assign({}, child);
             return resolve(cloned);
           }
         });
 
         if (!cloned) {
-          return reject(new Error("Class not found!"));
+          return reject(new Error('Class not found!'));
         } else {
           return resolve(cloned);
         }
       }
     } catch (error) {
-      if (error.code === "ENOENT") {
-        reject(new Error("File not found!"));
+      if (error.code === 'ENOENT') {
+        reject(new Error('File not found!'));
       } else {
         reject(error);
       }

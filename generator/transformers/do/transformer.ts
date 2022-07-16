@@ -1,16 +1,16 @@
-import { cloneDeep } from "lodash";
-import * as ts from "typescript";
+import { cloneDeep } from 'lodash';
+import * as ts from 'typescript';
 
 const dummyIdentifiers = [
-  "ClassName",
-  "_sdkClassName",
-  "SDKClassName",
-  "SDKFunctionName"
+  'ClassName',
+  '_sdkClassName',
+  'SDKClassName',
+  'SDKFunctionName',
 ];
 
 const printer: ts.Printer = ts.createPrinter({
   newLine: ts.NewLineKind.LineFeed,
-  removeComments: false
+  removeComments: false,
 });
 
 function addMultiLineComment(node, comment: string) {
@@ -41,7 +41,7 @@ function runTransformation(sourceCode, transformMethod): Promise<string> {
 
 function toSourceFile(sourceCode: string): ts.SourceFile {
   return ts.createSourceFile(
-    "dummyClass.js",
+    'dummyClass.js',
     sourceCode,
     ts.ScriptTarget.Latest,
     true
@@ -108,7 +108,7 @@ export async function transform(
           );
 
           if (param.optional) {
-            paramNode.initializer = ts.createIdentifier("undefined");
+            paramNode.initializer = ts.createIdentifier('undefined');
           }
 
           return paramNode;
@@ -121,21 +121,21 @@ export async function transform(
         let updatedIdentifier;
 
         switch (node.text) {
-          case "ClassName":
+          case 'ClassName':
             updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier("DO_" + classData.serviceName)
+              ts.createIdentifier('DO_' + classData.serviceName)
             );
             break;
-          case "_sdkClassName":
+          case '_sdkClassName':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(
-                "_" +
+                '_' +
                   classData.className.charAt(0).toLowerCase() +
                   classData.className.substr(1)
               )
             );
             break;
-          case "SDKClassName":
+          case 'SDKClassName':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(
                 classData.className.charAt(0).toLowerCase() +
@@ -143,7 +143,7 @@ export async function transform(
               )
             );
             break;
-          case "SDKFunctionName":
+          case 'SDKFunctionName':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(classData.functions[count].SDKFunctionName)
             );
@@ -157,7 +157,7 @@ export async function transform(
         node.expression.forEachChild(childNode => {
           if (
             ts.isIdentifier(childNode) &&
-            childNode.text === "SDKFunctionName"
+            childNode.text === 'SDKFunctionName'
           ) {
             const args = classData.functions[count].params.map(param =>
               ts.createIdentifier(param.name)
@@ -185,7 +185,7 @@ export async function transform(
       if (ts.isClassDeclaration(node)) {
         addMultiLineComment(
           node,
-          "This is an auto generated class, please do not change."
+          'This is an auto generated class, please do not change.'
         );
         const comment = `*
 * Class to create a ${classData.className} object
@@ -199,12 +199,12 @@ export async function transform(
           let statment;
 
           if (param.optional) {
-            if (param.type == "TypeReference")
+            if (param.type == 'TypeReference')
               statment = `* @param {${param.typeName}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
             else
               statment = `* @param {${param.type}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
           } else {
-            if (param.type == "TypeReference")
+            if (param.type == 'TypeReference')
               statment = `* @param {${param.typeName}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
             else
               statment = `* @param {${param.type}} ${param.name} - Data required for ${classData.functions[count].SDKFunctionName}`;
@@ -214,10 +214,10 @@ export async function transform(
 
         let comment;
         if (parameters.length > 0) {
-          let paramStatments: string = "";
+          let paramStatments: string = '';
           parameters.map(param => {
             paramStatments = paramStatments.concat(
-              paramStatments === "" ? `${param}` : `\n${param}`
+              paramStatments === '' ? `${param}` : `\n${param}`
             );
           });
 
@@ -248,11 +248,11 @@ ${paramStatments}
   const node: any = code.statements.find(stm => ts.isClassDeclaration(stm));
 
   if (!classData.className || !classData.functions) {
-    throw new Error("Input is invalid");
+    throw new Error('Input is invalid');
   }
 
   if (!node || !node.members.some(member => ts.isMethodDeclaration(member))) {
-    throw new Error("Code is invalid");
+    throw new Error('Code is invalid');
   }
 
   code = cloneDeep(code);

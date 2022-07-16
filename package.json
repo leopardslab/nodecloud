@@ -10,7 +10,7 @@
     "test": "lerna run test",
     "lint": "lerna run lint",
     "prettier": "lerna run prettier",
-    "format": "prettier --write",
+    "format": "prettier --write {,*/**/}*.{ts,json}",
     "doc": "jsdoc -c jsdoc.json",
     "generator": " cd generator && tsc main.ts && node main.js"
   },

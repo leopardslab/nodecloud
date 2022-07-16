@@ -1,17 +1,17 @@
-import { cloneDeep } from "lodash";
-import * as ts from "typescript";
+import { cloneDeep } from 'lodash';
+import * as ts from 'typescript';
 
 const dummyIdentifiers = [
-  "ClassName",
-  "SDKClassName",
-  "SDKFunctionName",
-  "ClientName",
-  "functionClient"
+  'ClassName',
+  'SDKClassName',
+  'SDKFunctionName',
+  'ClientName',
+  'functionClient',
 ];
 
 const printer: ts.Printer = ts.createPrinter({
   newLine: ts.NewLineKind.LineFeed,
-  removeComments: false
+  removeComments: false,
 });
 
 function addMultiLineComment(node, comment: string) {
@@ -42,7 +42,7 @@ function runTransformation(sourceCode, transformMethod): Promise<string> {
 
 function toSourceFile(sourceCode: string): ts.SourceFile {
   return ts.createSourceFile(
-    "dummyClass.js",
+    'dummyClass.js',
     sourceCode,
     ts.ScriptTarget.Latest,
     true
@@ -56,11 +56,11 @@ export async function transform(
   const node: any = code.statements.find(stm => ts.isClassDeclaration(stm));
 
   if (!classData.functions) {
-    throw new Error("Input is invalid");
+    throw new Error('Input is invalid');
   }
 
   if (!node || !node.members.some(member => ts.isMethodDeclaration(member))) {
-    throw new Error("Code is invalid");
+    throw new Error('Code is invalid');
   }
 
   code = cloneDeep(code);
@@ -119,7 +119,7 @@ export async function transform(
           );
 
           if (param.optional) {
-            paramNode.initializer = ts.createIdentifier("undefined");
+            paramNode.initializer = ts.createIdentifier('undefined');
           }
 
           return paramNode;
@@ -128,39 +128,39 @@ export async function transform(
         node.parameters = parameters;
       }
 
-      if (ts.isStringLiteral(node) && node.text === "pkgName") {
+      if (ts.isStringLiteral(node) && node.text === 'pkgName') {
         return ts.createStringLiteral(
-          "@azure/" + classData.functions[0].pkgName
+          '@azure/' + classData.functions[0].pkgName
         );
       }
 
       if (ts.isIdentifier(node) && dummyIdentifiers.includes(node.text)) {
         let updatedIdentifier;
         switch (node.text) {
-          case "ClassName":
+          case 'ClassName':
             updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier("Azure_" + classData.serviceName)
+              ts.createIdentifier('Azure_' + classData.serviceName)
             );
             break;
-          case "SDKClassName":
+          case 'SDKClassName':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(
-                classData.functions[count].fileName.split(".")[0]
+                classData.functions[count].fileName.split('.')[0]
               )
             );
             break;
-          case "functionClient":
+          case 'functionClient':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(classData.functions[count].client)
             );
             break;
-          case "ClientName":
+          case 'ClientName':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(classData.clients[clientCount])
             );
             clientCount++;
             break;
-          case "SDKFunctionName":
+          case 'SDKFunctionName':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(classData.functions[count].SDKFunctionName)
             );
@@ -173,7 +173,7 @@ export async function transform(
         node.expression.forEachChild(childNode => {
           if (
             ts.isIdentifier(childNode) &&
-            childNode.text === "SDKFunctionName"
+            childNode.text === 'SDKFunctionName'
           ) {
             const args = classData.functions[count].params.map(param =>
               ts.createIdentifier(param.name)
@@ -197,7 +197,7 @@ export async function transform(
       if (ts.isClassDeclaration(node)) {
         addMultiLineComment(
           node,
-          "This is an auto generated class, please do not change."
+          'This is an auto generated class, please do not change.'
         );
         const comment = `*
  * Class to create a ${classData.serviceName} object
@@ -220,16 +220,16 @@ export async function transform(
 
         let comment;
         if (parameters.length > 0) {
-          let paramStatments: string = "";
+          let paramStatments: string = '';
           parameters.map(param => {
             paramStatments = paramStatments.concat(
-              paramStatments === "" ? `${param}` : `\n ${param}`
+              paramStatments === '' ? `${param}` : `\n ${param}`
             );
           });
 
           comment = `*
  * Trigers the ${classData.functions[count].SDKFunctionName} function of ${
-            classData.functions[0].pkgName.split("-")[1]
+            classData.functions[0].pkgName.split('-')[1]
           }
  ${paramStatments}
  * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
@@ -237,7 +237,7 @@ export async function transform(
         } else {
           comment = `*
  * Trigers the ${classData.functions[count].SDKFunctionName} function of ${
-            classData.functions[0].pkgName.split("-")[1]
+            classData.functions[0].pkgName.split('-')[1]
           }
  * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
  `;

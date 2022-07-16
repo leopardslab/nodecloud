@@ -1,19 +1,19 @@
-import { cloneDeep } from "lodash";
-import * as ts from "typescript";
+import { cloneDeep } from 'lodash';
+import * as ts from 'typescript';
 
 const dummyIdentifiers = [
-  "ClassName",
-  "SDKFunctionName",
-  "ClientName",
-  "_client",
-  "_clientObj",
-  "Client",
-  "_className"
+  'ClassName',
+  'SDKFunctionName',
+  'ClientName',
+  '_client',
+  '_clientObj',
+  'Client',
+  '_className',
 ];
 
 const printer: ts.Printer = ts.createPrinter({
   newLine: ts.NewLineKind.LineFeed,
-  removeComments: false
+  removeComments: false,
 });
 
 function addMultiLineComment(node, comment: string) {
@@ -44,7 +44,7 @@ function runTransformation(sourceCode, transformMethod): Promise<string> {
 
 function toSourceFile(sourceCode: string): ts.SourceFile {
   return ts.createSourceFile(
-    "dummyClass.js",
+    'dummyClass.js',
     sourceCode,
     ts.ScriptTarget.Latest,
     true
@@ -58,11 +58,11 @@ export async function classBasedTransform(
   const node: any = code.statements.find(stm => ts.isClassDeclaration(stm));
 
   if (!data.functions || !data.classData) {
-    throw new Error("Input is invalid");
+    throw new Error('Input is invalid');
   }
 
   if (!node || !node.members.some(member => ts.isMethodDeclaration(member))) {
-    throw new Error("Code is invalid");
+    throw new Error('Code is invalid');
   }
 
   code = cloneDeep(code);
@@ -75,10 +75,10 @@ export async function classBasedTransform(
         let functions: any = [];
         data.functions.map(method => {
           let clonedNode;
-          if (method.returnTypeName === "Promise") {
+          if (method.returnTypeName === 'Promise') {
             if (
               (method.classConstructorData.parameters[0].type =
-                "TypeReference" &&
+                'TypeReference' &&
                 !method.classConstructorData.parameters[0].optional)
             ) {
               clonedNode = Object.assign({}, node.members[3]);
@@ -120,15 +120,15 @@ export async function classBasedTransform(
         let params = [];
         if (
           (data.functions[count].classConstructorData.parameters[0].type =
-            "TypeReference" &&
+            'TypeReference' &&
             !data.functions[count].classConstructorData.parameters[0].optional)
         ) {
           params.push(data.functions[count].classConstructorData.parameters[0]);
 
           data.functions[count].allParams.push({
-            name: "identifier",
+            name: 'identifier',
             optional: true,
-            type: "string"
+            type: 'string',
           });
         }
 
@@ -146,7 +146,7 @@ export async function classBasedTransform(
           );
 
           if (param.optional) {
-            paramNode.initializer = ts.createIdentifier("undefined");
+            paramNode.initializer = ts.createIdentifier('undefined');
           }
 
           return paramNode;
@@ -155,40 +155,40 @@ export async function classBasedTransform(
         node.parameters = parameters.concat(node.parameters);
       }
 
-      if (ts.isStringLiteral(node) && node.text === "pkgName") {
+      if (ts.isStringLiteral(node) && node.text === 'pkgName') {
         return ts.createStringLiteral(
-          "@google-cloud/" + data.functions[0].pkgName
+          '@google-cloud/' + data.functions[0].pkgName
         );
       }
 
       if (ts.isIdentifier(node) && dummyIdentifiers.includes(node.text)) {
         let updatedIdentifier;
         switch (node.text) {
-          case "ClassName":
+          case 'ClassName':
             updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier("GCP_" + data.functions[0].pkgName)
+              ts.createIdentifier('GCP_' + data.functions[0].pkgName)
             );
             break;
-          case "ClientName":
+          case 'ClientName':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(data.mainClass)
             );
             break;
-          case "SDKFunctionName":
+          case 'SDKFunctionName':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(data.functions[count].SDKFunctionName)
             );
             count++;
             break;
-          case "_className":
+          case '_className':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(data.functions[count].client.toLowerCase())
             );
             break;
-          case "_client":
+          case '_client':
             if (
               (data.functions[count].classConstructorData.parameters[0].type =
-                "TypeReference" &&
+                'TypeReference' &&
                 !data.functions[count].classConstructorData.parameters[0]
                   .optional)
             ) {
@@ -199,16 +199,16 @@ export async function classBasedTransform(
               );
             } else {
               updatedIdentifier = ts.updateIdentifier(
-                ts.createIdentifier("_" + data.mainClass.toLowerCase())
+                ts.createIdentifier('_' + data.mainClass.toLowerCase())
               );
             }
             break;
-          case "_clientObj":
+          case '_clientObj':
             updatedIdentifier = ts.updateIdentifier(
-              ts.createIdentifier("_" + data.mainClass.toLowerCase())
+              ts.createIdentifier('_' + data.mainClass.toLowerCase())
             );
             break;
-          case "Client":
+          case 'Client':
             updatedIdentifier = ts.updateIdentifier(
               ts.createIdentifier(data.mainClass)
             );
@@ -221,7 +221,7 @@ export async function classBasedTransform(
         node.expression.forEachChild(childNode => {
           if (
             ts.isIdentifier(childNode) &&
-            childNode.text === "SDKFunctionName"
+            childNode.text === 'SDKFunctionName'
           ) {
             const args = data.functions[count].params.map(param =>
               ts.createIdentifier(param.name)
@@ -245,7 +245,7 @@ export async function classBasedTransform(
       if (ts.isClassDeclaration(node)) {
         addMultiLineComment(
           node,
-          "This is an auto generated class, please do not change."
+          'This is an auto generated class, please do not change.'
         );
         const comment = `*
  * Class to create a ${data.functions[0].pkgName} object
@@ -272,10 +272,10 @@ export async function classBasedTransform(
 
         let comment;
         if (parameters.length > 0) {
-          let paramStatments: string = "";
+          let paramStatments: string = '';
           parameters.map(param => {
             paramStatments = paramStatments.concat(
-              paramStatments === "" ? `${param}` : `\n ${param}`
+              paramStatments === '' ? `${param}` : `\n ${param}`
             );
           });
 

@@ -1,5 +1,5 @@
-import * as fs from "fs";
-import { createSourceFile,ScriptTarget } from "typescript";
+import * as fs from 'fs';
+import { createSourceFile, ScriptTarget } from 'typescript';
 
 export function readSourceFile(datasetName, provider) {
   return new Promise((resolve, reject) => {
@@ -26,7 +26,7 @@ export function readJsonData(datasetName, provider) {
       const testFile =
         process.cwd() +
         `/test/transformers/${provider}/dummyData/${datasetName}/data.json`;
-      const testData = JSON.parse(fs.readFileSync(testFile, "utf8"));
+      const testData = JSON.parse(fs.readFileSync(testFile, 'utf8'));
       resolve(testData);
     } catch (error) {
       console.error(error);

@@ -1,9 +1,9 @@
-import * as fs from "fs";
-import { createSourceFile, ScriptTarget,SyntaxKind } from "typescript";
+import * as fs from 'fs';
+import { createSourceFile, ScriptTarget, SyntaxKind } from 'typescript';
 
-import { getAST } from "../../parsers/azure/parser";
-import { transform } from "../../transformers/azure/transformer";
-import { filters, getDir,groupers, printFile } from "../lib/helper";
+import { getAST } from '../../parsers/azure/parser';
+import { transform } from '../../transformers/azure/transformer';
+import { filters, getDir, groupers, printFile } from '../lib/helper';
 
 interface FunctionData {
   pkgName: string;
@@ -20,7 +20,7 @@ interface param {
   type: string;
 }
 
-const dummyFile = process.cwd() + "/dummyClasses/azure.js";
+const dummyFile = process.cwd() + '/dummyClasses/azure.js';
 const dummyAst = createSourceFile(
   dummyFile,
   fs.readFileSync(dummyFile).toString(),
@@ -32,16 +32,16 @@ export function extractSDKData(sdkFiles, methods) {
   const specifiedMethods = JSON.parse(JSON.stringify(methods));
   sdkFiles.map(sdkFile => {
     sdkFile.ast.members.map(member => {
-      if (SyntaxKind[member.kind] === "Constructor") {
+      if (SyntaxKind[member.kind] === 'Constructor') {
         member.parameters.map(param => {
           const tempStr = param.type.typeName.text.split(/(?=[A-Z])/);
           tempStr.pop();
-          sdkFile.client = tempStr.join("");
+          sdkFile.client = tempStr.join('');
         });
       }
 
       if (
-        SyntaxKind[member.kind] === "MethodDeclaration" &&
+        SyntaxKind[member.kind] === 'MethodDeclaration' &&
         sdkFile.sdkFunctionNames.includes(member.name.text)
       ) {
         const method = methods.find(
@@ -53,7 +53,7 @@ export function extractSDKData(sdkFiles, methods) {
           return {
             name: param.name.text,
             optional: param.questionToken ? true : false,
-            type: SyntaxKind[param.type.kind]
+            type: SyntaxKind[param.type.kind],
           };
         });
 
@@ -74,14 +74,14 @@ export function extractSDKData(sdkFiles, methods) {
   });
 
   if (JSON.stringify(methods) === JSON.stringify(specifiedMethods)) {
-    throw new Error("Data extraction unsuccessful");
+    throw new Error('Data extraction unsuccessful');
   }
 
   const groupedMethods = groupers.azure(methods);
   methods = filters.azure(groupedMethods);
 
   const classData = {
-    functions: methods
+    functions: methods,
   };
 
   return classData;
@@ -92,13 +92,13 @@ export async function generateAzureClass(serviceClass, serviceName) {
 
   Object.keys(serviceClass).map((key, index) => {
     methods.push({
-      pkgName: serviceClass[key].split(" ")[0],
-      fileName: serviceClass[key].split(" ")[1],
+      pkgName: serviceClass[key].split(' ')[0],
+      fileName: serviceClass[key].split(' ')[1],
       functionName: key,
-      SDKFunctionName: serviceClass[key].split(" ")[2],
+      SDKFunctionName: serviceClass[key].split(' ')[2],
       params: [],
       returnType: null,
-      client: null
+      client: null,
     });
   });
 
@@ -112,7 +112,7 @@ export async function generateAzureClass(serviceClass, serviceName) {
       client: null,
       sdkFunctionNames: methods
         .filter(method => method.fileName === file)
-        .map(method => method.SDKFunctionName)
+        .map(method => method.SDKFunctionName),
     };
   });
 
@@ -127,26 +127,26 @@ export async function generateAzureClass(serviceClass, serviceName) {
   const output = await transform(dummyAst, classData);
   let filePath;
   const dir = getDir(serviceName);
-  if (!fs.existsSync(process.cwd() + "/generatedClasses/Azure/" + dir)) {
-    fs.mkdirSync(process.cwd() + "/generatedClasses/Azure/" + dir);
+  if (!fs.existsSync(process.cwd() + '/generatedClasses/Azure/' + dir)) {
+    fs.mkdirSync(process.cwd() + '/generatedClasses/Azure/' + dir);
   }
   if (/^[A-Z]*$/.test(serviceName)) {
     filePath =
       process.cwd() +
-      "/generatedClasses/Azure/" +
+      '/generatedClasses/Azure/' +
       dir +
-      "/azure-" +
+      '/azure-' +
       serviceName +
-      ".js";
+      '.js';
   } else {
     filePath =
       process.cwd() +
-      "/generatedClasses/Azure/" +
+      '/generatedClasses/Azure/' +
       dir +
-      "/azure-" +
+      '/azure-' +
       serviceName.charAt(0).toLowerCase() +
       serviceName.slice(1) +
-      ".js";
+      '.js';
   }
   printFile(filePath, output);
 }
