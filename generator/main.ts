@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 
+import { generateAliyunClass } from './generators/aliyun/generator';
 import { generateAWSClass } from './generators/aws/generator';
 import { generateAzureClass } from './generators/azure/generator';
 import { generateDOClass } from './generators/do/generator';
@@ -18,6 +19,8 @@ try {
         generateGCPClass(services[service][provider], service);
       } else if (provider == 'DO') {
         generateDOClass(services[service][provider], service);
+      } else if (provider === 'Ali') {
+        generateAliyunClass(services[service][provider], service);
       }
     });
   });

@@ -43,6 +43,14 @@ StorageBucket:
     list: storage storage.d.ts getBuckets
     upload: storage bucket.d.ts upload
     makePublic: storage file.d.ts makePublic
+  Ali:
+    setRegion: oss index.d.ts setRegion
+    create: oss index.d.ts create
+    listBuckets: oss index.d.ts listBuckets
+    delete: oss index.d.ts delete
+    describeBucket: oss index.d.ts describeBucket
+    listBucketObjects: oss index.d.ts listBucketObjects
+    uploadLocalObject: oss index.d.ts uploadLocalObject
 
 PaaS:
   AWS:
