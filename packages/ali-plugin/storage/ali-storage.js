@@ -33,7 +33,6 @@ class ALI_StorageBucket {
    * @returns {Promise<listBucketsResponse>}
    */
   listBuckets(params) {
-    console.log('called listbuckets...');
     return new Promise((resolve, reject) => {
       this._oss
         .listBuckets(params)

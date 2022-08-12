@@ -4,11 +4,11 @@ class Ali {
   constructor(sdk) {
     this._alisdk = sdk;
 
-    // if (!process.env.DO_TOKEN) {
-    //   throw new Error("Provide credentials");
-    // }
-    this.key = process.env.ALI_TOKEN || 'key';
-    this.secret = process.env.ALI_SECRET || 'secret';
+    if (!process.env.ALI_KEY || !process.env.ALI_SECRET) {
+      throw new Error('Provide credentials');
+    }
+    this.key = process.env.ALI_TOKEN;
+    this.secret = process.env.ALI_SECRET;
 
     return {
       getSDK: () => this._alisdk,
