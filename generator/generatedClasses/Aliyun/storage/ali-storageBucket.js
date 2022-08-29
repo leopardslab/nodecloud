@@ -29,7 +29,7 @@ class ALI_StorageBucket {
   }
   /**
    * Trigers the listBuckets function of Oss
-   * @param {AnyKeyword} params - Data required for listBuckets
+   * @param {undefined} params - Data required for listBuckets
    * @returns {Promise<listBucketsResponse>}
    */
   listBuckets(params) {
@@ -43,7 +43,7 @@ class ALI_StorageBucket {
   /**
    * Trigers the create function of Oss
    * @param {StringKeyword} name - Data required for create
-   * @param {AnyKeyword} params - Data required for create
+   * @param {undefined} params - Data required for create
    * @returns {Promise<createResponse>}
    */
   create(name, params = undefined) {
@@ -83,7 +83,7 @@ class ALI_StorageBucket {
   /**
    * Trigers the listBucketObjects function of Oss
    * @param {StringKeyword} name - Data required for listBucketObjects
-   * @param {AnyKeyword} params - Data required for listBucketObjects
+   * @param {undefined} params - Data required for listBucketObjects
    * @returns {Promise<listBucketObjectsResponse>}
    */
   listBucketObjects(name, params) {
