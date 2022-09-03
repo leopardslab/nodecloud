@@ -94,6 +94,18 @@ DO:
   <img src="../assets/generator/high_level_diagrams/do_diagram.png" />
 </p>
 
+- AliCloud
+
+```
+Ali:
+    create: ecs index.d.ts createInstance
+```
+
+<p align="center">
+  <img src="../assets/generator/high_level_diagrams/ali.png" style="width:60%" />
+  <img src="../assets/generator/high_level_diagrams/ali_diagram.png" />
+</p>
+
 ## Code parsers
 
 This is the simplest part of the code generation tool. The SDK files are read from the relevant SDKs as specified in the `node-cloud.yml` file. Afterwards, it is converted to an **Abstract Syntax Tree**. Finally, the class declaration Node of that **Abstract Syntax Tree** is returned. This retured Node is another **Abstract Syntax Tree** since a class declaration itself is another **Abstract Syntax Tree**.

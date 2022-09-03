@@ -99,6 +99,7 @@ const nodeCloudAwsPlugin = require("@nodecloud/aws-plugin");
 const nodeCloudGcpPlugin = require("@nodecloud/gcp-plugin");
 const nodeCloudAzurePlugin = require("@nodecloud/azure-plugin");
 const nodeCloudDoPlugin = require("@nodecloud/do-plugin");
+const nodeCloudAliPlugin = require("@nodecloud/ali-plugin");
 
 const providers = [
   {
@@ -125,8 +126,14 @@ const providers = [
     name: "digitalocean",
     tag: "do",
     plugin: nodeCloudDoPlugin
-  }
+  },
+  {
+    name: "alicloud",
+    tag: "alicloud",
+    plugin: aliplugin,
+  },
 ];
+
 module.exports = providers;
 ```
 
@@ -205,7 +212,7 @@ const ncProviders = nodeCloud.getProviders(options);
 | Compute                 | IaaS                                |                  EC2                  |          Compute Engine           |                             Virtual Machine                             |                 Droplets                  |                          ECS                          |
 |                         | Faas                                |             AWS Lambda\*              |         Cloud Functions\*         |                            Azure Functions\*                            |                     -                     |                  Function Compute\*                   |
 |                         | Containers                          |               ECS, EKS                |     Google Kubernetes Engine      |                       AKS, Azure Service Fabric\*                       |               DO Kubernetes               | Container Service*, Container Service for Kubernetes* |
-|                         | Containers (without infrastructure) |             AWS Fargate\*             |            Cloud Run\*            |                                    -                                    |                     -                     |                         ECI\*                         |
+|                         | Containers (without infrastructure) |             AWS Fargate\*             |            Cloud Run\*            |                                    -                                    |                     -                     |                          ECI                          |
 |                         | Paas                                |         AWS Elastic Beanstalk         |           App Engine\*            |                               App Service                               |                     -                     |              Simple Application Server\*              |
 | Storage                 | Object Storage                      |                  S3                   |           Cloud Storage           |                           Azure Blob Storage                            |                 Spaces\*                  |                     Bucket (OSS)                      |
 |                         | Block Storage                       |                  EBS                  |         Persistent Disks          |                              Disk Storage                               |                  Volumes                  |                         NAS\*                         |
@@ -214,7 +221,7 @@ const ncProviders = nodeCloud.getProviders(options);
 |                         | DNS                                 |                Route53                |     Google Domains, Cloud DNS     |                                Azure DNS                                |                  DO DNS                   |                  Alibaba Cloud DNS\*                  |
 | Databases               | RDBMS                               | RDS, Amazon Aurora*, Amazon Redshift* |    Cloud SQL\*, Cloud Spanner     | SQL Database, Azure Database for MySQL*, Azure Database for PostgreSQL* | Managed Databases(PostgreSQL\* and MySQL) | ApsaraDB (MySQL, MariaDB TX, SQL Server, PostgreSQL)  |
 |                         | NoSQL: key-value                    |               DynamoDB                | Cloud Firestore, Cloud Bigtable\* |                              Table Storage                              |        Managed Databases(Redis)\*         |                 ApsaraDB for Redis\*                  |
-|                         | NoSQL: indexed                      |           Amazon SimpleDB\*           |          Cloud Firestore          |                                Cosmos DB                                |                     -                     |                ApsaraDB for MongoDB\*                 |
+|                         | NoSQL: indexed                      |           Amazon SimpleDB\*           |          Cloud Firestore          |                                Cosmos DB                                |                     -                     |                 ApsaraDB for MongoDB                  |
 | Security/ Authorization | Identity Access Management          |                AWS IAM                |            Cloud IAM\*            |        Azure Active Directory*, Azure Role Based Access Control*        |                     -                     |             Resource Access Management\*              |
 | Management              | Key Management                      |                AWS-KMS                |                 -                 |                                    -                                    |                  Do-Keys                  |                           -                           |
 
