@@ -24,6 +24,15 @@ ComputeInstance:
     start: droplets.d.ts requestAction
     stop: droplets.d.ts requestAction
 
+  Ali:
+    create: ecs index.d.ts createInstance 
+    list: ecs index.d.ts listInstances
+    destroy: ecs index.d.ts deleteInstance
+    start: ecs index.d.ts startInstance
+    stop: ecs index.d.ts stopInstance
+    describeImages: ecs index.d.ts describeImages
+    listInstanceTypes: ecs index.d.ts listInstanceTypes
+
 StorageBucket:
   AWS:
     create: s3.d.ts createBucket
@@ -159,6 +168,11 @@ Container:
     delete: arm-containerservice containerServices.d.ts deleteMethod
     describe: arm-containerservice containerServices.d.ts get
     list: arm-containerservice containerServices.d.ts list
+  Ali:
+    create: eci index.d.ts createContainerGroup
+    delete: eci index.d.ts deleteContainerGroup
+    list: eci index.d.ts describeContainerGroups
+    restart: eci index.d.ts restartContainerGroup
 
 NoSqlIndexed:
   AWS:
@@ -199,6 +213,12 @@ RDBMS:
     getClusters: databases.d.ts getAllClusters
     getCluster: databases.d.ts getClusterById
     updateCluster: databases.d.ts resizeCluster
+  Ali:
+    createInstance: rds index.d.ts createDBInstance
+    listInstances: rds index.d.ts listRDSInstances
+    deleteInstance: rds index.d.ts deleteRDSInstance
+    restartInstance: rds index.d.ts restartRDSInstance
+    listDatabases: rds index.d.ts listDatabases
 
 NoSql:
   AWS:
@@ -224,6 +244,12 @@ NoSql:
     getClusters: databases.d.ts getAllClusters
     getCluster: databases.d.ts getClusterById
     updateCluster: databases.d.ts resizeCluster
+  Ali:
+    createInstance: nosql index.d.ts createDBInstance
+    listInstances: nosql index.d.ts listDBInstances
+    deleteInstance: nosql index.d.ts deleteDBInstance
+    describeInstance: nosql index.d.ts describeDBInstance
+    restartInstance: nosql index.d.ts restartDBInstance
 
 DNS:
   AWS:
@@ -268,6 +294,11 @@ LoadBalancer:
     delete: load-balancers.d.ts delete
     list: load-balancers.d.ts getAll
     update: load-balancers.d.ts update
+  Ali:
+    create: slb index.d.ts createLoadBalancerInstance 
+    list: slb index.d.ts describeLoadBalancers
+    describe: slb index.d.ts describeLoadBalancerAttribute
+    delete: slb index.d.ts deleteLoadBalancer
 
 IAM:
   AWS:
