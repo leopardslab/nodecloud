@@ -2,7 +2,7 @@
 
 ![ts](https://flat.badgen.net/badge/Built%20With/TypeScript/blue)
 
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-brightgreen)](https://gitter.im/cloudlibz/cloudlibz)
+[![Gitter](https://img.shields.io/badge/chat-on%20gitter-brightgreen)](https://app.gitter.im/#/room/#cloudlibz_cloudlibz:gitter.im)
 [![Read on : Medium](https://img.shields.io/badge/Read%20on-Medium-black.svg)](https://medium.com/leopards-lab)
 [![Mailing list : Scorelab](https://img.shields.io/badge/Mailing%20list-Scorelab-blue.svg)](https://groups.google.com/g/score-community)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-ff69b4.svg?style=flat)](https://github.com/leopardslab/nodecloud/issues)

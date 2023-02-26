@@ -10,9 +10,9 @@
 ![nodecloud CI](https://github.com/cloudlibz/nodecloud/workflows/nodecloud%20CI/badge.svg)
 
 [![npm version](https://badge.fury.io/js/nodecloud.svg)](https://badge.fury.io/js/nodecloud)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b94b1fe2ac724e8083f8237de3473c8a)](https://www.codacy.com/app/rehrumesh/nodecloud?utm_source=github.com&utm_medium=referral&utm_content=cloudlibz/nodecloud&utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b55da730103e4c679e4e180a6b890a18)](https://www.codacy.com/app/rehrumesh/nodecloud?utm_source=github.com&utm_medium=referral&utm_content=cloudlibz/nodecloud&utm_campaign=Badge_Grade)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-brightgreen)](https://gitter.im/cloudlibz/cloudlibz)
+[![Gitter](https://img.shields.io/badge/chat-on%20gitter-brightgreen)](https://app.gitter.im/#/room/#cloudlibz_cloudlibz:gitter.im)
 [![Read on : Medium](https://img.shields.io/badge/Read%20on-Medium-black.svg)](https://medium.com/leopards-lab)
 [![Mailing list : Scorelab](https://img.shields.io/badge/Mailing%20list-Scorelab-blue.svg)](https://groups.google.com/g/score-community)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-ff69b4.svg?style=flat)](https://github.com/leopardslab/nodecloud/issues)
