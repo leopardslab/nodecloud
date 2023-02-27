@@ -1,0 +1,96 @@
+{
+  "className": "Oss",
+  "functions": [
+    {
+      "functionName": "create",
+      "SDKFunctionName": "create",
+      "params": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "StringKeyword",
+          "typeName": null
+        },
+        {
+          "name": "params",
+          "optional": true,
+          "type": "TypeReference",
+          "typeName": "undefined"
+        }
+      ]
+    },
+    {
+      "functionName": "delete",
+      "SDKFunctionName": "delete",
+      "params": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "StringKeyword",
+          "typeName": null
+        }
+      ]
+    },
+    {
+      "functionName": "describeBucket",
+      "SDKFunctionName": "describeBucket",
+      "params": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "StringKeyword",
+          "typeName": null
+        }
+      ]
+    },
+    {
+      "functionName": "listBucketObjects",
+      "SDKFunctionName": "listBucketObjects",
+      "params": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "StringKeyword",
+          "typeName": null
+        },
+        {
+          "name": "params",
+          "optional": false,
+          "type": "TypeReference",
+          "typeName": "undefined"
+        }
+      ]
+    },
+    {
+      "functionName": "uploadLocalObject",
+      "SDKFunctionName": "uploadLocalObject",
+      "params": [
+        {
+          "name": "bucketName",
+          "optional": false,
+          "type": "StringKeyword",
+          "typeName": null
+        },
+        {
+          "name": "objectName",
+          "optional": false,
+          "type": "StringKeyword",
+          "typeName": null
+        },
+        {
+          "name": "file",
+          "optional": false,
+          "type": "AnyKeyword",
+          "typeName": null
+        },
+        {
+          "name": "params",
+          "optional": true,
+          "type": "UnionType",
+          "typeName": null
+        }
+      ]
+    }
+  ],
+  "serviceName": "StorageBucket"
+}

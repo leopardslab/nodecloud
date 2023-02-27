@@ -1,32 +1,32 @@
-import { expect } from "chai";
-import { createSourceFile, isSourceFile,ScriptTarget } from "typescript";
+import { expect } from 'chai';
+import { createSourceFile, isSourceFile, ScriptTarget } from 'typescript';
 
-import { transform } from "../../../transformers/azure/transformer";
-import { readJsonData, readSourceFile } from "../lib/helper";
+import { transform } from '../../../transformers/azure/transformer';
+import { readJsonData, readSourceFile } from '../lib/helper';
 
 interface TestData {
   AST: any;
   data: any;
 }
 
-describe("Azure transformer transform", () => {
-  context("Valid source code and valid data", () => {
+describe('Azure transformer transform', () => {
+  context('Valid source code and valid data', () => {
     const testData: TestData = { AST: null, data: null };
     before(async () => {
-      testData.AST = await readSourceFile("validDataset", "azure");
-      testData.data = await readJsonData("validDataset", "azure");
+      testData.AST = await readSourceFile('validDataset', 'azure');
+      testData.data = await readJsonData('validDataset', 'azure');
     });
 
-    it("Should return a String", async () => {
+    it('Should return a String', async () => {
       const result = await transform(testData.AST, testData.data);
       expect(result).to.be.string;
     });
 
-    it("Should return a Javascript code in String format", async () => {
+    it('Should return a Javascript code in String format', async () => {
       const result = await transform(testData.AST, testData.data);
       try {
         const sourceCode = createSourceFile(
-          "someClass.js",
+          'someClass.js',
           result,
           ScriptTarget.Latest
         );
@@ -37,34 +37,34 @@ describe("Azure transformer transform", () => {
     });
   });
 
-  context("Invalid source code and valid data", () => {
+  context('Invalid source code and valid data', () => {
     const testData: TestData = { AST: null, data: null };
     before(async () => {
-      testData.AST = await readSourceFile("invalidDataset_1", "azure");
-      testData.data = await readJsonData("invalidDataset_1", "azure");
+      testData.AST = await readSourceFile('invalidDataset_1', 'azure');
+      testData.data = await readJsonData('invalidDataset_1', 'azure');
     });
 
-    it("Should return a validation Error", async () => {
+    it('Should return a validation Error', async () => {
       try {
         await transform(testData.AST, testData.data);
       } catch (error) {
-        expect(error.message).to.eql("Code is invalid");
+        expect(error.message).to.eql('Code is invalid');
       }
     });
   });
 
-  context("Valid source code and invalid data", () => {
+  context('Valid source code and invalid data', () => {
     const testData: TestData = { AST: null, data: null };
     before(async () => {
-      testData.AST = await readSourceFile("invalidDataset_2", "azure");
-      testData.data = await readJsonData("invalidDataset_2", "azure");
+      testData.AST = await readSourceFile('invalidDataset_2', 'azure');
+      testData.data = await readJsonData('invalidDataset_2', 'azure');
     });
 
-    it("Should return a validation Error", async () => {
+    it('Should return a validation Error', async () => {
       try {
         await transform(testData.AST, testData.data);
       } catch (error) {
-        expect(error.message).to.eql("Input is invalid");
+        expect(error.message).to.eql('Input is invalid');
       }
     });
   });

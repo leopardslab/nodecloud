@@ -1,0 +1,18 @@
+{
+  "name": "@nodecloud/ali-plugin",
+  "version": "0.0.0",
+  "description": "NodeCloud Alibaba Cloud plugin",
+  "main": "index.js",
+  "scripts": {
+    "prettier": "yarn pretty-quick"
+  },
+  "keywords": [
+    "nodecloud",
+    "nodecloud-Alibaba-Cloud"
+  ],
+  "author": "Scorelab",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "aliyun-v2-typescript-sdk": "^3.0.2"
+  }
+}

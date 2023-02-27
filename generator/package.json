@@ -13,7 +13,7 @@
     "test": "cross-env TS_NODE_FILES=true mocha --exit --require ts-node/register --colors test/**/*.ts",
     "tool": "tsc main && node main",
     "lint": "eslint .",
-		"lint-fix": "eslint --fix ."
+    "lint-fix": "eslint --fix ."
   },
   "dependencies": {
     "@azure/arm-appservice": "^6.0.0",
@@ -31,6 +31,7 @@
     "@google-cloud/pubsub": "^2.1.0",
     "@google-cloud/storage": "^5.1.1",
     "@google-cloud/translate": "^6.0.0",
+    "aliyun-v2-typescript-sdk": "^3.0.2",
     "aws-sdk": "^2.686.0",
     "config": "^1.26.1",
     "do-wrapper": "^4.5.1",
