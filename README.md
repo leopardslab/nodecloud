@@ -19,18 +19,18 @@
 
 Table of Content
 
--   [Introduction](#introduction)
--   [Supported Service Providers](#-supported-service-providers)
--   [Getting Started](#getting-started)
-    -   [NodeCloud Plugins](#nodecloud-plugins)
-    -   [Example](#example)
--   [Overriding Providers](#overriding-providers)
--   [Service Types](#-service-types)
--   [Development setup](#-development-setup)
--   [Important Notes for Developers](#important-notes-for-developers-)
--   [Test Changes](#test-changes)
--   [NodeCloud Code Generation tool](#nodecloud-code-generation-tool)
--   [License](#-license)
+- [Introduction](#introduction)
+- [Supported Service Providers](#-supported-service-providers)
+- [Getting Started](#getting-started)
+  - [NodeCloud Plugins](#nodecloud-plugins)
+  - [Example](#example)
+- [Overriding Providers](#overriding-providers)
+- [Service Types](#-service-types)
+- [Development setup](#-development-setup)
+- [Important Notes for Developers](#important-notes-for-developers-)
+- [Test Changes](#test-changes)
+- [NodeCloud Code Generation tool](#nodecloud-code-generation-tool)
+- [License](#-license)
 
 # Introduction
 
@@ -38,18 +38,18 @@ Table of Content
 
 NodeCloud will be useful to you if:
 
--   you work on a project which uses multiple cloud providers
--   you are looking for an abstract cloud API which can switch between cloud providers with fewer code changes
--   you are an open-source enthusiast who is into cloud engineering or code generation
--   you want to improve your skills in NodeJS, Typescript and cloud service providers
+- you work on a project which uses multiple cloud providers
+- you are looking for an abstract cloud API which can switch between cloud providers with fewer code changes
+- you are an open-source enthusiast who is into cloud engineering or code generation
+- you want to improve your skills in NodeJS, Typescript and cloud service providers
 
 ## 📘 Supported Service Providers
 
--   Amazon Web Services (AWS)
--   Azure
--   Google Cloud Platform (GCP)
--   DigitalOcean
--   AliCloud
+- Amazon Web Services (AWS)
+- Azure
+- Google Cloud Platform (GCP)
+- DigitalOcean
+- AliCloud
 
 _📢 if your required cloud provider plugin is not listed here, we'd love your help to add it :)_
 
@@ -95,37 +95,37 @@ This config file can contain an array of objects for all providers and all will 
 ### Example
 
 ```js
-const nodeCloudAwsPlugin = require('@nodecloud/aws-plugin');
-const nodeCloudGcpPlugin = require('@nodecloud/gcp-plugin');
-const nodeCloudAzurePlugin = require('@nodecloud/azure-plugin');
-const nodeCloudDoPlugin = require('@nodecloud/do-plugin');
+const nodeCloudAwsPlugin = require("@nodecloud/aws-plugin");
+const nodeCloudGcpPlugin = require("@nodecloud/gcp-plugin");
+const nodeCloudAzurePlugin = require("@nodecloud/azure-plugin");
+const nodeCloudDoPlugin = require("@nodecloud/do-plugin");
 
 const providers = [
-	{
-		name: 'aws',
-		tag: 'aws',
-		plugin: nodeCloudAwsPlugin,
-		configPath: 'C:\\Users\\Rajitha\\opensource\\aws_cred.json',
-	},
-	{
-		name: 'google',
-		tag: 'google',
-		plugin: nodeCloudGcpPlugin,
-		configPath: {
-			projectId: 'astral-hold-276807',
-			keyFilename: 'C:\\Users\\Rajitha\\opensource\\gcp_cred.json',
-		},
-	},
-	{
-		name: 'azure',
-		tag: 'azure',
-		plugin: nodeCloudAzurePlugin,
-	},
-	{
-		name: 'digitalocean',
-		tag: 'do',
-		plugin: nodeCloudDoPlugin,
-	},
+  {
+    name: "aws",
+    tag: "aws",
+    plugin: nodeCloudAwsPlugin,
+    configPath: "C:\\Users\\Rajitha\\opensource\\aws_cred.json"
+  },
+  {
+    name: "google",
+    tag: "google",
+    plugin: nodeCloudGcpPlugin,
+    configPath: {
+      projectId: "astral-hold-276807",
+      keyFilename: "C:\\Users\\Rajitha\\opensource\\gcp_cred.json"
+    }
+  },
+  {
+    name: "azure",
+    tag: "azure",
+    plugin: nodeCloudAzurePlugin
+  },
+  {
+    name: "digitalocean",
+    tag: "do",
+    plugin: nodeCloudDoPlugin
+  }
 ];
 module.exports = providers;
 ```
@@ -137,52 +137,52 @@ Congratulations! You just configured NodeCloud in your project. Let's start with
 The below code is an example of usage in AWS.
 
 ```js
-const nc = require('@nodecloud/common'); // NodeCloud common module
+const nc = require("@nodecloud/common"); // NodeCloud common module
 const optionsProvider = {
-	overrideProviders: false,
+  overrideProviders: false
 };
 const ncProviders = nc.getProviders(optionsProvider);
 const options = {
-	apiVersion: '2017-11-01',
+  apiVersion: "2017-11-01"
 };
 
 const computeModule = ncProviders.aws.compute(options);
 
 function launchInstance() {
-	const instanceParams = {
-		ImageId: 'ami-07ebfd5b3428b6f4d', // Image of Ubuntu Server 18.04 LTS
-		InstanceType: 't2.micro',
-		KeyName: 'nodeCloud', // key name of Key pair
-		MinCount: 1,
-		MaxCount: 1,
-	};
+  const instanceParams = {
+    ImageId: "ami-07ebfd5b3428b6f4d", // Image of Ubuntu Server 18.04 LTS
+    InstanceType: "t2.micro",
+    KeyName: "nodeCloud", // key name of Key pair
+    MinCount: 1,
+    MaxCount: 1
+  };
 
-	// create AWS EC2 instance
-	computeModule
-		.create(instanceParams)
-		.then(res => {
-			console.log(`All done ! ${res}`);
-		})
-		.catch(err => {
-			console.log(`Oops something happened ${err}`);
-		});
+  // create AWS EC2 instance
+  computeModule
+    .create(instanceParams)
+    .then(res => {
+      console.log(`All done ! ${res}`);
+    })
+    .catch(err => {
+      console.log(`Oops something happened ${err}`);
+    });
 }
 
 function stopInstance() {
-	const params = {
-		InstanceIds: ['i-0928af5c626f85da9'],
-		DryRun: false,
-	};
+  const params = {
+    InstanceIds: ["i-0928af5c626f85da9"],
+    DryRun: false
+  };
 
-	// stop AWS EC2 instance
-	computeModule
-		.stop(params)
-		.then(res => {
-			console.log(res);
-		})
-		.catch(err => {
-			console.log(err);
-		});
+  // stop AWS EC2 instance
+  computeModule
+    .stop(params)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
 ```
 
@@ -191,9 +191,9 @@ function stopInstance() {
 NodeCloud officially supports AWS, GCP, Azure, DigitalOcean and AliCloud. If you want to use a community-driven plugin override the providers' list as follows.
 
 ```js
-const nodeCloud = require('nodecloud');
+const nodeCloud = require("nodecloud");
 const options = {
-	overrideProviders: true,
+  overrideProviders: true
 };
 const ncProviders = nodeCloud.getProviders(options);
 ```
