@@ -250,7 +250,7 @@ yarn
 
 ### Important Notes for Developers 😎
 
-❇️ This project is based on [Lerna](https://lerna.js.org/) and Yarn workspaces where there are multiple projects in the same repository. It's better to get some background knowledge about these before making any changes in the code. Check the `lerna.json` for the current configuration.
+❇️ This project is based on [Lerna](https://lerna.js.org/) and [Yarn](https://classic.yarnpkg.com/lang/en/) workspaces where there are multiple projects in the same repository. It's better to get some background knowledge about these before making any changes in the code. Check the `lerna.json` for the current configuration.
 
 ❇️ `@nodecloud/aws-plugin` , `@nodecloud/gcp-plugin` , `@nodecloud/azure-plugin` and `@nodecloud/common` are `Lerna` managed yarn workspaces where the `generator` is another standalone yarn workspace.
 
@@ -284,7 +284,7 @@ _Adding the -W flag makes it explicit that we’re adding the dependency to the 
 lerna exec -- yarn remove dep-name
 ```
 
-❇️ Use symlinks when you want to make changes while testing them out in a demo project.** Do not use npm link** instead use yarn linking
+❇️ Use symlinks when you want to make changes while testing them out in a demo project. **Do not use npm link** instead use yarn linking
 
 ```
 yarn link
