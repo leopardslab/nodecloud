@@ -23,7 +23,7 @@ The execution of the generator starts form the `main.ts` file, where the basic i
 
 ## Structure of `node-cloud.yml` file
 
--   AWS
+- AWS
 
 ```
 AWS:
@@ -35,7 +35,7 @@ AWS:
   <img src="https://raw.githubusercontent.com/rajitha1998/waterme-Project/master/aws_diagram.png" />
 </p>
 
--   Azure
+- Azure
 
 ```
 Azure:
@@ -47,7 +47,7 @@ Azure:
   <img src="https://raw.githubusercontent.com/rajitha1998/waterme-Project/master/azure_diagram.jpeg" />
 </p>
 
--   Google Cloud (client based)
+- Google Cloud (client based)
 
 ```
 GCP:
@@ -67,7 +67,7 @@ GCP:
   <img src="https://raw.githubusercontent.com/rajitha1998/waterme-Project/master/gcp_client_based_diagram.jpeg" />
 </p>
 
--   Google Cloud (class based)
+- Google Cloud (class based)
 
 ```
 GCP:
@@ -82,7 +82,7 @@ GCP:
 
 For the class-based SDKs there is a minor change in the `node-cloud.yml` to record the main class of an SDK. For the above scenario, it’s the DNS class.
 
--   Digital Ocean
+- Digital Ocean
 
 ```
 DO:
@@ -106,11 +106,11 @@ These functions are located in the generators of the each cloud providers. Each 
 
 This is the most important part of the code generator tool. Currently, there are four transformers. Two transformers for Google Cloud, and one each for AWS and Azure. All of the transformers runs three main transformations.
 
--   `addFunctions`: In this transformation the basic structure of the code is created. Method Nodes are created to the number of functions in the `classData` object. If there are imports related to the class those statments are also added to the dummy **Abstract Syntax Tree**.
+- `addFunctions`: In this transformation the basic structure of the code is created. Method Nodes are created to the number of functions in the `classData` object. If there are imports related to the class those statments are also added to the dummy **Abstract Syntax Tree**.
 
--   `addIdentifiers`: In this transformation all the Identifier nodes are updated. After this transformation the code is logically compelete. All the neccessary code parts are added and finalized such as parameter names, parameter types, client names, class name, package names, SDK function names etc.
+- `addIdentifiers`: In this transformation all the Identifier nodes are updated. After this transformation the code is logically compelete. All the neccessary code parts are added and finalized such as parameter names, parameter types, client names, class name, package names, SDK function names etc.
 
--   `addComments`: This transformation aims to auto-generate the API documentation. All the comments are added to the structure required by `JSDoc`. The `@category` is used to categorize the generated classes depending on the cloud provider. This tag is from the `better-docs` template used with `JSDoc`.
+- `addComments`: This transformation aims to auto-generate the API documentation. All the comments are added to the structure required by `JSDoc`. The `@category` is used to categorize the generated classes depending on the cloud provider. This tag is from the `better-docs` template used with `JSDoc`.
 
 ## Understanding the directory structure of generator
 
@@ -136,4 +136,4 @@ transformer which transforms the dummy class into an working Nodecloud class for
 
 ## Running the code generation tool
 
--   To build classes run `tsc main && node main` or 'yarn run tool' if inside generator directory and `yarn run generator` if inside nodecloud directory.
+- To build classes run `tsc main && node main` or 'yarn run tool' if inside generator directory and `yarn run generator` if inside nodecloud directory.
