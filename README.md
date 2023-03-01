@@ -224,7 +224,7 @@ const ncProviders = nodeCloud.getProviders(options);
 
 NodeCloud relies on the passionate members of its community to keep delivering impactful tools to people all over the world. Contributions of any kind are welcome!
 
-You can help us in many ways. Including new features, bug fixing, error reporting and documentation. Before contributing, be sure to consult NodeClouds's contribution guidelines. As a member of our community, you must abide by our Code Of Conduct.
+You can help us in many ways. Including new features, bug fixing, error reporting and documentation. Before contributing, be sure to consult NodeClouds's contribution guidelines. As a member of our community, you must abide by our [Code Of Conduct](./CODE_OF_CONDUCT.md).
 
 ### 💻 Development setup
 
