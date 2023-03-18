@@ -118,6 +118,16 @@ Kubernetes:
     deleteNodegroup: kubernetes.d.ts deleteNodePool
     describeNodeGroup: kubernetes.d.ts getNodePoolById
     listNodegroups: kubernetes.d.ts getNodePools
+  Oracle:
+    create: conatinerengine createCluster
+    delete: conatinerengine deleteCluster
+    listClusters: conatinerengine listClusters
+    describeCluster: conatinerengine getCluster
+    createNodeGroup: conatinerengine createNodePool
+    deleteNodegroup: conatinerengine deleteNodePool
+    describeNodeGroup: conatinerengine getNodePool
+    listNodegroups: conatinerengine listNodePools
+
 
 Monitoring:
   GCP:
