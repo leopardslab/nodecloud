@@ -237,7 +237,12 @@ NoSql:
     getClusters: databases.d.ts getAllClusters
     getCluster: databases.d.ts getClusterById
     updateCluster: databases.d.ts resizeCluster
-
+  Oracle:
+    createTable: nosql createTable
+    createItem: nosql createIndex
+    deleteItem: nosql deleteIndex
+    query: nosql query
+    deleteTable: nosql deleteTable
 DNS:
   AWS:
     createZone: route53.d.ts createHostedZone
@@ -262,6 +267,12 @@ DNS:
     getRecords: domains.d.ts getAllRecords
     getRecord: domains.d.ts getRecord
     changeRecordSets: domains.d.ts updateRecord
+  Oracle:
+    createZone: dns createZone
+    deleteZone: dns deleteZone
+    listZones: dns listZones
+    changeRecordSets: dns  updateZoneRecords
+  
 
 LoadBalancer:
   AWS:
