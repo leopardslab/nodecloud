@@ -43,6 +43,12 @@ StorageBucket:
     list: storage storage.d.ts getBuckets
     upload: storage bucket.d.ts upload
     makePublic: storage file.d.ts makePublic
+   Oracle:
+    create: objectstorage createBucket
+    delete:  objectstorage deleteBucket
+    list: objectstorage listBuckets
+    listObjects: objectstorage listObjects
+    deleteFile: objectstorage deleteObject
 
 PaaS:
   AWS:
@@ -127,7 +133,7 @@ Kubernetes:
     deleteNodegroup: conatinerengine deleteNodePool
     describeNodeGroup: conatinerengine getNodePool
     listNodegroups: conatinerengine listNodePools
-
+    describeNodeGroup: containerengine getNodePool
 
 Monitoring:
   GCP:
@@ -149,7 +155,12 @@ Monitoring:
     updateAlarm: arm-monitor alertRules.d.ts update
     listAlarms: arm-monitor alertRules.d.ts listBySubscription
     getMetricData: arm-monitor alertRules.d.ts get
-
+  Oracle:
+    createAlarm: monitoring createAlarm
+    deleteAlarm: monitoring deleteAlarm
+    updateAlarm: monitoring updateAlarm 
+    listAlarms: monitoring listAlarms
+    getMetricData: monitoring listMetrics
 Container:
   AWS:
     create: ecs.d.ts createCluster

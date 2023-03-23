@@ -7,7 +7,7 @@ export function getAST(sdkpkgName) {
     try {
       const file = path.join(
         __dirname,
-        `../../../node_modules/oci-${sdkpkgName.toLowerCase()}/lib/client` 
+        `../../../node_modules/oci-${sdkpkgName.toLowerCase()}/lib/client.d.ts` 
       );
       const ast = createSourceFile(  
         file,
