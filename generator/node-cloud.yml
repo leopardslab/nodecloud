@@ -292,6 +292,11 @@ LoadBalancer:
     delete: load-balancers.d.ts delete
     list: load-balancers.d.ts getAll
     update: load-balancers.d.ts update
+  Oracle:
+    create: loadbalancer createLoadBalancer
+    delete: loadbalancer deleteLoadBalancer
+    list: loadbalancer listLoadBalancers
+    update: loadbalancer updateLoadBalancer
 
 IAM:
   AWS:
