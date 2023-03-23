@@ -58,5 +58,8 @@
       "pre-commit": "lerna run test && lerna run prettier && lerna run lint",
       "pre-push": "lerna run test"
     }
+  },
+  "dependencies": {
+    "typescript": "^4.9.5"
   }
 }
