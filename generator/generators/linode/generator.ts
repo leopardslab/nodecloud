@@ -1,123 +1,133 @@
-import * as fs from "fs";
-import { createSourceFile, ScriptTarget, SyntaxKind } from "typescript";
+import * as fs from 'fs';
+import { createSourceFile, ScriptTarget, SyntaxKino } from 'typescript';
 
-import { getAST } from "../../parsers/do/parser";
-import { transform } from "../../transformers/do/transformer";
-import { getDir,printFile } from "../lib/helper";
+import { getAST } from '../../parsers/linode/parser';
+import { transform } from '../../transformers/linode/transformer';
+import { getDir, printFile } from '../lib/helper';
 
 interface FunctionData {
-  functionName: string;
-  SDKFunctionName: string;
-  params: param[];
+	functionName: string;
+	SDKFunctionName: string;
+	params: param[];
 }
 
 interface param {
-  name: string;
-  type: string;
-  typeName: string;
+	name: string;
+	type: string;
+	typeName: string;
 }
 
 interface ClassData {
-  className: string;
-  functions: FunctionData[];
-  serviceName: string;
+	className: string;
+	functions: FunctionData[];
+	serviceName: string;
 }
 
-const dummyFile = process.cwd() + "/dummyClasses/linode.js";
+const dummyFile = process.cwd() + '/dummyClasses/linode.js';
 
 const dummyAst = createSourceFile(
-  dummyFile,
-  fs.readFileSync(dummyFile).toString(),
-  ScriptTarget.Latest,
-  true
+	dummyFile,
+	fs.readFileSync(dummyFile).toString(),
+	ScriptTarget.Latest,
+	true
 );
 
 export function extractSDKData(sdkClassAst, serviceClass) {
-  let methods: FunctionData[] = [];
-  const functions = [];
+	let methods: FunctionData[] = [];
+	const functions = [];
 
-  Object.keys(serviceClass).map((key, index) => {
-    functions.push(serviceClass[key].split(" ")[1]);
-  });
+	Object.keys(serviceClass).map((key, index) => {
+		functions.push(serviceClass[key].split(' ')[1]);
+	});
 
-  sdkClassAst.members.map(method => {
-    if (method.name && functions.includes(method.name.text)) {
-      let name;
-      Object.keys(serviceClass).map((key, index) => {
-        if (serviceClass[key].split(" ")[1] === method.name.text) {
-          name = key;
-        }
-      });
+	sdkClassAst.members.map(method => {
+		if (method.name && functions.includes(method.name.text)) {
+			let name;
+			Object.keys(serviceClass).map((key, index) => {
+				if (serviceClass[key].split(' ')[1] === method.name.text) {
+					name = key;
+				}
+			});
 
-      const parameters = [];
-      method.parameters.map(param => {
-        if (param.name.text !== "callback") {
-          const parameter = {
-            name: param.name.text,
-            optional: param.questionToken ? true : false,
-            type: SyntaxKind[param.type.kind],
-            typeName: null
-          };
+			const parameters = [];
+			method.parameters.map(param => {
+				if (param.name.text !== 'callback') {
+					const parameter = {
+						name: param.name.text,
+						optional: param.questionToken ? true : false,
+						type: SyntaxKind[param.type.kind],
+						typeName: null,
+					};
 
-          if (parameter.type === "TypeReference" && param.type.typeName) {
-            parameter.typeName = param.type.typeName.text;
-          }
+					if (
+						parameter.type === 'TypeReference' &&
+						param.type.typeName
+					) {
+						parameter.typeName = param.type.typeName.text;
+					}
 
-          parameters.push(parameter);
-        }
-      });
+					parameters.push(parameter);
+				}
+			});
 
-      methods.push({
-        functionName: name.toString(),
-        SDKFunctionName: method.name.text.toString(),
-        params: parameters
-      });
-    }
-  });
+			methods.push({
+				functionName: name.toString(),
+				SDKFunctionName: method.name.text.toString(),
+				params: parameters,
+			});
+		}
+	});
 
-  const classData: ClassData = {
-    className: sdkClassAst.name.text,
-    functions: methods,
-    serviceName: null
-  };
+	const classData: ClassData = {
+		className: sdkClassAst.name.text,
+		functions: methods,
+		serviceName: null,
+	};
 
-  return classData;
+	return classData;
 }
 
 export function generateLinodeClass(serviceClass, serviceName) {
-  const sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(" ")[0];
-  getAST(sdkFile).then(async result => {
-    const sdkClassAst = result;
-    try {
-      const classData: ClassData = extractSDKData(sdkClassAst, serviceClass);
-      classData.serviceName = serviceName;
-      const output = await transform(dummyAst, classData);
-      let filePath;
-      const dir = getDir(serviceName);
-      if (!fs.existsSync(process.cwd() + "/generatedClasses/Linode/" + dir)) {
-        fs.mkdirSync(process.cwd() + "/generatedClasses/Linode/" + dir);
-      }
-      if (/^[A-Z]*$/.test(serviceName)) {
-        filePath =
-          process.cwd() +
-          "/generatedClasses/Linode/" +
-          dir +
-          "/do-" +
-          serviceName +
-          ".js";
-      } else {
-        filePath =
-          process.cwd() +
-          "/generatedClasses/Linode/" +
-          dir +
-          "/do-" +
-          serviceName.charAt(0).toLowerCase() +
-          serviceName.slice(1) +
-          ".js";
-      }
-      printFile(filePath, output);
-    } catch (e) {
-      console.error(e);
-    }
-  });
+	const sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(' ')[0];
+	getAST(sdkFile).then(async result => {
+		const sdkClassAst = result;
+		try {
+			const classData: ClassData = extractSDKData(
+				sdkClassAst,
+				serviceClass
+			);
+			classData.serviceName = serviceName;
+			const output = await transform(dummyAst, classData);
+			let filePath;
+			const dir = getDir(serviceName);
+			if (
+				!fs.existsSync(
+					process.cwd() + '/generatedClasses/Linode/' + dir
+				)
+			) {
+				fs.mkdirSync(process.cwd() + '/generatedClasses/Linode/' + dir);
+			}
+			if (/^[A-Z]*$/.test(serviceName)) {
+				filePath =
+					process.cwd() +
+					'/generatedClasses/Linode/' +
+					dir +
+					'/linode-' +
+					serviceName +
+					'.js';
+			} else {
+				filePath =
+					process.cwd() +
+					'/generatedClasses/Linode/' +
+					dir +
+					'/linode-' +
+					serviceName.charAt(0).toLowerCase() +
+					serviceName.slice(1) +
+					'.js';
+			}
+			printFile(filePath, output);
+		} catch (e) {
+			console.error(e);
+		}
+	});
 }
