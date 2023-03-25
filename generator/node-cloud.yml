@@ -23,11 +23,6 @@ ComputeInstance:
     destroy: droplets.d.ts deleteById
     start: droplets.d.ts requestAction
     stop: droplets.d.ts requestAction
-  Linode:
-    create: linodes types.ts createLinode
-    list: linodes types.ts getLinodes
-    destroy: linodes types.ts deleteLinode
-    update: linodes types.ts updateLinode
 
 StorageBucket:
   AWS:
@@ -48,12 +43,6 @@ StorageBucket:
     list: storage storage.d.ts getBuckets
     upload: storage bucket.d.ts upload
     makePublic: storage file.d.ts makePublic
-  Linode:
-    create: object-storage types.ts createBucket
-    delete: object-storage types.ts deleteBucket
-    list: object-storage types.ts getBuckets
-
-
 
 PaaS:
   AWS:
@@ -129,13 +118,6 @@ Kubernetes:
     deleteNodegroup: kubernetes.d.ts deleteNodePool
     describeNodeGroup: kubernetes.d.ts getNodePoolById
     listNodegroups: kubernetes.d.ts getNodePools
-  Linode:
-    create: kubernetes types.ts createKubernetesCluster
-    delete: kubernetes types.ts deleteKubernetesCluster
-    getNodePool: kubernetes types.ts getNodePool
-    createNodePool: kubernetes types.ts createNodePool
-    updateNodePool: kubernetes types.ts updateNodePool
-    deleteNodePool: kubernetes types.ts deleteNodePool
 
 Monitoring:
   GCP:
@@ -278,11 +260,6 @@ LoadBalancer:
     delete: load-balancers.d.ts delete
     list: load-balancers.d.ts getAll
     update: load-balancers.d.ts update
-  Linode:
-    create: nodebalancers types.ts createNodeBalancer
-    delete: nodebalancers types.ts deleteNodeBalancer
-    list: nodebalancers types.ts getNodeBalancers
-    
 
 IAM:
   AWS:
