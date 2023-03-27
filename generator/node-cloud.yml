@@ -23,7 +23,6 @@ ComputeInstance:
     destroy: droplets.d.ts deleteById
     start: droplets.d.ts requestAction
     stop: droplets.d.ts requestAction
-
 StorageBucket:
   AWS:
     create: s3.d.ts createBucket
@@ -43,6 +42,12 @@ StorageBucket:
     list: storage storage.d.ts getBuckets
     upload: storage bucket.d.ts upload
     makePublic: storage file.d.ts makePublic
+  Oracle:
+    create: client.d.ts createBucket
+    delete: client.d.ts deleteBucket
+    get: client.d.ts getBucket
+    list: client.d.ts listBuckets
+    reencrypt: client.d.ts reencryptBucket
 
 PaaS:
   AWS:
@@ -118,6 +123,15 @@ Kubernetes:
     deleteNodegroup: kubernetes.d.ts deleteNodePool
     describeNodeGroup: kubernetes.d.ts getNodePoolById
     listNodegroups: kubernetes.d.ts getNodePools
+  Oracle:
+    create: client.d.ts createCluster
+    delete: client.d.ts deleteCluster
+    listClusters: client.d.ts listClusters
+    describeCluster: client.d.ts getCluster
+    createNodePool: client.d.ts createNodePool
+    deleteNodePool: client.d.ts deleteNodePool
+    deleteNode: client.d.ts deleteNode
+    describeNodePool: client.d.ts getNodePool
 
 Monitoring:
   GCP:
@@ -151,6 +165,14 @@ Container:
     delete: arm-containerservice containerServices.d.ts deleteMethod
     describe: arm-containerservice containerServices.d.ts get
     list: arm-containerservice containerServices.d.ts list
+  Oracle:
+    create: client.d.ts createContainerInstance
+    delete: client.d.ts deleteContainerInstance
+    start: client.d.ts startContainerInstance
+    stop: client.d.ts stopContainerInstance
+    describe: client.d.ts getContainer
+    list: client.d.ts listContainers
+
 
 NoSqlIndexed:
   AWS:

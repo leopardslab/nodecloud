@@ -13,7 +13,7 @@
     "test": "cross-env TS_NODE_FILES=true mocha --exit --require ts-node/register --colors test/**/*.ts",
     "tool": "tsc main && node main",
     "lint": "eslint .",
-		"lint-fix": "eslint --fix ."
+    "lint-fix": "eslint --fix ."
   },
   "dependencies": {
     "@azure/arm-appservice": "^6.0.0",
@@ -37,6 +37,7 @@
     "js-yaml": "^3.14.0",
     "key-mirror": "^1.0.1",
     "lodash": "^4.17.19",
+    "oci-sdk": "^2.55.0",
     "typescript": "^3.9.3"
   }
 }
