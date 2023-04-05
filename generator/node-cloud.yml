@@ -43,6 +43,12 @@ StorageBucket:
     list: storage storage.d.ts getBuckets
     upload: storage bucket.d.ts upload
     makePublic: storage file.d.ts makePublic
+   Oracle:
+    create: objectstorage createBucket
+    delete:  objectstorage deleteBucket
+    list: objectstorage listBuckets
+    listObjects: objectstorage listObjects
+    deleteFile: objectstorage deleteObject
 
 PaaS:
   AWS:
@@ -118,6 +124,16 @@ Kubernetes:
     deleteNodegroup: kubernetes.d.ts deleteNodePool
     describeNodeGroup: kubernetes.d.ts getNodePoolById
     listNodegroups: kubernetes.d.ts getNodePools
+  Oracle:
+    create: conatinerengine createCluster
+    delete: conatinerengine deleteCluster
+    listClusters: conatinerengine listClusters
+    describeCluster: conatinerengine getCluster
+    createNodeGroup: conatinerengine createNodePool
+    deleteNodegroup: conatinerengine deleteNodePool
+    describeNodeGroup: conatinerengine getNodePool
+    listNodegroups: conatinerengine listNodePools
+    describeNodeGroup: containerengine getNodePool
 
 Monitoring:
   GCP:
@@ -139,7 +155,12 @@ Monitoring:
     updateAlarm: arm-monitor alertRules.d.ts update
     listAlarms: arm-monitor alertRules.d.ts listBySubscription
     getMetricData: arm-monitor alertRules.d.ts get
-
+  Oracle:
+    createAlarm: monitoring createAlarm
+    deleteAlarm: monitoring deleteAlarm
+    updateAlarm: monitoring updateAlarm 
+    listAlarms: monitoring listAlarms
+    getMetricData: monitoring listMetrics
 Container:
   AWS:
     create: ecs.d.ts createCluster
@@ -216,7 +237,12 @@ NoSql:
     getClusters: databases.d.ts getAllClusters
     getCluster: databases.d.ts getClusterById
     updateCluster: databases.d.ts resizeCluster
-
+  Oracle:
+    createTable: nosql createTable
+    createItem: nosql createIndex
+    deleteItem: nosql deleteIndex
+    query: nosql query
+    deleteTable: nosql deleteTable
 DNS:
   AWS:
     createZone: route53.d.ts createHostedZone
@@ -241,6 +267,12 @@ DNS:
     getRecords: domains.d.ts getAllRecords
     getRecord: domains.d.ts getRecord
     changeRecordSets: domains.d.ts updateRecord
+  Oracle:
+    createZone: dns createZone
+    deleteZone: dns deleteZone
+    listZones: dns listZones
+    changeRecordSets: dns  updateZoneRecords
+  
 
 LoadBalancer:
   AWS:
@@ -260,6 +292,11 @@ LoadBalancer:
     delete: load-balancers.d.ts delete
     list: load-balancers.d.ts getAll
     update: load-balancers.d.ts update
+  Oracle:
+    create: loadbalancer createLoadBalancer
+    delete: loadbalancer deleteLoadBalancer
+    list: loadbalancer listLoadBalancers
+    update: loadbalancer updateLoadBalancer
 
 IAM:
   AWS:
