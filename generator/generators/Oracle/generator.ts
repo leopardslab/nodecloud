@@ -22,7 +22,7 @@ interface ClassData {
   serviceName: string;
 }
 
-const dummyFile = process.cwd() + "/dummyClasses/do.js";
+const dummyFile = process.cwd() + "/dummyClasses/oracle.js";
 
 const dummyAst = createSourceFile(
   dummyFile,
@@ -93,23 +93,23 @@ export function generateOracleClass(serviceClass, serviceName) {
       const output = await transform(dummyAst, classData);
       let filePath;
       const dir = getDir(serviceName);
-      if (!fs.existsSync(process.cwd() + "/generatedClasses/DO/" + dir)) {
-        fs.mkdirSync(process.cwd() + "/generatedClasses/DO/" + dir);
+      if (!fs.existsSync(process.cwd() + "/generatedClasses/Oracle/" + dir)) {
+        fs.mkdirSync(process.cwd() + "/generatedClasses/Oracle/" + dir);
       }
       if (/^[A-Z]*$/.test(serviceName)) {
         filePath =
           process.cwd() +
-          "/generatedClasses/DO/" +
+          "/generatedClasses/Oracle/" +
           dir +
-          "/do-" +
+          "/oracle-" +
           serviceName +
           ".js";
       } else {
         filePath =
           process.cwd() +
-          "/generatedClasses/DO/" +
+          "/generatedClasses/Oracle/" +
           dir +
-          "/do-" +
+          "/oracle-" +
           serviceName.charAt(0).toLowerCase() +
           serviceName.slice(1) +
           ".js";
