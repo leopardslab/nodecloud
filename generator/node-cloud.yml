@@ -328,15 +328,11 @@
 #         list: storage storage.d.ts getBuckets
 #         upload: storage bucket.d.ts upload
 #         makePublic: storage file.d.ts makePublic
-    Oracle:
-        create: objectstorage createBucket
-        delete: objectstorage deleteBucket
-        list: objectstorage listBuckets
-        update: objectstorage updateBucket
-        
-    
-        
-
+Oracle:
+    create: objectstorage createBucket
+    delete: objectstorage deleteBucket
+    list: objectstorage listBuckets
+    update: objectstorage updateBucket
 # Translation:
 #     AWS:
 #         translate: translate.d.ts translateText
@@ -422,4 +418,4 @@
 #         delete: volumes.d.ts deleteById
 #         list: volumes.d.ts getAll
 #         describe: volumes.d.ts getById
-    
+
