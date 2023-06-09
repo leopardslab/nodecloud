@@ -23,7 +23,6 @@ export function getAST(sdkFileInfo) {
 
 			await ast.forEachChild(child => {
 				console.log('Linode', SyntaxKind[child.kind]);
-
 				if (SyntaxKind[child.kind] === 'FirstStatement') {
 					cloned = Object.assign({}, child);
 				}

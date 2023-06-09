@@ -119,6 +119,14 @@ Kubernetes:
     describeNodeGroup: kubernetes.d.ts getNodePoolById
     listNodegroups: kubernetes.d.ts getNodePools
 
+  Linode:
+    create: kubernetes kubernetes.d.ts createKubernetesCluster
+    delete: kubernetes kubernetes.d.ts deleteKubernetesCluster
+    getNodePool: kubernetes nodePool.d.ts getNodePool
+    createNodePool: kubernetes nodePool.d.ts createNodePool
+    updateNodePool: kubernetes nodePool.d.ts updateNodePool
+    deleteNodePool: kubernetes nodePool.d.ts deleteNodePool
+
 Monitoring:
   GCP:
     createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
