@@ -8,10 +8,12 @@ export function getAST(sdkFileInfo) {
 			const file = path.join(
 				__dirname,
 				'../../../node_modules/@linode/api-v4/lib/' +
-					sdkFileInfo.pkgName.toLowerCase() +
+					sdkFileInfo.pkgName +
 					'/' +
-					sdkFileInfo.fileName.toLowerCase()
+					sdkFileInfo.fileName
 			);
+			console.log(file);
+
 			const ast = createSourceFile(
 				file,
 				fs.readFileSync(file).toString(),
@@ -19,15 +21,28 @@ export function getAST(sdkFileInfo) {
 				true
 			);
 
-			let cloned = null;
-
+			let cloned = [];
+			let tmp = null;
 			await ast.forEachChild(child => {
-				console.log('Linode', SyntaxKind[child.kind]);
+				// fs.writeFile('test.txt', SyntaxKind[child.kind], null);
+				// console.log(SyntaxKind[child.kind]);
+
+				// console.log('Linode', SyntaxKind[child.kind]);
+				// console.log("child",child);
+
 				if (SyntaxKind[child.kind] === 'FirstStatement') {
-					cloned = Object.assign({}, child);
+					// console.log("child",child);
+					// resolve(false)
+					tmp = Object.assign({}, child);
+					cloned.push(tmp.declarationList.declarations[0]);
+
+					console.log(
+						'name',
+						tmp.declarationList.declarations[0].type.parameters[0]
+					);
 				}
 			});
-			console.log('cloned', cloned);
+			// console.log('cloned', cloned);
 
 			if (!cloned) {
 				reject(new Error('Function not found!'));
