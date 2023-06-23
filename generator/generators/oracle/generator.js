@@ -36,47 +36,42 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getAST = void 0;
-var fs = require("fs");
-var path = require("path");
-var typescript_1 = require("typescript");
-function getAST(sdkFileInfo) {
+exports.generateOracleClass = exports.extractSDKData = void 0;
+var parser_1 = require("../../parsers/oracle/parser");
+function extractSDKData(sdkClassAst, serviceClass) {
+    var methods = [];
+    var functions = [];
+    Object.keys(serviceClass).map(function (key, index) {
+        functions.push(serviceClass[key].split(" ")[1]);
+    });
+    console.log(functions);
+    // console.log(Array.from(sdkClassAst.members));
+    // Array.from(sdkClassAst.members).map(method=>{
+    //     // console.log(method.name.escapedText);
+    // })
+    sdkClassAst.members.map(function (method) {
+        console.log(method.name.kind);
+    });
+    // console.log(sdkClassAst.members[5].name.text);
+    // const/
+}
+exports.extractSDKData = extractSDKData;
+function generateOracleClass(serviceClass, serviceName) {
     var _this = this;
-    return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-        var file, ast, cloned_1, error_1;
+    var sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(" ")[0];
+    console.log(sdkFile);
+    parser_1.getAST(sdkFile).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+        var sdkClassAst;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    file = path.join(__dirname, "../../../node_modules/@azure/" + sdkFileInfo.pkgName + "/esm/operations/" + sdkFileInfo.fileName);
-                    ast = typescript_1.createSourceFile(file, fs.readFileSync(file).toString(), typescript_1.ScriptTarget.Latest, true);
-                    cloned_1 = null;
-                    return [4 /*yield*/, ast.forEachChild(function (child) {
-                            if (typescript_1.SyntaxKind[child.kind] === "ClassDeclaration") {
-                                cloned_1 = Object.assign({}, child);
-                            }
-                        })];
-                case 1:
-                    _a.sent();
-                    if (!cloned_1) {
-                        reject(new Error("Class not found!"));
-                    }
-                    else {
-                        resolve(cloned_1);
-                    }
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_1 = _a.sent();
-                    if (error_1.code === "ENOENT") {
-                        reject(new Error("File not found!"));
-                    }
-                    else {
-                        reject(error_1);
-                    }
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+            sdkClassAst = result;
+            try {
+                // const classData: ClassData = extractSDKData(sdkClassAst,serviceClass)
+                extractSDKData(sdkClassAst, serviceClass);
             }
+            catch (error) {
+            }
+            return [2 /*return*/];
         });
     }); });
 }
-exports.getAST = getAST;
+exports.generateOracleClass = generateOracleClass;

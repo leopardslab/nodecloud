@@ -40,7 +40,7 @@ exports.getAST = void 0;
 var fs = require("fs");
 var path = require("path");
 var typescript_1 = require("typescript");
-function getAST(sdkFileInfo) {
+function getAST(sdkFileName) {
     var _this = this;
     return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
         var file, ast, cloned_1, error_1;
@@ -48,18 +48,19 @@ function getAST(sdkFileInfo) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    file = path.join(__dirname, "../../../node_modules/@azure/" + sdkFileInfo.pkgName + "/esm/operations/" + sdkFileInfo.fileName);
+                    file = path.join(__dirname, "../../../node_modules/oci-" + sdkFileName.toLowerCase() + "/lib/client.d.ts");
                     ast = typescript_1.createSourceFile(file, fs.readFileSync(file).toString(), typescript_1.ScriptTarget.Latest, true);
                     cloned_1 = null;
                     return [4 /*yield*/, ast.forEachChild(function (child) {
-                            if (typescript_1.SyntaxKind[child.kind] === "ClassDeclaration") {
+                            // console.log(SyntaxKind[child.kind]);
+                            if (typescript_1.SyntaxKind[child.kind] === 'ClassDeclaration') {
                                 cloned_1 = Object.assign({}, child);
                             }
                         })];
                 case 1:
                     _a.sent();
                     if (!cloned_1) {
-                        reject(new Error("Class not found!"));
+                        reject(new Error('Class not found!'));
                     }
                     else {
                         resolve(cloned_1);
@@ -67,8 +68,8 @@ function getAST(sdkFileInfo) {
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
-                    if (error_1.code === "ENOENT") {
-                        reject(new Error("File not found!"));
+                    if (error_1.code === 'ENOENT') {
+                        reject(new Error('File not found!'));
                     }
                     else {
                         reject(error_1);

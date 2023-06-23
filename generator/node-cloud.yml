@@ -311,7 +311,7 @@
 #         detachGroupPolicy: iam.d.ts detachGroupPolicy
 #         describe: iam.d.ts getGroup
 
-# ArchivalStorage:
+ArchivalStorage:
 #     AWS:
 #         create: glacier.d.ts createVault
 #         delete: glacier.d.ts deleteVault
@@ -319,20 +319,20 @@
 #         upload: glacier.d.ts initiateMultipartUpload
 #         deleteFiles: glacier.d.ts deleteArchive
 
-#     GCP:
-#         # Use storage class as coldline
-#         mainClass: Storage
-#         create: storage storage.d.ts createBucket
-#         deleteFiles: storage bucket.d.ts deleteFiles
-#         delete: storage bucket.d.ts delete
-#         list: storage storage.d.ts getBuckets
-#         upload: storage bucket.d.ts upload
-#         makePublic: storage file.d.ts makePublic
-Oracle:
-    create: objectstorage createBucket
-    delete: objectstorage deleteBucket
-    list: objectstorage listBuckets
-    update: objectstorage updateBucket
+    # GCP:
+    #     # Use storage class as coldline
+    #     mainClass: Storage
+    #     create: storage storage.d.ts createBucket
+    #     deleteFiles: storage bucket.d.ts deleteFiles
+    #     delete: storage bucket.d.ts delete
+    #     list: storage storage.d.ts getBuckets
+    #     upload: storage bucket.d.ts upload
+    #     makePublic: storage file.d.ts makePublic
+    Oracle:
+        create: objectstorage createBucket
+        delete: objectstorage deleteBucket
+        list: objectstorage listBuckets
+        update: objectstorage updateBucket
 # Translation:
 #     AWS:
 #         translate: translate.d.ts translateText

@@ -19,9 +19,12 @@ export function getAST(sdkFileName) {
 			let cloned = null;
 
 			await ast.forEachChild(child => {
+				// console.log(SyntaxKind[child.kind]);
+				
 				if (SyntaxKind[child.kind] === 'ClassDeclaration') {
 					cloned = Object.assign({}, child);
 				}
+				
 			});
 
 			if (!cloned) {
