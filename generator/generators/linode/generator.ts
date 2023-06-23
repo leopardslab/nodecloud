@@ -1,5 +1,5 @@
 import { SyntaxKind } from 'typescript';
-// import { getAST } from '../../parsers/linode/parser';
+import { getAST } from '../../parsers/linode/parser';
 
 interface SDKClassData {
 	pkgName: string;
@@ -43,7 +43,7 @@ export function extractSDKData(sdkAst, serviceClass) {
 		if (methodName && functions.includes(methodName)) {
 			let name;
 			Object.keys(serviceClass).map((key, index) => {
-				if (serviceClass.split(' ')[2] === methodName) {
+				if (serviceClass[key].split(' ')[2] === methodName) {
 					name = key;
 				}
 			});
@@ -75,13 +75,11 @@ export function extractSDKData(sdkAst, serviceClass) {
 			});
 		}
 	});
-
 	const classData: ClassData = {
 		className: '',
 		functions: methods,
 		serviceName: null,
 	};
-
 	return classData;
 }
 
@@ -113,20 +111,20 @@ export async function generateLinodeClass(serviceClass, serviceName) {
 				.map(method => method.SDKFunctionName),
 		};
 	});
-	console.log(sdkFiles);
-
+	
 	sdkFiles.map(async file => {
-		// getAST(file).then(async result => {
-		// 	const sdkAst = result;
-		// 	try {
-		// 		const classData: ClassData = extractSDKData(
-		// 			sdkAst,
-		// 			serviceClass
-		// 		);
-		// 		classData.serviceName = serviceName;
-		// 	} catch (e) {
-		// 		console.error(e);
-		// 	}
-		// });
+		getAST(file).then(async result => {
+			const sdkAst = result;
+			try {
+				const classData: ClassData = extractSDKData(
+					sdkAst,
+					serviceClass
+				);
+				classData.serviceName = serviceName;
+				
+			} catch (e) {
+				console.error(e);
+			}
+		});
 	});
 }

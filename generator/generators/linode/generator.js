@@ -36,110 +36,109 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.generateAWSClass = exports.extractSDKData = void 0;
-var fs = require("fs");
+exports.generateLinodeClass = exports.extractSDKData = void 0;
 var typescript_1 = require("typescript");
-var parser_1 = require("../../parsers/aws/parser");
-var transformer_1 = require("../../transformers/aws/transformer");
-var helper_1 = require("../lib/helper");
-var dummyFile = process.cwd() + "/dummyClasses/aws.js";
-var dummyAst = typescript_1.createSourceFile(dummyFile, fs.readFileSync(dummyFile).toString(), typescript_1.ScriptTarget.Latest, true);
-function extractSDKData(sdkClassAst, serviceClass) {
+var parser_1 = require("../../parsers/linode/parser");
+function extractSDKData(sdkAst, serviceClass) {
     var methods = [];
     var functions = [];
     Object.keys(serviceClass).map(function (key, index) {
-        functions.push(serviceClass[key].split(" ")[1]);
+        functions.push(serviceClass[key].split(' ')[2]);
     });
-    sdkClassAst.members.map(function (method) {
-        if (method.name && functions.includes(method.name.text)) {
+    sdkAst.map(function (method) {
+        var methodName = method.name.escapedText;
+        if (methodName && functions.includes(methodName)) {
             var name_1;
             Object.keys(serviceClass).map(function (key, index) {
-                if (serviceClass[key].split(" ")[1] === method.name.text) {
+                if (serviceClass[key].split(' ')[2] === methodName) {
                     name_1 = key;
                 }
             });
             var parameters_1 = [];
-            method.parameters.map(function (param) {
-                if (param.name.text !== "callback") {
+            var methodParameters = method.type.parameters;
+            methodParameters.map(function (param) {
+                if (param.name.excapedText !== 'callback') {
                     var parameter = {
-                        name: param.name.text,
+                        name: param.name.escapedText,
                         optional: param.questionToken ? true : false,
                         type: typescript_1.SyntaxKind[param.type.kind],
                         typeName: null
                     };
-                    if (parameter.type === "TypeReference" && param.type.typeName) {
-                        parameter.typeName = param.type.typeName.right.text;
+                    // common type
+                    if (param.type.typeName) {
+                        parameter.typeName = param.type.typeName.excapedText;
                     }
                     parameters_1.push(parameter);
                 }
             });
             methods.push({
                 functionName: name_1.toString(),
-                SDKFunctionName: method.name.text.toString(),
+                SDKFunctionName: methodName,
                 params: parameters_1
             });
         }
     });
-    var groupedMethods = helper_1.groupers.aws(methods);
-    methods = helper_1.filters.aws(groupedMethods);
     var classData = {
-        className: sdkClassAst.name.text,
+        className: '',
         functions: methods,
         serviceName: null
     };
     return classData;
 }
 exports.extractSDKData = extractSDKData;
-function generateAWSClass(serviceClass, serviceName) {
-    var _this = this;
-    var sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(" ")[0];
-    parser_1.getAST(sdkFile).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-        var sdkClassAst, classData, output, filePath, dir, e_1;
+function generateLinodeClass(serviceClass, serviceName) {
+    return __awaiter(this, void 0, void 0, function () {
+        var methods, files, sdkFiles;
+        var _this = this;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    sdkClassAst = result;
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    classData = extractSDKData(sdkClassAst, serviceClass);
-                    classData.serviceName = serviceName;
-                    return [4 /*yield*/, transformer_1.transform(dummyAst, classData)];
-                case 2:
-                    output = _a.sent();
-                    filePath = void 0;
-                    dir = helper_1.getDir(serviceName);
-                    if (!fs.existsSync(process.cwd() + "/generatedClasses/AWS/" + dir)) {
-                        fs.mkdirSync(process.cwd() + "/generatedClasses/AWS/" + dir);
-                    }
-                    if (/^[A-Z]*$/.test(serviceName)) {
-                        filePath =
-                            process.cwd() +
-                                "/generatedClasses/AWS/" +
-                                dir +
-                                "/aws-" +
-                                serviceName +
-                                ".js";
-                    }
-                    else {
-                        filePath =
-                            process.cwd() +
-                                "/generatedClasses/AWS/" +
-                                dir +
-                                "/aws-" +
-                                serviceName.charAt(0).toLowerCase() +
-                                serviceName.slice(1) +
-                                ".js";
-                    }
-                    helper_1.printFile(filePath, output);
-                    return [3 /*break*/, 4];
-                case 3:
-                    e_1 = _a.sent();
-                    console.error(e_1);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
-            }
+            methods = [];
+            if (serviceClass == null)
+                return [2 /*return*/];
+            Object.keys(serviceClass).map(function (key, index) {
+                methods.push({
+                    pkgName: serviceClass[key].split(' ')[0],
+                    fileName: serviceClass[key].split(' ')[1],
+                    functionName: key,
+                    SDKFunctionName: serviceClass[key].split(' ')[2],
+                    params: [],
+                    returnType: null,
+                    client: null
+                });
+            });
+            files = Array.from(new Set(methods.map(function (method) { return method.fileName; })));
+            sdkFiles = files.map(function (file) {
+                return {
+                    fileName: file,
+                    pkgName: methods[0].pkgName,
+                    ast: null,
+                    client: null,
+                    sdkFunctionNames: methods
+                        .filter(function (method) { return method.fileName === file; })
+                        .map(function (method) { return method.SDKFunctionName; })
+                };
+            });
+            sdkFiles.map(function (file) { return __awaiter(_this, void 0, void 0, function () {
+                var _this = this;
+                return __generator(this, function (_a) {
+                    parser_1.getAST(file).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+                        var sdkAst, classData;
+                        return __generator(this, function (_a) {
+                            sdkAst = result;
+                            try {
+                                classData = extractSDKData(sdkAst, serviceClass);
+                                classData.serviceName = serviceName;
+                            }
+                            catch (e) {
+                                console.error(e);
+                            }
+                            return [2 /*return*/];
+                        });
+                    }); });
+                    return [2 /*return*/];
+                });
+            }); });
+            return [2 /*return*/];
         });
-    }); });
+    });
 }
-exports.generateAWSClass = generateAWSClass;
+exports.generateLinodeClass = generateLinodeClass;

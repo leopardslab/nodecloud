@@ -43,23 +43,39 @@ var typescript_1 = require("typescript");
 function getAST(sdkFileInfo) {
     var _this = this;
     return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-        var file, ast, cloned_1, error_1;
+        var file, ast, cloned_1, tmp_1, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    file = path.join(__dirname, "../../../node_modules/@azure/" + sdkFileInfo.pkgName + "/esm/operations/" + sdkFileInfo.fileName);
+                    file = path.join(__dirname, '../../../node_modules/@linode/api-v4/lib/' +
+                        sdkFileInfo.pkgName +
+                        '/' +
+                        sdkFileInfo.fileName);
                     ast = typescript_1.createSourceFile(file, fs.readFileSync(file).toString(), typescript_1.ScriptTarget.Latest, true);
-                    cloned_1 = null;
+                    cloned_1 = [];
+                    tmp_1 = null;
                     return [4 /*yield*/, ast.forEachChild(function (child) {
-                            if (typescript_1.SyntaxKind[child.kind] === "ClassDeclaration") {
-                                cloned_1 = Object.assign({}, child);
+                            // fs.writeFile('test.txt', SyntaxKind[child.kind], null);
+                            // console.log(SyntaxKind[child.kind]);
+                            // console.log('Linode', SyntaxKind[child.kind]);
+                            // console.log("child",child);
+                            if (typescript_1.SyntaxKind[child.kind] === 'FirstStatement') {
+                                // console.log("child",child);
+                                // resolve(false)
+                                tmp_1 = Object.assign({}, child);
+                                cloned_1.push(tmp_1.declarationList.declarations[0]);
+                                // console.log(
+                                // 	'name',
+                                // 	tmp.declarationList.declarations[0].type.parameters[0]
+                                // );
                             }
                         })];
                 case 1:
                     _a.sent();
+                    // console.log('cloned', cloned);
                     if (!cloned_1) {
-                        reject(new Error("Class not found!"));
+                        reject(new Error('Function not found!'));
                     }
                     else {
                         resolve(cloned_1);
@@ -67,8 +83,8 @@ function getAST(sdkFileInfo) {
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
-                    if (error_1.code === "ENOENT") {
-                        reject(new Error("File not found!"));
+                    if (error_1.code === 'ENOENT') {
+                        reject(new Error('File not found!'));
                     }
                     else {
                         reject(error_1);
