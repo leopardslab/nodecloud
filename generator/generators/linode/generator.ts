@@ -1,4 +1,5 @@
 import { SyntaxKind } from 'typescript';
+
 import { getAST } from '../../parsers/linode/parser';
 
 interface SDKClassData {
@@ -31,7 +32,7 @@ interface param {
 }
 
 export function extractSDKData(sdkAst, serviceClass) {
-	let methods: FunctionData[] = [];
+	const methods: FunctionData[] = [];
 	const functions = [];
 
 	Object.keys(serviceClass).map((key, index) => {
@@ -84,7 +85,7 @@ export function extractSDKData(sdkAst, serviceClass) {
 }
 
 export async function generateLinodeClass(serviceClass, serviceName) {
-	let methods: SDKClassData[] = [];
+	const methods: SDKClassData[] = [];
 	if (serviceClass == null) return;
 	Object.keys(serviceClass).map((key, index) => {
 		methods.push({
@@ -111,7 +112,7 @@ export async function generateLinodeClass(serviceClass, serviceName) {
 				.map(method => method.SDKFunctionName),
 		};
 	});
-	
+
 	sdkFiles.map(async file => {
 		getAST(file).then(async result => {
 			const sdkAst = result;
@@ -121,7 +122,6 @@ export async function generateLinodeClass(serviceClass, serviceName) {
 					serviceClass
 				);
 				classData.serviceName = serviceName;
-				
 			} catch (e) {
 				console.error(e);
 			}

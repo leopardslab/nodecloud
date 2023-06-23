@@ -5,7 +5,6 @@ import { createSourceFile, ScriptTarget, SyntaxKind } from 'typescript';
 export function getAST(sdkFileInfo) {
 	return new Promise(async (resolve, reject) => {
 		try {
-			
 			const file = path.join(
 				__dirname,
 				'../../../node_modules/@linode/api-v4/lib/' +
@@ -21,7 +20,7 @@ export function getAST(sdkFileInfo) {
 				true
 			);
 
-			let cloned = [];
+			const cloned = [];
 			let tmp = null;
 			await ast.forEachChild(child => {
 				// fs.writeFile('test.txt', SyntaxKind[child.kind], null);
@@ -41,7 +40,6 @@ export function getAST(sdkFileInfo) {
 					// 	tmp.declarationList.declarations[0].type.parameters[0]
 					// );
 				}
-
 			});
 			// console.log('cloned', cloned);
 

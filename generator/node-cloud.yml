@@ -77,47 +77,47 @@
 #     terminateEnvironment: arm-appservice appServiceEnvironments.d.ts deleteMethod
 
 Kubernetes:
-#   Azure:
-#     create: arm-containerservice managedClusters.d.ts createOrUpdate
-#     delete: arm-containerservice managedClusters.d.ts deleteMethod
-#     updateTags: arm-containerservice managedClusters.d.ts updateTags
-#     listClusters: arm-containerservice managedClusters.d.ts list
-#     describeCluster: arm-containerservice managedClusters.d.ts get
-#     createNodeGroup: arm-containerservice agentPools.d.ts createOrUpdate
-#     deleteNodegroup: arm-containerservice agentPools.d.ts deleteMethod
-#     describeNodeGroup: arm-containerservice agentPools.d.ts get
-#     listNodegroups: arm-containerservice agentPools.d.ts list
-#     updateConfig: arm-containerservice managedClusters.d.ts rotateClusterCertificates
-#   GCP:
-#     create: container v1 cluster_manager_client.d.ts createCluster
-#     delete: container v1 cluster_manager_client.d.ts deleteCluster
-#     listClusters: container v1 cluster_manager_client.d.ts listClusters
-#     describeCluster: container v1 cluster_manager_client.d.ts getCluster
-#     createNodeGroup: container v1 cluster_manager_client.d.ts createNodePool
-#     deleteNodegroup: container v1 cluster_manager_client.d.ts deleteNodePool
-#     describeNodeGroup: container v1 cluster_manager_client.d.ts getNodePool
-#     listNodegroups: container v1 cluster_manager_client.d.ts listNodePools
-#     updateConfig: container v1 cluster_manager_client.d.ts setAddonsConfig
-#   AWS:
-#     create: eks.d.ts createCluster
-#     delete: eks.d.ts deleteCluster
-#     listClusters: eks.d.ts listClusters
-#     describeCluster: eks.d.ts describeCluster
-#     updateTags: eks.d.ts tagResource
-#     createNodeGroup: eks.d.ts createNodegroup
-#     deleteNodegroup: eks.d.ts deleteNodegroup
-#     describeNodeGroup: eks.d.ts describeNodegroup
-#     listNodegroups: eks.d.ts listNodegroups
-#     updateConfig: eks.d.ts updateClusterConfig
-#   DO:
-#     create: kubernetes.d.ts create
-#     delete: kubernetes.d.ts delete
-#     listClusters: kubernetes.d.ts getClusters
-#     describeCluster: kubernetes.d.ts getById
-#     createNodeGroup: kubernetes.d.ts addNodePool
-#     deleteNodegroup: kubernetes.d.ts deleteNodePool
-#     describeNodeGroup: kubernetes.d.ts getNodePoolById
-#     listNodegroups: kubernetes.d.ts getNodePools
+    #   Azure:
+    #     create: arm-containerservice managedClusters.d.ts createOrUpdate
+    #     delete: arm-containerservice managedClusters.d.ts deleteMethod
+    #     updateTags: arm-containerservice managedClusters.d.ts updateTags
+    #     listClusters: arm-containerservice managedClusters.d.ts list
+    #     describeCluster: arm-containerservice managedClusters.d.ts get
+    #     createNodeGroup: arm-containerservice agentPools.d.ts createOrUpdate
+    #     deleteNodegroup: arm-containerservice agentPools.d.ts deleteMethod
+    #     describeNodeGroup: arm-containerservice agentPools.d.ts get
+    #     listNodegroups: arm-containerservice agentPools.d.ts list
+    #     updateConfig: arm-containerservice managedClusters.d.ts rotateClusterCertificates
+    #   GCP:
+    #     create: container v1 cluster_manager_client.d.ts createCluster
+    #     delete: container v1 cluster_manager_client.d.ts deleteCluster
+    #     listClusters: container v1 cluster_manager_client.d.ts listClusters
+    #     describeCluster: container v1 cluster_manager_client.d.ts getCluster
+    #     createNodeGroup: container v1 cluster_manager_client.d.ts createNodePool
+    #     deleteNodegroup: container v1 cluster_manager_client.d.ts deleteNodePool
+    #     describeNodeGroup: container v1 cluster_manager_client.d.ts getNodePool
+    #     listNodegroups: container v1 cluster_manager_client.d.ts listNodePools
+    #     updateConfig: container v1 cluster_manager_client.d.ts setAddonsConfig
+    #   AWS:
+    #     create: eks.d.ts createCluster
+    #     delete: eks.d.ts deleteCluster
+    #     listClusters: eks.d.ts listClusters
+    #     describeCluster: eks.d.ts describeCluster
+    #     updateTags: eks.d.ts tagResource
+    #     createNodeGroup: eks.d.ts createNodegroup
+    #     deleteNodegroup: eks.d.ts deleteNodegroup
+    #     describeNodeGroup: eks.d.ts describeNodegroup
+    #     listNodegroups: eks.d.ts listNodegroups
+    #     updateConfig: eks.d.ts updateClusterConfig
+    #   DO:
+    #     create: kubernetes.d.ts create
+    #     delete: kubernetes.d.ts delete
+    #     listClusters: kubernetes.d.ts getClusters
+    #     describeCluster: kubernetes.d.ts getById
+    #     createNodeGroup: kubernetes.d.ts addNodePool
+    #     deleteNodegroup: kubernetes.d.ts deleteNodePool
+    #     describeNodeGroup: kubernetes.d.ts getNodePoolById
+    #     listNodegroups: kubernetes.d.ts getNodePools
     Linode:
         create: kubernetes kubernetes.d.ts createKubernetesCluster
         delete: kubernetes kubernetes.d.ts deleteKubernetesCluster
@@ -125,7 +125,6 @@ Kubernetes:
         createNodePool: kubernetes nodePools.d.ts createNodePool
         updateNodePool: kubernetes nodePools.d.ts updateNodePool
         deleteNodePool: kubernetes nodePools.d.ts deleteNodePool
-
 # Monitoring:
 #   GCP:
 #     createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
