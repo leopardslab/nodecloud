@@ -312,12 +312,12 @@
 #         describe: iam.d.ts getGroup
 
 ArchivalStorage:
-#     AWS:
-#         create: glacier.d.ts createVault
-#         delete: glacier.d.ts deleteVault
-#         list: glacier.d.ts listParts
-#         upload: glacier.d.ts initiateMultipartUpload
-#         deleteFiles: glacier.d.ts deleteArchive
+    #     AWS:
+    #         create: glacier.d.ts createVault
+    #         delete: glacier.d.ts deleteVault
+    #         list: glacier.d.ts listParts
+    #         upload: glacier.d.ts initiateMultipartUpload
+    #         deleteFiles: glacier.d.ts deleteArchive
 
     # GCP:
     #     # Use storage class as coldline
