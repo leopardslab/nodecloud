@@ -5,6 +5,7 @@ import { generateAWSClass } from './generators/aws/generator';
 import { generateAzureClass } from './generators/azure/generator';
 import { generateDOClass } from './generators/do/generator';
 import { generateGCPClass } from './generators/googleCloud/generator';
+import { generateOracleClass } from './generators/oracle/generator';
 
 try {
 	const services = yaml.safeLoad(fs.readFileSync('node-cloud.yml', 'utf8'));
@@ -18,6 +19,8 @@ try {
 			  generateGCPClass(services[service][provider], service);
 			} else if (provider == "DO") {
 			  generateDOClass(services[service][provider], service);
+			} else if (provider == "Oracle") {
+			  generateOracleClass(services[service][provider], service);
 			}
 		});
 	});
