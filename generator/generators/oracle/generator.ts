@@ -1,7 +1,6 @@
+import { SyntaxKind } from 'typescript';
 // import { getAST } from '../../parsers/oracle/parser';
-import { SyntaxKind } from "typescript";
-import { getAST } from "../../parsers/oracle/parser";
-
+// import { getAST } from '../../parsers/oracle/parser';
 
 interface FunctionData {
 	functionName: string;
@@ -18,7 +17,7 @@ interface ClassData {
 	className: string;
 	functions: FunctionData[];
 	serviceName: string;
-  }
+}
 
 // interface ClassData {
 // 	className: string;
@@ -42,57 +41,57 @@ export function extractSDKData(sdkClassAst, serviceClass) {
 	// })
 	// console.log(Object.keys(sdkClassAst.members));
 	// console.log(sdkClassAst.members['99']);
-	
+
 	// Object.keys(sdkClassAst.members).map((key,index)=>{
 	// 	console.log(key);
-		
+
 	// 	// const member  = sdkClassAst.members[key];
 	// 	// console.log(member.name.text);
-		
+
 	// })
-	
-	sdkClassAst.members.map((method)=>{
-		if(method.name && functions.includes(method.name.text)){
+
+	sdkClassAst.members.map(method => {
+		if (method.name && functions.includes(method.name.text)) {
 			let name;
-			Object.keys(serviceClass).map((key,index)=>{
-				if(serviceClass[key].split(" ")[1]===method.name.text){
+			Object.keys(serviceClass).map((key, index) => {
+				if (serviceClass[key].split(' ')[1] === method.name.text) {
 					name = key;
 				}
-			})
-			const parameters =[];;
-			method.parameters.map(param=>{
-				if(param.name.text!== "callback"){
-					const parameter ={
-						name : param.name.text,
-						optional: param.questionToken?true:false,
+			});
+			const parameters = [];
+			method.parameters.map(param => {
+				if (param.name.text !== 'callback') {
+					const parameter = {
+						name: param.name.text,
+						optional: param.questionToken ? true : false,
 						type: SyntaxKind[param.type.kind],
-						typeName:null
+						typeName: null,
 					};
-					
-					if(parameter.type ==="TypeReference" && param.type.typeName){
+
+					if (
+						parameter.type === 'TypeReference' &&
+						param.type.typeName
+					) {
 						parameter.typeName = param.type.typeName.right.text;
 					}
-					parameters.push(parameter)
+					parameters.push(parameter);
 				}
 			});
 
 			methods.push({
-				functionName:name.toString(),
-				SDKFunctionName:method.name.text.toString(),
-				params:parameters
-			})
-			
+				functionName: name.toString(),
+				SDKFunctionName: method.name.text.toString(),
+				params: parameters,
+			});
 		}
-		
-	})
-	const classData: ClassData ={
+	});
+	const classData: ClassData = {
 		className: sdkClassAst.name.text,
 		functions: methods,
-		serviceName:null,
-	}
+		serviceName: null,
+	};
 	console.log(classData);
 	return classData;
-	
 }
 
 export function generateOracleClass(serviceClass, serviceName) {
