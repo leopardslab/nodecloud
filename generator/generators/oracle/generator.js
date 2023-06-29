@@ -36,20 +36,34 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.generateAWSClass = exports.extractSDKData = void 0;
-var fs = require("fs");
+exports.generateOracleClass = exports.extractSDKData = void 0;
+// import { getAST } from '../../parsers/oracle/parser';
 var typescript_1 = require("typescript");
-var parser_1 = require("../../parsers/aws/parser");
-var transformer_1 = require("../../transformers/aws/transformer");
-var helper_1 = require("../lib/helper");
-var dummyFile = process.cwd() + "/dummyClasses/aws.js";
-var dummyAst = typescript_1.createSourceFile(dummyFile, fs.readFileSync(dummyFile).toString(), typescript_1.ScriptTarget.Latest, true);
+var parser_1 = require("../../parsers/oracle/parser");
+// interface ClassData {
+// 	className: string;
+// 	functions: FunctionData[];
+// 	serviceName: string;
+// }
 function extractSDKData(sdkClassAst, serviceClass) {
     var methods = [];
     var functions = [];
     Object.keys(serviceClass).map(function (key, index) {
-        functions.push(serviceClass[key].split(" ")[1]);
+        functions.push(serviceClass[key].split(' ')[1]);
     });
+    // console.log(functions);
+    // console.log(sdkClassAst);
+    // console.log(Array.from(sdkClassAst.members)[0]);
+    // Array.from(sdkClassAst.members).map(method=>{
+    //     // console.log(method.name.escapedText);
+    // })
+    // console.log(Object.keys(sdkClassAst.members));
+    // console.log(sdkClassAst.members['99']);
+    // Object.keys(sdkClassAst.members).map((key,index)=>{
+    // 	console.log(key);
+    // 	// const member  = sdkClassAst.members[key];
+    // 	// console.log(member.name.text);
+    // })
     sdkClassAst.members.map(function (method) {
         if (method.name && functions.includes(method.name.text)) {
             var name_1;
@@ -59,6 +73,7 @@ function extractSDKData(sdkClassAst, serviceClass) {
                 }
             });
             var parameters_1 = [];
+            ;
             method.parameters.map(function (param) {
                 if (param.name.text !== "callback") {
                     var parameter = {
@@ -80,66 +95,29 @@ function extractSDKData(sdkClassAst, serviceClass) {
             });
         }
     });
-    var groupedMethods = helper_1.groupers.aws(methods);
-    methods = helper_1.filters.aws(groupedMethods);
     var classData = {
         className: sdkClassAst.name.text,
         functions: methods,
         serviceName: null
     };
-    return classData;
+    console.log(classData);
 }
 exports.extractSDKData = extractSDKData;
-function generateAWSClass(serviceClass, serviceName) {
+function generateOracleClass(serviceClass, serviceName) {
     var _this = this;
-    var sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(" ")[0];
+    var sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(' ')[0];
+    console.log(sdkFile);
     parser_1.getAST(sdkFile).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-        var sdkClassAst, classData, output, filePath, dir, e_1;
+        var sdkClassAst;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    sdkClassAst = result;
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    classData = extractSDKData(sdkClassAst, serviceClass);
-                    classData.serviceName = serviceName;
-                    return [4 /*yield*/, transformer_1.transform(dummyAst, classData)];
-                case 2:
-                    output = _a.sent();
-                    filePath = void 0;
-                    dir = helper_1.getDir(serviceName);
-                    if (!fs.existsSync(process.cwd() + "/generatedClasses/AWS/" + dir)) {
-                        fs.mkdirSync(process.cwd() + "/generatedClasses/AWS/" + dir);
-                    }
-                    if (/^[A-Z]*$/.test(serviceName)) {
-                        filePath =
-                            process.cwd() +
-                                "/generatedClasses/AWS/" +
-                                dir +
-                                "/aws-" +
-                                serviceName +
-                                ".js";
-                    }
-                    else {
-                        filePath =
-                            process.cwd() +
-                                "/generatedClasses/AWS/" +
-                                dir +
-                                "/aws-" +
-                                serviceName.charAt(0).toLowerCase() +
-                                serviceName.slice(1) +
-                                ".js";
-                    }
-                    helper_1.printFile(filePath, output);
-                    return [3 /*break*/, 4];
-                case 3:
-                    e_1 = _a.sent();
-                    console.error(e_1);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+            sdkClassAst = result;
+            try {
+                // const classData: ClassData = extractSDKData(sdkClassAst,serviceClass)
+                extractSDKData(sdkClassAst, serviceClass);
             }
+            catch (error) { }
+            return [2 /*return*/];
         });
     }); });
 }
-exports.generateAWSClass = generateAWSClass;
+exports.generateOracleClass = generateOracleClass;

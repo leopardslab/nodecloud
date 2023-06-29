@@ -286,6 +286,11 @@ ArchivalStorage:
     list: storage storage.d.ts getBuckets
     upload: storage bucket.d.ts upload
     makePublic: storage file.d.ts makePublic
+  Oracle:
+    create: objectstorage createBucket
+    delete: objectstorage deleteBucket
+    list: objectstorage listBuckets
+    update: objectstorage updateBucket
 
 Translation:
   AWS:
