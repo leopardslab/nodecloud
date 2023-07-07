@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { createSourceFile, ScriptTarget,SyntaxKind } from 'typescript';
+import { createSourceFile, ScriptTarget, SyntaxKind } from 'typescript';
 
 import { getAST } from '../../parsers/linode/parser';
 import { transform } from '../../transformers/linode/transformer';
