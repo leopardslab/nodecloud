@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import { createSourceFile, ScriptTarget,SyntaxKind } from 'typescript';
 
 import { getAST } from '../../parsers/linode/parser';
+import { transform } from '../../transformers/linode/transformer';
 import { getDir, printFile } from '../lib/helper';
 
 interface SDKClassData {
@@ -78,6 +79,8 @@ export function extractSDKData(sdkAst, serviceClass) {
 					parameters.push(parameter);
 				}
 			});
+			// console.log(parameters);
+
 			methods.push({
 				functionName: name.toString(),
 				SDKFunctionName: methodName,
@@ -152,6 +155,32 @@ export async function generateLinodeClass(serviceClass, serviceName) {
 			functions: functionsArray,
 			serviceName: serviceName,
 		};
+		const output = await transform(dummyAst, classData);
+		let filePath;
+		const dir = getDir(serviceName);
+
+		if (!fs.existsSync(process.cwd() + '/generatedClasses/Linode/' + dir)) {
+			fs.mkdirSync(process.cwd() + '/generatedClasses/Linode/' + dir);
+		}
+		if (/^[A-Z]*$/.test(serviceName)) {
+			filePath =
+				process.cwd() +
+				'/generatedClasses/Linode/' +
+				dir +
+				'/linode-' +
+				serviceName +
+				'.js';
+		} else {
+			filePath =
+				process.cwd() +
+				'/generatedClasses/Linode/' +
+				dir +
+				'/linode-' +
+				serviceName.charAt(0).toLowerCase() +
+				serviceName.slice(1) +
+				'.js';
+		}
+		printFile(filePath, output);
 	} catch (e) {
 		console.error(e);
 	}
