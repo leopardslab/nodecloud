@@ -19,11 +19,6 @@ interface ClassData {
 	serviceName: string;
 }
 
-// interface ClassData {
-// 	className: string;
-// 	functions: FunctionData[];
-// 	serviceName: string;
-// }
 
 export function extractSDKData(sdkClassAst, serviceClass) {
 	let methods: FunctionData[] = [];
@@ -31,25 +26,6 @@ export function extractSDKData(sdkClassAst, serviceClass) {
 	Object.keys(serviceClass).map((key, index) => {
 		functions.push(serviceClass[key].split(' ')[1]);
 	});
-	// console.log(functions);
-	// console.log(sdkClassAst);
-
-	// console.log(Array.from(sdkClassAst.members)[0]);
-	// Array.from(sdkClassAst.members).map(method=>{
-	//     // console.log(method.name.escapedText);
-
-	// })
-	// console.log(Object.keys(sdkClassAst.members));
-	// console.log(sdkClassAst.members['99']);
-
-	// Object.keys(sdkClassAst.members).map((key,index)=>{
-	// 	console.log(key);
-
-	// 	// const member  = sdkClassAst.members[key];
-	// 	// console.log(member.name.text);
-
-	// })
-
 	sdkClassAst.members.map(method => {
 		if (method.name && functions.includes(method.name.text)) {
 			let name;
