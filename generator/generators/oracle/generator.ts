@@ -19,7 +19,6 @@ interface ClassData {
 	serviceName: string;
 }
 
-
 export function extractSDKData(sdkClassAst, serviceClass) {
 	let methods: FunctionData[] = [];
 	const functions = [];
