@@ -141,33 +141,24 @@ var __generator =
 	};
 exports.__esModule = true;
 exports.generateOracleClass = exports.extractSDKData = void 0;
-// import { getAST } from '../../parsers/oracle/parser';
+var fs = require('fs');
 var typescript_1 = require('typescript');
 var parser_1 = require('../../parsers/oracle/parser');
-// interface ClassData {
-// 	className: string;
-// 	functions: FunctionData[];
-// 	serviceName: string;
-// }
+var helper_1 = require('../lib/helper');
+var transformer_1 = require('../../transformers/oracle/transformer');
+var dummyFile = process.cwd() + '/dummyClasses/oracle.js';
+var dummyAst = typescript_1.createSourceFile(
+	dummyFile,
+	fs.readFileSync(dummyFile).toString(),
+	typescript_1.ScriptTarget.Latest,
+	true
+);
 function extractSDKData(sdkClassAst, serviceClass) {
 	var methods = [];
 	var functions = [];
 	Object.keys(serviceClass).map(function(key, index) {
 		functions.push(serviceClass[key].split(' ')[1]);
 	});
-	// console.log(functions);
-	// console.log(sdkClassAst);
-	// console.log(Array.from(sdkClassAst.members)[0]);
-	// Array.from(sdkClassAst.members).map(method=>{
-	//     // console.log(method.name.escapedText);
-	// })
-	// console.log(Object.keys(sdkClassAst.members));
-	// console.log(sdkClassAst.members['99']);
-	// Object.keys(sdkClassAst.members).map((key,index)=>{
-	// 	console.log(key);
-	// 	// const member  = sdkClassAst.members[key];
-	// 	// console.log(member.name.text);
-	// })
 	sdkClassAst.members.map(function(method) {
 		if (method.name && functions.includes(method.name.text)) {
 			var name_1;
@@ -207,6 +198,7 @@ function extractSDKData(sdkClassAst, serviceClass) {
 		serviceName: null,
 	};
 	console.log(classData);
+	return classData;
 }
 exports.extractSDKData = extractSDKData;
 function generateOracleClass(serviceClass, serviceName) {
@@ -215,14 +207,64 @@ function generateOracleClass(serviceClass, serviceName) {
 	console.log(sdkFile);
 	parser_1.getAST(sdkFile).then(function(result) {
 		return __awaiter(_this, void 0, void 0, function() {
-			var sdkClassAst;
+			var sdkClassAst, classData, output, filePath, dir, error_1;
 			return __generator(this, function(_a) {
-				sdkClassAst = result;
-				try {
-					// const classData: ClassData = extractSDKData(sdkClassAst,serviceClass)
-					extractSDKData(sdkClassAst, serviceClass);
-				} catch (error) {}
-				return [2 /*return*/];
+				switch (_a.label) {
+					case 0:
+						sdkClassAst = result;
+						_a.label = 1;
+					case 1:
+						_a.trys.push([1, 3, , 4]);
+						classData = extractSDKData(sdkClassAst, serviceClass);
+						classData.serviceName = serviceName;
+						return [
+							4 /*yield*/,
+							transformer_1.transform(dummyAst, classData),
+						];
+					case 2:
+						output = _a.sent();
+						filePath = void 0;
+						dir = helper_1.getDir(serviceName);
+						if (
+							!fs.existsSync(
+								process.cwd() +
+									'/generatedClasses/Oracle/' +
+									dir
+							)
+						) {
+							fs.mkdirSync(
+								process.cwd() +
+									'/generatedClasses/Oracle/' +
+									dir
+							);
+						}
+						if (/^[A-Z]*$/.test(serviceName)) {
+							filePath =
+								process.cwd() +
+								'/generatedClasses/Oracle/' +
+								dir +
+								'/oci-' +
+								serviceName +
+								'.js';
+						} else {
+							filePath =
+								process.cwd() +
+								'/generatedClasses/Oracle/' +
+								dir +
+								'/oci-' +
+								serviceName.charAt(0).toLowerCase() +
+								serviceName.slice(1) +
+								'.js';
+						}
+						helper_1.printFile(filePath, output);
+						return [3 /*break*/, 4];
+					case 3:
+						error_1 = _a.sent();
+						console.error(error_1);
+						return [3 /*break*/, 4];
+					case 4:
+						return [2 /*return*/];
+				}
 			});
 		});
 	});

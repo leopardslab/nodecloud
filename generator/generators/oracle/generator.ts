@@ -1,6 +1,9 @@
-import { SyntaxKind } from 'typescript';
-// import { getAST } from '../../parsers/oracle/parser';
-// import { getAST } from '../../parsers/oracle/parser';
+import * as fs from 'fs';
+import { createSourceFile, ScriptTarget, SyntaxKind } from 'typescript';
+
+import { getAST } from '../../parsers/oracle/parser';
+import { transform } from '../../transformers/oracle/transformer';
+import { getDir, printFile } from '../lib/helper';
 
 interface FunctionData {
 	functionName: string;
@@ -19,8 +22,17 @@ interface ClassData {
 	serviceName: string;
 }
 
+const dummyFile = process.cwd() + '/dummyClasses/oracle.js';
+
+const dummyAst = createSourceFile(
+	dummyFile,
+	fs.readFileSync(dummyFile).toString(),
+	ScriptTarget.Latest,
+	true
+);
+
 export function extractSDKData(sdkClassAst, serviceClass) {
-	let methods: FunctionData[] = [];
+	const methods: FunctionData[] = [];
 	const functions = [];
 	Object.keys(serviceClass).map((key, index) => {
 		functions.push(serviceClass[key].split(' ')[1]);
@@ -65,18 +77,51 @@ export function extractSDKData(sdkClassAst, serviceClass) {
 		functions: methods,
 		serviceName: null,
 	};
-	console.log(classData);
 	return classData;
 }
 
 export function generateOracleClass(serviceClass, serviceName) {
 	const sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(' ')[0];
 	console.log(sdkFile);
-	// getAST(sdkFile).then(async result => {
-	// 	const sdkClassAst = result;
-	// 	try {
-	// 		// const classData: ClassData = extractSDKData(sdkClassAst,serviceClass)
-	// 		extractSDKData(sdkClassAst, serviceClass);
-	// 	} catch (error) {}
-	// });
+	getAST(sdkFile).then(async result => {
+		const sdkClassAst = result;
+		try {
+			const classData: ClassData = extractSDKData(
+				sdkClassAst,
+				serviceClass
+			);
+			classData.serviceName = serviceName;
+			const output = await transform(dummyAst, classData);
+			let filePath;
+			const dir = getDir(serviceName);
+			if (
+				!fs.existsSync(
+					process.cwd() + '/generatedClasses/Oracle/' + dir
+				)
+			) {
+				fs.mkdirSync(process.cwd() + '/generatedClasses/Oracle/' + dir);
+			}
+			if (/^[A-Z]*$/.test(serviceName)) {
+				filePath =
+					process.cwd() +
+					'/generatedClasses/Oracle/' +
+					dir +
+					'/oci-' +
+					serviceName +
+					'.js';
+			} else {
+				filePath =
+					process.cwd() +
+					'/generatedClasses/Oracle/' +
+					dir +
+					'/oci-' +
+					serviceName.charAt(0).toLowerCase() +
+					serviceName.slice(1) +
+					'.js';
+			}
+			printFile(filePath, output);
+		} catch (error) {
+			console.error(error);
+		}
+	});
 }
