@@ -47,11 +47,6 @@ function toSourceFile(sourceCode: string): ts.SourceFile {
 		true
 	);
 }
-
-/*
- * The Transform function to be called from generator
- */
-
 export async function transform(
 	code: ts.SourceFile,
 	classData: any
@@ -127,7 +122,9 @@ export async function transform(
 				switch (node.text) {
 					case 'ClassName':
 						updatedIdentifier = ts.updateIdentifier(
-							ts.createIdentifier('DO_' + classData.serviceName)
+							ts.createIdentifier(
+								'Oracle_' + classData.serviceName
+							)
 						);
 						break;
 					case '_sdkClassName':
@@ -196,9 +193,9 @@ export async function transform(
 					'This is an auto generated class, please do not change.'
 				);
 				const comment = `*
-* Class to create a ${classData.className} object
-* @category Digital Ocean       
-`;
+  * Class to create a ${classData.className} object
+  * @category Oracle Cloud       
+  `;
 				addMultiLineComment(node, comment);
 			}
 
@@ -232,15 +229,15 @@ export async function transform(
 					});
 
 					comment = `*
-* Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
-${paramStatments}
-* @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
-`;
+  * Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
+  ${paramStatments}
+  * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
+  `;
 				} else {
 					comment = `*
-* Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
-* @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
-`;
+  * Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
+  * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
+  `;
 				}
 
 				addMultiLineComment(node, comment);
