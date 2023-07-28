@@ -204,7 +204,7 @@ function extractClassBasedSDKData(methods, sdkFiles) {
 										params: parameters,
 										returnType: returnType,
 										returnTypeName: null,
-										client: classAst.name.text, // Class name
+										client: classAst.name.text,
 									};
 									if (returnType === 'TypeReference') {
 										method_1.returnTypeName =

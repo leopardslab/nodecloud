@@ -144,8 +144,8 @@ exports.generateOracleClass = exports.extractSDKData = void 0;
 var fs = require('fs');
 var typescript_1 = require('typescript');
 var parser_1 = require('../../parsers/oracle/parser');
-var helper_1 = require('../lib/helper');
 var transformer_1 = require('../../transformers/oracle/transformer');
+var helper_1 = require('../lib/helper');
 var dummyFile = process.cwd() + '/dummyClasses/oracle.js';
 var dummyAst = typescript_1.createSourceFile(
 	dummyFile,
@@ -197,14 +197,12 @@ function extractSDKData(sdkClassAst, serviceClass) {
 		functions: methods,
 		serviceName: null,
 	};
-	console.log(classData);
 	return classData;
 }
 exports.extractSDKData = extractSDKData;
 function generateOracleClass(serviceClass, serviceName) {
 	var _this = this;
 	var sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(' ')[0];
-	console.log(sdkFile);
 	parser_1.getAST(sdkFile).then(function(result) {
 		return __awaiter(_this, void 0, void 0, function() {
 			var sdkClassAst, classData, output, filePath, dir, error_1;
@@ -217,6 +215,7 @@ function generateOracleClass(serviceClass, serviceName) {
 						_a.trys.push([1, 3, , 4]);
 						classData = extractSDKData(sdkClassAst, serviceClass);
 						classData.serviceName = serviceName;
+						console.log(JSON.stringify(classData));
 						return [
 							4 /*yield*/,
 							transformer_1.transform(dummyAst, classData),

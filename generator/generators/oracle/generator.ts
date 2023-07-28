@@ -82,7 +82,6 @@ export function extractSDKData(sdkClassAst, serviceClass) {
 
 export function generateOracleClass(serviceClass, serviceName) {
 	const sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(' ')[0];
-	console.log(sdkFile);
 	getAST(sdkFile).then(async result => {
 		const sdkClassAst = result;
 		try {
@@ -91,7 +90,10 @@ export function generateOracleClass(serviceClass, serviceName) {
 				serviceClass
 			);
 			classData.serviceName = serviceName;
+			console.log(JSON.stringify(classData));
+
 			const output = await transform(dummyAst, classData);
+
 			let filePath;
 			const dir = getDir(serviceName);
 			if (
