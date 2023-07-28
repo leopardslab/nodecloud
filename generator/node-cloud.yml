@@ -132,7 +132,7 @@ Kubernetes:
         deleteNodePool: containerengine deleteNodePool
         deleteNode: containerengine deleteNode
         describeNodePool: containerengine getNodePool
-        
+
 Monitoring:
     GCP:
         createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
@@ -217,7 +217,7 @@ RDBMS:
         deleteDatabase: mysql deleteDBSystem
         modifyDatabase: mysql updateDBSystem
         getDatabase: mysql getDBSystem
-        
+
 NoSql:
     AWS:
         createTable: dynamodb.d.ts createTable
@@ -277,7 +277,7 @@ DNS:
         deleteZone: dns deleteZone
         listZones: dns listZones
         changeRecordSets: dns updateDomainRecords
-        
+
 LoadBalancer:
     AWS:
         create: elb.d.ts createLoadBalancer
@@ -402,19 +402,19 @@ NotificationService:
         unsubscribe: ons deleteSubscription
 
 BlockStorage:
-      AWS:
-            create: ec2.d.ts createVolume
-            delete: ec2.d.ts deleteVolume
-            describe: ec2.d.ts describeVolumeAttribute
-            list: ec2.d.ts describeVolumes
-      Azure:
-            create: arm-compute disks.d.ts createOrUpdate
-            delete: arm-compute disks.d.ts deleteMethod
-            describe: arm-compute disks.d.ts get
-            list: arm-compute disks.d.ts list
-            update: arm-compute disks.d.ts update
-      DO:
-            create: volumes.d.ts create
-            delete: volumes.d.ts deleteById
-            list: volumes.d.ts getAll
-            describe: volumes.d.ts getById
+    AWS:
+        create: ec2.d.ts createVolume
+        delete: ec2.d.ts deleteVolume
+        describe: ec2.d.ts describeVolumeAttribute
+        list: ec2.d.ts describeVolumes
+    Azure:
+        create: arm-compute disks.d.ts createOrUpdate
+        delete: arm-compute disks.d.ts deleteMethod
+        describe: arm-compute disks.d.ts get
+        list: arm-compute disks.d.ts list
+        update: arm-compute disks.d.ts update
+    DO:
+        create: volumes.d.ts create
+        delete: volumes.d.ts deleteById
+        list: volumes.d.ts getAll
+        describe: volumes.d.ts getById
