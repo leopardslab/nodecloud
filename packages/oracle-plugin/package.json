@@ -1,0 +1,15 @@
+{
+  "name": "@nodecloud/oracle-plugin",
+  "version": "2.0.0",
+  "description": "Nodecloud Oracle Cloud Plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Scorelab",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "oci": "^0.0.51",
+    "oci-sdk": "^2.66.0"
+  }
+}

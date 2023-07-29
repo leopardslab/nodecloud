@@ -22,6 +22,17 @@ ComputeInstance:
         destroy: droplets.d.ts deleteById
         start: droplets.d.ts requestAction
         stop: droplets.d.ts requestAction
+    Oracle:
+        getAll: containerinstances getContainer
+        update: containerinstances updateContainer
+        list: containerinstances listContainers
+        create: containerinstances createContainerInstance
+        delete: containerinstances deleteContainerInstance
+        get: containerinstances getContainerInstance
+        restart: containerinstances restartContainerInstance
+        start: containerinstances startContainerInstance
+        stop: containerinstances stopContainerInstance
+        
 
 StorageBucket:
     AWS:
@@ -42,12 +53,12 @@ StorageBucket:
         list: storage storage.d.ts getBuckets
         upload: storage bucket.d.ts upload
         makePublic: storage file.d.ts makePublic
-    # Oracle:
-    #     create: objectstorage createBucket
-    #     delete: objectstorage deleteBucket
-    #     get: objectstorage getBucket
-    #     list: objectstorage listBuckets
-    #     reencrypt: objectstorage reencryptBucket
+    Oracle:
+        create: objectstorage createBucket
+        delete: objectstorage deleteBucket
+        get: objectstorage getBucket
+        list: objectstorage listBuckets
+        reencrypt: objectstorage reencryptBucket
 
 PaaS:
     AWS:
@@ -126,12 +137,13 @@ Kubernetes:
     Oracle:
         create: containerengine createCluster
         delete: containerengine deleteCluster
-        listClusters: containerengine listClusters
-        describeCluster: containerengine getCluster
+        get: containerengine getCluster
+        update: containerengine updateCluster
+        list: containerengine listClusters
         createNodePool: containerengine createNodePool
-        deleteNodePool: containerengine deleteNodePool
         deleteNode: containerengine deleteNode
-        describeNodePool: containerengine getNodePool
+        deleteNodePool: containerengine deleteNodePool
+        getNodePool: containerengine getNodePool
 
 Monitoring:
     GCP:
@@ -213,10 +225,13 @@ RDBMS:
         getCluster: databases.d.ts getClusterById
         updateCluster: databases.d.ts resizeCluster
     Oracle:
-        createDatabse: mysql createDBSystem
-        deleteDatabase: mysql deleteDBSystem
-        modifyDatabase: mysql updateDBSystem
-        getDatabase: mysql getDBSystem
+        createDBSystem: mysql createDBSystem
+        deleteDBSystem: mysql deleteDBSystem
+        getDBSystem: mysql getDBSystem
+        restartDBSystem: mysql restartDBSystem
+        startDBSystem: mysql startDBSystem
+        stopDBSystem: mysql stopDBSystem
+        updateDBSystem: mysql updateDBSystem
 
 NoSql:
     AWS:
@@ -245,8 +260,12 @@ NoSql:
     Oracle:
         createTable: nosql createTable
         deleteTable: nosql deleteTable
-        list: nosql listTables
+        getTable: nosql getTable
+        listTables: nosql listTables
         updateTable: nosql updateTable
+        deleteRow: nosql deleteRow
+        getRow: nosql getRow
+        updateRow: nosql updateRow
 
 DNS:
     AWS:
@@ -273,10 +292,11 @@ DNS:
         getRecord: domains.d.ts getRecord
         changeRecordSets: domains.d.ts updateRecord
     Oracle:
-        createZone: dns createZone
-        deleteZone: dns deleteZone
-        listZones: dns listZones
-        changeRecordSets: dns updateDomainRecords
+        create: dns createZone
+        delete: dns deleteZone
+        list: dns listZones
+        update: dns updateZone
+
 
 LoadBalancer:
     AWS:
@@ -299,9 +319,9 @@ LoadBalancer:
     Oracle:
         create: loadbalancer createLoadBalancer
         delete: loadbalancer deleteLoadBalancer
-        list: loadbalancer listLoadBalancers
-        update: loadbalancer updateLoadBalancer
         get: loadbalancer getLoadBalancer
+        update: loadbalancer updateLoadBalancer
+        list: loadbalancer listLoadBalancers
 
 IAM:
     AWS:
@@ -370,6 +390,10 @@ KeyManagement:
         deleteKey: keys.d.ts delete
         list: keys.d.ts getAll
         describeKey: keys.d.ts getById
+    Oracle:
+        createKey: keymanagement createKey
+        deleteKey: keymanagement deleteKey
+        update: keymanagement updateKey
 
 NotificationService:
     AWS:
