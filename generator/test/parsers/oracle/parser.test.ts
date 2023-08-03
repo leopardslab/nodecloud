@@ -26,7 +26,6 @@ describe('Oracle Cloud parser getAST', () => {
 		it('Should return class not found Error', async () => {
 			try {
 				await getAST('objectstorage');
-				// `../../../node_modules/oci-${sdkFileName.toLowerCase()}/lib/client.d.ts`
 			} catch (error) {
 				expect(error.message).to.eql('Class not found!');
 			}

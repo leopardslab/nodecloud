@@ -32,7 +32,6 @@ ComputeInstance:
         restart: containerinstances restartContainerInstance
         start: containerinstances startContainerInstance
         stop: containerinstances stopContainerInstance
-        
 
 StorageBucket:
     AWS:
@@ -296,7 +295,6 @@ DNS:
         delete: dns deleteZone
         list: dns listZones
         update: dns updateZone
-
 
 LoadBalancer:
     AWS:

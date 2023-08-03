@@ -1,1 +1,1 @@
-const ociSdk = require("oci-sdk");
+const ociSdk = require('oci-sdk');
