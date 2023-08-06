@@ -155,32 +155,34 @@ export async function generateLinodeClass(serviceClass, serviceName) {
 			functions: functionsArray,
 			serviceName: serviceName,
 		};
-		const output = await transform(dummyAst, classData);
-		let filePath;
-		const dir = getDir(serviceName);
+		console.log(classData);
+	
+		// const output = await transform(dummyAst, classData);
+		// const dir = getDir(serviceName);
 
-		if (!fs.existsSync(process.cwd() + '/generatedClasses/Linode/' + dir)) {
-			fs.mkdirSync(process.cwd() + '/generatedClasses/Linode/' + dir);
-		}
-		if (/^[A-Z]*$/.test(serviceName)) {
-			filePath =
-				process.cwd() +
-				'/generatedClasses/Linode/' +
-				dir +
-				'/linode-' +
-				serviceName +
-				'.js';
-		} else {
-			filePath =
-				process.cwd() +
-				'/generatedClasses/Linode/' +
-				dir +
-				'/linode-' +
-				serviceName.charAt(0).toLowerCase() +
-				serviceName.slice(1) +
-				'.js';
-		}
-		printFile(filePath, output);
+		// if (!fs.existsSync(process.cwd() + '/generatedClasses/Linode/' + dir)) {
+		// 	fs.mkdirSync(process.cwd() + '/generatedClasses/Linode/' + dir);
+		// }
+		// if (/^[A-Z]*$/.test(serviceName)) {
+		// 	filePath =
+		// 		process.cwd() +
+		// 		'/generatedClasses/Linode/' +
+		// 		dir +
+		// 		'/linode-' +
+		// 		serviceName +
+		// 		'.js';
+		// } else {
+		// 	filePath =
+		// 		process.cwd() +
+		// 		'/generatedClasses/Linode/' +
+		// 		dir +
+		// 		'/linode-' +
+		// 		serviceName.charAt(0).toLowerCase() +
+		// 		serviceName.slice(1) +
+		// 		'.js';
+		// }
+		fs.writeFileSync("./tmp.txt",JSON.stringify(classData))
+		// printFile(filePath, classData);
 	} catch (e) {
 		console.error(e);
 	}
