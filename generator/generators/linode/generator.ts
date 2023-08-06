@@ -156,7 +156,7 @@ export async function generateLinodeClass(serviceClass, serviceName) {
 			serviceName: serviceName,
 		};
 		console.log(classData);
-	
+
 		// const output = await transform(dummyAst, classData);
 		// const dir = getDir(serviceName);
 
@@ -181,7 +181,7 @@ export async function generateLinodeClass(serviceClass, serviceName) {
 		// 		serviceName.slice(1) +
 		// 		'.js';
 		// }
-		fs.writeFileSync("./tmp.txt",JSON.stringify(classData))
+		fs.writeFileSync('./tmp.txt', JSON.stringify(classData));
 		// printFile(filePath, classData);
 	} catch (e) {
 		console.error(e);

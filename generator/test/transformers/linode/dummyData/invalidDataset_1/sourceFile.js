@@ -3,7 +3,6 @@ class ClassName {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
 	}
-
 }
 
 module.exports = ClassName;

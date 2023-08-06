@@ -3,7 +3,7 @@ class ClassName {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
 	}
-    
+
 	function() {
 		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
