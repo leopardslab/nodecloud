@@ -24,8 +24,6 @@ export function getAST(sdkFileInfo) {
 			let tmp = null;
 			await ast.forEachChild(child => {
 				if (SyntaxKind[child.kind] === 'FirstStatement') {
-					// console.log("child",child);
-					// resolve(false)
 					tmp = Object.assign({}, child);
 					cloned.push(tmp.declarationList.declarations[0]);
 				}

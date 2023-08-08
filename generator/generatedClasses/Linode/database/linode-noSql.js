@@ -12,32 +12,33 @@ class Linode_NoSql {
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
-		this._linode.setToken(this._linodeToken);
 	}
 	/**
 	 * Trigers the getDatabases function of NoSqlLinodeClass
-	 * @param {AnyKeyword} params - Data required for getDatabases
-	 * @param {AnyKeyword} filters - Data required for getDatabases
+	 * @param {Params} params - Data required for getDatabases
+	 * @param {Filter} filter - Data required for getDatabases
 	 * @returns {Promise<getDatabasesResponse>}
 	 */
-	getDatabases(params = undefined, filters = undefined) {
+	getDatabases(params = undefined, filter = undefined) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
-				.getDatabases(params, filters)
+				.getDatabases(params, filter)
 				.then(data => resolve(data))
 				.catch(err => reject(err));
 		});
 	}
 	/**
 	 * Trigers the getDatabaseEngines function of NoSqlLinodeClass
-	 * @param {AnyKeyword} params - Data required for getDatabaseEngines
-	 * @param {AnyKeyword} filters - Data required for getDatabaseEngines
+	 * @param {Params} params - Data required for getDatabaseEngines
+	 * @param {Filter} filter - Data required for getDatabaseEngines
 	 * @returns {Promise<getDatabaseEnginesResponse>}
 	 */
-	getDatabaseEngines(params = undefined, filters = undefined) {
+	getDatabaseEngines(params = undefined, filter = undefined) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
-				.getDatabaseEngines(params, filters)
+				.getDatabaseEngines(params, filter)
 				.then(data => resolve(data))
 				.catch(err => reject(err));
 		});
@@ -49,6 +50,7 @@ class Linode_NoSql {
 	 * @returns {Promise<createDatabaseResponse>}
 	 */
 	createDatabase(engine, data) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createDatabase(engine, data)
@@ -63,6 +65,7 @@ class Linode_NoSql {
 	 * @returns {Promise<getEngineDatabaseResponse>}
 	 */
 	getEngineDatabase(engine, databaseID) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getEngineDatabase(engine, databaseID)
@@ -78,6 +81,7 @@ class Linode_NoSql {
 	 * @returns {Promise<updateDatabaseResponse>}
 	 */
 	updateDatabase(engine, databaseID, data) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateDatabase(engine, databaseID, data)
@@ -92,6 +96,7 @@ class Linode_NoSql {
 	 * @returns {Promise<deleteDatabaseResponse>}
 	 */
 	deleteDatabase(engine, databaseID) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteDatabase(engine, databaseID)

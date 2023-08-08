@@ -283,10 +283,6 @@ function transform(code, classData) {
 											ts.isIdentifier(childNode) &&
 											childNode.text === 'SDKFunctionName'
 										) {
-											console.log(
-												classData.functions[count]
-													.params
-											);
 											var args = classData.functions[
 												count
 											].params.map(function(param) {
@@ -366,7 +362,6 @@ function transform(code, classData) {
 										}
 										return statment;
 									});
-									console.log('parameters', parameters);
 									var comment = void 0;
 									if (parameters.length > 0) {
 										var paramStatments_1 = '';

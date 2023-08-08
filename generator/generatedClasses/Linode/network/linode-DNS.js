@@ -12,18 +12,18 @@ class Linode_DNS {
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
-		this._linode.setToken(this._linodeToken);
 	}
 	/**
 	 * Trigers the getDomains function of DNSLinodeClass
-	 * @param {AnyKeyword} params - Data required for getDomains
-	 * @param {AnyKeyword} filters - Data required for getDomains
+	 * @param {Params} params - Data required for getDomains
+	 * @param {Filter} filter - Data required for getDomains
 	 * @returns {Promise<getDomainsResponse>}
 	 */
-	getDomains(params = undefined, filters = undefined) {
+	getDomains(params = undefined, filter = undefined) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
-				.getDomains(params, filters)
+				.getDomains(params, filter)
 				.then(data => resolve(data))
 				.catch(err => reject(err));
 		});
@@ -34,6 +34,7 @@ class Linode_DNS {
 	 * @returns {Promise<getDomainResponse>}
 	 */
 	getDomain(domainId) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getDomain(domainId)
@@ -47,6 +48,7 @@ class Linode_DNS {
 	 * @returns {Promise<createDomainResponse>}
 	 */
 	createDomain(data) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createDomain(data)
@@ -61,6 +63,7 @@ class Linode_DNS {
 	 * @returns {Promise<updateDomainResponse>}
 	 */
 	updateDomain(domainId, data) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateDomain(domainId, data)
@@ -74,6 +77,7 @@ class Linode_DNS {
 	 * @returns {Promise<deleteDomainResponse>}
 	 */
 	deleteDomain(domainId) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteDomain(domainId)
@@ -88,6 +92,7 @@ class Linode_DNS {
 	 * @returns {Promise<cloneDomainResponse>}
 	 */
 	cloneDomain(domainId, data) {
+		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.cloneDomain(domainId, data)
