@@ -62,8 +62,6 @@ export async function transform(
 				const functions: any = [];
 				classData.functions.map(method => {
 					const clonedNode = Object.assign({}, node.members[1]);
-					// console.log("Cloned Node..........\n");//sdadas
-					// console.log(clonedNode);//asdasdasdasd
 					clonedNode.name = ts.createIdentifier(method.functionName);
 					functions.push(clonedNode);
 				});
