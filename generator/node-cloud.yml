@@ -364,6 +364,7 @@ Translation:
         createGlossary: translate v3 translation_service_client.d.ts createGlossary
         detectLanguage: translate v3 translation_service_client.d.ts detectLanguage
 
+
 KeyManagement:
     AWS:
         createKey: kms.d.ts createKey
@@ -440,3 +441,39 @@ BlockStorage:
         delete: volumes.d.ts deleteById
         list: volumes.d.ts getAll
         describe: volumes.d.ts getById
+    Oracle:
+        create: core createVolume
+        delete: core deleteVolume
+        list: core listVolumes
+        get: core getVolume
+
+BlockChain:
+    Oracle:
+        createBlockchainPlatform: blockchain createBlockchainPlatform
+        createOsn: blockchain createOsn
+        createPeer: blockchain createPeer
+        deleteBlockchainPlatform: blockchain deleteBlockchainPlatform
+        deleteOsn: blockchain deleteOsn
+        deletePeer: blockchain deletePeer
+        getOsn: blockchain getOsn
+        listOsns: blockchain listOsns
+        listPeers: blockchain listPeers
+        listBlockchainPlatforms: blockchain listBlockchainPlatforms
+
+Devops:
+    Oracle:
+        createDeployment: devops createDeployment
+        createProject: devops createProject
+        createRepository: devops createRepository
+        deleteProject: devops deleteProject
+        deleteRepository: devops deleteRepository
+        createDeployArtifact: devops createDeployArtifact
+        createDeployPipeline: devops createDeployPipeline
+        deleteDeployArtifact: devops createDeployment
+        deleteDeployPipeline: devops deleteDeployPipeline
+        getDeployArtifact: devops getDeployArtifact
+        getDeployPipeline: devops getDeployPipeline
+        getDeployment: devops getDeployment
+        getProject: devops getProject
+ 
+

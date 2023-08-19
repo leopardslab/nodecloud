@@ -6,6 +6,10 @@ const keyManagement = require('./management/oci-keyManagement');
 const dns = require('./network/oci-DNS');
 const loadBalancer = require('./network/oci-loadBalancer');
 const storage = require('./storage/oci-storageBucket');
+const devops = require("./devops/oci-devops")
+const blockchain = require("./blockchain/oci-blockChain")
+const archivalStorage = require("./storage/oci-archivalStorage")
+const blockStorage = require("./storage/oci-blockStorage")
 
 class Oracle {
 	constructor(ocisdk, clientConfiguration) {
@@ -27,6 +31,11 @@ class Oracle {
 			dns: this.dns,
 			loadBalancer: this.loadBalancer,
 			storage: this.storage,
+			blockchain:this.blockchain,
+			devops:this.devops,
+			objectStorage:this.objectStorage,
+			archivalStorage:this.archivalStorage
+
 		};
 	}
 	computeInstance() {
@@ -84,6 +93,34 @@ class Oracle {
 			this.getParams(),
 			this.getConfigurations()
 		);
+	}
+	archivalStorage(){
+		return new archivalStorage(
+			this.getSDK(),
+			this.getParams(),
+			this.getConfigurations()
+		)
+	}
+	blockStorage(){
+		return new blockStorage(
+			this.getSDK(),
+			this.getParams(),
+			this.getConfigurations()
+		)
+	}
+	devops(){
+		return new devops(
+			this.getSDK(),
+			this.getParams(),
+			this.getConfigurations()
+		)
+	}
+	blockchain(){
+		return new blockchain(
+			this.getSDK(),
+			this.getParams(),
+			this.getConfigurations()
+		)
 	}
 }
 module.exports = Oracle;
