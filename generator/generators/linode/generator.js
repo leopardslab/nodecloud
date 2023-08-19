@@ -144,6 +144,8 @@ exports.generateLinodeClass = exports.getFunctions = exports.extractSDKData = vo
 var fs = require('fs');
 var typescript_1 = require('typescript');
 var parser_1 = require('../../parsers/linode/parser');
+var transformer_1 = require('../../transformers/linode/transformer');
+var helper_1 = require('../lib/helper');
 var dummyFile = process.cwd() + '/dummyClasses/linode.js';
 var dummyAst = typescript_1.createSourceFile(
 	dummyFile,
@@ -183,7 +185,6 @@ function extractSDKData(sdkAst, serviceClass) {
 					parameters_1.push(parameter);
 				}
 			});
-			// console.log(parameters);
 			methods.push({
 				functionName: name_1.toString(),
 				SDKFunctionName: methodName,
@@ -264,11 +265,19 @@ function getFunctions(sdkFiles, serviceClass) {
 exports.getFunctions = getFunctions;
 function generateLinodeClass(serviceClass, serviceName) {
 	return __awaiter(this, void 0, void 0, function() {
-		var methods_1, files, sdkFiles, functionsArray, classData, e_1;
+		var methods_1,
+			files,
+			sdkFiles,
+			functionsArray,
+			classData,
+			output,
+			dir,
+			filePath,
+			e_1;
 		return __generator(this, function(_a) {
 			switch (_a.label) {
 				case 0:
-					_a.trys.push([0, 2, , 3]);
+					_a.trys.push([0, 3, , 4]);
 					methods_1 = [];
 					if (serviceClass == null) return [2 /*return*/];
 					Object.keys(serviceClass).map(function(key, index) {
@@ -312,37 +321,48 @@ function generateLinodeClass(serviceClass, serviceName) {
 						functions: functionsArray,
 						serviceName: serviceName,
 					};
-					console.log(classData);
-					// const output = await transform(dummyAst, classData);
-					// const dir = getDir(serviceName);
-					// if (!fs.existsSync(process.cwd() + '/generatedClasses/Linode/' + dir)) {
-					// 	fs.mkdirSync(process.cwd() + '/generatedClasses/Linode/' + dir);
-					// }
-					// if (/^[A-Z]*$/.test(serviceName)) {
-					// 	filePath =
-					// 		process.cwd() +
-					// 		'/generatedClasses/Linode/' +
-					// 		dir +
-					// 		'/linode-' +
-					// 		serviceName +
-					// 		'.js';
-					// } else {
-					// 	filePath =
-					// 		process.cwd() +
-					// 		'/generatedClasses/Linode/' +
-					// 		dir +
-					// 		'/linode-' +
-					// 		serviceName.charAt(0).toLowerCase() +
-					// 		serviceName.slice(1) +
-					// 		'.js';
-					// }
-					fs.writeFileSync('./tmp.txt', JSON.stringify(classData));
-					return [3 /*break*/, 3];
+					return [
+						4 /*yield*/,
+						transformer_1.transform(dummyAst, classData),
+					];
 				case 2:
+					output = _a.sent();
+					dir = helper_1.getDir(serviceName);
+					filePath = void 0;
+					if (
+						!fs.existsSync(
+							process.cwd() + '/generatedClasses/Linode/' + dir
+						)
+					) {
+						fs.mkdirSync(
+							process.cwd() + '/generatedClasses/Linode/' + dir
+						);
+					}
+					if (/^[A-Z]*$/.test(serviceName)) {
+						filePath =
+							process.cwd() +
+							'/generatedClasses/Linode/' +
+							dir +
+							'/linode-' +
+							serviceName +
+							'.js';
+					} else {
+						filePath =
+							process.cwd() +
+							'/generatedClasses/Linode/' +
+							dir +
+							'/linode-' +
+							serviceName.charAt(0).toLowerCase() +
+							serviceName.slice(1) +
+							'.js';
+					}
+					helper_1.printFile(filePath, output);
+					return [3 /*break*/, 4];
+				case 3:
 					e_1 = _a.sent();
 					console.error(e_1);
-					return [3 /*break*/, 3];
-				case 3:
+					return [3 /*break*/, 4];
+				case 4:
 					return [2 /*return*/];
 			}
 		});

@@ -11,16 +11,15 @@ try {
 	const services = yaml.safeLoad(fs.readFileSync('node-cloud.yml', 'utf8'));
 	Object.keys(services).map((service, index) => {
 		Object.keys(services[service]).map((provider, index1) => {
-			// if (provider === "Azure") {
-			//   generateAzureClass(services[service][provider], service);
-			// } else if (provider === "AWS") {
-			//   generateAWSClass(services[service][provider], service);
-			// } else if (provider === "GCP") {
-			//   generateGCPClass(services[service][provider], service);
-			// } else if (provider == "DO") {
-			//   generateDOClass(services[service][provider], service);
-			// }
-			if (provider == 'Linode') {
+			if (provider === 'Azure') {
+				generateAzureClass(services[service][provider], service);
+			} else if (provider === 'AWS') {
+				generateAWSClass(services[service][provider], service);
+			} else if (provider === 'GCP') {
+				generateGCPClass(services[service][provider], service);
+			} else if (provider == 'DO') {
+				generateDOClass(services[service][provider], service);
+			} else if (provider == 'Linode') {
 				generateLinodeClass(services[service][provider], service);
 			}
 		});

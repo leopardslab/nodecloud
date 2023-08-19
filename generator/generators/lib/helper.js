@@ -17,6 +17,8 @@ var dirMap = {
 	security: ['IAM'],
 	storage: ['StorageBucket', 'BlockStorage', 'ArchivalStorage'],
 	artificialinteligence: ['Translation'],
+	firewalls: ['Firewalls'],
+	images: ['Images'],
 };
 function printFile(fileName, data) {
 	fs.writeFile(fileName, data, function(err) {

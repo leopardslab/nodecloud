@@ -16,6 +16,8 @@ const dirMap = {
 	security: ['IAM'],
 	storage: ['StorageBucket', 'BlockStorage', 'ArchivalStorage'],
 	artificialinteligence: ['Translation'],
+	firewalls: ['Firewalls'],
+	images: ['Images'],
 };
 
 export function printFile(fileName, data) {

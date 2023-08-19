@@ -49,13 +49,13 @@ StorageBucket:
         list: storage storage.d.ts getBuckets
         upload: storage bucket.d.ts upload
         makePublic: storage file.d.ts makePublic
-#   Linode:
-#     create: object-storage buckets.d.ts createBucket
-#     get: object-storage buckets.d.ts getBucket
-#     list: object-storage buckets.d.ts getBuckets
-#     delete: object-storage buckets.d.ts deleteBucket
-#     getBucketAccess: object-storage buckets.d.ts getBucketAccess
-#     updateBucketAccess: object-storage buckets.d.ts updateBucketAccess
+    # Linode:
+    #     create: object-storage buckets.d.ts createBucket
+    #     get: object-storage buckets.d.ts getBucket
+    #     list: object-storage buckets.d.ts getBuckets
+    #     delete: object-storage buckets.d.ts deleteBucket
+    #     getBucketAccess: object-storage buckets.d.ts getBucketAccess
+    #     updateBucketAccess: object-storage buckets.d.ts updateBucketAccess
 
 PaaS:
     AWS:
@@ -136,9 +136,11 @@ Kubernetes:
         create: kubernetes kubernetes.d.ts createKubernetesCluster
         delete: kubernetes kubernetes.d.ts deleteKubernetesCluster
         getNodePool: kubernetes nodePools.d.ts getNodePool
+        getNodePools: kubernetes nodePools.d.ts getNodePools
         createNodePool: kubernetes nodePools.d.ts createNodePool
         updateNodePool: kubernetes nodePools.d.ts updateNodePool
         deleteNodePool: kubernetes nodePools.d.ts deleteNodePool
+        getAllClusters: kubernetes kubernetes.d.ts getKubernetesClusters
 Monitoring:
     GCP:
         createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
@@ -159,6 +161,16 @@ Monitoring:
         updateAlarm: arm-monitor alertRules.d.ts update
         listAlarms: arm-monitor alertRules.d.ts listBySubscription
         getMetricData: arm-monitor alertRules.d.ts get
+    Linode:
+        getServices: managed managed.d.ts getServices
+        disableServiceMonitor: managed managed.d.ts disableServiceMonitor
+        enableServiceMonitor: managed managed.d.ts enableServiceMonitor
+        deleteServiceMonitor: managed managed.d.ts deleteServiceMonitor
+        createServiceMonitor: managed managed.d.ts createServiceMonitor
+        updateServiceMonitor: managed managed.d.ts updateServiceMonitor
+        getCredentials: managed managed.d.ts getCredentials
+        updateCredential: managed managed.d.ts updateCredential
+        deleteCredential: managed managed.d.ts deleteCredential
 
 Container:
     AWS:
@@ -275,13 +287,6 @@ DNS:
         cloneDomain: domains domains.d.ts cloneDomain
         getDomain: domains domains.d.ts getDomain
         getDomains: domains domains.d.ts getDomains
-ode:
-    createDomain: domains domains.d.ts createDomain
-    updateDomain: domains domains.d.ts updateDomain
-    deleteDomain: domains domains.d.ts deleteDomain
-    cloneDomain: domains domains.d.ts cloneDomain
-    getDomain: domains domains.d.ts getDomain
-    getDomains: domains domains.d.ts getDomains
 
 LoadBalancer:
     AWS:
@@ -414,3 +419,21 @@ BlockStorage:
         delete: volumes volumes.d.ts deleteVolume
         update: volumes volumes.d.ts updateVolume
         list: volumes volumes.d.ts getVolumes
+Images:
+    Linode:
+        getImage: images images.d.ts getImage
+        getImages: images images.d.ts getImages
+        createImage: images images.d.ts createImage
+        updateImage: images images.d.ts updateImage
+        deleteImage: images images.d.ts deleteImage
+        uploadImage: images images.d.ts uploadImage
+
+Firewalls:
+    Linode:
+        getFirewalls: firewalls firewalls.d.ts getFirewalls
+        getFirewall: firewalls firewalls.d.ts getFirewall
+        createFirewall: firewalls firewalls.d.ts createFirewall
+        updateFirewall: firewalls firewalls.d.ts updateFirewall
+        enableFirewall: firewalls firewalls.d.ts enableFirewall
+        disableFirewall: firewalls firewalls.d.ts disableFirewall
+        deleteFirewall: firewalls firewalls.d.ts deleteFirewall
