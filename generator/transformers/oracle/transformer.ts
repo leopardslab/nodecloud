@@ -6,6 +6,7 @@ const dummyIdentifiers = [
 	'_sdkClassName',
 	'SDKClassName',
 	'SDKFunctionName',
+	'_sdkFileName'
 ];
 
 const printer: ts.Printer = ts.createPrinter({
@@ -62,8 +63,6 @@ export async function transform(
 				const functions: any = [];
 				classData.functions.map(method => {
 					const clonedNode = Object.assign({}, node.members[1]);
-					// console.log("Cloned Node..........\n");//sdadas
-					// console.log(clonedNode);//asdasdasdasd
 					clonedNode.name = ts.createIdentifier(method.functionName);
 					functions.push(clonedNode);
 				});
@@ -120,6 +119,13 @@ export async function transform(
 				let updatedIdentifier;
 
 				switch (node.text) {
+					case '_sdkFileName':
+						updatedIdentifier = ts.updateIdentifier(
+							ts.createIdentifier(
+									classData.sdkName
+							)
+						);
+						break;
 					case 'ClassName':
 						updatedIdentifier = ts.updateIdentifier(
 							ts.createIdentifier(
@@ -141,8 +147,7 @@ export async function transform(
 					case 'SDKClassName':
 						updatedIdentifier = ts.updateIdentifier(
 							ts.createIdentifier(
-								classData.className.charAt(0).toLowerCase() +
-									classData.className.substr(1)
+									classData.className
 							)
 						);
 						break;

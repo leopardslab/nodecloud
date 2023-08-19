@@ -20,6 +20,7 @@ interface ClassData {
 	className: string;
 	functions: FunctionData[];
 	serviceName: string;
+	sdkName:string;
 }
 
 const dummyFile = process.cwd() + '/dummyClasses/oracle.js';
@@ -76,6 +77,8 @@ export function extractSDKData(sdkClassAst, serviceClass) {
 		className: sdkClassAst.name.text,
 		functions: methods,
 		serviceName: null,
+		sdkName:null
+
 	};
 	return classData;
 }
@@ -90,8 +93,9 @@ export function generateOracleClass(serviceClass, serviceName) {
 				serviceClass
 			);
 			classData.serviceName = serviceName;
-			console.log(JSON.stringify(classData));
-
+			classData.sdkName = sdkFile
+			console.log(sdkFile);
+			
 			const output = await transform(dummyAst, classData);
 
 			let filePath;
