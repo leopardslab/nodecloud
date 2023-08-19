@@ -6,7 +6,7 @@ const dummyIdentifiers = [
 	'_sdkClassName',
 	'SDKClassName',
 	'SDKFunctionName',
-	'_sdkFileName'
+	'_sdkFileName',
 ];
 
 const printer: ts.Printer = ts.createPrinter({
@@ -121,9 +121,7 @@ export async function transform(
 				switch (node.text) {
 					case '_sdkFileName':
 						updatedIdentifier = ts.updateIdentifier(
-							ts.createIdentifier(
-									classData.sdkName
-							)
+							ts.createIdentifier(classData.sdkName)
 						);
 						break;
 					case 'ClassName':
@@ -146,9 +144,7 @@ export async function transform(
 						break;
 					case 'SDKClassName':
 						updatedIdentifier = ts.updateIdentifier(
-							ts.createIdentifier(
-									classData.className
-							)
+							ts.createIdentifier(classData.className)
 						);
 						break;
 					case 'SDKFunctionName':
