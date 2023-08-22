@@ -143,6 +143,7 @@ Kubernetes:
         deleteNode: containerengine deleteNode
         deleteNodePool: containerengine deleteNodePool
         getNodePool: containerengine getNodePool
+        updateNodePool: containerengine updateNodePool
 
 Monitoring:
     GCP:
@@ -364,7 +365,6 @@ Translation:
         createGlossary: translate v3 translation_service_client.d.ts createGlossary
         detectLanguage: translate v3 translation_service_client.d.ts detectLanguage
 
-
 KeyManagement:
     AWS:
         createKey: kms.d.ts createKey
@@ -475,5 +475,3 @@ Devops:
         getDeployPipeline: devops getDeployPipeline
         getDeployment: devops getDeployment
         getProject: devops getProject
- 
-

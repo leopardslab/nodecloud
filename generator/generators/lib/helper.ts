@@ -16,8 +16,8 @@ const dirMap = {
 	security: ['IAM'],
 	storage: ['StorageBucket', 'BlockStorage', 'ArchivalStorage'],
 	artificialinteligence: ['Translation'],
-	blockchain:['BlockChain'],
-	devops:['Devops']
+	blockchain: ['BlockChain'],
+	devops: ['Devops'],
 };
 
 export function printFile(fileName, data) {
