@@ -138,7 +138,6 @@ export async function transform(
 						ts.isIdentifier(childNode) &&
 						childNode.text === 'SDKFunctionName'
 					) {
-
 						const args = classData.functions[count].params.map(
 							param => ts.createIdentifier(param.name)
 						);

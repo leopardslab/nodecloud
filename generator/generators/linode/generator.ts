@@ -77,14 +77,18 @@ export function extractSDKData(sdkAst, serviceClass) {
 						parameter.typeName = param.type.typeName.text;
 					}
 					parameters.push(parameter);
-				}
-				else if(param.name.elements){
-					const parameter:param={
-						name:"{" + param.name.elements[0].name.text+"," +param.name.elements[1].name.text +"}" ,
+				} else if (param.name.elements) {
+					const parameter: param = {
+						name:
+							'{' +
+							param.name.elements[0].name.text +
+							',' +
+							param.name.elements[1].name.text +
+							'}',
 						optional: param.questionToken ? true : false,
 						type: SyntaxKind[param.type.kind],
 						typeName: null,
-					}
+					};
 					if (param.type.typeName) {
 						parameter.typeName = param.type.typeName.text;
 					}
