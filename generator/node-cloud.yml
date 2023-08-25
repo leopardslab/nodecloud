@@ -43,6 +43,12 @@ StorageBucket:
         list: storage storage.d.ts getBuckets
         upload: storage bucket.d.ts upload
         makePublic: storage file.d.ts makePublic
+    Oracle:
+        create: objectstorage createBucket
+        delete: objectstorage deleteBucket
+        get: objectstorage getBucket
+        list: objectstorage listBuckets
+        reencrypt: objectstorage reencryptBucket
 
 PaaS:
     AWS:
@@ -118,7 +124,16 @@ Kubernetes:
         deleteNodegroup: kubernetes.d.ts deleteNodePool
         describeNodeGroup: kubernetes.d.ts getNodePoolById
         listNodegroups: kubernetes.d.ts getNodePools
-
+    Oracle:
+        create: containerengine createCluster
+        delete: containerengine deleteCluster
+        listClusters: containerengine listClusters
+        describeCluster: containerengine getCluster
+        createNodePool: containerengine createNodePool
+        deleteNodePool: containerengine deleteNodePool
+        deleteNode: containerengine deleteNode
+        describeNodePool: containerengine getNodePool
+        
 Monitoring:
     GCP:
         createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
@@ -151,6 +166,13 @@ Container:
         delete: arm-containerservice containerServices.d.ts deleteMethod
         describe: arm-containerservice containerServices.d.ts get
         list: arm-containerservice containerServices.d.ts list
+    Oracle:
+        create: containerinstances createContainerInstance
+        delete: containerinstances deleteContainerInstance
+        start: containerinstances startContainerInstance
+        stop: containerinstances stopContainerInstance
+        describe: containerinstances getContainer
+        list: containerinstances listContainers
 
 NoSqlIndexed:
     AWS:
@@ -191,7 +213,12 @@ RDBMS:
         getClusters: databases.d.ts getAllClusters
         getCluster: databases.d.ts getClusterById
         updateCluster: databases.d.ts resizeCluster
-
+    Oracle:
+        createDatabse: mysql createDBSystem
+        deleteDatabase: mysql deleteDBSystem
+        modifyDatabase: mysql updateDBSystem
+        getDatabase: mysql getDBSystem
+        
 NoSql:
     AWS:
         createTable: dynamodb.d.ts createTable
@@ -216,6 +243,11 @@ NoSql:
         getClusters: databases.d.ts getAllClusters
         getCluster: databases.d.ts getClusterById
         updateCluster: databases.d.ts resizeCluster
+    Oracle:
+        createTable: nosql createTable
+        deleteTable: nosql deleteTable
+        list: nosql listTables
+        updateTable: nosql updateTable
 
 DNS:
     AWS:
@@ -241,7 +273,12 @@ DNS:
         getRecords: domains.d.ts getAllRecords
         getRecord: domains.d.ts getRecord
         changeRecordSets: domains.d.ts updateRecord
-
+    Oracle:
+        createZone: dns createZone
+        deleteZone: dns deleteZone
+        listZones: dns listZones
+        changeRecordSets: dns updateDomainRecords   
+        
 LoadBalancer:
     AWS:
         create: elb.d.ts createLoadBalancer
@@ -260,7 +297,12 @@ LoadBalancer:
         delete: load-balancers.d.ts delete
         list: load-balancers.d.ts getAll
         update: load-balancers.d.ts update
-
+    Oracle:
+        create: loadbalancer createLoadBalancer
+        delete: loadbalancer deleteLoadBalancer
+        list: loadbalancer listLoadBalancers
+        update: loadbalancer updateLoadBalancer
+        get: loadbalancer getLoadBalancer
 IAM:
     AWS:
         createGroup: iam.d.ts createGroup
@@ -276,7 +318,6 @@ ArchivalStorage:
         list: glacier.d.ts listParts
         upload: glacier.d.ts initiateMultipartUpload
         deleteFiles: glacier.d.ts deleteArchive
-
     GCP:
         # Use storage class as coldline
         mainClass: Storage
@@ -291,7 +332,6 @@ ArchivalStorage:
         delete: objectstorage deleteBucket
         list: objectstorage listBuckets
         update: objectstorage updateBucket
-
 Translation:
     AWS:
         translate: translate.d.ts translateText
@@ -350,7 +390,16 @@ NotificationService:
         publish: pubsub v1 publisher_client.d.ts publish
         listTopics: pubsub v1 publisher_client.d.ts listTopics
         unsubscribe: pubsub v1 subscriber_client.d.ts deleteSubscription
-
+    Oracle:
+        createTopic: ons createTopic
+        deleteTopic: ons deleteTopic
+        getTopic: ons getTopic
+        listTopics: ons listTopics
+        publish: ons publishMessage
+        updateTopic: ons updateTopic
+        subscribe: ons createSubscription
+        listSubscriptions: ons listSubscriptions
+        unsubscribe: ons deleteSubscription
 BlockStorage:
     AWS:
         create: ec2.d.ts createVolume
