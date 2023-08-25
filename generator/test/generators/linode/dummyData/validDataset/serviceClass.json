@@ -1,0 +1,8 @@
+{
+	"create": "kubernetes kubernetes.d.ts createKubernetesCluster",
+	"delete": "kubernetes kubernetes.d.ts deleteKubernetesCluster",
+	"getNodePool": "kubernetes nodePools.d.ts getNodePool",
+	"createNodePool": "kubernetes nodePools.d.ts createNodePool",
+	"updateNodePool": "kubernetes nodePools.d.ts updateNodePool",
+	"deleteNodePool": "kubernetes nodePools.d.ts deleteNodePool"
+}

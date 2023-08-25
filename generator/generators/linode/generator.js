@@ -185,7 +185,7 @@ function extractSDKData(sdkAst, serviceClass) {
 					parameters_1.push(parameter);
 				}
 			});
-			// console.log(parameters);
+
 			methods.push({
 				functionName: name_1.toString(),
 				SDKFunctionName: methodName,
@@ -198,12 +198,14 @@ function extractSDKData(sdkAst, serviceClass) {
 exports.extractSDKData = extractSDKData;
 function getFunctions(sdkFiles, serviceClass) {
 	return __awaiter(this, void 0, void 0, function() {
-		var functionsArray;
+		var functionsArray, classData;
+
 		var _this = this;
 		return __generator(this, function(_a) {
 			switch (_a.label) {
 				case 0:
 					functionsArray = [];
+
 					return [
 						4 /*yield*/,
 						sdkFiles.map(function(file) {
@@ -258,7 +260,13 @@ function getFunctions(sdkFiles, serviceClass) {
 					];
 				case 1:
 					_a.sent();
-					return [2 /*return*/, functionsArray];
+					classData = {
+						className: '',
+						functions: functionsArray,
+						serviceName: null,
+					};
+					// console.log(classData);
+					return [2 /*return*/, classData];
 			}
 		});
 	});
@@ -266,6 +274,7 @@ function getFunctions(sdkFiles, serviceClass) {
 exports.getFunctions = getFunctions;
 function generateLinodeClass(serviceClass, serviceName) {
 	return __awaiter(this, void 0, void 0, function() {
+
 		var methods_1,
 			files,
 			sdkFiles,
@@ -316,20 +325,19 @@ function generateLinodeClass(serviceClass, serviceName) {
 					});
 					return [4 /*yield*/, getFunctions(sdkFiles, serviceClass)];
 				case 1:
-					functionsArray = _a.sent();
-					classData = {
-						className: serviceName + 'LinodeClass',
-						functions: functionsArray,
-						serviceName: serviceName,
-					};
+					classData = _a.sent();
+					classData.className = serviceName + 'LinodeClass';
+					classData.serviceName = serviceName;
+
 					return [
 						4 /*yield*/,
 						transformer_1.transform(dummyAst, classData),
 					];
 				case 2:
 					output = _a.sent();
-					filePath = void 0;
 					dir = helper_1.getDir(serviceName);
+					filePath = void 0;
+
 					if (
 						!fs.existsSync(
 							process.cwd() + '/generatedClasses/Linode/' + dir
