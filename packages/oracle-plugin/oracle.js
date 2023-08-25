@@ -9,7 +9,7 @@ const storage = require('./storage/oci-storageBucket');
 const devops = require('./devops/oci-devops');
 const blockchain = require('./blockchain/oci-blockChain');
 const archivalStorage = require('./storage/oci-archivalStorage');
-const blockStorage = require('./storage/oci-blockStorage');
+const objectStorage = require('./storage/oci-storageBucket');
 
 class Oracle {
 	constructor(ocisdk, clientConfiguration) {
@@ -116,6 +116,13 @@ class Oracle {
 	}
 	blockchain() {
 		return new blockchain(
+			this.getSDK(),
+			this.getParams(),
+			this.getConfigurations()
+		);
+	}
+	objectStorage() {
+		return new objectStorage(
 			this.getSDK(),
 			this.getParams(),
 			this.getConfigurations()

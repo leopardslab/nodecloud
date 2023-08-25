@@ -257,11 +257,6 @@
 								>
 							</li>
 							<li>
-								<a href="Oracle_BlockStorage.html"
-									>Oracle_BlockStorage</a
-								>
-							</li>
-							<li>
 								<a href="Oracle_ComputeInstance.html"
 									>Oracle_ComputeInstance</a
 								>
@@ -313,19 +308,22 @@
 								class="prettyprint source linenums"
 							><code>/*This is an auto generated class, please do not change.*/
 /**
-  * Class to create a KmsVaultClient object
-  * @category Oracle Cloud
-  */
+ * Class to create a KmsVaultClient object
+ * @category Oracle Cloud
+ */
 class Oracle_KeyManagement {
-    /**
-     *
-     * @param {module} do Oracle SDK
-     * @param {object} options SDK options
-     */
-    constructor(ocisdk, params, clientConfiguration) {
-        this._oci = ocisdk.keymanagement;
-        this._sdkclassName = this._oci.KmsVaultClient(params, clientConfiguration);
-    }
+	/**
+	 *
+	 * @param {module} do Oracle SDK
+	 * @param {object} options SDK options
+	 */
+	constructor(ocisdk, params, clientConfiguration) {
+		this._oci = ocisdk.keymanagement;
+		this._sdkclassName = this._oci.KmsVaultClient(
+			params,
+			clientConfiguration
+		);
+	}
 }
 module.exports = Oracle_KeyManagement;
 </code></pre>

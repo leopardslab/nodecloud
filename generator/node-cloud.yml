@@ -441,12 +441,6 @@ BlockStorage:
         delete: volumes.d.ts deleteById
         list: volumes.d.ts getAll
         describe: volumes.d.ts getById
-    Oracle:
-        create: core createVolume
-        delete: core deleteVolume
-        list: core listVolumes
-        get: core getVolume
-
 BlockChain:
     Oracle:
         createBlockchainPlatform: blockchain createBlockchainPlatform
@@ -469,8 +463,8 @@ Devops:
         deleteRepository: devops deleteRepository
         createDeployArtifact: devops createDeployArtifact
         createDeployPipeline: devops createDeployPipeline
-        deleteDeployArtifact: devops createDeployment
         deleteDeployPipeline: devops deleteDeployPipeline
+        deleteDeployArtifact: devops deleteDeployArtifact
         getDeployArtifact: devops getDeployArtifact
         getDeployPipeline: devops getDeployPipeline
         getDeployment: devops getDeployment
