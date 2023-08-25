@@ -277,7 +277,7 @@ DNS:
         createZone: dns createZone
         deleteZone: dns deleteZone
         listZones: dns listZones
-        changeRecordSets: dns updateDomainRecords
+        changeRecordSets: dns updateDomainRecords   
         
 LoadBalancer:
     AWS:
@@ -303,7 +303,6 @@ LoadBalancer:
         list: loadbalancer listLoadBalancers
         update: loadbalancer updateLoadBalancer
         get: loadbalancer getLoadBalancer
-
 IAM:
     AWS:
         createGroup: iam.d.ts createGroup
@@ -401,7 +400,6 @@ NotificationService:
         subscribe: ons createSubscription
         listSubscriptions: ons listSubscriptions
         unsubscribe: ons deleteSubscription
-
 BlockStorage:
     AWS:
         create: ec2.d.ts createVolume
