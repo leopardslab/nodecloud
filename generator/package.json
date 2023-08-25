@@ -1,42 +1,43 @@
 {
-  "name": "class-generator",
-  "version": "1.0.0",
-  "main": "main.js",
-  "author": "Scorelab",
-  "description": "NodeCloud code generation tool",
-  "license": "Apache-2.0",
-  "keywords": [
-    "nodecloud",
-    "code-generation"
-  ],
-  "scripts": {
-    "test": "cross-env TS_NODE_FILES=true mocha --exit --require ts-node/register --colors test/**/*.ts",
-    "tool": "tsc main && node main",
-    "lint": "eslint .",
+	"name": "class-generator",
+	"version": "1.0.0",
+	"main": "main.js",
+	"author": "Scorelab",
+	"description": "NodeCloud code generation tool",
+	"license": "Apache-2.0",
+	"keywords": [
+		"nodecloud",
+		"code-generation"
+	],
+	"scripts": {
+		"test": "cross-env TS_NODE_FILES=true mocha --exit --require ts-node/register --colors test/**/*.ts",
+		"tool": "tsc main && node main",
+		"lint": "eslint .",
 		"lint-fix": "eslint --fix ."
-  },
-  "dependencies": {
-    "@azure/arm-appservice": "^6.0.0",
-    "@azure/arm-compute": "^14.0.0",
-    "@azure/arm-containerservice": "^11.0.0",
-    "@azure/arm-cosmosdb": "^8.0.0",
-    "@azure/arm-keyvault": "^1.2.1",
-    "@azure/arm-monitor": "^6.0.0",
-    "@azure/arm-sql": "^7.0.0",
-    "@azure/arm-storage": "^15.0.0",
-    "@google-cloud/compute": "^2.0.0",
-    "@google-cloud/container": "^2.1.0",
-    "@google-cloud/dns": "^2.0.1",
-    "@google-cloud/monitoring": "^2.0.0",
-    "@google-cloud/pubsub": "^2.1.0",
-    "@google-cloud/storage": "^5.1.1",
-    "@google-cloud/translate": "^6.0.0",
-    "aws-sdk": "^2.686.0",
-    "config": "^1.26.1",
-    "do-wrapper": "^4.5.1",
-    "js-yaml": "^3.14.0",
-    "key-mirror": "^1.0.1",
-    "lodash": "^4.17.19",
-    "typescript": "^3.9.3"
-  }
+	},
+	"dependencies": {
+		"@azure/arm-appservice": "^6.0.0",
+		"@azure/arm-compute": "^14.0.0",
+		"@azure/arm-containerservice": "^11.0.0",
+		"@azure/arm-cosmosdb": "^8.0.0",
+		"@azure/arm-keyvault": "^1.2.1",
+		"@azure/arm-monitor": "^6.0.0",
+		"@azure/arm-sql": "^7.0.0",
+		"@azure/arm-storage": "^15.0.0",
+		"@google-cloud/compute": "^2.0.0",
+		"@google-cloud/container": "^2.1.0",
+		"@google-cloud/dns": "^2.0.1",
+		"@google-cloud/monitoring": "^2.0.0",
+		"@google-cloud/pubsub": "^2.1.0",
+		"@google-cloud/storage": "^5.1.1",
+		"@google-cloud/translate": "^6.0.0",
+		"aws-sdk": "^2.686.0",
+		"config": "^1.26.1",
+		"do-wrapper": "^4.5.1",
+		"js-yaml": "^3.14.0",
+		"key-mirror": "^1.0.1",
+		"lodash": "^4.17.19",
+		"oci-sdk": "^2.55.0",
+		"typescript": "^3.9.3"
+	}
 }
