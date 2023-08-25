@@ -185,6 +185,7 @@ function extractSDKData(sdkAst, serviceClass) {
 					parameters_1.push(parameter);
 				}
 			});
+
 			methods.push({
 				functionName: name_1.toString(),
 				SDKFunctionName: methodName,
@@ -198,12 +199,13 @@ exports.extractSDKData = extractSDKData;
 function getFunctions(sdkFiles, serviceClass) {
 	return __awaiter(this, void 0, void 0, function() {
 		var functionsArray, classData;
+
 		var _this = this;
 		return __generator(this, function(_a) {
 			switch (_a.label) {
 				case 0:
 					functionsArray = [];
-					// console.log(sdkFiles);
+
 					return [
 						4 /*yield*/,
 						sdkFiles.map(function(file) {
@@ -257,7 +259,6 @@ function getFunctions(sdkFiles, serviceClass) {
 						}),
 					];
 				case 1:
-					// console.log(sdkFiles);
 					_a.sent();
 					classData = {
 						className: '',
@@ -273,7 +274,16 @@ function getFunctions(sdkFiles, serviceClass) {
 exports.getFunctions = getFunctions;
 function generateLinodeClass(serviceClass, serviceName) {
 	return __awaiter(this, void 0, void 0, function() {
-		var methods_1, files, sdkFiles, classData, output, dir, filePath, e_1;
+
+		var methods_1,
+			files,
+			sdkFiles,
+			functionsArray,
+			classData,
+			output,
+			filePath,
+			dir,
+			e_1;
 		return __generator(this, function(_a) {
 			switch (_a.label) {
 				case 0:
@@ -318,6 +328,7 @@ function generateLinodeClass(serviceClass, serviceName) {
 					classData = _a.sent();
 					classData.className = serviceName + 'LinodeClass';
 					classData.serviceName = serviceName;
+
 					return [
 						4 /*yield*/,
 						transformer_1.transform(dummyAst, classData),
@@ -326,6 +337,7 @@ function generateLinodeClass(serviceClass, serviceName) {
 					output = _a.sent();
 					dir = helper_1.getDir(serviceName);
 					filePath = void 0;
+
 					if (
 						!fs.existsSync(
 							process.cwd() + '/generatedClasses/Linode/' + dir

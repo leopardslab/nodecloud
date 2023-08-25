@@ -143,7 +143,12 @@ exports.__esModule = true;
 exports.transform = void 0;
 var lodash_1 = require('lodash');
 var ts = require('typescript');
-var dummyIdentifiers = ['ClassName', 'SDKFunctionName'];
+var dummyIdentifiers = [
+	'ClassName',
+	'_sdkClassName',
+	'SDKClassName',
+	'SDKFunctionName',
+];
 var printer = ts.createPrinter({
 	newLine: ts.NewLineKind.LineFeed,
 	removeComments: false,
@@ -202,6 +207,8 @@ function transform(code, classData) {
 											{},
 											node.members[1]
 										);
+										// console.log("Cloned Node..........\n");//sdadas
+										// console.log(clonedNode);//asdasdasdasd
 										clonedNode.name = ts.createIdentifier(
 											method.functionName
 										);
@@ -259,8 +266,33 @@ function transform(code, classData) {
 										case 'ClassName':
 											updatedIdentifier = ts.updateIdentifier(
 												ts.createIdentifier(
-													'Linode_' +
+													'Oracle_' +
 														classData.serviceName
+												)
+											);
+											break;
+										case '_sdkClassName':
+											updatedIdentifier = ts.updateIdentifier(
+												ts.createIdentifier(
+													'_' +
+														classData.className
+															.charAt(0)
+															.toLowerCase() +
+														classData.className.substr(
+															1
+														)
+												)
+											);
+											break;
+										case 'SDKClassName':
+											updatedIdentifier = ts.updateIdentifier(
+												ts.createIdentifier(
+													classData.className
+														.charAt(0)
+														.toLowerCase() +
+														classData.className.substr(
+															1
+														)
 												)
 											);
 											break;
@@ -283,7 +315,6 @@ function transform(code, classData) {
 											ts.isIdentifier(childNode) &&
 											childNode.text === 'SDKFunctionName'
 										) {
-
 											var args = classData.functions[
 												count
 											].params.map(function(param) {
@@ -312,9 +343,9 @@ function transform(code, classData) {
 										'This is an auto generated class, please do not change.'
 									);
 									var comment =
-										'*\n\t* Class to create a ' +
+										'*\n  * Class to create a ' +
 										classData.className +
-										' object\n\t* @category Linode       \n\t';
+										' object\n  * @category Oracle Cloud       \n  ';
 									addMultiLineComment(node, comment);
 								}
 								if (ts.isMethodDeclaration(node)) {
@@ -363,7 +394,6 @@ function transform(code, classData) {
 										}
 										return statment;
 									});
-
 									var comment = void 0;
 									if (parameters.length > 0) {
 										var paramStatments_1 = '';
@@ -375,28 +405,28 @@ function transform(code, classData) {
 											);
 										});
 										comment =
-											'*\n\t* Trigers the ' +
+											'*\n  * Trigers the ' +
 											classData.functions[count]
 												.SDKFunctionName +
 											' function of ' +
 											classData.className +
-											'\n\t' +
+											'\n  ' +
 											paramStatments_1 +
-											'\n\t* @returns {Promise<' +
+											'\n  * @returns {Promise<' +
 											classData.functions[count]
 												.SDKFunctionName +
-											'Response>}\n\t';
+											'Response>}\n  ';
 									} else {
 										comment =
-											'*\n\t* Trigers the ' +
+											'*\n  * Trigers the ' +
 											classData.functions[count]
 												.SDKFunctionName +
 											' function of ' +
 											classData.className +
-											'\n\t* @returns {Promise<' +
+											'\n  * @returns {Promise<' +
 											classData.functions[count]
 												.SDKFunctionName +
-											'Response>}\n\t';
+											'Response>}\n  ';
 									}
 									addMultiLineComment(node, comment);
 									count++;

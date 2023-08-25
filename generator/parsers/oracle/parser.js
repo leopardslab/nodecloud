@@ -144,21 +144,20 @@ exports.getAST = void 0;
 var fs = require('fs');
 var path = require('path');
 var typescript_1 = require('typescript');
-function getAST(sdkFileInfo) {
+function getAST(sdkFileName) {
 	var _this = this;
 	return new Promise(function(resolve, reject) {
 		return __awaiter(_this, void 0, void 0, function() {
-			var file, ast, cloned_1, tmp_1, error_1;
+			var file, ast, cloned_1, error_1;
 			return __generator(this, function(_a) {
 				switch (_a.label) {
 					case 0:
 						_a.trys.push([0, 2, , 3]);
 						file = path.join(
 							__dirname,
-							'../../../node_modules/@linode/api-v4/lib/' +
-								sdkFileInfo.pkgName +
-								'/' +
-								sdkFileInfo.fileName
+							'../../../node_modules/oci-' +
+								sdkFileName.toLowerCase() +
+								'/lib/client.d.ts'
 						);
 						ast = typescript_1.createSourceFile(
 							file,
@@ -166,27 +165,23 @@ function getAST(sdkFileInfo) {
 							typescript_1.ScriptTarget.Latest,
 							true
 						);
-						cloned_1 = [];
-						tmp_1 = null;
+						cloned_1 = null;
 						return [
 							4 /*yield*/,
 							ast.forEachChild(function(child) {
+								// console.log(SyntaxKind[child.kind]);
 								if (
 									typescript_1.SyntaxKind[child.kind] ===
-									'FirstStatement'
+									'ClassDeclaration'
 								) {
-
-									tmp_1 = Object.assign({}, child);
-									cloned_1.push(
-										tmp_1.declarationList.declarations[0]
-									);
+									cloned_1 = Object.assign({}, child);
 								}
 							}),
 						];
 					case 1:
 						_a.sent();
 						if (!cloned_1) {
-							reject(new Error('Function not found!'));
+							reject(new Error('Class not found!'));
 						} else {
 							resolve(cloned_1);
 						}

@@ -140,70 +140,133 @@ var __generator =
 		}
 	};
 exports.__esModule = true;
-exports.getAST = void 0;
+exports.generateOracleClass = exports.extractSDKData = void 0;
 var fs = require('fs');
-var path = require('path');
 var typescript_1 = require('typescript');
-function getAST(sdkFileInfo) {
+var parser_1 = require('../../parsers/oracle/parser');
+var helper_1 = require('../lib/helper');
+var transformer_1 = require('../../transformers/oracle/transformer');
+var dummyFile = process.cwd() + '/dummyClasses/oracle.js';
+var dummyAst = typescript_1.createSourceFile(
+	dummyFile,
+	fs.readFileSync(dummyFile).toString(),
+	typescript_1.ScriptTarget.Latest,
+	true
+);
+function extractSDKData(sdkClassAst, serviceClass) {
+	var methods = [];
+	var functions = [];
+	Object.keys(serviceClass).map(function(key, index) {
+		functions.push(serviceClass[key].split(' ')[1]);
+	});
+	sdkClassAst.members.map(function(method) {
+		if (method.name && functions.includes(method.name.text)) {
+			var name_1;
+			Object.keys(serviceClass).map(function(key, index) {
+				if (serviceClass[key].split(' ')[1] === method.name.text) {
+					name_1 = key;
+				}
+			});
+			var parameters_1 = [];
+			method.parameters.map(function(param) {
+				if (param.name.text !== 'callback') {
+					var parameter = {
+						name: param.name.text,
+						optional: param.questionToken ? true : false,
+						type: typescript_1.SyntaxKind[param.type.kind],
+						typeName: null,
+					};
+					if (
+						parameter.type === 'TypeReference' &&
+						param.type.typeName
+					) {
+						parameter.typeName = param.type.typeName.right.text;
+					}
+					parameters_1.push(parameter);
+				}
+			});
+			methods.push({
+				functionName: name_1.toString(),
+				SDKFunctionName: method.name.text.toString(),
+				params: parameters_1,
+			});
+		}
+	});
+	var classData = {
+		className: sdkClassAst.name.text,
+		functions: methods,
+		serviceName: null,
+	};
+	console.log(classData);
+	return classData;
+}
+exports.extractSDKData = extractSDKData;
+function generateOracleClass(serviceClass, serviceName) {
 	var _this = this;
-	return new Promise(function(resolve, reject) {
+	var sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(' ')[0];
+	console.log(sdkFile);
+	parser_1.getAST(sdkFile).then(function(result) {
 		return __awaiter(_this, void 0, void 0, function() {
-			var file, ast, cloned_1, tmp_1, error_1;
+			var sdkClassAst, classData, output, filePath, dir, error_1;
 			return __generator(this, function(_a) {
 				switch (_a.label) {
 					case 0:
-						_a.trys.push([0, 2, , 3]);
-						file = path.join(
-							__dirname,
-							'../../../node_modules/@linode/api-v4/lib/' +
-								sdkFileInfo.pkgName +
-								'/' +
-								sdkFileInfo.fileName
-						);
-						ast = typescript_1.createSourceFile(
-							file,
-							fs.readFileSync(file).toString(),
-							typescript_1.ScriptTarget.Latest,
-							true
-						);
-						cloned_1 = [];
-						tmp_1 = null;
+						sdkClassAst = result;
+						_a.label = 1;
+					case 1:
+						_a.trys.push([1, 3, , 4]);
+						classData = extractSDKData(sdkClassAst, serviceClass);
+						classData.serviceName = serviceName;
 						return [
 							4 /*yield*/,
-							ast.forEachChild(function(child) {
-								if (
-									typescript_1.SyntaxKind[child.kind] ===
-									'FirstStatement'
-								) {
-
-									tmp_1 = Object.assign({}, child);
-									cloned_1.push(
-										tmp_1.declarationList.declarations[0]
-									);
-								}
-							}),
+							transformer_1.transform(dummyAst, classData),
 						];
-					case 1:
-						_a.sent();
-						if (!cloned_1) {
-							reject(new Error('Function not found!'));
-						} else {
-							resolve(cloned_1);
-						}
-						return [3 /*break*/, 3];
 					case 2:
-						error_1 = _a.sent();
-						if (error_1.code === 'ENOENT') {
-							reject(new Error('File not found!'));
-						} else {
-							reject(error_1);
+						output = _a.sent();
+						filePath = void 0;
+						dir = helper_1.getDir(serviceName);
+						if (
+							!fs.existsSync(
+								process.cwd() +
+									'/generatedClasses/Oracle/' +
+									dir
+							)
+						) {
+							fs.mkdirSync(
+								process.cwd() +
+									'/generatedClasses/Oracle/' +
+									dir
+							);
 						}
-						return [3 /*break*/, 3];
+						if (/^[A-Z]*$/.test(serviceName)) {
+							filePath =
+								process.cwd() +
+								'/generatedClasses/Oracle/' +
+								dir +
+								'/oci-' +
+								serviceName +
+								'.js';
+						} else {
+							filePath =
+								process.cwd() +
+								'/generatedClasses/Oracle/' +
+								dir +
+								'/oci-' +
+								serviceName.charAt(0).toLowerCase() +
+								serviceName.slice(1) +
+								'.js';
+						}
+						helper_1.printFile(filePath, output);
+						return [3 /*break*/, 4];
 					case 3:
+						error_1 = _a.sent();
+						console.error(error_1);
+						return [3 /*break*/, 4];
+					case 4:
 						return [2 /*return*/];
 				}
 			});
 		});
 	});
 }
-exports.getAST = getAST;
+exports.generateOracleClass = generateOracleClass;
