@@ -1,421 +1,421 @@
-# ComputeInstance:
-#     AWS:
-#         create: ec2.d.ts runInstances
-#         list: ec2.d.ts describeInstances
-#         start: ec2.d.ts startInstances
-#         stop: ec2.d.ts stopInstances
-#         reboot: ec2.d.ts rebootInstances
-#         destroy: ec2.d.ts terminateInstances
-#         monitor: ec2.d.ts monitorInstances
-#         unmonitor: ec2.d.ts unmonitorInstances
-#         addTags: ec2.d.ts createTags
-#     Azure:
-#         create: arm-compute virtualMachines.d.ts createOrUpdate
-#         list: arm-compute virtualMachines.d.ts list
-#         start: arm-compute virtualMachines.d.ts start
-#         stop: arm-compute virtualMachines.d.ts powerOff
-#         reboot: arm-compute virtualMachines.d.ts restart
-#         destroy: arm-compute virtualMachines.d.ts deleteMethod
-#     # GCP: This SDK currenlty doesn't contain type definition files
-#     DO:
-#         create: droplets.d.ts create
-#         list: droplets.d.ts getAll
-#         destroy: droplets.d.ts deleteById
-#         start: droplets.d.ts requestAction
-#         stop: droplets.d.ts requestAction
-# StorageBucket:
-#     AWS:
-#         create: s3.d.ts createBucket
-#         delete: s3.d.ts deleteBucket
-#         list: s3.d.ts listBuckets
-#         upload: s3.d.ts uploadPart
-#         deleteFiles: s3.d.ts deleteObjects
-#     Azure:
-#         create: arm-storage blobContainers.d.ts create
-#         delete: arm-storage blobContainers.d.ts deleteMethod
-#         list: arm-storage blobContainers.d.ts list
-#     GCP:
-#         mainClass: Storage
-#         create: storage storage.d.ts createBucket
-#         deleteFiles: storage bucket.d.ts deleteFiles
-#         delete: storage bucket.d.ts delete
-#         list: storage storage.d.ts getBuckets
-#         upload: storage bucket.d.ts upload
-#         makePublic: storage file.d.ts makePublic
-#     Oracle:
-#         create: objectstorage createBucket
-#         delete: objectstorage deleteBucket
-#         get: objectstorage getBucket
-#         list: objectstorage listBuckets
-#         reencrypt: objectstorage reencryptBucket
+ComputeInstance:
+    AWS:
+        create: ec2.d.ts runInstances
+        list: ec2.d.ts describeInstances
+        start: ec2.d.ts startInstances
+        stop: ec2.d.ts stopInstances
+        reboot: ec2.d.ts rebootInstances
+        destroy: ec2.d.ts terminateInstances
+        monitor: ec2.d.ts monitorInstances
+        unmonitor: ec2.d.ts unmonitorInstances
+        addTags: ec2.d.ts createTags
+    Azure:
+        create: arm-compute virtualMachines.d.ts createOrUpdate
+        list: arm-compute virtualMachines.d.ts list
+        start: arm-compute virtualMachines.d.ts start
+        stop: arm-compute virtualMachines.d.ts powerOff
+        reboot: arm-compute virtualMachines.d.ts restart
+        destroy: arm-compute virtualMachines.d.ts deleteMethod
+    # GCP: This SDK currenlty doesn't contain type definition files
+    DO:
+        create: droplets.d.ts create
+        list: droplets.d.ts getAll
+        destroy: droplets.d.ts deleteById
+        start: droplets.d.ts requestAction
+        stop: droplets.d.ts requestAction
+StorageBucket:
+    AWS:
+        create: s3.d.ts createBucket
+        delete: s3.d.ts deleteBucket
+        list: s3.d.ts listBuckets
+        upload: s3.d.ts uploadPart
+        deleteFiles: s3.d.ts deleteObjects
+    Azure:
+        create: arm-storage blobContainers.d.ts create
+        delete: arm-storage blobContainers.d.ts deleteMethod
+        list: arm-storage blobContainers.d.ts list
+    GCP:
+        mainClass: Storage
+        create: storage storage.d.ts createBucket
+        deleteFiles: storage bucket.d.ts deleteFiles
+        delete: storage bucket.d.ts delete
+        list: storage storage.d.ts getBuckets
+        upload: storage bucket.d.ts upload
+        makePublic: storage file.d.ts makePublic
+    Oracle:
+        create: objectstorage createBucket
+        delete: objectstorage deleteBucket
+        get: objectstorage getBucket
+        list: objectstorage listBuckets
+        reencrypt: objectstorage reencryptBucket
 
-# PaaS:
-#     AWS:
-#         create: elasticbeanstalk.d.ts createApplication
-#         update: elasticbeanstalk.d.ts updateApplication
-#         describe: elasticbeanstalk.d.ts describeApplications
-#         delete: elasticbeanstalk.d.ts deleteApplication
-#         restart: elasticbeanstalk.d.ts restartAppServer
-#         createEnvironment: elasticbeanstalk.d.ts createEnvironment
-#         updateEnvironment: elasticbeanstalk.d.ts updateEnvironment
-#         createConfigTemplate: elasticbeanstalk.d.ts createConfigurationTemplate
-#         describeConfigSettings: elasticbeanstalk.d.ts describeConfigurationSettings
-#         listVersions: elasticbeanstalk.d.ts listPlatformVersions
-#         deleteConfigTemplate: elasticbeanstalk.d.ts deleteConfigurationTemplate
-#         describeAccountAttributes: elasticbeanstalk.d.ts describeAccountAttributes
-#         composeEnvironments: elasticbeanstalk.d.ts composeEnvironments
-#         checkDNSAvailability: elasticbeanstalk.d.ts checkDNSAvailability
-#         terminateEnvironment: elasticbeanstalk.d.ts terminateEnvironment
-#         createStorageLocation: elasticbeanstalk.d.ts createStorageLocation
-#     Azure:
-#         create: arm-appservice webApps.d.ts createOrUpdate
-#         update: arm-appservice webApps.d.ts update
-#         describe: arm-appservice webApps.d.ts get
-#         delete: arm-appservice webApps.d.ts deleteMethod
-#         restart: arm-appservice webApps.d.ts restart
-#         createEnvironment: arm-appservice appServiceEnvironments.d.ts createOrUpdate
-#         updateEnvironment: arm-appservice appServiceEnvironments.d.ts update
-#         createConfigTemplate: arm-appservice webApps.d.ts createOrUpdateSlot
-#         describeConfigSettings: arm-appservice webApps.d.ts getSlot
-#         deleteConfigTemplate: arm-appservice webApps.d.ts deleteSlot
-#         checkDNSAvailability: arm-appservice domains.d.ts checkAvailability
-#         terminateEnvironment: arm-appservice appServiceEnvironments.d.ts deleteMethod
+PaaS:
+    AWS:
+        create: elasticbeanstalk.d.ts createApplication
+        update: elasticbeanstalk.d.ts updateApplication
+        describe: elasticbeanstalk.d.ts describeApplications
+        delete: elasticbeanstalk.d.ts deleteApplication
+        restart: elasticbeanstalk.d.ts restartAppServer
+        createEnvironment: elasticbeanstalk.d.ts createEnvironment
+        updateEnvironment: elasticbeanstalk.d.ts updateEnvironment
+        createConfigTemplate: elasticbeanstalk.d.ts createConfigurationTemplate
+        describeConfigSettings: elasticbeanstalk.d.ts describeConfigurationSettings
+        listVersions: elasticbeanstalk.d.ts listPlatformVersions
+        deleteConfigTemplate: elasticbeanstalk.d.ts deleteConfigurationTemplate
+        describeAccountAttributes: elasticbeanstalk.d.ts describeAccountAttributes
+        composeEnvironments: elasticbeanstalk.d.ts composeEnvironments
+        checkDNSAvailability: elasticbeanstalk.d.ts checkDNSAvailability
+        terminateEnvironment: elasticbeanstalk.d.ts terminateEnvironment
+        createStorageLocation: elasticbeanstalk.d.ts createStorageLocation
+    Azure:
+        create: arm-appservice webApps.d.ts createOrUpdate
+        update: arm-appservice webApps.d.ts update
+        describe: arm-appservice webApps.d.ts get
+        delete: arm-appservice webApps.d.ts deleteMethod
+        restart: arm-appservice webApps.d.ts restart
+        createEnvironment: arm-appservice appServiceEnvironments.d.ts createOrUpdate
+        updateEnvironment: arm-appservice appServiceEnvironments.d.ts update
+        createConfigTemplate: arm-appservice webApps.d.ts createOrUpdateSlot
+        describeConfigSettings: arm-appservice webApps.d.ts getSlot
+        deleteConfigTemplate: arm-appservice webApps.d.ts deleteSlot
+        checkDNSAvailability: arm-appservice domains.d.ts checkAvailability
+        terminateEnvironment: arm-appservice appServiceEnvironments.d.ts deleteMethod
 
-# Kubernetes:
-#     Azure:
-#         create: arm-containerservice managedClusters.d.ts createOrUpdate
-#         delete: arm-containerservice managedClusters.d.ts deleteMethod
-#         updateTags: arm-containerservice managedClusters.d.ts updateTags
-#         listClusters: arm-containerservice managedClusters.d.ts list
-#         describeCluster: arm-containerservice managedClusters.d.ts get
-#         createNodeGroup: arm-containerservice agentPools.d.ts createOrUpdate
-#         deleteNodegroup: arm-containerservice agentPools.d.ts deleteMethod
-#         describeNodeGroup: arm-containerservice agentPools.d.ts get
-#         listNodegroups: arm-containerservice agentPools.d.ts list
-#         updateConfig: arm-containerservice managedClusters.d.ts rotateClusterCertificates
-#     GCP:
-#         create: container v1 cluster_manager_client.d.ts createCluster
-#         delete: container v1 cluster_manager_client.d.ts deleteCluster
-#         listClusters: container v1 cluster_manager_client.d.ts listClusters
-#         describeCluster: container v1 cluster_manager_client.d.ts getCluster
-#         createNodeGroup: container v1 cluster_manager_client.d.ts createNodePool
-#         deleteNodegroup: container v1 cluster_manager_client.d.ts deleteNodePool
-#         describeNodeGroup: container v1 cluster_manager_client.d.ts getNodePool
-#         listNodegroups: container v1 cluster_manager_client.d.ts listNodePools
-#         updateConfig: container v1 cluster_manager_client.d.ts setAddonsConfig
-#     AWS:
-#         create: eks.d.ts createCluster
-#         delete: eks.d.ts deleteCluster
-#         listClusters: eks.d.ts listClusters
-#         describeCluster: eks.d.ts describeCluster
-#         updateTags: eks.d.ts tagResource
-#         createNodeGroup: eks.d.ts createNodegroup
-#         deleteNodegroup: eks.d.ts deleteNodegroup
-#         describeNodeGroup: eks.d.ts describeNodegroup
-#         listNodegroups: eks.d.ts listNodegroups
-#         updateConfig: eks.d.ts updateClusterConfig
-#     DO:
-#         create: kubernetes.d.ts create
-#         delete: kubernetes.d.ts delete
-#         listClusters: kubernetes.d.ts getClusters
-#         describeCluster: kubernetes.d.ts getById
-#         createNodeGroup: kubernetes.d.ts addNodePool
-#         deleteNodegroup: kubernetes.d.ts deleteNodePool
-#         describeNodeGroup: kubernetes.d.ts getNodePoolById
-#         listNodegroups: kubernetes.d.ts getNodePools
-#     Oracle:
-#         create: containerengine createCluster
-#         delete: containerengine deleteCluster
-#         listClusters: containerengine listClusters
-#         describeCluster: containerengine getCluster
-#         createNodePool: containerengine createNodePool
-#         deleteNodePool: containerengine deleteNodePool
-#         deleteNode: containerengine deleteNode
-#         describeNodePool: containerengine getNodePool
+Kubernetes:
+    Azure:
+        create: arm-containerservice managedClusters.d.ts createOrUpdate
+        delete: arm-containerservice managedClusters.d.ts deleteMethod
+        updateTags: arm-containerservice managedClusters.d.ts updateTags
+        listClusters: arm-containerservice managedClusters.d.ts list
+        describeCluster: arm-containerservice managedClusters.d.ts get
+        createNodeGroup: arm-containerservice agentPools.d.ts createOrUpdate
+        deleteNodegroup: arm-containerservice agentPools.d.ts deleteMethod
+        describeNodeGroup: arm-containerservice agentPools.d.ts get
+        listNodegroups: arm-containerservice agentPools.d.ts list
+        updateConfig: arm-containerservice managedClusters.d.ts rotateClusterCertificates
+    GCP:
+        create: container v1 cluster_manager_client.d.ts createCluster
+        delete: container v1 cluster_manager_client.d.ts deleteCluster
+        listClusters: container v1 cluster_manager_client.d.ts listClusters
+        describeCluster: container v1 cluster_manager_client.d.ts getCluster
+        createNodeGroup: container v1 cluster_manager_client.d.ts createNodePool
+        deleteNodegroup: container v1 cluster_manager_client.d.ts deleteNodePool
+        describeNodeGroup: container v1 cluster_manager_client.d.ts getNodePool
+        listNodegroups: container v1 cluster_manager_client.d.ts listNodePools
+        updateConfig: container v1 cluster_manager_client.d.ts setAddonsConfig
+    AWS:
+        create: eks.d.ts createCluster
+        delete: eks.d.ts deleteCluster
+        listClusters: eks.d.ts listClusters
+        describeCluster: eks.d.ts describeCluster
+        updateTags: eks.d.ts tagResource
+        createNodeGroup: eks.d.ts createNodegroup
+        deleteNodegroup: eks.d.ts deleteNodegroup
+        describeNodeGroup: eks.d.ts describeNodegroup
+        listNodegroups: eks.d.ts listNodegroups
+        updateConfig: eks.d.ts updateClusterConfig
+    DO:
+        create: kubernetes.d.ts create
+        delete: kubernetes.d.ts delete
+        listClusters: kubernetes.d.ts getClusters
+        describeCluster: kubernetes.d.ts getById
+        createNodeGroup: kubernetes.d.ts addNodePool
+        deleteNodegroup: kubernetes.d.ts deleteNodePool
+        describeNodeGroup: kubernetes.d.ts getNodePoolById
+        listNodegroups: kubernetes.d.ts getNodePools
+    Oracle:
+        create: containerengine createCluster
+        delete: containerengine deleteCluster
+        listClusters: containerengine listClusters
+        describeCluster: containerengine getCluster
+        createNodePool: containerengine createNodePool
+        deleteNodePool: containerengine deleteNodePool
+        deleteNode: containerengine deleteNode
+        describeNodePool: containerengine getNodePool
 
-# Monitoring:
-#     GCP:
-#         createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
-#         deleteAlarm: monitoring v3 alert_policy_service_client.d.ts deleteAlertPolicy
-#         updateAlarm: monitoring v3 alert_policy_service_client.d.ts updateAlertPolicy
-#         listAlarms: monitoring v3 alert_policy_service_client.d.ts listAlertPolicies
-#         getMetricData: monitoring v3 metric_service_client.d.ts getMetricDescriptor
-#         projectPath: monitoring v3 alert_policy_service_client.d.ts projectPath
-#     AWS:
-#         createAlarm: cloudwatch.d.ts putMetricAlarm
-#         deleteAlarm: cloudwatch.d.ts deleteAlarms
-#         updateAlarm: cloudwatch.d.ts putMetricAlarm # same method for update
-#         listAlarms: cloudwatch.d.ts listMetrics
-#         getMetricData: cloudwatch.d.ts getMetricData
-#     Azure:
-#         createAlarm: arm-monitor alertRules.d.ts createOrUpdate
-#         deleteAlarm: arm-monitor alertRules.d.ts deleteMethod
-#         updateAlarm: arm-monitor alertRules.d.ts update
-#         listAlarms: arm-monitor alertRules.d.ts listBySubscription
-#         getMetricData: arm-monitor alertRules.d.ts get
+Monitoring:
+    GCP:
+        createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
+        deleteAlarm: monitoring v3 alert_policy_service_client.d.ts deleteAlertPolicy
+        updateAlarm: monitoring v3 alert_policy_service_client.d.ts updateAlertPolicy
+        listAlarms: monitoring v3 alert_policy_service_client.d.ts listAlertPolicies
+        getMetricData: monitoring v3 metric_service_client.d.ts getMetricDescriptor
+        projectPath: monitoring v3 alert_policy_service_client.d.ts projectPath
+    AWS:
+        createAlarm: cloudwatch.d.ts putMetricAlarm
+        deleteAlarm: cloudwatch.d.ts deleteAlarms
+        updateAlarm: cloudwatch.d.ts putMetricAlarm # same method for update
+        listAlarms: cloudwatch.d.ts listMetrics
+        getMetricData: cloudwatch.d.ts getMetricData
+    Azure:
+        createAlarm: arm-monitor alertRules.d.ts createOrUpdate
+        deleteAlarm: arm-monitor alertRules.d.ts deleteMethod
+        updateAlarm: arm-monitor alertRules.d.ts update
+        listAlarms: arm-monitor alertRules.d.ts listBySubscription
+        getMetricData: arm-monitor alertRules.d.ts get
 
-# Container:
-#     AWS:
-#         create: ecs.d.ts createCluster
-#         delete: ecs.d.ts deleteCluster
-#         describe: ecs.d.ts describeClusters
-#         list: ecs.d.ts listClusters
-#     Azure:
-#         create: arm-containerservice containerServices.d.ts createOrUpdate
-#         delete: arm-containerservice containerServices.d.ts deleteMethod
-#         describe: arm-containerservice containerServices.d.ts get
-#         list: arm-containerservice containerServices.d.ts list
-#     Oracle:
-#         create: containerinstances createContainerInstance
-#         delete: containerinstances deleteContainerInstance
-#         start: containerinstances startContainerInstance
-#         stop: containerinstances stopContainerInstance
-#         describe: containerinstances getContainer
-#         list: containerinstances listContainers
+Container:
+    AWS:
+        create: ecs.d.ts createCluster
+        delete: ecs.d.ts deleteCluster
+        describe: ecs.d.ts describeClusters
+        list: ecs.d.ts listClusters
+    Azure:
+        create: arm-containerservice containerServices.d.ts createOrUpdate
+        delete: arm-containerservice containerServices.d.ts deleteMethod
+        describe: arm-containerservice containerServices.d.ts get
+        list: arm-containerservice containerServices.d.ts list
+    Oracle:
+        create: containerinstances createContainerInstance
+        delete: containerinstances deleteContainerInstance
+        start: containerinstances startContainerInstance
+        stop: containerinstances stopContainerInstance
+        describe: containerinstances getContainer
+        list: containerinstances listContainers
 
-# NoSqlIndexed:
-#     AWS:
-#         createCollection: SimpleDB.d.ts createDomain
-#         deleteCollection: SimpleDB.d.ts deleteDomain
-#         listCollections: SimpleDB.d.ts listDomains
-#         batchDelete: SimpleDB.d.ts batchDeleteAttributes
-#         batchWrite: SimpleDB.d.ts batchPutAttributes
-#         query: SimpleDB.d.ts select
-#         setAttribute: SimpleDB.d.ts putAttributes
-#         deleteAttribute: SimpleDB.d.ts deleteAttributes
-#         getAttributes: SimpleDB.d.ts getAttributes
+NoSqlIndexed:
+    AWS:
+        createCollection: SimpleDB.d.ts createDomain
+        deleteCollection: SimpleDB.d.ts deleteDomain
+        listCollections: SimpleDB.d.ts listDomains
+        batchDelete: SimpleDB.d.ts batchDeleteAttributes
+        batchWrite: SimpleDB.d.ts batchPutAttributes
+        query: SimpleDB.d.ts select
+        setAttribute: SimpleDB.d.ts putAttributes
+        deleteAttribute: SimpleDB.d.ts deleteAttributes
+        getAttributes: SimpleDB.d.ts getAttributes
 
-# RDBMS:
-#     AWS:
-#         createDatabse: rds.d.ts createDBCluster
-#         deleteDatabase: rds.d.ts deleteDBCluster
-#         createSnapshots: rds.d.ts createDBSnapshot
-#         modifyDB: rds.d.ts modifyDBCluster
-#         restoreDatabase: rds.d.ts rebootDBInstance
-#         deleteDBSnapshot: rds.d.ts deleteDBSnapshot
-#     Azure:
-#         createDatabse: arm-sql databases.d.ts createOrUpdate
-#         deleteDatabase: arm-sql databases.d.ts deleteMethod
-#         createSnapshots: arm-sql databases.d.ts exportMethod
-#         modifyDB: arm-sql databases.d.ts update
-#         restoreDatabase: arm-sql managedDatabases.d.ts completeRestore
-#     GCP:
-#         createDatabse: spanner v1 database_admin_client.d.ts createDatabase
-#         deleteDatabase: spanner v1 database_admin_client.d.ts dropDatabase
-#         createSnapshots: spanner v1 database_admin_client.d.ts createBackup
-#         modifyDB: spanner v1 database_admin_client.d.ts updateDatabaseDdl
-#         restoreDatabase: spanner v1 database_admin_client.d.ts restoreDatabase
-#         deleteDBSnapshot: spanner v1 database_admin_client.d.ts deleteBackup
-#         databasePath: spanner v1 database_admin_client.d.ts databasePath
-#     DO:
-#         createCluster: databases.d.ts createCluster
-#         getClusters: databases.d.ts getAllClusters
-#         getCluster: databases.d.ts getClusterById
-#         updateCluster: databases.d.ts resizeCluster
-#     Oracle:
-#         createDatabse: mysql createDBSystem
-#         deleteDatabase: mysql deleteDBSystem
-#         modifyDatabase: mysql updateDBSystem
-#         getDatabase: mysql getDBSystem
+RDBMS:
+    AWS:
+        createDatabse: rds.d.ts createDBCluster
+        deleteDatabase: rds.d.ts deleteDBCluster
+        createSnapshots: rds.d.ts createDBSnapshot
+        modifyDB: rds.d.ts modifyDBCluster
+        restoreDatabase: rds.d.ts rebootDBInstance
+        deleteDBSnapshot: rds.d.ts deleteDBSnapshot
+    Azure:
+        createDatabse: arm-sql databases.d.ts createOrUpdate
+        deleteDatabase: arm-sql databases.d.ts deleteMethod
+        createSnapshots: arm-sql databases.d.ts exportMethod
+        modifyDB: arm-sql databases.d.ts update
+        restoreDatabase: arm-sql managedDatabases.d.ts completeRestore
+    GCP:
+        createDatabse: spanner v1 database_admin_client.d.ts createDatabase
+        deleteDatabase: spanner v1 database_admin_client.d.ts dropDatabase
+        createSnapshots: spanner v1 database_admin_client.d.ts createBackup
+        modifyDB: spanner v1 database_admin_client.d.ts updateDatabaseDdl
+        restoreDatabase: spanner v1 database_admin_client.d.ts restoreDatabase
+        deleteDBSnapshot: spanner v1 database_admin_client.d.ts deleteBackup
+        databasePath: spanner v1 database_admin_client.d.ts databasePath
+    DO:
+        createCluster: databases.d.ts createCluster
+        getClusters: databases.d.ts getAllClusters
+        getCluster: databases.d.ts getClusterById
+        updateCluster: databases.d.ts resizeCluster
+    Oracle:
+        createDatabse: mysql createDBSystem
+        deleteDatabase: mysql deleteDBSystem
+        modifyDatabase: mysql updateDBSystem
+        getDatabase: mysql getDBSystem
 
-# NoSql:
-#     AWS:
-#         createTable: dynamodb.d.ts createTable
-#         createItem: dynamodb.d.ts putItem
-#         deleteItem: dynamodb.d.ts deleteItem
-#         updateItem: dynamodb.d.ts updateItem
-#         query: dynamodb.d.ts query
-#         deleteTable: dynamodb.d.ts deleteTable
-#     Azure:
-#         createCollection: arm-cosmosdb tableResources.d.ts createUpdateTable
-#         deleteCollection: arm-cosmosdb tableResources.d.ts deleteTable
-#         listCollections: arm-cosmosdb tableResources.d.ts listTables
-#         setAttribute: arm-cosmosdb tableResources.d.ts updateTableThroughput
-#         getAttributes: arm-cosmosdb tableResources.d.ts getTable
-#     GCP:
-#         createItem: firestore v1 firestore_client.d.ts createDocument
-#         deleteItem: firestore v1 firestore_client.d.ts deleteDocument
-#         updateItem: firestore v1 firestore_client.d.ts updateDocument
-#         query: firestore v1 firestore_client.d.ts runQuery
-#     DO:
-#         createCluster: databases.d.ts createCluster
-#         getClusters: databases.d.ts getAllClusters
-#         getCluster: databases.d.ts getClusterById
-#         updateCluster: databases.d.ts resizeCluster
-#     Oracle:
-#         createTable: nosql createTable
-#         deleteTable: nosql deleteTable
-#         list: nosql listTables
-#         updateTable: nosql updateTable
+NoSql:
+    AWS:
+        createTable: dynamodb.d.ts createTable
+        createItem: dynamodb.d.ts putItem
+        deleteItem: dynamodb.d.ts deleteItem
+        updateItem: dynamodb.d.ts updateItem
+        query: dynamodb.d.ts query
+        deleteTable: dynamodb.d.ts deleteTable
+    Azure:
+        createCollection: arm-cosmosdb tableResources.d.ts createUpdateTable
+        deleteCollection: arm-cosmosdb tableResources.d.ts deleteTable
+        listCollections: arm-cosmosdb tableResources.d.ts listTables
+        setAttribute: arm-cosmosdb tableResources.d.ts updateTableThroughput
+        getAttributes: arm-cosmosdb tableResources.d.ts getTable
+    GCP:
+        createItem: firestore v1 firestore_client.d.ts createDocument
+        deleteItem: firestore v1 firestore_client.d.ts deleteDocument
+        updateItem: firestore v1 firestore_client.d.ts updateDocument
+        query: firestore v1 firestore_client.d.ts runQuery
+    DO:
+        createCluster: databases.d.ts createCluster
+        getClusters: databases.d.ts getAllClusters
+        getCluster: databases.d.ts getClusterById
+        updateCluster: databases.d.ts resizeCluster
+    Oracle:
+        createTable: nosql createTable
+        deleteTable: nosql deleteTable
+        list: nosql listTables
+        updateTable: nosql updateTable
 
-# DNS:
-#     AWS:
-#         createZone: route53.d.ts createHostedZone
-#         deleteZone: route53.d.ts deleteHostedZone
-#         listZones: route53.d.ts listHostedZones
-#         changeRecordSets: route53.d.ts changeResourceRecordSets
-#     Azure:
-#         createZone: arm-dns zones.d.ts createOrUpdate
-#         deleteZone: arm-dns zones.d.ts deleteMethod
-#         listZones: arm-dns zones.d.ts list
-#         changeRecordSets: arm-dns recordSets.d.ts createOrUpdate
-#     GCP:
-#         mainClass: DNS
-#         createZone: dns zone.d.ts create
-#         deleteZone: dns zone.d.ts delete
-#         listZones: dns index.d.ts getZones
-#         changeRecordSets: dns zone.d.ts createChange
-#         record: dns zone.d.ts record
-#     DO:
-#         createRecord: domains.d.ts createRecord
-#         deleteRecord: domains.d.ts deleteRecord
-#         getRecords: domains.d.ts getAllRecords
-#         getRecord: domains.d.ts getRecord
-#         changeRecordSets: domains.d.ts updateRecord
-#     Oracle:
-#         createZone: dns createZone
-#         deleteZone: dns deleteZone
-#         listZones: dns listZones
-#         changeRecordSets: dns updateDomainRecords
+DNS:
+    AWS:
+        createZone: route53.d.ts createHostedZone
+        deleteZone: route53.d.ts deleteHostedZone
+        listZones: route53.d.ts listHostedZones
+        changeRecordSets: route53.d.ts changeResourceRecordSets
+    Azure:
+        createZone: arm-dns zones.d.ts createOrUpdate
+        deleteZone: arm-dns zones.d.ts deleteMethod
+        listZones: arm-dns zones.d.ts list
+        changeRecordSets: arm-dns recordSets.d.ts createOrUpdate
+    GCP:
+        mainClass: DNS
+        createZone: dns zone.d.ts create
+        deleteZone: dns zone.d.ts delete
+        listZones: dns index.d.ts getZones
+        changeRecordSets: dns zone.d.ts createChange
+        record: dns zone.d.ts record
+    DO:
+        createRecord: domains.d.ts createRecord
+        deleteRecord: domains.d.ts deleteRecord
+        getRecords: domains.d.ts getAllRecords
+        getRecord: domains.d.ts getRecord
+        changeRecordSets: domains.d.ts updateRecord
+    Oracle:
+        createZone: dns createZone
+        deleteZone: dns deleteZone
+        listZones: dns listZones
+        changeRecordSets: dns updateDomainRecords
 
-# LoadBalancer:
-#     AWS:
-#         create: elb.d.ts createLoadBalancer
-#         delete: elb.d.ts deleteLoadBalancer
-#         list: elb.d.ts describeLoadBalancers
-#         addTags: elb.d.ts addTags
-#         describe: elb.d.ts describeLoadBalancerAttributes
-#     Azure:
-#         create: arm-network loadBalancers.d.ts createOrUpdate
-#         delete: arm-network loadBalancers.d.ts deleteMethod
-#         list: arm-network loadBalancers.d.ts list
-#         addTags: arm-network loadBalancers.d.ts updateTags
-#         describe: arm-network loadBalancers.d.ts get
-#     DO:
-#         create: load-balancers.d.ts create
-#         delete: load-balancers.d.ts delete
-#         list: load-balancers.d.ts getAll
-#         update: load-balancers.d.ts update
-#     Oracle:
-#         create: loadbalancer createLoadBalancer
-#         delete: loadbalancer deleteLoadBalancer
-#         list: loadbalancer listLoadBalancers
-#         update: loadbalancer updateLoadBalancer
-#         get: loadbalancer getLoadBalancer
+LoadBalancer:
+    AWS:
+        create: elb.d.ts createLoadBalancer
+        delete: elb.d.ts deleteLoadBalancer
+        list: elb.d.ts describeLoadBalancers
+        addTags: elb.d.ts addTags
+        describe: elb.d.ts describeLoadBalancerAttributes
+    Azure:
+        create: arm-network loadBalancers.d.ts createOrUpdate
+        delete: arm-network loadBalancers.d.ts deleteMethod
+        list: arm-network loadBalancers.d.ts list
+        addTags: arm-network loadBalancers.d.ts updateTags
+        describe: arm-network loadBalancers.d.ts get
+    DO:
+        create: load-balancers.d.ts create
+        delete: load-balancers.d.ts delete
+        list: load-balancers.d.ts getAll
+        update: load-balancers.d.ts update
+    Oracle:
+        create: loadbalancer createLoadBalancer
+        delete: loadbalancer deleteLoadBalancer
+        list: loadbalancer listLoadBalancers
+        update: loadbalancer updateLoadBalancer
+        get: loadbalancer getLoadBalancer
 
-# IAM:
-#     AWS:
-#         createGroup: iam.d.ts createGroup
-#         deleteGroup: iam.d.ts deleteGroup
-#         attachGroupPolicy: iam.d.ts attachGroupPolicy
-#         detachGroupPolicy: iam.d.ts detachGroupPolicy
-#         describe: iam.d.ts getGroup
+IAM:
+    AWS:
+        createGroup: iam.d.ts createGroup
+        deleteGroup: iam.d.ts deleteGroup
+        attachGroupPolicy: iam.d.ts attachGroupPolicy
+        detachGroupPolicy: iam.d.ts detachGroupPolicy
+        describe: iam.d.ts getGroup
 
 ArchivalStorage:
-    #     AWS:
-    #         create: glacier.d.ts createVault
-    #         delete: glacier.d.ts deleteVault
-    #         list: glacier.d.ts listParts
-    #         upload: glacier.d.ts initiateMultipartUpload
-    #         deleteFiles: glacier.d.ts deleteArchive
+    AWS:
+        create: glacier.d.ts createVault
+        delete: glacier.d.ts deleteVault
+        list: glacier.d.ts listParts
+        upload: glacier.d.ts initiateMultipartUpload
+        deleteFiles: glacier.d.ts deleteArchive
 
-    # GCP:
-    #     # Use storage class as coldline
-    #     mainClass: Storage
-    #     create: storage storage.d.ts createBucket
-    #     deleteFiles: storage bucket.d.ts deleteFiles
-    #     delete: storage bucket.d.ts delete
-    #     list: storage storage.d.ts getBuckets
-    #     upload: storage bucket.d.ts upload
-    #     makePublic: storage file.d.ts makePublic
+    GCP:
+        # Use storage class as coldline
+        mainClass: Storage
+        create: storage storage.d.ts createBucket
+        deleteFiles: storage bucket.d.ts deleteFiles
+        delete: storage bucket.d.ts delete
+        list: storage storage.d.ts getBuckets
+        upload: storage bucket.d.ts upload
+        makePublic: storage file.d.ts makePublic
     Oracle:
         create: objectstorage createBucket
         delete: objectstorage deleteBucket
         list: objectstorage listBuckets
         update: objectstorage updateBucket
-# Translation:
-#     AWS:
-#         translate: translate.d.ts translateText
-#         batchTranslate: translate.d.ts startTextTranslationJob
-#         getGlossary: translate.d.ts getTerminology
-#         createGlossary: translate.d.ts importTerminology
-#         deleteGlossary: translate.d.ts deleteTerminology
-#     GCP:
-#         translate: translate v3 translation_service_client.d.ts translateText
-#         batchTranslate: translate v3 translation_service_client.d.ts batchTranslateText
-#         getGlossary: translate v3 translation_service_client.d.ts getGlossary
-#         createGlossary: translate v3 translation_service_client.d.ts createGlossary
-#         detectLanguage: translate v3 translation_service_client.d.ts detectLanguage
+Translation:
+    AWS:
+        translate: translate.d.ts translateText
+        batchTranslate: translate.d.ts startTextTranslationJob
+        getGlossary: translate.d.ts getTerminology
+        createGlossary: translate.d.ts importTerminology
+        deleteGlossary: translate.d.ts deleteTerminology
+    GCP:
+        translate: translate v3 translation_service_client.d.ts translateText
+        batchTranslate: translate v3 translation_service_client.d.ts batchTranslateText
+        getGlossary: translate v3 translation_service_client.d.ts getGlossary
+        createGlossary: translate v3 translation_service_client.d.ts createGlossary
+        detectLanguage: translate v3 translation_service_client.d.ts detectLanguage
 
-# KeyManagement:
-#     AWS:
-#         createKey: kms.d.ts createKey
-#         deleteKey: kms.d.ts deleteCustomKeyStore
-#         update: kms.d.ts updateKeyDescription
-#         describeKey: kms.d.ts describeKey
-#         putKeyPolicy: kms.d.ts putKeyPolicy
-#     Azure:
-#         createKey: arm-keyvault vaults.d.ts createOrUpdate
-#         deleteKey: arm-keyvault vaults.d.ts deleteMethod
-#         update: arm-keyvault vaults.d.ts update
-#         describeKey: arm-keyvault vaults.d.ts get
-#         putKeyPolicy: arm-keyvault vaults.d.ts updateAccessPolicy
-#     GCP:
-#         createKey: kms v1 key_management_service_client.d.ts createCryptoKey
-#         deleteKey: kms v1 key_management_service_client.d.ts destroyCryptoKeyVersion
-#         update: kms v1 key_management_service_client.d.ts updateCryptoKey
-#         describeKey: kms v1 key_management_service_client.d.ts getCryptoKey
-#         putKeyPolicy: kms v1 key_management_service_client.d.ts setIamPolicy
-#     DO:
-#         createKey: keys.d.ts add
-#         deleteKey: keys.d.ts delete
-#         list: keys.d.ts getAll
-#         describeKey: keys.d.ts getById
+KeyManagement:
+    AWS:
+        createKey: kms.d.ts createKey
+        deleteKey: kms.d.ts deleteCustomKeyStore
+        update: kms.d.ts updateKeyDescription
+        describeKey: kms.d.ts describeKey
+        putKeyPolicy: kms.d.ts putKeyPolicy
+    Azure:
+        createKey: arm-keyvault vaults.d.ts createOrUpdate
+        deleteKey: arm-keyvault vaults.d.ts deleteMethod
+        update: arm-keyvault vaults.d.ts update
+        describeKey: arm-keyvault vaults.d.ts get
+        putKeyPolicy: arm-keyvault vaults.d.ts updateAccessPolicy
+    GCP:
+        createKey: kms v1 key_management_service_client.d.ts createCryptoKey
+        deleteKey: kms v1 key_management_service_client.d.ts destroyCryptoKeyVersion
+        update: kms v1 key_management_service_client.d.ts updateCryptoKey
+        describeKey: kms v1 key_management_service_client.d.ts getCryptoKey
+        putKeyPolicy: kms v1 key_management_service_client.d.ts setIamPolicy
+    DO:
+        createKey: keys.d.ts add
+        deleteKey: keys.d.ts delete
+        list: keys.d.ts getAll
+        describeKey: keys.d.ts getById
 
-# NotificationService:
-#     AWS:
-#         createTopic: sns.d.ts createTopic
-#         deleteTopic: sns.d.ts deleteTopic
-#         getTopicAttributes: sns.d.ts getTopicAttributes
-#         listSubscriptions: sns.d.ts listSubscriptions
-#         publish: sns.d.ts publish
-#         subscribe: sns.d.ts subscribe
-#         listTopics: sns.d.ts listTopics
-#         unsubscribe: sns.d.ts unsubscribe
-#     GCP:
-#         createTopic: pubsub v1 publisher_client.d.ts createTopic
-#         deleteTopic: pubsub v1 publisher_client.d.ts deleteTopic
-#         getTopicAttributes: pubsub v1 publisher_client.d.ts getTopic
-#         listSubscriptions: pubsub v1 publisher_client.d.ts listTopicSubscriptions
-#         subscribe: pubsub v1 subscriber_client.d.ts createSubscription
-#         publish: pubsub v1 publisher_client.d.ts publish
-#         listTopics: pubsub v1 publisher_client.d.ts listTopics
-#         unsubscribe: pubsub v1 subscriber_client.d.ts deleteSubscription
-#     Oracle:
-#         createTopic: ons createTopic
-#         deleteTopic: ons deleteTopic
-#         getTopic: ons getTopic
-#         listTopics: ons listTopics
-#         publish: ons publishMessage
-#         updateTopic: ons updateTopic
-#         subscribe: ons createSubscription
-#         listSubscriptions: ons listSubscriptions
-#         unsubscribe: ons deleteSubscription
-# BlockStorage:
-#     AWS:
-#         create: ec2.d.ts createVolume
-#         delete: ec2.d.ts deleteVolume
-#         describe: ec2.d.ts describeVolumeAttribute
-#         list: ec2.d.ts describeVolumes
-#     Azure:
-#         create: arm-compute disks.d.ts createOrUpdate
-#         delete: arm-compute disks.d.ts deleteMethod
-#         describe: arm-compute disks.d.ts get
-#         list: arm-compute disks.d.ts list
-#         update: arm-compute disks.d.ts update
-#     DO:
-#         create: volumes.d.ts create
-#         delete: volumes.d.ts deleteById
-#         list: volumes.d.ts getAll
-#         describe: volumes.d.ts getById
+NotificationService:
+    AWS:
+        createTopic: sns.d.ts createTopic
+        deleteTopic: sns.d.ts deleteTopic
+        getTopicAttributes: sns.d.ts getTopicAttributes
+        listSubscriptions: sns.d.ts listSubscriptions
+        publish: sns.d.ts publish
+        subscribe: sns.d.ts subscribe
+        listTopics: sns.d.ts listTopics
+        unsubscribe: sns.d.ts unsubscribe
+    GCP:
+        createTopic: pubsub v1 publisher_client.d.ts createTopic
+        deleteTopic: pubsub v1 publisher_client.d.ts deleteTopic
+        getTopicAttributes: pubsub v1 publisher_client.d.ts getTopic
+        listSubscriptions: pubsub v1 publisher_client.d.ts listTopicSubscriptions
+        subscribe: pubsub v1 subscriber_client.d.ts createSubscription
+        publish: pubsub v1 publisher_client.d.ts publish
+        listTopics: pubsub v1 publisher_client.d.ts listTopics
+        unsubscribe: pubsub v1 subscriber_client.d.ts deleteSubscription
+    Oracle:
+        createTopic: ons createTopic
+        deleteTopic: ons deleteTopic
+        getTopic: ons getTopic
+        listTopics: ons listTopics
+        publish: ons publishMessage
+        updateTopic: ons updateTopic
+        subscribe: ons createSubscription
+        listSubscriptions: ons listSubscriptions
+        unsubscribe: ons deleteSubscription
+BlockStorage:
+    AWS:
+        create: ec2.d.ts createVolume
+        delete: ec2.d.ts deleteVolume
+        describe: ec2.d.ts describeVolumeAttribute
+        list: ec2.d.ts describeVolumes
+    Azure:
+        create: arm-compute disks.d.ts createOrUpdate
+        delete: arm-compute disks.d.ts deleteMethod
+        describe: arm-compute disks.d.ts get
+        list: arm-compute disks.d.ts list
+        update: arm-compute disks.d.ts update
+    DO:
+        create: volumes.d.ts create
+        delete: volumes.d.ts deleteById
+        list: volumes.d.ts getAll
+        describe: volumes.d.ts getById
 
