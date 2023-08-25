@@ -175,7 +175,6 @@ function getAST(sdkFileInfo) {
 									typescript_1.SyntaxKind[child.kind] ===
 									'FirstStatement'
 								) {
-
 									tmp_1 = Object.assign({}, child);
 									cloned_1.push(
 										tmp_1.declarationList.declarations[0]

@@ -9,6 +9,7 @@ var generator_1 = require('./generators/aws/generator');
 var generator_2 = require('./generators/azure/generator');
 var generator_3 = require('./generators/do/generator');
 var generator_4 = require('./generators/googleCloud/generator');
+
 try {
 	var services_1 = yaml.safeLoad(fs.readFileSync('node-cloud.yml', 'utf8'));
 	Object.keys(services_1).map(function(service, index) {

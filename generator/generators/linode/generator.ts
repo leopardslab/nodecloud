@@ -65,9 +65,9 @@ export function extractSDKData(sdkAst, serviceClass) {
 			const methodParameters = method.type.parameters;
 
 			methodParameters.map(param => {
-				if (param.name.excapedText !== 'callback') {
+				if (!param.name.elements && param.name.text !== 'callback') {
 					const parameter: param = {
-						name: param.name.escapedText,
+						name: param.name.text,
 						optional: param.questionToken ? true : false,
 						type: SyntaxKind[param.type.kind],
 						typeName: null,
@@ -77,8 +77,25 @@ export function extractSDKData(sdkAst, serviceClass) {
 						parameter.typeName = param.type.typeName.text;
 					}
 					parameters.push(parameter);
+				} else if (param.name.elements) {
+					const parameter: param = {
+						name:
+							'{' +
+							param.name.elements[0].name.text +
+							',' +
+							param.name.elements[1].name.text +
+							'}',
+						optional: param.questionToken ? true : false,
+						type: SyntaxKind[param.type.kind],
+						typeName: null,
+					};
+					if (param.type.typeName) {
+						parameter.typeName = param.type.typeName.text;
+					}
+					parameters.push(parameter);
 				}
 			});
+
 			methods.push({
 				functionName: name.toString(),
 				SDKFunctionName: methodName,
@@ -92,8 +109,6 @@ export function extractSDKData(sdkAst, serviceClass) {
 
 export async function getFunctions(sdkFiles, serviceClass) {
 	const functionsArray: FunctionData[] = [];
-	// console.log(sdkFiles);
-
 	await sdkFiles.map(async file => {
 		getAST(file).then(async result => {
 			const sdkAst = result;
@@ -116,8 +131,6 @@ export async function getFunctions(sdkFiles, serviceClass) {
 		functions: functionsArray,
 		serviceName: null,
 	};
-	// console.log(classData);
-
 	return classData;
 }
 
@@ -152,9 +165,16 @@ export async function generateLinodeClass(serviceClass, serviceName) {
 					.map(method => method.SDKFunctionName),
 			};
 		});
-		const classData: ClassData = await getFunctions(sdkFiles, serviceClass);
-		classData.className = serviceName + 'LinodeClass';
-		classData.serviceName = serviceName;
+		const functionsArray: FunctionData[] = await getFunctions(
+			sdkFiles,
+			serviceClass
+		);
+
+		const classData: ClassData = {
+			className: serviceName + 'LinodeClass',
+			functions: functionsArray,
+			serviceName: serviceName,
+		};
 
 		const output = await transform(dummyAst, classData);
 		const dir = getDir(serviceName);

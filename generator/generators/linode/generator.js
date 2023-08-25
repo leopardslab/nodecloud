@@ -171,9 +171,9 @@ function extractSDKData(sdkAst, serviceClass) {
 			var parameters_1 = [];
 			var methodParameters = method.type.parameters;
 			methodParameters.map(function(param) {
-				if (param.name.excapedText !== 'callback') {
+				if (!param.name.elements && param.name.text !== 'callback') {
 					var parameter = {
-						name: param.name.escapedText,
+						name: param.name.text,
 						optional: param.questionToken ? true : false,
 						type: typescript_1.SyntaxKind[param.type.kind],
 						typeName: null,
@@ -183,9 +183,24 @@ function extractSDKData(sdkAst, serviceClass) {
 						parameter.typeName = param.type.typeName.text;
 					}
 					parameters_1.push(parameter);
+				} else if (param.name.elements) {
+					var parameter = {
+						name:
+							'{' +
+							param.name.elements[0].name.text +
+							',' +
+							param.name.elements[1].name.text +
+							'}',
+						optional: param.questionToken ? true : false,
+						type: typescript_1.SyntaxKind[param.type.kind],
+						typeName: null,
+					};
+					if (param.type.typeName) {
+						parameter.typeName = param.type.typeName.text;
+					}
+					parameters_1.push(parameter);
 				}
 			});
-
 			methods.push({
 				functionName: name_1.toString(),
 				SDKFunctionName: methodName,
@@ -265,7 +280,6 @@ function getFunctions(sdkFiles, serviceClass) {
 						functions: functionsArray,
 						serviceName: null,
 					};
-					// console.log(classData);
 					return [2 /*return*/, classData];
 			}
 		});
@@ -274,15 +288,14 @@ function getFunctions(sdkFiles, serviceClass) {
 exports.getFunctions = getFunctions;
 function generateLinodeClass(serviceClass, serviceName) {
 	return __awaiter(this, void 0, void 0, function() {
-
 		var methods_1,
 			files,
 			sdkFiles,
 			functionsArray,
 			classData,
 			output,
-			filePath,
 			dir,
+			filePath,
 			e_1;
 		return __generator(this, function(_a) {
 			switch (_a.label) {
@@ -325,10 +338,12 @@ function generateLinodeClass(serviceClass, serviceName) {
 					});
 					return [4 /*yield*/, getFunctions(sdkFiles, serviceClass)];
 				case 1:
-					classData = _a.sent();
-					classData.className = serviceName + 'LinodeClass';
-					classData.serviceName = serviceName;
-
+					functionsArray = _a.sent();
+					classData = {
+						className: serviceName + 'LinodeClass',
+						functions: functionsArray,
+						serviceName: serviceName,
+					};
 					return [
 						4 /*yield*/,
 						transformer_1.transform(dummyAst, classData),
