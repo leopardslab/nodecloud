@@ -171,10 +171,6 @@ function getAST(sdkFileInfo) {
 						return [
 							4 /*yield*/,
 							ast.forEachChild(function(child) {
-								// fs.writeFile('test.txt', SyntaxKind[child.kind], null);
-								// console.log(SyntaxKind[child.kind]);
-								// console.log('Linode', SyntaxKind[child.kind]);
-								// console.log("child",child);
 								if (
 									typescript_1.SyntaxKind[child.kind] ===
 									'FirstStatement'
@@ -185,16 +181,11 @@ function getAST(sdkFileInfo) {
 									cloned_1.push(
 										tmp_1.declarationList.declarations[0]
 									);
-									// console.log(
-									// 	'name',
-									// 	tmp.declarationList.declarations[0].type.parameters[0]
-									// );
 								}
 							}),
 						];
 					case 1:
 						_a.sent();
-						// console.log('cloned', cloned);
 						if (!cloned_1) {
 							reject(new Error('Function not found!'));
 						} else {
