@@ -19,9 +19,6 @@ try {
 			} else if (provider == "DO") {
 			  generateDOClass(services[service][provider], service);
 			}
-			if (provider == 'Linode') {
-				generateDOClass(services[service][provider], service);
-			}
 		});
 	});
 } catch (error) {

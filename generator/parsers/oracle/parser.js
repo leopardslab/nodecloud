@@ -144,87 +144,57 @@ exports.getAST = void 0;
 var fs = require('fs');
 var path = require('path');
 var typescript_1 = require('typescript');
-function getAST(sdkFileInfo, multi) {
+function getAST(sdkFileName) {
 	var _this = this;
-	var filePath;
-	if (sdkFileInfo.version) {
-		filePath =
-			'../../../node_modules/@google-cloud/' +
-			sdkFileInfo.pkgName +
-			'/build/src/' +
-			sdkFileInfo.version +
-			'/' +
-			sdkFileInfo.fileName;
-	} else {
-		filePath =
-			'../../../node_modules/@google-cloud/' +
-			sdkFileInfo.pkgName +
-			'/build/src/' +
-			sdkFileInfo.fileName;
-	}
 	return new Promise(function(resolve, reject) {
 		return __awaiter(_this, void 0, void 0, function() {
-			var file, ast, classes_1, cloned, error_1;
+			var file, ast, cloned_1, error_1;
 			return __generator(this, function(_a) {
 				switch (_a.label) {
 					case 0:
-						_a.trys.push([0, 4, , 5]);
-						file = path.join(__dirname, filePath);
+						_a.trys.push([0, 2, , 3]);
+						file = path.join(
+							__dirname,
+							'../../../node_modules/oci-' +
+								sdkFileName.toLowerCase() +
+								'/lib/client.d.ts'
+						);
 						ast = typescript_1.createSourceFile(
 							file,
 							fs.readFileSync(file).toString(),
 							typescript_1.ScriptTarget.Latest,
 							true
 						);
-						if (!(multi === true)) return [3 /*break*/, 1];
-						classes_1 = [];
-						ast.forEachChild(function(child) {
-							if (
-								typescript_1.SyntaxKind[child.kind] ===
-								'ClassDeclaration'
-							) {
-								var cloned = Object.assign({}, child);
-								classes_1.push(cloned);
-							}
-						});
-						resolve(classes_1);
-						return [3 /*break*/, 3];
-					case 1:
-						cloned = null;
+						cloned_1 = null;
 						return [
 							4 /*yield*/,
 							ast.forEachChild(function(child) {
+								// console.log(SyntaxKind[child.kind]);
 								if (
 									typescript_1.SyntaxKind[child.kind] ===
 									'ClassDeclaration'
 								) {
-									var cloned_1 = Object.assign({}, child);
-									return resolve(cloned_1);
+									cloned_1 = Object.assign({}, child);
 								}
 							}),
 						];
-					case 2:
+					case 1:
 						_a.sent();
-						if (!cloned) {
-							return [
-								2 /*return*/,
-								reject(new Error('Class not found!')),
-							];
+						if (!cloned_1) {
+							reject(new Error('Class not found!'));
 						} else {
-							return [2 /*return*/, resolve(cloned)];
+							resolve(cloned_1);
 						}
-						_a.label = 3;
-					case 3:
-						return [3 /*break*/, 5];
-					case 4:
+						return [3 /*break*/, 3];
+					case 2:
 						error_1 = _a.sent();
 						if (error_1.code === 'ENOENT') {
 							reject(new Error('File not found!'));
 						} else {
 							reject(error_1);
 						}
-						return [3 /*break*/, 5];
-					case 5:
+						return [3 /*break*/, 3];
+					case 3:
 						return [2 /*return*/];
 				}
 			});
