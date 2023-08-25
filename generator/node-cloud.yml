@@ -23,6 +23,7 @@ ComputeInstance:
         destroy: droplets.d.ts deleteById
         start: droplets.d.ts requestAction
         stop: droplets.d.ts requestAction
+
 StorageBucket:
     AWS:
         create: s3.d.ts createBucket
@@ -132,7 +133,7 @@ Kubernetes:
         deleteNodePool: containerengine deleteNodePool
         deleteNode: containerengine deleteNode
         describeNodePool: containerengine getNodePool
-
+        
 Monitoring:
     GCP:
         createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
@@ -217,7 +218,7 @@ RDBMS:
         deleteDatabase: mysql deleteDBSystem
         modifyDatabase: mysql updateDBSystem
         getDatabase: mysql getDBSystem
-
+        
 NoSql:
     AWS:
         createTable: dynamodb.d.ts createTable
@@ -277,7 +278,7 @@ DNS:
         deleteZone: dns deleteZone
         listZones: dns listZones
         changeRecordSets: dns updateDomainRecords
-
+        
 LoadBalancer:
     AWS:
         create: elb.d.ts createLoadBalancer
@@ -318,7 +319,6 @@ ArchivalStorage:
         list: glacier.d.ts listParts
         upload: glacier.d.ts initiateMultipartUpload
         deleteFiles: glacier.d.ts deleteArchive
-
     GCP:
         # Use storage class as coldline
         mainClass: Storage
@@ -401,6 +401,7 @@ NotificationService:
         subscribe: ons createSubscription
         listSubscriptions: ons listSubscriptions
         unsubscribe: ons deleteSubscription
+
 BlockStorage:
     AWS:
         create: ec2.d.ts createVolume
@@ -418,4 +419,3 @@ BlockStorage:
         delete: volumes.d.ts deleteById
         list: volumes.d.ts getAll
         describe: volumes.d.ts getById
-
