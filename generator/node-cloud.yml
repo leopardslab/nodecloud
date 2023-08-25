@@ -16,7 +16,6 @@ ComputeInstance:
         stop: arm-compute virtualMachines.d.ts powerOff
         reboot: arm-compute virtualMachines.d.ts restart
         destroy: arm-compute virtualMachines.d.ts deleteMethod
-    # GCP: This SDK currenlty doesn't contain type definition files
     DO:
         create: droplets.d.ts create
         list: droplets.d.ts getAll
