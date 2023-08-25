@@ -1,7 +1,12 @@
 import { cloneDeep } from 'lodash';
 import * as ts from 'typescript';
 
-const dummyIdentifiers = ['ClassName', 'SDKFunctionName'];
+const dummyIdentifiers = [
+	'ClassName',
+	'_sdkClassName',
+	'SDKClassName',
+	'SDKFunctionName',
+];
 
 const printer: ts.Printer = ts.createPrinter({
 	newLine: ts.NewLineKind.LineFeed,
@@ -42,11 +47,13 @@ function toSourceFile(sourceCode: string): ts.SourceFile {
 		true
 	);
 }
-
 export async function transform(
 	code: ts.SourceFile,
 	classData: any
 ): Promise<string> {
+	/*
+	 * Transformation function for adding Functions
+	 */
 	const addFunctions = <T extends ts.Node>(
 		context: ts.TransformationContext
 	) => (rootNode: T) => {
@@ -68,6 +75,7 @@ export async function transform(
 					node.heritageClauses,
 					ts.createNodeArray([node.members[0]].concat(functions))
 				);
+
 				return updatedClass;
 			}
 			return ts.visitEachChild(node, visit, context);
@@ -75,12 +83,9 @@ export async function transform(
 		return ts.visitNode(rootNode, visit);
 	};
 
-	// const addIdentifiers = <T extends ts.Node>(
-	// 	context: ts.TransformationContext
-	// ) => (rootNode: T) => {
-	// 	let count = 0;
-	// };
-
+	/*
+	 *  Transformation function for adding Identifiers/Parameters
+	 */
 	const addIdentifiers = <T extends ts.Node>(
 		context: ts.TransformationContext
 	) => (rootNode: T) => {
@@ -116,7 +121,26 @@ export async function transform(
 					case 'ClassName':
 						updatedIdentifier = ts.updateIdentifier(
 							ts.createIdentifier(
-								'Linode_' + classData.serviceName
+								'Oracle_' + classData.serviceName
+							)
+						);
+						break;
+					case '_sdkClassName':
+						updatedIdentifier = ts.updateIdentifier(
+							ts.createIdentifier(
+								'_' +
+									classData.className
+										.charAt(0)
+										.toLowerCase() +
+									classData.className.substr(1)
+							)
+						);
+						break;
+					case 'SDKClassName':
+						updatedIdentifier = ts.updateIdentifier(
+							ts.createIdentifier(
+								classData.className.charAt(0).toLowerCase() +
+									classData.className.substr(1)
 							)
 						);
 						break;
@@ -151,10 +175,15 @@ export async function transform(
 		return ts.visitNode(rootNode, visit);
 	};
 
+	/*
+	 *Transformation function for adding comments
+	 */
+
 	const addComments = <T extends ts.Node>(
 		context: ts.TransformationContext
 	) => (rootNode: T) => {
 		let count = 0;
+
 		function visit(node: ts.Node): ts.Node {
 			if (ts.isClassDeclaration(node)) {
 				addMultiLineComment(
@@ -162,9 +191,9 @@ export async function transform(
 					'This is an auto generated class, please do not change.'
 				);
 				const comment = `*
-	* Class to create a ${classData.className} object
-	* @category Linode       
-	`;
+  * Class to create a ${classData.className} object
+  * @category Oracle Cloud       
+  `;
 				addMultiLineComment(node, comment);
 			}
 
@@ -198,15 +227,15 @@ export async function transform(
 					});
 
 					comment = `*
-	* Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
-	${paramStatments}
-	* @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
-	`;
+  * Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
+  ${paramStatments}
+  * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
+  `;
 				} else {
 					comment = `*
-	* Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
-	* @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
-	`;
+  * Trigers the ${classData.functions[count].SDKFunctionName} function of ${classData.className}
+  * @returns {Promise<${classData.functions[count].SDKFunctionName}Response>}
+  `;
 				}
 
 				addMultiLineComment(node, comment);
@@ -218,6 +247,9 @@ export async function transform(
 		return ts.visitNode(rootNode, visit);
 	};
 
+	/*
+	 * Code to get node and run tranformations
+	 */
 	const node: any = code.statements.find(stm => ts.isClassDeclaration(stm));
 
 	if (!classData.className || !classData.functions) {

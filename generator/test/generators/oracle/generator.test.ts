@@ -1,29 +1,30 @@
 import { expect } from 'chai';
 import { SyntaxKind } from 'typescript';
 
-import { extractSDKData } from '../../../generators/linode/generator';
+import { extractSDKData } from '../../../generators/oracle/generator';
 import { readJsonData, readSourceFile } from '../lib/helper';
 
-describe('Linode generator extractSDKData', () => {
+describe('Oracle generator extractSDKData', () => {
 	context('with valid methods and valid AST', () => {
-		it('should return extracted functions array', async () => {
-			const sdkFile: any = await readSourceFile('validDataset', 'linode');
+		it('should return extracted class data', async () => {
+			const sdkFile: any = await readSourceFile('validDataset', 'oracle');
 			const data: any = await readJsonData(
 				'validDataset',
-				'linode',
+				'oracle',
 				'serviceClass'
 			);
-			const cloned = [];
-			let tmp = null;
+			let cloned = null;
 			sdkFile.forEachChild(child => {
-				if (SyntaxKind[child.kind] === 'FirstStatement') {
-					tmp = Object.assign({}, child);
-					cloned.push(tmp.declarationList.declarations[0]);
+				if (SyntaxKind[child.kind] === 'ClassDeclaration') {
+					cloned = Object.assign({}, child);
 				}
 			});
+
 			if (cloned) {
 				const result = extractSDKData(cloned, data);
-				expect(result).to.be.an('array');
+				expect(result).to.be.an('object');
+				expect(result.functions).to.be.an('array');
+				expect(result.className).to.be.string;
 			} else {
 				console.error('Error in cloning class');
 			}
@@ -34,55 +35,55 @@ describe('Linode generator extractSDKData', () => {
 		it('should drop invalid method', async () => {
 			const sdkFile: any = await readSourceFile(
 				'invalidDataset_1',
-				'linode'
+				'oracle'
 			);
 			const data: any = await readJsonData(
 				'invalidDataset_1',
-				'linode',
+				'oracle',
 				'serviceClass'
 			);
-			const cloned = [];
-			let tmp = null;
+			let cloned = null;
 			sdkFile.forEachChild(child => {
-				if (SyntaxKind[child.kind] === 'FirstStatement') {
-					tmp = Object.assign({}, child);
-					cloned.push(tmp.declarationList.declarations[0]);
+				if (SyntaxKind[child.kind] === 'ClassDeclaration') {
+					cloned = Object.assign({}, child);
 				}
 			});
 
 			if (cloned) {
-				const result = extractSDKData(cloned, data);
-				expect(result.length < Object.keys(data).length).to.be.true;
+				expect(
+					extractSDKData(cloned, data).functions.length <
+						Object.keys(data).length
+				).to.be.true;
 			} else {
 				console.error('Error in cloning class');
 			}
 		});
 	});
 
-	context('Linode with no functions', () => {
+	context('Oracle with no functions', () => {
 		it('should return empty array of methods', async () => {
 			const sdkFile: any = await readSourceFile(
 				'invalidDataset_2',
-				'linode'
+				'oracle'
 			);
 			const data: any = await readJsonData(
 				'invalidDataset_2',
-				'linode',
+				'oracle',
 				'serviceClass'
 			);
-			const cloned = [];
-			let tmp = null;
+			let cloned = null;
 			sdkFile.forEachChild(child => {
-				if (SyntaxKind[child.kind] === 'FirstStatement') {
-					tmp = Object.assign({}, child);
-					cloned.push(tmp.declarationList.declarations[0]);
+				if (SyntaxKind[child.kind] === 'ClassDeclaration') {
+					cloned = Object.assign({}, child);
 				}
 			});
 
 			if (cloned) {
 				const result = extractSDKData(cloned, data);
-				expect(result).to.be.an('array');
-				expect(result.length).to.eql(0);
+				expect(result).to.be.an('object');
+				expect(result.functions).to.be.an('array');
+				expect(result.className).to.be.string;
+				expect(result.functions.length).to.eql(0);
 			} else {
 				console.error('Error in cloning class');
 			}

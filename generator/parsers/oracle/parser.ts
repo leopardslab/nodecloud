@@ -2,15 +2,12 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { createSourceFile, ScriptTarget, SyntaxKind } from 'typescript';
 
-export function getAST(sdkFileInfo) {
+export function getAST(sdkFileName) {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const file = path.join(
 				__dirname,
-				'../../../node_modules/@linode/api-v4/lib/' +
-					sdkFileInfo.pkgName +
-					'/' +
-					sdkFileInfo.fileName
+				`../../../node_modules/oci-${sdkFileName.toLowerCase()}/lib/client.d.ts`
 			);
 			const ast = createSourceFile(
 				file,
@@ -18,16 +15,19 @@ export function getAST(sdkFileInfo) {
 				ScriptTarget.Latest,
 				true
 			);
-			const cloned = [];
-			let tmp = null;
+
+			let cloned = null;
+
 			await ast.forEachChild(child => {
-				if (SyntaxKind[child.kind] === 'FirstStatement') {
-					tmp = Object.assign({}, child);
-					cloned.push(tmp.declarationList.declarations[0]);
+				// console.log(SyntaxKind[child.kind]);
+
+				if (SyntaxKind[child.kind] === 'ClassDeclaration') {
+					cloned = Object.assign({}, child);
 				}
 			});
+
 			if (!cloned) {
-				reject(new Error('Function not found!'));
+				reject(new Error('Class not found!'));
 			} else {
 				resolve(cloned);
 			}

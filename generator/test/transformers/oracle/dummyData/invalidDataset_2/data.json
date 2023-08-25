@@ -1,0 +1,16 @@
+{
+	"functions": [
+		{
+			"functionName": "create",
+			"SDKFunctionName": "createBucket",
+			"params": [
+				{
+					"name": "createBucketRequest",
+					"optional": false,
+					"type": "TypeReference",
+					"typeName": "CreateBucketRequest"
+				}
+			]
+		}
+	]
+}

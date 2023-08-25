@@ -126,7 +126,12 @@ export async function getFunctions(sdkFiles, serviceClass) {
 			}
 		});
 	});
-	return functionsArray;
+	const classData: ClassData = {
+		className: '',
+		functions: functionsArray,
+		serviceName: null,
+	};
+	return classData;
 }
 
 export async function generateLinodeClass(serviceClass, serviceName) {

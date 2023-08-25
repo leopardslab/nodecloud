@@ -213,12 +213,14 @@ function extractSDKData(sdkAst, serviceClass) {
 exports.extractSDKData = extractSDKData;
 function getFunctions(sdkFiles, serviceClass) {
 	return __awaiter(this, void 0, void 0, function() {
-		var functionsArray;
+		var functionsArray, classData;
+
 		var _this = this;
 		return __generator(this, function(_a) {
 			switch (_a.label) {
 				case 0:
 					functionsArray = [];
+
 					return [
 						4 /*yield*/,
 						sdkFiles.map(function(file) {
@@ -273,7 +275,12 @@ function getFunctions(sdkFiles, serviceClass) {
 					];
 				case 1:
 					_a.sent();
-					return [2 /*return*/, functionsArray];
+					classData = {
+						className: '',
+						functions: functionsArray,
+						serviceName: null,
+					};
+					return [2 /*return*/, classData];
 			}
 		});
 	});
@@ -345,6 +352,7 @@ function generateLinodeClass(serviceClass, serviceName) {
 					output = _a.sent();
 					dir = helper_1.getDir(serviceName);
 					filePath = void 0;
+
 					if (
 						!fs.existsSync(
 							process.cwd() + '/generatedClasses/Linode/' + dir
