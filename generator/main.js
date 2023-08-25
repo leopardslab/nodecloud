@@ -2,6 +2,7 @@
 exports.__esModule = true;
 var fs = require('fs');
 var yaml = require('js-yaml');
+var generator_6 = require('./generators/linode/generator');
 var generator_5 = require('./generators/oracle/generator');
 var generator_1 = require('./generators/aws/generator');
 var generator_2 = require('./generators/azure/generator');
@@ -36,7 +37,12 @@ try {
 					services_1[service][provider],
 					service
 				);
-			}
+			} else if (provider == 'Linode') {
+        generator_6.generateLinodeClass(
+          services_1[service][provider],
+          service
+          );
+      }
 		});
 	});
 } catch (error) {

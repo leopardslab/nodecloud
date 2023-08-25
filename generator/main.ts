@@ -5,6 +5,7 @@ import { generateAWSClass } from './generators/aws/generator';
 import { generateAzureClass } from './generators/azure/generator';
 import { generateDOClass } from './generators/do/generator';
 import { generateGCPClass } from './generators/googleCloud/generator';
+import { generateLinodeClass } from './generators/linode/generator';
 import { generateOracleClass } from './generators/oracle/generator';
 
 try {
@@ -21,7 +22,9 @@ try {
 			  generateDOClass(services[service][provider], service);
       } else if (provider == "Oracle") {
 				generateOracleClass(services[service][provider], service);
-      }
+      } else if (provider == 'Linode') {
+				generateLinodeClass(services[service][provider], service);
+			}
 		});
 	});
 } catch (error) {
