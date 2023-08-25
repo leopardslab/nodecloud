@@ -1,0 +1,21 @@
+{
+	"functions": [
+		{
+			"SDKFunctionName": "getVolumes",
+			"params": [
+				{
+					"name": "params",
+					"optional": true,
+					"type": "AnyKeyword",
+					"typeName": null
+				},
+				{
+					"name": "filters",
+					"optional": true,
+					"type": "AnyKeyword",
+					"typeName": null
+				}
+			]
+		}
+	]
+}

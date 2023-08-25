@@ -1,0 +1,66 @@
+{
+	"className": "BlockStorageLinodeClass",
+	"functions": [
+		{
+			"functionName": "list",
+			"SDKFunctionName": "getVolumes",
+			"params": [
+				{
+					"name": "params",
+					"optional": true,
+					"type": "AnyKeyword",
+					"typeName": null
+				},
+				{
+					"name": "filters",
+					"optional": true,
+					"type": "AnyKeyword",
+					"typeName": null
+				}
+			]
+		},
+		{
+			"functionName": "delete",
+			"SDKFunctionName": "deleteVolume",
+			"params": [
+				{
+					"name": "volumeId",
+					"optional": false,
+					"type": "NumberKeyword",
+					"typeName": null
+				}
+			]
+		},
+		{
+			"functionName": "update",
+			"SDKFunctionName": "updateVolume",
+			"params": [
+				{
+					"name": "volumeId",
+					"optional": false,
+					"type": "NumberKeyword",
+					"typeName": null
+				},
+				{
+					"name": "data",
+					"optional": false,
+					"type": "TypeReference",
+					"typeName": "UpdateVolumeRequest"
+				}
+			]
+		},
+		{
+			"functionName": "create",
+			"SDKFunctionName": "createVolume",
+			"params": [
+				{
+					"name": "data",
+					"optional": false,
+					"type": "TypeReference",
+					"typeName": "VolumeRequestPayload"
+				}
+			]
+		}
+	],
+	"serviceName": "BlockStorage"
+}
