@@ -1,0 +1,12 @@
+import common = require("oci-common");
+import * as requests from "./request";
+import * as model from "./model";
+import * as responses from "./response";
+import { LoadBalancerWaiter } from "./loadbalancer-waiter";
+export declare enum LoadBalancerApiKeys {
+}
+/**
+ * This service client uses {@link common.CircuitBreaker.DefaultConfiguration} for all the operations by default if no circuit breaker configuration is defined by the user.
+ */
+export declare class LoadBalancerClient {
+}
