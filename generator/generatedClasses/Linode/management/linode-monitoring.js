@@ -12,6 +12,7 @@ class Linode_Monitoring {
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
+		this._linode.setToken(this._linodeToken);
 	}
 	/**
 	 * Trigers the getServices function of MonitoringLinodeClass
@@ -20,7 +21,6 @@ class Linode_Monitoring {
 	 * @returns {Promise<getServicesResponse>}
 	 */
 	getServices(params = undefined, filters = undefined) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getServices(params, filters)
@@ -34,7 +34,6 @@ class Linode_Monitoring {
 	 * @returns {Promise<disableServiceMonitorResponse>}
 	 */
 	disableServiceMonitor(serviceID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.disableServiceMonitor(serviceID)
@@ -48,7 +47,6 @@ class Linode_Monitoring {
 	 * @returns {Promise<enableServiceMonitorResponse>}
 	 */
 	enableServiceMonitor(serviceID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.enableServiceMonitor(serviceID)
@@ -62,7 +60,6 @@ class Linode_Monitoring {
 	 * @returns {Promise<deleteServiceMonitorResponse>}
 	 */
 	deleteServiceMonitor(serviceID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteServiceMonitor(serviceID)
@@ -76,7 +73,6 @@ class Linode_Monitoring {
 	 * @returns {Promise<createServiceMonitorResponse>}
 	 */
 	createServiceMonitor(data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createServiceMonitor(data)
@@ -91,7 +87,6 @@ class Linode_Monitoring {
 	 * @returns {Promise<updateServiceMonitorResponse>}
 	 */
 	updateServiceMonitor(monitorID, data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateServiceMonitor(monitorID, data)
@@ -106,7 +101,6 @@ class Linode_Monitoring {
 	 * @returns {Promise<getCredentialsResponse>}
 	 */
 	getCredentials(params = undefined, filters = undefined) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getCredentials(params, filters)
@@ -121,7 +115,6 @@ class Linode_Monitoring {
 	 * @returns {Promise<updateCredentialResponse>}
 	 */
 	updateCredential(credentialID, data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateCredential(credentialID, data)
@@ -135,7 +128,6 @@ class Linode_Monitoring {
 	 * @returns {Promise<deleteCredentialResponse>}
 	 */
 	deleteCredential(credentialID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteCredential(credentialID)

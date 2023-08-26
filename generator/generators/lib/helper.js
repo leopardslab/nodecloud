@@ -19,6 +19,8 @@ var dirMap = {
 	artificialinteligence: ['Translation'],
 	firewalls: ['Firewalls'],
 	images: ['Images'],
+	blockchain: ['BlockChain'],
+	devops: ['Devops'],
 };
 function printFile(fileName, data) {
 	fs.writeFile(fileName, data, function(err) {

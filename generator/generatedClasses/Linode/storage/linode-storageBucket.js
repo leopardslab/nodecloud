@@ -12,6 +12,7 @@ class Linode_StorageBucket {
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
+		this._linode.setToken(this._linodeToken);
 	}
 	/**
 	 * Trigers the getBucket function of StorageBucketLinodeClass
@@ -20,7 +21,6 @@ class Linode_StorageBucket {
 	 * @returns {Promise<getBucketResponse>}
 	 */
 	get(clusterId, bucketName) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getBucket(clusterId, bucketName)
@@ -35,7 +35,6 @@ class Linode_StorageBucket {
 	 * @returns {Promise<getBucketsResponse>}
 	 */
 	list(params = undefined, filters = undefined) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getBuckets(params, filters)
@@ -49,7 +48,6 @@ class Linode_StorageBucket {
 	 * @returns {Promise<createBucketResponse>}
 	 */
 	create(data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createBucket(data)
@@ -63,7 +61,6 @@ class Linode_StorageBucket {
 	 * @returns {Promise<deleteBucketResponse>}
 	 */
 	delete({ cluster, label }) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteBucket({ cluster, label })
@@ -78,7 +75,6 @@ class Linode_StorageBucket {
 	 * @returns {Promise<getBucketAccessResponse>}
 	 */
 	getBucketAccess(clusterId, bucketName) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getBucketAccess(clusterId, bucketName)
@@ -94,7 +90,6 @@ class Linode_StorageBucket {
 	 * @returns {Promise<updateBucketAccessResponse>}
 	 */
 	updateBucketAccess(clusterId, bucketName, data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateBucketAccess(clusterId, bucketName, data)

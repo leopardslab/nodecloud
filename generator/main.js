@@ -2,14 +2,12 @@
 exports.__esModule = true;
 var fs = require('fs');
 var yaml = require('js-yaml');
-
-var generator_6 = require('./generators/linode/generator');
-var generator_5 = require('./generators/oracle/generator');
 var generator_1 = require('./generators/aws/generator');
 var generator_2 = require('./generators/azure/generator');
 var generator_3 = require('./generators/do/generator');
 var generator_4 = require('./generators/googleCloud/generator');
-
+var generator_5 = require('./generators/linode/generator');
+var generator_6 = require('./generators/oracle/generator');
 try {
 	var services_1 = yaml.safeLoad(fs.readFileSync('node-cloud.yml', 'utf8'));
 	Object.keys(services_1).map(function(service, index) {
@@ -35,16 +33,16 @@ try {
 					service
 				);
 			} else if (provider == 'Oracle') {
-				generator_5.generateOracleClass(
+				generator_6.generateOracleClass(
 					services_1[service][provider],
 					service
 				);
 			} else if (provider == 'Linode') {
-        generator_6.generateLinodeClass(
-          services_1[service][provider],
-          service
-          );
-      }
+				generator_5.generateLinodeClass(
+					services_1[service][provider],
+					service
+				);
+			}
 		});
 	});
 } catch (error) {

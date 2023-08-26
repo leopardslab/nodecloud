@@ -12,6 +12,7 @@ class Linode_ComputeInstance {
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
+		this._linode.setToken(this._linodeToken);
 	}
 	/**
 	 * Trigers the getLinodes function of ComputeInstanceLinodeClass
@@ -20,7 +21,6 @@ class Linode_ComputeInstance {
 	 * @returns {Promise<getLinodesResponse>}
 	 */
 	list(params = undefined, filter = undefined) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getLinodes(params, filter)
@@ -34,7 +34,6 @@ class Linode_ComputeInstance {
 	 * @returns {Promise<createLinodeResponse>}
 	 */
 	create(data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createLinode(data)
@@ -49,7 +48,6 @@ class Linode_ComputeInstance {
 	 * @returns {Promise<updateLinodeResponse>}
 	 */
 	update(linodeId, values) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateLinode(linodeId, values)
@@ -63,7 +61,6 @@ class Linode_ComputeInstance {
 	 * @returns {Promise<deleteLinodeResponse>}
 	 */
 	delete(linodeId) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteLinode(linodeId)

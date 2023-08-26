@@ -207,8 +207,6 @@ function transform(code, classData) {
 											{},
 											node.members[1]
 										);
-										// console.log("Cloned Node..........\n");//sdadas
-										// console.log(clonedNode);//asdasdasdasd
 										clonedNode.name = ts.createIdentifier(
 											method.functionName
 										);
@@ -288,11 +286,6 @@ function transform(code, classData) {
 											updatedIdentifier = ts.updateIdentifier(
 												ts.createIdentifier(
 													classData.className
-														.charAt(0)
-														.toLowerCase() +
-														classData.className.substr(
-															1
-														)
 												)
 											);
 											break;

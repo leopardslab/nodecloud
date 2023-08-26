@@ -12,6 +12,7 @@ class Linode_Firewalls {
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
+		this._linode.setToken(this._linodeToken);
 	}
 	/**
 	 * Trigers the getFirewalls function of FirewallsLinodeClass
@@ -20,7 +21,6 @@ class Linode_Firewalls {
 	 * @returns {Promise<getFirewallsResponse>}
 	 */
 	getFirewalls(params = undefined, filter = undefined) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getFirewalls(params, filter)
@@ -34,7 +34,6 @@ class Linode_Firewalls {
 	 * @returns {Promise<getFirewallResponse>}
 	 */
 	getFirewall(firewallID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getFirewall(firewallID)
@@ -48,7 +47,6 @@ class Linode_Firewalls {
 	 * @returns {Promise<createFirewallResponse>}
 	 */
 	createFirewall(data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createFirewall(data)
@@ -63,7 +61,6 @@ class Linode_Firewalls {
 	 * @returns {Promise<updateFirewallResponse>}
 	 */
 	updateFirewall(firewallID, data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateFirewall(firewallID, data)
@@ -77,7 +74,6 @@ class Linode_Firewalls {
 	 * @returns {Promise<enableFirewallResponse>}
 	 */
 	enableFirewall(firewallID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.enableFirewall(firewallID)
@@ -91,7 +87,6 @@ class Linode_Firewalls {
 	 * @returns {Promise<disableFirewallResponse>}
 	 */
 	disableFirewall(firewallID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.disableFirewall(firewallID)
@@ -105,7 +100,6 @@ class Linode_Firewalls {
 	 * @returns {Promise<deleteFirewallResponse>}
 	 */
 	deleteFirewall(firewallID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteFirewall(firewallID)
