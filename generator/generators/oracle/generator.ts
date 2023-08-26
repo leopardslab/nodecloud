@@ -37,6 +37,7 @@ export function extractSDKData(sdkClassAst, serviceClass) {
 	Object.keys(serviceClass).map((key, index) => {
 		functions.push(serviceClass[key].split(' ')[1]);
 	});
+
 	sdkClassAst.members.map(method => {
 		if (method.name && functions.includes(method.name.text)) {
 			let name;
@@ -77,12 +78,20 @@ export function extractSDKData(sdkClassAst, serviceClass) {
 		functions: methods,
 		serviceName: null,
 	};
+
 	return classData;
 }
 
 export function generateOracleClass(serviceClass, serviceName) {
+	let multi = false;
+	let className = '';
 	const sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(' ')[0];
-	getAST(sdkFile).then(async result => {
+	if (serviceClass[Object.keys(serviceClass)[0]].split(' ').length > 2) {
+		multi = true;
+		className = serviceClass[Object.keys(serviceClass)[0]].split(' ')[2];
+	}
+
+	getAST(sdkFile, multi, className).then(async result => {
 		const sdkClassAst = result;
 		try {
 			const classData: ClassData = extractSDKData(
@@ -90,7 +99,6 @@ export function generateOracleClass(serviceClass, serviceName) {
 				serviceClass
 			);
 			classData.serviceName = serviceName;
-			console.log(JSON.stringify(classData));
 
 			const output = await transform(dummyAst, classData);
 

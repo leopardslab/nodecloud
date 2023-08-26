@@ -67,7 +67,7 @@ class DO_ComputeInstance {
 	 * @param {AnyKeyword} action - Data required for requestAction
 	 * @returns {Promise<requestActionResponse>}
 	 */
-	stop(dropletId, action) {
+	start(dropletId, action) {
 		return new Promise((resolve, reject) => {
 			this._droplets
 				.requestAction(dropletId, action)

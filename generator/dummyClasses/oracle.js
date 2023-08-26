@@ -5,7 +5,7 @@ class ClassName {
 	 * @param {object} options SDK options
 	 */
 	constructor(ocisdk, params, clientConfiguration) {
-		this._oci = ocisdk;
+		this._oci = ocisdk._sdkFileName;
 		this._sdkclassName = this._oci.SDKClassName(
 			params,
 			clientConfiguration

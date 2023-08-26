@@ -29,7 +29,17 @@ ComputeInstance:
         update: linodes linodes.d.ts updateLinode
         delete: linodes linodes.d.ts deleteLinode
         clone: linodes linodes.d.ts cloneLinode
-        
+    Oracle:
+        getAll: containerinstances getContainer
+        update: containerinstances updateContainer
+        list: containerinstances listContainers
+        create: containerinstances createContainerInstance
+        delete: containerinstances deleteContainerInstance
+        get: containerinstances getContainerInstance
+        restart: containerinstances restartContainerInstance
+        start: containerinstances startContainerInstance
+        stop: containerinstances stopContainerInstance
+
 StorageBucket:
     AWS:
         create: s3.d.ts createBucket
@@ -62,7 +72,7 @@ StorageBucket:
         get: objectstorage getBucket
         list: objectstorage listBuckets
         reencrypt: objectstorage reencryptBucket
-        
+
 PaaS:
     AWS:
         create: elasticbeanstalk.d.ts createApplication
@@ -149,13 +159,15 @@ Kubernetes:
     Oracle:
         create: containerengine createCluster
         delete: containerengine deleteCluster
-        listClusters: containerengine listClusters
-        describeCluster: containerengine getCluster
+        get: containerengine getCluster
+        update: containerengine updateCluster
+        list: containerengine listClusters
         createNodePool: containerengine createNodePool
-        deleteNodePool: containerengine deleteNodePool
         deleteNode: containerengine deleteNode
-        describeNodePool: containerengine getNodePool
-        
+        deleteNodePool: containerengine deleteNodePool
+        getNodePool: containerengine getNodePool
+        updateNodePool: containerengine updateNodePool
+
 Monitoring:
     GCP:
         createAlarm: monitoring v3 alert_policy_service_client.d.ts createAlertPolicy
@@ -246,11 +258,14 @@ RDBMS:
         getCluster: databases.d.ts getClusterById
         updateCluster: databases.d.ts resizeCluster
     Oracle:
-        createDatabse: mysql createDBSystem
-        deleteDatabase: mysql deleteDBSystem
-        modifyDatabase: mysql updateDBSystem
-        getDatabase: mysql getDBSystem
-        
+        createDBSystem: mysql createDbSystem DbSystemClient
+        deleteDBSystem: mysql deleteDbSystem DbSystemClient
+        getDBSystem: mysql getDbSystem DbSystemClient
+        restartDBSystem: mysql restartDbSystem DbSystemClient
+        startDBSystem: mysql startDbSystem DbSystemClient
+        stopDBSystem: mysql stopDbSystem DbSystemClient
+        updateDBSystem: mysql updateDbSystem DbSystemClient
+
 NoSql:
     AWS:
         createTable: dynamodb.d.ts createTable
@@ -278,8 +293,12 @@ NoSql:
     Oracle:
         createTable: nosql createTable
         deleteTable: nosql deleteTable
-        list: nosql listTables
+        getTable: nosql getTable
+        listTables: nosql listTables
         updateTable: nosql updateTable
+        deleteRow: nosql deleteRow
+        getRow: nosql getRow
+        updateRow: nosql updateRow
     Linode:
         createDatabase: databases databases.d.ts createDatabase
         updateDatabase: databases databases.d.ts updateDatabase
@@ -313,10 +332,10 @@ DNS:
         getRecord: domains.d.ts getRecord
         changeRecordSets: domains.d.ts updateRecord
     Oracle:
-        createZone: dns createZone
-        deleteZone: dns deleteZone
-        listZones: dns listZones
-        changeRecordSets: dns updateDomainRecords
+        create: dns createZone
+        delete: dns deleteZone
+        list: dns listZones
+        update: dns updateZone
     Linode:
         createDomain: domains domains.d.ts createDomain
         updateDomain: domains domains.d.ts updateDomain
@@ -421,6 +440,11 @@ KeyManagement:
         deleteKey: keys.d.ts delete
         list: keys.d.ts getAll
         describeKey: keys.d.ts getById
+    Oracle:
+        createKey: keymanagement createKey KmsManagementClient
+        disableKey: keymanagement disableKey KmsManagementClient
+        enableKey: keymanagement enableKey KmsManagementClient
+        update: keymanagement updateKey KmsManagementClient
 
 NotificationService:
     AWS:
@@ -473,6 +497,11 @@ BlockStorage:
         delete: volumes volumes.d.ts deleteVolume
         update: volumes volumes.d.ts updateVolume
         list: volumes volumes.d.ts getVolumes
+    Oracle:
+        create: core createVolume BlockstorageClient
+        delete: core deleteVolume BlockstorageClient
+        list: core listVolumes BlockstorageClient
+        get: core getVolume BlockstorageClient
 Images:
     Linode:
         getImage: images images.d.ts getImage
@@ -491,3 +520,31 @@ Firewalls:
         enableFirewall: firewalls firewalls.d.ts enableFirewall
         disableFirewall: firewalls firewalls.d.ts disableFirewall
         deleteFirewall: firewalls firewalls.d.ts deleteFirewall
+BlockChain:
+    Oracle:
+        createBlockchainPlatform: blockchain createBlockchainPlatform
+        createOsn: blockchain createOsn
+        createPeer: blockchain createPeer
+        deleteBlockchainPlatform: blockchain deleteBlockchainPlatform
+        deleteOsn: blockchain deleteOsn
+        deletePeer: blockchain deletePeer
+        getOsn: blockchain getOsn
+        listOsns: blockchain listOsns
+        listPeers: blockchain listPeers
+        listBlockchainPlatforms: blockchain listBlockchainPlatforms
+
+Devops:
+    Oracle:
+        createDeployment: devops createDeployment
+        createProject: devops createProject
+        createRepository: devops createRepository
+        deleteProject: devops deleteProject
+        deleteRepository: devops deleteRepository
+        createDeployArtifact: devops createDeployArtifact
+        createDeployPipeline: devops createDeployPipeline
+        deleteDeployPipeline: devops deleteDeployPipeline
+        deleteDeployArtifact: devops deleteDeployArtifact
+        getDeployArtifact: devops getDeployArtifact
+        getDeployPipeline: devops getDeployPipeline
+        getDeployment: devops getDeployment
+        getProject: devops getProject

@@ -18,6 +18,8 @@ const dirMap = {
 	artificialinteligence: ['Translation'],
 	firewalls: ['Firewalls'],
 	images: ['Images'],
+	blockchain: ['BlockChain'],
+	devops: ['Devops'],
 };
 
 export function printFile(fileName, data) {

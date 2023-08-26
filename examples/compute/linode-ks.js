@@ -29,7 +29,7 @@ function createCluster() {
 
 // Get all clusters
 function getAllClusters() {
-	kubernetes.getAllClusters(limitation).then(
+	kubernetes.getAllClusters().then(
 		result => {
 			console.log('Output :', result);
 		},

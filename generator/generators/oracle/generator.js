@@ -202,8 +202,14 @@ function extractSDKData(sdkClassAst, serviceClass) {
 exports.extractSDKData = extractSDKData;
 function generateOracleClass(serviceClass, serviceName) {
 	var _this = this;
+	var multi = false;
+	var className = '';
 	var sdkFile = serviceClass[Object.keys(serviceClass)[0]].split(' ')[0];
-	parser_1.getAST(sdkFile).then(function(result) {
+	if (serviceClass[Object.keys(serviceClass)[0]].split(' ').length > 2) {
+		multi = true;
+		className = serviceClass[Object.keys(serviceClass)[0]].split(' ')[2];
+	}
+	parser_1.getAST(sdkFile, multi, className).then(function(result) {
 		return __awaiter(_this, void 0, void 0, function() {
 			var sdkClassAst, classData, output, filePath, dir, error_1;
 			return __generator(this, function(_a) {
@@ -215,7 +221,6 @@ function generateOracleClass(serviceClass, serviceName) {
 						_a.trys.push([1, 3, , 4]);
 						classData = extractSDKData(sdkClassAst, serviceClass);
 						classData.serviceName = serviceName;
-						console.log(JSON.stringify(classData));
 						return [
 							4 /*yield*/,
 							transformer_1.transform(dummyAst, classData),

@@ -12,6 +12,7 @@ class Linode_Images {
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
+		this._linode.setToken(this._linodeToken);
 	}
 	/**
 	 * Trigers the getImage function of ImagesLinodeClass
@@ -19,7 +20,6 @@ class Linode_Images {
 	 * @returns {Promise<getImageResponse>}
 	 */
 	getImage(imageId) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getImage(imageId)
@@ -34,7 +34,6 @@ class Linode_Images {
 	 * @returns {Promise<getImagesResponse>}
 	 */
 	getImages(params = undefined, filters = undefined) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getImages(params, filters)
@@ -56,7 +55,6 @@ class Linode_Images {
 		description = undefined,
 		cloud_init = undefined
 	) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createImage(diskId, label, description, cloud_init)
@@ -72,7 +70,6 @@ class Linode_Images {
 	 * @returns {Promise<updateImageResponse>}
 	 */
 	updateImage(imageId, label = undefined, description = undefined) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateImage(imageId, label, description)
@@ -86,7 +83,6 @@ class Linode_Images {
 	 * @returns {Promise<deleteImageResponse>}
 	 */
 	deleteImage(imageId) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteImage(imageId)
@@ -100,7 +96,6 @@ class Linode_Images {
 	 * @returns {Promise<uploadImageResponse>}
 	 */
 	uploadImage(data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.uploadImage(data)

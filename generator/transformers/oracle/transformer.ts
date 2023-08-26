@@ -138,10 +138,7 @@ export async function transform(
 						break;
 					case 'SDKClassName':
 						updatedIdentifier = ts.updateIdentifier(
-							ts.createIdentifier(
-								classData.className.charAt(0).toLowerCase() +
-									classData.className.substr(1)
-							)
+							ts.createIdentifier(classData.className)
 						);
 						break;
 					case 'SDKFunctionName':

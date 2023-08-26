@@ -144,15 +144,15 @@ exports.getAST = void 0;
 var fs = require('fs');
 var path = require('path');
 var typescript_1 = require('typescript');
-function getAST(sdkFileName) {
+function getAST(sdkFileName, multi, className) {
 	var _this = this;
 	return new Promise(function(resolve, reject) {
 		return __awaiter(_this, void 0, void 0, function() {
-			var file, ast, cloned_1, error_1;
+			var file, ast, cloned_1, finalClassAst_1, classes_1, error_1;
 			return __generator(this, function(_a) {
 				switch (_a.label) {
 					case 0:
-						_a.trys.push([0, 2, , 3]);
+						_a.trys.push([0, 5, , 6]);
 						file = path.join(
 							__dirname,
 							'../../../node_modules/oci-' +
@@ -166,10 +166,36 @@ function getAST(sdkFileName) {
 							true
 						);
 						cloned_1 = null;
+						if (!multi) return [3 /*break*/, 2];
+						classes_1 = [];
 						return [
 							4 /*yield*/,
 							ast.forEachChild(function(child) {
-								// console.log(SyntaxKind[child.kind]);
+								if (
+									typescript_1.SyntaxKind[child.kind] ===
+									'ClassDeclaration'
+								) {
+									cloned_1 = Object.assign({}, child);
+									classes_1.push(cloned_1);
+								}
+							}),
+						];
+					case 1:
+						_a.sent();
+						if (classes_1.length == 0) {
+							reject(new Error('Class not found!'));
+						} else {
+							classes_1.forEach(function(result) {
+								if (result.name.text == className) {
+									finalClassAst_1 = result;
+								}
+							});
+						}
+						return [3 /*break*/, 4];
+					case 2:
+						return [
+							4 /*yield*/,
+							ast.forEachChild(function(child) {
 								if (
 									typescript_1.SyntaxKind[child.kind] ===
 									'ClassDeclaration'
@@ -178,23 +204,26 @@ function getAST(sdkFileName) {
 								}
 							}),
 						];
-					case 1:
+					case 3:
 						_a.sent();
 						if (!cloned_1) {
 							reject(new Error('Class not found!'));
 						} else {
-							resolve(cloned_1);
+							finalClassAst_1 = cloned_1;
 						}
-						return [3 /*break*/, 3];
-					case 2:
+						_a.label = 4;
+					case 4:
+						resolve(finalClassAst_1);
+						return [3 /*break*/, 6];
+					case 5:
 						error_1 = _a.sent();
 						if (error_1.code === 'ENOENT') {
 							reject(new Error('File not found!'));
 						} else {
 							reject(error_1);
 						}
-						return [3 /*break*/, 3];
-					case 3:
+						return [3 /*break*/, 6];
+					case 6:
 						return [2 /*return*/];
 				}
 			});

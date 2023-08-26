@@ -1,0 +1,14 @@
+{
+	"name": "@nodecloud/oracle-plugin",
+	"version": "2.0.0",
+	"description": "Nodecloud Oracle Cloud Plugin",
+	"main": "index.js",
+	"scripts": {
+		"prettier": "yarn pretty-quick"
+	},
+	"author": "Scorelab",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"oci-sdk": "^2.66.0"
+	}
+}

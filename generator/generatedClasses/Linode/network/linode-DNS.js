@@ -12,6 +12,7 @@ class Linode_DNS {
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
+		this._linode.setToken(this._linodeToken);
 	}
 	/**
 	 * Trigers the getDomains function of DNSLinodeClass
@@ -20,7 +21,6 @@ class Linode_DNS {
 	 * @returns {Promise<getDomainsResponse>}
 	 */
 	getDomains(params = undefined, filter = undefined) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getDomains(params, filter)
@@ -34,7 +34,6 @@ class Linode_DNS {
 	 * @returns {Promise<getDomainResponse>}
 	 */
 	getDomain(domainId) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getDomain(domainId)
@@ -48,7 +47,6 @@ class Linode_DNS {
 	 * @returns {Promise<createDomainResponse>}
 	 */
 	createDomain(data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createDomain(data)
@@ -63,7 +61,6 @@ class Linode_DNS {
 	 * @returns {Promise<updateDomainResponse>}
 	 */
 	updateDomain(domainId, data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateDomain(domainId, data)
@@ -77,7 +74,6 @@ class Linode_DNS {
 	 * @returns {Promise<deleteDomainResponse>}
 	 */
 	deleteDomain(domainId) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteDomain(domainId)
@@ -92,7 +88,6 @@ class Linode_DNS {
 	 * @returns {Promise<cloneDomainResponse>}
 	 */
 	cloneDomain(domainId, data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.cloneDomain(domainId, data)

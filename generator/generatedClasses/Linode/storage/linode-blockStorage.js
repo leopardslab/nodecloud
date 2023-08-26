@@ -12,6 +12,7 @@ class Linode_BlockStorage {
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
+		this._linode.setToken(this._linodeToken);
 	}
 	/**
 	 * Trigers the getVolumes function of BlockStorageLinodeClass
@@ -20,7 +21,6 @@ class Linode_BlockStorage {
 	 * @returns {Promise<getVolumesResponse>}
 	 */
 	list(params = undefined, filters = undefined) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getVolumes(params, filters)
@@ -34,7 +34,6 @@ class Linode_BlockStorage {
 	 * @returns {Promise<deleteVolumeResponse>}
 	 */
 	delete(volumeId) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteVolume(volumeId)
@@ -49,7 +48,6 @@ class Linode_BlockStorage {
 	 * @returns {Promise<updateVolumeResponse>}
 	 */
 	update(volumeId, data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateVolume(volumeId, data)
@@ -63,7 +61,6 @@ class Linode_BlockStorage {
 	 * @returns {Promise<createVolumeResponse>}
 	 */
 	create(data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createVolume(data)
