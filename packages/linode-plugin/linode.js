@@ -1,11 +1,13 @@
 const computeInstance = require('./compute/linode-computeInstance');
 const kubernetes = require('./compute/linode-kubernetes');
-const noSql = require('./database/linode-noSql');
+const sql = require('./database/linode-RDBMS');
 const loadBalancer = require('./network/linode-loadBalancer');
 const linodeDns = require('./network/linode-DNS');
 const volume = require('./storage/linode-blockStorage');
 const images = require('./images/linode-images');
 const firewalls = require('./firewalls/linode-firewalls');
+const objectStorage = require('./storage/linode-storageBucket');
+const monitoring = require('./management/linode-monitoring');
 class Linode {
 	constructor(linodeSdk) {
 		this._linodeSdk = linodeSdk;
@@ -20,10 +22,12 @@ class Linode {
 			blockStorage: this.volume,
 			loadBalancer: this.loadBalancer,
 			dns: this.linodeDns,
-			noSql: this.noSql,
+			sql: this.sql,
 			kubernetes: this.kubernetes,
 			firewalls: this.firewalls,
 			images: this.images,
+			objectStorage: this.objectStorage,
+			monitoring: this.monitoring,
 		};
 	}
 
@@ -33,8 +37,8 @@ class Linode {
 	kubernetes() {
 		return new kubernetes(this.getSDK(), this.getToken());
 	}
-	noSql() {
-		return new noSql(this.getSDK(), this.getToken());
+	sql() {
+		return new sql(this.getSDK(), this.getToken());
 	}
 	linodeDns() {
 		return new linodeDns(this.getSDK(), this.getToken());
@@ -50,6 +54,12 @@ class Linode {
 	}
 	firewalls() {
 		return new firewalls(this.getSDK(), this.getToken());
+	}
+	objectStorage() {
+		return new objectStorage(this.getSDK(), this.getToken());
+	}
+	monitoring() {
+		return new monitoring(this.getSDK(), this.getToken());
 	}
 }
 module.exports = Linode;

@@ -15,6 +15,17 @@ function createCluster() {
 		control_plane: {
 			high_availability: true,
 		},
+		node_pools: [
+			{
+				type: 'g6-standard-4',
+				count: 6,
+				autoscaler: {
+					enabled: true,
+					max: 12,
+					min: 3,
+				},
+			},
+		],
 	};
 
 	kubernetes.create(clusterDetails).then(
@@ -41,7 +52,7 @@ function getAllClusters() {
 
 //Delete cluster
 function deleteCluster() {
-	let clusterID = 12345;
+	let clusterID = 127044;
 	kubernetes.delete(clusterID).then(
 		result => {
 			console.log('Output :', result);
@@ -54,7 +65,7 @@ function deleteCluster() {
 
 //Create a Node pool
 function createNodePool() {
-	let clusterID = 12345;
+	let clusterID = 127044;
 	let poolDetails = {
 		type: 'g6-standard-4',
 		count: 6,
@@ -78,8 +89,8 @@ function createNodePool() {
 
 //Delete a node pool
 function deleteNodePool() {
-	let nodePoolID = 12345;
-	let clusterID = 456;
+	let nodePoolID = 188341;
+	let clusterID = 127044;
 	kubernetes.deleteNodePool(clusterID, nodePoolID).then(
 		result => {
 			console.log('Output :', result);
@@ -92,8 +103,8 @@ function deleteNodePool() {
 
 //Get details of Node Pools
 function getNodePool() {
-	let nodePoolID = 12345;
-	let clusterID = 456;
+	let nodePoolID = 188341;
+	let clusterID = 127044;
 	kubernetes.getNodePool(clusterID, nodePoolID).then(
 		result => {
 			console.log('Output :', result);
@@ -106,7 +117,7 @@ function getNodePool() {
 
 //Get all Nodepools
 function getNodePools() {
-	let clusterID = 12345;
+	let clusterID = 127044;
 	kubernetes.getNodePools(clusterID).then(
 		result => {
 			console.log('Output :', result);

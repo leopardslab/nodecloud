@@ -11,41 +11,7 @@ function create() {
 		region: 'us-east',
 		label: 'balancer12345',
 		client_conn_throttle: 0,
-		configs: [
-			{
-				port: 443,
-				protocol: 'https',
-				algorithm: 'roundrobin',
-				stickiness: 'http_cookie',
-				check: 'http_body',
-				check_interval: 90,
-				check_timeout: 10,
-				check_attempts: 3,
-				check_path: '/test',
-				check_body: 'it works',
-				check_passive: true,
-				proxy_protocol: 'none',
-				cipher_suite: 'recommended',
-				ssl_cert:
-					'-----BEGIN CERTIFICATE-----\nCERTIFICATE_INFORMATION\n-----END CERTIFICATE-----',
-				ssl_key:
-					'-----BEGIN PRIVATE KEY-----\nPRIVATE_KEY_INFORMATION\n-----END PRIVATE KEY-----',
-				nodes: [
-					{
-						address: '192.168.210.120:80',
-						label: 'node1',
-						weight: 50,
-						mode: 'accept',
-					},
-					{
-						address: '192.168.210.122:81',
-						label: 'node2',
-						weight: 50,
-						mode: 'accept',
-					},
-				],
-			},
-		],
+		configs: [],
 	};
 
 	lb.create(options)
@@ -85,43 +51,9 @@ function updateLoadBalancer() {
 	let lbId = 4954884;
 	let options = {
 		region: 'us-east',
-		label: 'balancer12345',
+		label: 'newbalancer12345',
 		client_conn_throttle: 0,
-		configs: [
-			{
-				port: 443,
-				protocol: 'https',
-				algorithm: 'roundrobin',
-				stickiness: 'http_cookie',
-				check: 'http_body',
-				check_interval: 90,
-				check_timeout: 10,
-				check_attempts: 3,
-				check_path: '/test',
-				check_body: 'it works',
-				check_passive: true,
-				proxy_protocol: 'none',
-				cipher_suite: 'recommended',
-				ssl_cert:
-					'-----BEGIN CERTIFICATE-----\nCERTIFICATE_INFORMATION\n-----END CERTIFICATE-----',
-				ssl_key:
-					'-----BEGIN PRIVATE KEY-----\nPRIVATE_KEY_INFORMATION\n-----END PRIVATE KEY-----',
-				nodes: [
-					{
-						address: '192.168.210.120:80',
-						label: 'node1',
-						weight: 50,
-						mode: 'accept',
-					},
-					{
-						address: '192.168.210.122:81',
-						label: 'node2',
-						weight: 50,
-						mode: 'accept',
-					},
-				],
-			},
-		],
+		configs: [],
 	};
 	lb.update(lbId, options)
 		.then(result => {

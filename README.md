@@ -19,18 +19,18 @@
 
 Table of Content
 
-- [Introduction](#introduction)
-- [Supported Service Providers](#-supported-service-providers)
-- [Getting Started](#getting-started)
-  - [NodeCloud Plugins](#nodecloud-plugins)
-  - [Example](#example)
-- [Overriding Providers](#overriding-providers)
-- [Service Types](#-service-types)
-- [Development setup](#-development-setup)
-- [Important Notes for Developers](#important-notes-for-developers-)
-- [Test Changes](#test-changes)
-- [NodeCloud Code Generation tool](#nodecloud-code-generation-tool)
-- [License](#-license)
+-   [Introduction](#introduction)
+-   [Supported Service Providers](#-supported-service-providers)
+-   [Getting Started](#getting-started)
+    -   [NodeCloud Plugins](#nodecloud-plugins)
+    -   [Example](#example)
+-   [Overriding Providers](#overriding-providers)
+-   [Service Types](#-service-types)
+-   [Development setup](#-development-setup)
+-   [Important Notes for Developers](#important-notes-for-developers-)
+-   [Test Changes](#test-changes)
+-   [NodeCloud Code Generation tool](#nodecloud-code-generation-tool)
+-   [License](#-license)
 
 # Introduction
 
@@ -38,18 +38,20 @@ Table of Content
 
 NodeCloud will be useful to you if:
 
-- you work on a project which uses multiple cloud providers
-- you are looking for an abstract cloud API which can switch between cloud providers with fewer code changes
-- you are an open-source enthusiast who is into cloud engineering or code generation
-- you want to improve your skills in NodeJS, Typescript and cloud service providers
+-   you work on a project which uses multiple cloud providers
+-   you are looking for an abstract cloud API which can switch between cloud providers with fewer code changes
+-   you are an open-source enthusiast who is into cloud engineering or code generation
+-   you want to improve your skills in NodeJS, Typescript and cloud service providers
 
 ## 📘 Supported Service Providers
 
-- Amazon Web Services (AWS)
-- Azure
-- Google Cloud Platform (GCP)
-- DigitalOcean
-- AliCloud
+-   Amazon Web Services (AWS)
+-   Azure
+-   Google Cloud Platform (GCP)
+-   DigitalOcean
+-   AliCloud
+-   Oracle
+-   Linode
 
 _📢 if your required cloud provider plugin is not listed here, we'd love your help to add it :)_
 
@@ -71,13 +73,15 @@ Once `@nodecloud/common` is installed, you need to install the plugins to intera
 
 ### NodeCloud Plugins
 
-| Plugin               | Installation                                                          |
-| -------------------- | --------------------------------------------------------------------- |
-| AWS plugin           | `yarn add @nodecloud/aws-plugin` or `npm i @nodecloud/aws-plugin`     |
-| Azure plugin         | `yarn add @nodecloud/gcp-plugin` or `npm i @nodecloud/gcp-plugin`     |
-| Google Cloud plugin  | `yarn add @nodecloud/azure-plugin` or `npm i @nodecloud/azure-plugin` |  |
-| Digital Ocean plugin | `yarn add @nodecloud/do-plugin` or `npm i @nodecloud/do-plugin`       |
-| Alibaba plugin       | `yarn add nodecloud-ali-plugin` or `npm i nodecloud-ali-plugin`       |
+| Plugin               | Installation                                                            |
+| -------------------- | ----------------------------------------------------------------------- |
+| AWS plugin           | `yarn add @nodecloud/aws-plugin` or `npm i @nodecloud/aws-plugin`       |
+| Azure plugin         | `yarn add @nodecloud/gcp-plugin` or `npm i @nodecloud/gcp-plugin`       |
+| Google Cloud plugin  | `yarn add @nodecloud/azure-plugin` or `npm i @nodecloud/azure-plugin`   |  |
+| Digital Ocean plugin | `yarn add @nodecloud/do-plugin` or `npm i @nodecloud/do-plugin`         |
+| Alibaba plugin       | `yarn add nodecloud-ali-plugin` or `npm i nodecloud-ali-plugin`         |
+| Oracle plugin        | `yarn add @nodecloud-oracle-plugin` or `npm i @nodecloud-oracle-plugin` |
+| Linode plugin        | `yarn add @nodecloud-linode-plugin` or `npm i @nodecloud-linode-plugin` |
 
 **3️⃣ Create the NodeCloud config file**
 
@@ -95,37 +99,49 @@ This config file can contain an array of objects for all providers and all will 
 ### Example
 
 ```js
-const nodeCloudAwsPlugin = require("@nodecloud/aws-plugin");
-const nodeCloudGcpPlugin = require("@nodecloud/gcp-plugin");
-const nodeCloudAzurePlugin = require("@nodecloud/azure-plugin");
-const nodeCloudDoPlugin = require("@nodecloud/do-plugin");
+const nodeCloudAwsPlugin = require('@nodecloud/aws-plugin');
+const nodeCloudGcpPlugin = require('@nodecloud/gcp-plugin');
+const nodeCloudAzurePlugin = require('@nodecloud/azure-plugin');
+const nodeCloudDoPlugin = require('@nodecloud/do-plugin');
+const nodeCloudOraclePlugin = require('@nodecloud/oracle-plugin');
+const nodeCloudLinodePlugin = require('@nodecloud/linode-plugin');
 
 const providers = [
-  {
-    name: "aws",
-    tag: "aws",
-    plugin: nodeCloudAwsPlugin,
-    configPath: "C:\\Users\\Rajitha\\opensource\\aws_cred.json"
-  },
-  {
-    name: "google",
-    tag: "google",
-    plugin: nodeCloudGcpPlugin,
-    configPath: {
-      projectId: "astral-hold-276807",
-      keyFilename: "C:\\Users\\Rajitha\\opensource\\gcp_cred.json"
-    }
-  },
-  {
-    name: "azure",
-    tag: "azure",
-    plugin: nodeCloudAzurePlugin
-  },
-  {
-    name: "digitalocean",
-    tag: "do",
-    plugin: nodeCloudDoPlugin
-  }
+	{
+		name: 'aws',
+		tag: 'aws',
+		plugin: nodeCloudAwsPlugin,
+		configPath: 'C:\\Users\\Rajitha\\opensource\\aws_cred.json',
+	},
+	{
+		name: 'google',
+		tag: 'google',
+		plugin: nodeCloudGcpPlugin,
+		configPath: {
+			projectId: 'astral-hold-276807',
+			keyFilename: 'C:\\Users\\Rajitha\\opensource\\gcp_cred.json',
+		},
+	},
+	{
+		name: 'azure',
+		tag: 'azure',
+		plugin: nodeCloudAzurePlugin,
+	},
+	{
+		name: 'digitalocean',
+		tag: 'do',
+		plugin: nodeCloudDoPlugin,
+	},
+	{
+		name: 'oracle',
+		tag: 'oracle',
+		plugin: nodeCloudOraclePlugin,
+	},
+	{
+		name: 'linode',
+		tag: 'linode',
+		plugin: nodeCloudLinodePlugin,
+	},
 ];
 module.exports = providers;
 ```
@@ -137,52 +153,52 @@ Congratulations! You just configured NodeCloud in your project. Let's start with
 The below code is an example of usage in AWS.
 
 ```js
-const nc = require("@nodecloud/common"); // NodeCloud common module
+const nc = require('@nodecloud/common'); // NodeCloud common module
 const optionsProvider = {
-  overrideProviders: false
+	overrideProviders: false,
 };
 const ncProviders = nc.getProviders(optionsProvider);
 const options = {
-  apiVersion: "2017-11-01"
+	apiVersion: '2017-11-01',
 };
 
 const computeModule = ncProviders.aws.compute(options);
 
 function launchInstance() {
-  const instanceParams = {
-    ImageId: "ami-07ebfd5b3428b6f4d", // Image of Ubuntu Server 18.04 LTS
-    InstanceType: "t2.micro",
-    KeyName: "nodeCloud", // key name of Key pair
-    MinCount: 1,
-    MaxCount: 1
-  };
+	const instanceParams = {
+		ImageId: 'ami-07ebfd5b3428b6f4d', // Image of Ubuntu Server 18.04 LTS
+		InstanceType: 't2.micro',
+		KeyName: 'nodeCloud', // key name of Key pair
+		MinCount: 1,
+		MaxCount: 1,
+	};
 
-  // create AWS EC2 instance
-  computeModule
-    .create(instanceParams)
-    .then(res => {
-      console.log(`All done ! ${res}`);
-    })
-    .catch(err => {
-      console.log(`Oops something happened ${err}`);
-    });
+	// create AWS EC2 instance
+	computeModule
+		.create(instanceParams)
+		.then(res => {
+			console.log(`All done ! ${res}`);
+		})
+		.catch(err => {
+			console.log(`Oops something happened ${err}`);
+		});
 }
 
 function stopInstance() {
-  const params = {
-    InstanceIds: ["i-0928af5c626f85da9"],
-    DryRun: false
-  };
+	const params = {
+		InstanceIds: ['i-0928af5c626f85da9'],
+		DryRun: false,
+	};
 
-  // stop AWS EC2 instance
-  computeModule
-    .stop(params)
-    .then(res => {
-      console.log(res);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+	// stop AWS EC2 instance
+	computeModule
+		.stop(params)
+		.then(res => {
+			console.log(res);
+		})
+		.catch(err => {
+			console.log(err);
+		});
 }
 ```
 
@@ -191,32 +207,35 @@ function stopInstance() {
 NodeCloud officially supports AWS, GCP, Azure, DigitalOcean and AliCloud. If you want to use a community-driven plugin override the providers' list as follows.
 
 ```js
-const nodeCloud = require("nodecloud");
+const nodeCloud = require('nodecloud');
 const options = {
-  overrideProviders: true
+	overrideProviders: true,
 };
 const ncProviders = nodeCloud.getProviders(options);
 ```
 
 ## 📟 Service Types
 
-| Service Category        | Service                             |                  AWS                  |                GCP                |                                  Azure                                  |               DigitalOcean                |                       AliCloud                        |
-| ----------------------- | ----------------------------------- | :-----------------------------------: | :-------------------------------: | :---------------------------------------------------------------------: | :---------------------------------------: | :---------------------------------------------------: |
-| Compute                 | IaaS                                |                  EC2                  |          Compute Engine           |                             Virtual Machine                             |                 Droplets                  |                          ECS                          |
-|                         | Faas                                |             AWS Lambda\*              |         Cloud Functions\*         |                            Azure Functions\*                            |                     -                     |                  Function Compute\*                   |
-|                         | Containers                          |               ECS, EKS                |     Google Kubernetes Engine      |                       AKS, Azure Service Fabric\*                       |               DO Kubernetes               | Container Service*, Container Service for Kubernetes* |
-|                         | Containers (without infrastructure) |             AWS Fargate\*             |            Cloud Run\*            |                                    -                                    |                     -                     |                         ECI\*                         |
-|                         | Paas                                |         AWS Elastic Beanstalk         |           App Engine\*            |                               App Service                               |                     -                     |              Simple Application Server\*              |
-| Storage                 | Object Storage                      |                  S3                   |           Cloud Storage           |                           Azure Blob Storage                            |                 Spaces\*                  |                     Bucket (OSS)                      |
-|                         | Block Storage                       |                  EBS                  |         Persistent Disks          |                              Disk Storage                               |                  Volumes                  |                         NAS\*                         |
-| Networking              | Load Balancer                       |                  ELB                  |      Cloud Load Balancing\*       |                           Azure Load Balancer                           |             DO Load Balancer              |                          SLB                          |
-|                         | Peering/Dedicated Interconnect      |            Direct Connect             |       Cloud Interconnect\*        |                             ExpressRoute\*                              |                     -                     |                   Express Connect\*                   |
-|                         | DNS                                 |                Route53                |     Google Domains, Cloud DNS     |                                Azure DNS                                |                  DO DNS                   |                  Alibaba Cloud DNS\*                  |
-| Databases               | RDBMS                               | RDS, Amazon Aurora*, Amazon Redshift* |    Cloud SQL\*, Cloud Spanner     | SQL Database, Azure Database for MySQL*, Azure Database for PostgreSQL* | Managed Databases(PostgreSQL\* and MySQL) | ApsaraDB (MySQL, MariaDB TX, SQL Server, PostgreSQL)  |
-|                         | NoSQL: key-value                    |               DynamoDB                | Cloud Firestore, Cloud Bigtable\* |                              Table Storage                              |        Managed Databases(Redis)\*         |                 ApsaraDB for Redis\*                  |
-|                         | NoSQL: indexed                      |           Amazon SimpleDB\*           |          Cloud Firestore          |                                Cosmos DB                                |                     -                     |                ApsaraDB for MongoDB\*                 |
-| Security/ Authorization | Identity Access Management          |                AWS IAM                |            Cloud IAM\*            |        Azure Active Directory*, Azure Role Based Access Control*        |                     -                     |             Resource Access Management\*              |
-| Management              | Key Management                      |                AWS-KMS                |                 -                 |                                    -                                    |                  Do-Keys                  |                           -                           |
+| Service Category        | Service                             |                  AWS                  |                GCP                |                                  Azure                                  |               DigitalOcean                |                       AliCloud                        |            Linode             |        Oracle         |
+| ----------------------- | ----------------------------------- | :-----------------------------------: | :-------------------------------: | :---------------------------------------------------------------------: | :---------------------------------------: | :---------------------------------------------------: | :---------------------------: | :-------------------: |
+| Compute                 | IaaS                                |                  EC2                  |          Compute Engine           |                             Virtual Machine                             |                 Droplets                  |                          ECS                          |            Linodes            | OCI ContainerInstance |
+|                         | Faas                                |             AWS Lambda\*              |         Cloud Functions\*         |                            Azure Functions\*                            |                     -                     |                  Function Compute\*                   |               -               |           -           |
+|                         | Containers                          |               ECS, EKS                |     Google Kubernetes Engine      |                       AKS, Azure Service Fabric\*                       |               DO Kubernetes               | Container Service*, Container Service for Kubernetes* |              LKS              |  OCI ContainerEngine  |
+|                         | Containers (without infrastructure) |             AWS Fargate\*             |            Cloud Run\*            |                                    -                                    |                     -                     |                         ECI\*                         |               -               |           -           |
+|                         | Paas                                |         AWS Elastic Beanstalk         |           App Engine\*            |                               App Service                               |                     -                     |              Simple Application Server\*              |               -               |           -           |
+| Storage                 | Object Storage                      |                  S3                   |           Cloud Storage           |                           Azure Blob Storage                            |                 Spaces\*                  |                     Bucket (OSS)                      |        Object Storage         |  OCI Object Storage   |
+|                         | Block Storage                       |                  EBS                  |         Persistent Disks          |                              Disk Storage                               |                  Volumes                  |                         NAS\*                         |               -               |      OCI Volume       |
+| Networking              | Load Balancer                       |                  ELB                  |      Cloud Load Balancing\*       |                           Azure Load Balancer                           |             DO Load Balancer              |                          SLB                          |         Node Balancer         |   OCI LoadBalancer    |
+|                         | Peering/Dedicated Interconnect      |            Direct Connect             |       Cloud Interconnect\*        |                             ExpressRoute\*                              |                     -                     |                   Express Connect\*                   |               -               |           -           |
+|                         | DNS                                 |                Route53                |     Google Domains, Cloud DNS     |                                Azure DNS                                |                  DO DNS                   |                  Alibaba Cloud DNS\*                  |            Domains            |        OCI DNS        |
+| Databases               | RDBMS                               | RDS, Amazon Aurora*, Amazon Redshift* |    Cloud SQL\*, Cloud Spanner     | SQL Database, Azure Database for MySQL*, Azure Database for PostgreSQL* | Managed Databases(PostgreSQL\* and MySQL) | ApsaraDB (MySQL, MariaDB TX, SQL Server, PostgreSQL)  | Database(Postgres and Myssql) |       OCI Mysql       |
+|                         | NoSQL: key-value                    |               DynamoDB                | Cloud Firestore, Cloud Bigtable\* |                              Table Storage                              |        Managed Databases(Redis)\*         |                 ApsaraDB for Redis\*                  |               -               |      OCI MOngoDb      |
+|                         | NoSQL: indexed                      |           Amazon SimpleDB\*           |          Cloud Firestore          |                                Cosmos DB                                |                     -                     |                ApsaraDB for MongoDB\*                 |               -               |           -           |
+| Security/ Authorization | Identity Access Management          |                AWS IAM                |            Cloud IAM\*            |        Azure Active Directory*, Azure Role Based Access Control*        |                     -                     |             Resource Access Management\*              |               -               |           -           |
+| Management              | Key Management                      |                AWS-KMS                |                 -                 |                                    -                                    |                  Do-Keys                  |                           -                           |          Monitoring           |   OCI KeyManagement   |
+| Firewalls               | Firewalls                           |                   -                   |                 -                 |                                    -                                    |                     -                     |                           -                           |           Firewalls           |           -           |
+| Images                  | Images                              |                   -                   |                 -                 |                                    -                                    |                     -                     |                           -                           |            Images             |           -           |
+| Blockchain              | Blockchain                          |                   -                   |                 -                 |                                    -                                    |                     -                     |                           -                           |               -               |    OCI Blockchain     |
 
 \*yet to be implemented
 

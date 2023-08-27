@@ -8,16 +8,13 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 const linodeSql = ncProviders.linode.sql();
 
 function createDatabase() {
+	const engine = 'mysql';
 	const dbParams = {
 		label: 'example-db',
 		region: 'us-east',
 		type: 'g6-dedicated-2',
-		cluster_size: 3,
 		engine: 'mysql/8.0.26',
-		encrypted: false,
-		ssl_connection: true,
 		replication_type: 'semi_synch',
-		allow_list: ['203.0.113.1', '192.0.1.0/24'],
 	};
 
 	// create database
@@ -45,7 +42,7 @@ function listDatabases() {
 
 //delete a Database
 function deleteDatabase() {
-	const engine = 'mysql/8.0.26';
+	const engine = 'mysql';
 	const dbId = 12345;
 	linodeSql
 		.deleteDatabase(engine, dbId)
@@ -58,7 +55,7 @@ function deleteDatabase() {
 }
 //update a Database
 function updateDatabase() {
-	const engine = 'mysql/8.0.26';
+	const engine = 'mysql';
 	const dbId = 12345;
 	const updateData = {
 		label: 'example-db',

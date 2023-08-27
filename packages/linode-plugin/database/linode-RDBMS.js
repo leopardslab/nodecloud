@@ -1,9 +1,9 @@
 /*This is an auto generated class, please do not change.*/
 /**
- * Class to create a NoSqlLinodeClass object
+ * Class to create a RDBMSLinodeClass object
  * @category Linode
  */
-class Linode_NoSql {
+class Linode_RDBMS {
 	/**
 	 *
 	 * @param {module} do Linode SDK
@@ -12,15 +12,15 @@ class Linode_NoSql {
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
+		this._linode.setToken(this._linodeToken);
 	}
 	/**
-	 * Trigers the getDatabases function of NoSqlLinodeClass
+	 * Trigers the getDatabases function of RDBMSLinodeClass
 	 * @param {Params} params - Data required for getDatabases
 	 * @param {Filter} filter - Data required for getDatabases
 	 * @returns {Promise<getDatabasesResponse>}
 	 */
 	getDatabases(params = undefined, filter = undefined) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getDatabases(params, filter)
@@ -29,13 +29,12 @@ class Linode_NoSql {
 		});
 	}
 	/**
-	 * Trigers the getDatabaseEngines function of NoSqlLinodeClass
+	 * Trigers the getDatabaseEngines function of RDBMSLinodeClass
 	 * @param {Params} params - Data required for getDatabaseEngines
 	 * @param {Filter} filter - Data required for getDatabaseEngines
 	 * @returns {Promise<getDatabaseEnginesResponse>}
 	 */
 	getDatabaseEngines(params = undefined, filter = undefined) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getDatabaseEngines(params, filter)
@@ -44,13 +43,12 @@ class Linode_NoSql {
 		});
 	}
 	/**
-	 * Trigers the createDatabase function of NoSqlLinodeClass
+	 * Trigers the createDatabase function of RDBMSLinodeClass
 	 * @param {UnionType} engine - Data required for createDatabase
 	 * @param {CreateDatabasePayload} data - Data required for createDatabase
 	 * @returns {Promise<createDatabaseResponse>}
 	 */
 	createDatabase(engine, data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createDatabase(engine, data)
@@ -59,13 +57,12 @@ class Linode_NoSql {
 		});
 	}
 	/**
-	 * Trigers the getEngineDatabase function of NoSqlLinodeClass
+	 * Trigers the getEngineDatabase function of RDBMSLinodeClass
 	 * @param {Engine} engine - Data required for getEngineDatabase
 	 * @param {NumberKeyword} databaseID - Data required for getEngineDatabase
 	 * @returns {Promise<getEngineDatabaseResponse>}
 	 */
 	getEngineDatabase(engine, databaseID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getEngineDatabase(engine, databaseID)
@@ -74,14 +71,13 @@ class Linode_NoSql {
 		});
 	}
 	/**
-	 * Trigers the updateDatabase function of NoSqlLinodeClass
+	 * Trigers the updateDatabase function of RDBMSLinodeClass
 	 * @param {Engine} engine - Data required for updateDatabase
 	 * @param {NumberKeyword} databaseID - Data required for updateDatabase
 	 * @param {UpdateDatabasePayload} data - Data required for updateDatabase
 	 * @returns {Promise<updateDatabaseResponse>}
 	 */
 	updateDatabase(engine, databaseID, data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateDatabase(engine, databaseID, data)
@@ -90,13 +86,12 @@ class Linode_NoSql {
 		});
 	}
 	/**
-	 * Trigers the deleteDatabase function of NoSqlLinodeClass
+	 * Trigers the deleteDatabase function of RDBMSLinodeClass
 	 * @param {Engine} engine - Data required for deleteDatabase
 	 * @param {NumberKeyword} databaseID - Data required for deleteDatabase
 	 * @returns {Promise<deleteDatabaseResponse>}
 	 */
 	deleteDatabase(engine, databaseID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteDatabase(engine, databaseID)
@@ -105,4 +100,4 @@ class Linode_NoSql {
 		});
 	}
 }
-module.exports = Linode_NoSql;
+module.exports = Linode_RDBMS;
