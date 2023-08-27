@@ -94,9 +94,43 @@ DO:
   <img src="../assets/generator/high_level_diagrams/do_diagram.png" />
 </p>
 
+- Oracle 
+```
+Oracle:
+      create: containerengine createCluster
+```
+<p align="center">
+  <img src="../assets/generator/high_level_diagrams/oracle.png" style="height:50%"  />
+  <img src="../assets/generator/high_level_diagrams/oracle_diagram.png" style="height:50%"  />
+</p>
+
+```
+Oracle:
+      createKey: keymanagement createKey KmsManagementClient
+```
+<p align="center">
+  <img src="../assets/generator/high_level_diagrams/oracle2.png" style="height:50%"  />
+  <img src="../assets/generator/high_level_diagrams/oracle_diagram2.png" style="height:50%"  />
+</p>
+
+- Linode
+
+```
+Linode:
+      create: kubernetes kubernetes.d.ts createKubernetesCluster
+
+
+```
+<p align="center">
+  <img src="../assets/generator/high_level_diagrams/linode.png" style="height:50%"  />
+  <img src="../assets/generator/high_level_diagrams/linode_diagram.png" style="height:50%"  />
+</p>
+
+
 ## Code parsers
 
-This is the simplest part of the code generation tool. The SDK files are read from the relevant SDKs as specified in the `node-cloud.yml` file. Afterwards, it is converted to an **Abstract Syntax Tree**. Finally, the class declaration Node of that **Abstract Syntax Tree** is returned. This retured Node is another **Abstract Syntax Tree** since a class declaration itself is another **Abstract Syntax Tree**.
+This is the simplest part of the code generation tool. The SDK files are read from the relevant SDKs as specified in the `node-cloud.yml` file. Afterwards, it is converted to an **Abstract Syntax Tree**. Finally, the class declaration Node of that **Abstract Syntax Tree** is returned in case of SDKs which are class based,for SDKs like Linode which are function based we collect the FirstStatement nodes in an array which represent the exported arrow function declaration. This retured Node is another **Abstract Syntax Tree** since a class declaration itself is another **Abstract Syntax Tree**.
+
 
 ## Data extraction functions
 
