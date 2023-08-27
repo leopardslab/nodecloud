@@ -1,8 +1,8 @@
 class ClassName {
 	/**
 	 *
-	 * @param {module} do Linode SDK
-	 * @param {object} options SDK options
+	 * @param {module} linodeSdk Linode SDK
+	 * @param {string} linodeToken Linode Token
 	 */
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;

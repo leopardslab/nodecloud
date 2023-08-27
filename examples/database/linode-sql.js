@@ -13,8 +13,9 @@ function createDatabase() {
 		label: 'example-db',
 		region: 'us-east',
 		type: 'g6-dedicated-2',
-		engine: 'mysql/8.0.26',
+		engine: 'mysql/8.0.30',
 		replication_type: 'semi_synch',
+		
 	};
 
 	// create database
