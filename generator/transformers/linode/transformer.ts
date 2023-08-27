@@ -75,12 +75,6 @@ export async function transform(
 		return ts.visitNode(rootNode, visit);
 	};
 
-	// const addIdentifiers = <T extends ts.Node>(
-	// 	context: ts.TransformationContext
-	// ) => (rootNode: T) => {
-	// 	let count = 0;
-	// };
-
 	const addIdentifiers = <T extends ts.Node>(
 		context: ts.TransformationContext
 	) => (rootNode: T) => {
