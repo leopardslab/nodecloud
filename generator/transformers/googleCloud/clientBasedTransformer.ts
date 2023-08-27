@@ -217,9 +217,9 @@ export async function clientBasedTransform(
 						ts.isIdentifier(childNode) &&
 						childNode.text === 'SDKFunctionName'
 					) {
-						const args = classData.functions[
-							count
-						].params.map(param => ts.createIdentifier(param.name));
+						const args = classData.functions[count].params.map(
+							param => ts.createIdentifier(param.name)
+						);
 						node.arguments = args;
 					}
 				});
