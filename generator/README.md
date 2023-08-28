@@ -132,11 +132,29 @@ Linode:
 
 ## Code parsers
 
-This is the simplest part of the code generation tool. The SDK files are read from the relevant SDKs as specified in the `node-cloud.yml` file. Afterwards, it is converted to an **Abstract Syntax Tree**. Finally, the class declaration Node of that **Abstract Syntax Tree** is returned in case of SDKs which are class based,for SDKs like Linode which are function based we collect the FirstStatement nodes in an array which represent the exported arrow function declaration. This retured Node is another **Abstract Syntax Tree** since a class declaration itself is another **Abstract Syntax Tree**.
+This is the simplest part of the code generation tool. The SDK files are read from the relevant SDKs as specified in the `node-cloud.yml` file. Afterwards, it is converted to an **Abstract Syntax Tree**. Finally, the class declaration Node of that **Abstract Syntax Tree** is returned in case of SDKs which are class based, for SDKs like Linode which are function based we collect the FirstStatement nodes in an array which represent the exported arrow function declaration. This retured Node is another **Abstract Syntax Tree** since a class declaration itself is another **Abstract Syntax Tree**.
 
 ## Data extraction functions
 
 These functions are located in the generators of the each cloud providers. Each data extration function has a unique logic depending on the **Abstract Syntax Tree** of a SDK class. The goal here is to extract all the data required to generate the new JavaScript class. At the end it is retured as `classData`. The data extration function collects imports, clients, method parameters, types of parameters, method return types and package names. Additionally, class relationships are identified in the Google Cloud data extraction function for the Google Cloud class based transformer.
+
+For Linode Cloud Provider in some function the function parameters had two nested parameters so to solve this problem and take both the parameters into consideration the below code has been implemented.
+
+```
+  if (param.name.elements) {
+					const parameter: param = {
+						name:
+							'{' +
+							param.name.elements[0].name.text +
+							',' +
+							param.name.elements[1].name.text +
+							'}',
+						optional: param.questionToken ? true : false,
+						type: SyntaxKind[param.type.kind],
+						typeName: null,
+					};
+```
+In the above code we have looked for sub elements in a function parameter and printed both of them in braces.
 
 ## Transformers
 
