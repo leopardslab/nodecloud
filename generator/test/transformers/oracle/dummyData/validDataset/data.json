@@ -1,0 +1,54 @@
+{
+	"className": "ObjectStorageClient",
+	"functions": [
+		{
+			"functionName": "create",
+			"SDKFunctionName": "createBucket",
+			"params": [
+				{
+					"name": "createBucketRequest",
+					"optional": false,
+					"type": "TypeReference",
+					"typeName": "CreateBucketRequest"
+				}
+			]
+		},
+		{
+			"functionName": "delete",
+			"SDKFunctionName": "deleteBucket",
+			"params": [
+				{
+					"name": "deleteBucketRequest",
+					"optional": false,
+					"type": "TypeReference",
+					"typeName": "DeleteBucketRequest"
+				}
+			]
+		},
+		{
+			"functionName": "list",
+			"SDKFunctionName": "listBuckets",
+			"params": [
+				{
+					"name": "listBucketsRequest",
+					"optional": false,
+					"type": "TypeReference",
+					"typeName": "ListBucketsRequest"
+				}
+			]
+		},
+		{
+			"functionName": "update",
+			"SDKFunctionName": "updateBucket",
+			"params": [
+				{
+					"name": "updateBucketRequest",
+					"optional": false,
+					"type": "TypeReference",
+					"typeName": "UpdateBucketRequest"
+				}
+			]
+		}
+	],
+	"serviceName": "ArchivalStorage"
+}

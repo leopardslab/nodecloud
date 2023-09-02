@@ -1,0 +1,18 @@
+{
+	"name": "@nodecloud/linode-plugin",
+	"version": "2.0.0",
+	"description": "Nodecloud Linode Plugin",
+	"main": "index.js",
+	"scripts": {
+		"prettier": "yarn pretty-quick"
+	},
+	"keywords": [
+		"nodecloud",
+		"nodecloud-Linode"
+	],
+	"author": "Scorelab",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"@linode/api-v4": "^0.97.0"
+	}
+}

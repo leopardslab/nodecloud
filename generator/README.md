@@ -23,7 +23,7 @@ The execution of the generator starts form the `main.ts` file, where the basic i
 
 ## Structure of `node-cloud.yml` file
 
-- AWS
+-   AWS
 
 ```
 AWS:
@@ -35,7 +35,7 @@ AWS:
   <img src="https://raw.githubusercontent.com/rajitha1998/waterme-Project/master/aws_diagram.png" />
 </p>
 
-- Azure
+-   Azure
 
 ```
 Azure:
@@ -47,7 +47,7 @@ Azure:
   <img src="https://raw.githubusercontent.com/rajitha1998/waterme-Project/master/azure_diagram.jpeg" />
 </p>
 
-- Google Cloud (client based)
+-   Google Cloud (client based)
 
 ```
 GCP:
@@ -67,7 +67,7 @@ GCP:
   <img src="https://raw.githubusercontent.com/rajitha1998/waterme-Project/master/gcp_client_based_diagram.jpeg" />
 </p>
 
-- Google Cloud (class based)
+-   Google Cloud (class based)
 
 ```
 GCP:
@@ -82,7 +82,7 @@ GCP:
 
 For the class-based SDKs there is a minor change in the `node-cloud.yml` to record the main class of an SDK. For the above scenario, it’s the DNS class.
 
-- Digital Ocean
+-   Digital Ocean
 
 ```
 DO:
@@ -94,23 +94,77 @@ DO:
   <img src="../assets/generator/high_level_diagrams/do_diagram.png" />
 </p>
 
+-   Oracle
+
+```
+Oracle:
+      create: containerengine createCluster
+```
+
+<p align="center">
+  <img src="../assets/generator/high_level_diagrams/oracle.png" style="height:50%"  />
+  <img src="../assets/generator/high_level_diagrams/oracle_diagram.png" style="height:50%"  />
+</p>
+
+```
+Oracle:
+      createKey: keymanagement createKey KmsManagementClient
+```
+
+<p align="center">
+  <img src="../assets/generator/high_level_diagrams/oracle2.png" style="height:50%"  />
+  <img src="../assets/generator/high_level_diagrams/oracle_diagram2.png" style="height:50%"  />
+</p>
+
+-   Linode
+
+```
+Linode:
+      create: kubernetes kubernetes.d.ts createKubernetesCluster
+
+
+```
+
+<p align="center">
+  <img src="../assets/generator/high_level_diagrams/linode.png" style="height:50%"  />
+  <img src="../assets/generator/high_level_diagrams/linode_diagram.png" style="height:50%"  />
+</p>
+
 ## Code parsers
 
-This is the simplest part of the code generation tool. The SDK files are read from the relevant SDKs as specified in the `node-cloud.yml` file. Afterwards, it is converted to an **Abstract Syntax Tree**. Finally, the class declaration Node of that **Abstract Syntax Tree** is returned. This retured Node is another **Abstract Syntax Tree** since a class declaration itself is another **Abstract Syntax Tree**.
+This is the simplest part of the code generation tool. The SDK files are read from the relevant SDKs as specified in the `node-cloud.yml` file. Afterwards, it is converted to an **Abstract Syntax Tree**. Finally, the class declaration Node of that **Abstract Syntax Tree** is returned in case of SDKs which are class based, for SDKs like Linode which are function based we collect the FirstStatement nodes in an array which represent the exported arrow function declaration. This retured Node is another **Abstract Syntax Tree** since a class declaration itself is another **Abstract Syntax Tree**.
 
 ## Data extraction functions
 
 These functions are located in the generators of the each cloud providers. Each data extration function has a unique logic depending on the **Abstract Syntax Tree** of a SDK class. The goal here is to extract all the data required to generate the new JavaScript class. At the end it is retured as `classData`. The data extration function collects imports, clients, method parameters, types of parameters, method return types and package names. Additionally, class relationships are identified in the Google Cloud data extraction function for the Google Cloud class based transformer.
 
+For Linode Cloud Provider in some function the function parameters had two nested parameters so to solve this problem and take both the parameters into consideration the below code has been implemented.
+
+```
+  if (param.name.elements) {
+					const parameter: param = {
+						name:
+							'{' +
+							param.name.elements[0].name.text +
+							',' +
+							param.name.elements[1].name.text +
+							'}',
+						optional: param.questionToken ? true : false,
+						type: SyntaxKind[param.type.kind],
+						typeName: null,
+					};
+```
+In the above code we have looked for sub elements in a function parameter and printed both of them in braces.
+
 ## Transformers
 
 This is the most important part of the code generator tool. Currently, there are four transformers. Two transformers for Google Cloud, and one each for AWS and Azure. All of the transformers runs three main transformations.
 
-- `addFunctions`: In this transformation the basic structure of the code is created. Method Nodes are created to the number of functions in the `classData` object. If there are imports related to the class those statments are also added to the dummy **Abstract Syntax Tree**.
+-   `addFunctions`: In this transformation the basic structure of the code is created. Method Nodes are created to the number of functions in the `classData` object. If there are imports related to the class those statments are also added to the dummy **Abstract Syntax Tree**.
 
-- `addIdentifiers`: In this transformation all the Identifier nodes are updated. After this transformation the code is logically compelete. All the neccessary code parts are added and finalized such as parameter names, parameter types, client names, class name, package names, SDK function names etc.
+-   `addIdentifiers`: In this transformation all the Identifier nodes are updated. After this transformation the code is logically compelete. All the neccessary code parts are added and finalized such as parameter names, parameter types, client names, class name, package names, SDK function names etc.
 
-- `addComments`: This transformation aims to auto-generate the API documentation. All the comments are added to the structure required by `JSDoc`. The `@category` is used to categorize the generated classes depending on the cloud provider. This tag is from the `better-docs` template used with `JSDoc`.
+-   `addComments`: This transformation aims to auto-generate the API documentation. All the comments are added to the structure required by `JSDoc`. The `@category` is used to categorize the generated classes depending on the cloud provider. This tag is from the `better-docs` template used with `JSDoc`.
 
 ## Understanding the directory structure of generator
 
@@ -136,4 +190,4 @@ transformer which transforms the dummy class into an working Nodecloud class for
 
 ## Running the code generation tool
 
-- To build classes run `tsc main && node main` or 'yarn run tool' if inside generator directory and `yarn run generator` if inside nodecloud directory.
+-   To build classes run `tsc main && node main` or 'yarn run tool' if inside generator directory and `yarn run generator` if inside nodecloud directory.

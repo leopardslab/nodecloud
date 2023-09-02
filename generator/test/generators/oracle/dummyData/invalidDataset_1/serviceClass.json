@@ -1,0 +1,7 @@
+{
+	"create": "loadbalancer createLoadBalancer",
+	"delete": "loadbalancer",
+	"get": "loadbalancer getLoadBalancer",
+	"update": "loadbalancer updateLoadBalancer",
+	"list": "loadbalancer listLoadBalancers"
+}
