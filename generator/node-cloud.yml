@@ -265,6 +265,13 @@ RDBMS:
         startDBSystem: mysql startDbSystem DbSystemClient
         stopDBSystem: mysql stopDbSystem DbSystemClient
         updateDBSystem: mysql updateDbSystem DbSystemClient
+    Linode:
+        createDatabase: databases databases.d.ts createDatabase
+        updateDatabase: databases databases.d.ts updateDatabase
+        deleteDatabase: databases databases.d.ts deleteDatabase
+        getDatabases: databases databases.d.ts getDatabases
+        getDatabaseEngines: databases databases.d.ts getDatabaseEngines
+        getEngineDatabase: databases databases.d.ts getEngineDatabase
 
 NoSql:
     AWS:
@@ -299,13 +306,6 @@ NoSql:
         deleteRow: nosql deleteRow
         getRow: nosql getRow
         updateRow: nosql updateRow
-    Linode:
-        createDatabase: databases databases.d.ts createDatabase
-        updateDatabase: databases databases.d.ts updateDatabase
-        deleteDatabase: databases databases.d.ts deleteDatabase
-        getDatabases: databases databases.d.ts getDatabases
-        getDatabaseEngines: databases databases.d.ts getDatabaseEngines
-        getEngineDatabase: databases databases.d.ts getEngineDatabase
 
 DNS:
     AWS:

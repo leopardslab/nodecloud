@@ -6,12 +6,27 @@
 class Linode_Kubernetes {
 	/**
 	 *
-	 * @param {module} do Linode SDK
-	 * @param {object} options SDK options
+	 * @param {module} linodeSdk Linode SDK
+	 * @param {string} linodeToken Linode Token
 	 */
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
 		this._linodeToken = linodeToken;
+		this._linode.setToken(this._linodeToken);
+	}
+	/**
+	 * Trigers the getKubernetesClusters function of KubernetesLinodeClass
+	 * @param {Params} params - Data required for getKubernetesClusters
+	 * @param {Filter} filters - Data required for getKubernetesClusters
+	 * @returns {Promise<getKubernetesClustersResponse>}
+	 */
+	getAllClusters(params = undefined, filters = undefined) {
+		return new Promise((resolve, reject) => {
+			this._linode
+				.getKubernetesClusters(params, filters)
+				.then(data => resolve(data))
+				.catch(err => reject(err));
+		});
 	}
 	/**
 	 * Trigers the createKubernetesCluster function of KubernetesLinodeClass
@@ -19,7 +34,6 @@ class Linode_Kubernetes {
 	 * @returns {Promise<createKubernetesClusterResponse>}
 	 */
 	create(data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createKubernetesCluster(data)
@@ -33,10 +47,24 @@ class Linode_Kubernetes {
 	 * @returns {Promise<deleteKubernetesClusterResponse>}
 	 */
 	delete(clusterID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteKubernetesCluster(clusterID)
+				.then(data => resolve(data))
+				.catch(err => reject(err));
+		});
+	}
+	/**
+	 * Trigers the getNodePools function of KubernetesLinodeClass
+	 * @param {NumberKeyword} clusterID - Data required for getNodePools
+	 * @param {Params} params - Data required for getNodePools
+	 * @param {Filter} filters - Data required for getNodePools
+	 * @returns {Promise<getNodePoolsResponse>}
+	 */
+	getNodePools(clusterID, params = undefined, filters = undefined) {
+		return new Promise((resolve, reject) => {
+			this._linode
+				.getNodePools(clusterID, params, filters)
 				.then(data => resolve(data))
 				.catch(err => reject(err));
 		});
@@ -48,7 +76,6 @@ class Linode_Kubernetes {
 	 * @returns {Promise<getNodePoolResponse>}
 	 */
 	getNodePool(clusterID, nodePoolID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.getNodePool(clusterID, nodePoolID)
@@ -63,7 +90,6 @@ class Linode_Kubernetes {
 	 * @returns {Promise<createNodePoolResponse>}
 	 */
 	createNodePool(clusterID, data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.createNodePool(clusterID, data)
@@ -79,7 +105,6 @@ class Linode_Kubernetes {
 	 * @returns {Promise<updateNodePoolResponse>}
 	 */
 	updateNodePool(clusterID, nodePoolID, data) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.updateNodePool(clusterID, nodePoolID, data)
@@ -94,7 +119,6 @@ class Linode_Kubernetes {
 	 * @returns {Promise<deleteNodePoolResponse>}
 	 */
 	deleteNodePool(clusterID, nodePoolID) {
-		this._linode.setToken(this._linodeToken);
 		return new Promise((resolve, reject) => {
 			this._linode
 				.deleteNodePool(clusterID, nodePoolID)

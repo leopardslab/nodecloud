@@ -1,13 +1,13 @@
 /*This is an auto generated class, please do not change.*/
 /**
- * Class to create a NoSqlLinodeClass object
+ * Class to create a RDBMSLinodeClass object
  * @category Linode
  */
-class Linode_NoSql {
+class Linode_RDBMS {
 	/**
 	 *
-	 * @param {module} do Linode SDK
-	 * @param {object} options SDK options
+	 * @param {module} linodeSdk Linode SDK
+	 * @param {string} linodeToken Linode Token
 	 */
 	constructor(linodeSdk, linodeToken) {
 		this._linode = linodeSdk;
@@ -15,7 +15,7 @@ class Linode_NoSql {
 		this._linode.setToken(this._linodeToken);
 	}
 	/**
-	 * Trigers the getDatabases function of NoSqlLinodeClass
+	 * Trigers the getDatabases function of RDBMSLinodeClass
 	 * @param {Params} params - Data required for getDatabases
 	 * @param {Filter} filter - Data required for getDatabases
 	 * @returns {Promise<getDatabasesResponse>}
@@ -29,7 +29,7 @@ class Linode_NoSql {
 		});
 	}
 	/**
-	 * Trigers the getDatabaseEngines function of NoSqlLinodeClass
+	 * Trigers the getDatabaseEngines function of RDBMSLinodeClass
 	 * @param {Params} params - Data required for getDatabaseEngines
 	 * @param {Filter} filter - Data required for getDatabaseEngines
 	 * @returns {Promise<getDatabaseEnginesResponse>}
@@ -43,7 +43,7 @@ class Linode_NoSql {
 		});
 	}
 	/**
-	 * Trigers the createDatabase function of NoSqlLinodeClass
+	 * Trigers the createDatabase function of RDBMSLinodeClass
 	 * @param {UnionType} engine - Data required for createDatabase
 	 * @param {CreateDatabasePayload} data - Data required for createDatabase
 	 * @returns {Promise<createDatabaseResponse>}
@@ -57,7 +57,7 @@ class Linode_NoSql {
 		});
 	}
 	/**
-	 * Trigers the getEngineDatabase function of NoSqlLinodeClass
+	 * Trigers the getEngineDatabase function of RDBMSLinodeClass
 	 * @param {Engine} engine - Data required for getEngineDatabase
 	 * @param {NumberKeyword} databaseID - Data required for getEngineDatabase
 	 * @returns {Promise<getEngineDatabaseResponse>}
@@ -71,7 +71,7 @@ class Linode_NoSql {
 		});
 	}
 	/**
-	 * Trigers the updateDatabase function of NoSqlLinodeClass
+	 * Trigers the updateDatabase function of RDBMSLinodeClass
 	 * @param {Engine} engine - Data required for updateDatabase
 	 * @param {NumberKeyword} databaseID - Data required for updateDatabase
 	 * @param {UpdateDatabasePayload} data - Data required for updateDatabase
@@ -86,7 +86,7 @@ class Linode_NoSql {
 		});
 	}
 	/**
-	 * Trigers the deleteDatabase function of NoSqlLinodeClass
+	 * Trigers the deleteDatabase function of RDBMSLinodeClass
 	 * @param {Engine} engine - Data required for deleteDatabase
 	 * @param {NumberKeyword} databaseID - Data required for deleteDatabase
 	 * @returns {Promise<deleteDatabaseResponse>}
@@ -100,4 +100,4 @@ class Linode_NoSql {
 		});
 	}
 }
-module.exports = Linode_NoSql;
+module.exports = Linode_RDBMS;

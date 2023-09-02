@@ -9,7 +9,7 @@ const dns = ncProviders.linode.dns();
 // Create a DNS Domain
 function createDomain() {
 	let domainCreateOptions = {
-		domain: 'example.com',
+		domain: 'scorelab.com',
 		type: 'master',
 		soa_email: 'admin@example.com',
 		description: 'Example Description',
@@ -72,7 +72,7 @@ function deleteDomain() {
 function updateDomain() {
 	let recordID = 3352896;
 	let options = {
-		domain: 'example.com',
+		domain: 'scorelab.com',
 		type: 'master',
 		soa_email: 'admin@example.com',
 		description: 'Example Description',
@@ -86,7 +86,7 @@ function updateDomain() {
 		group: 'Example Display Group',
 		tags: ['tag1', 'tag2'],
 	};
-	updateDomain(recordID, options)
+	dns.updateDomain(recordID, options)
 		.then(result => {
 			console.log('Output is: ', result);
 		})

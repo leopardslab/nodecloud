@@ -6,12 +6,13 @@
 class Oracle_DNS {
 	/**
 	 *
-	 * @param {module} do Oracle SDK
-	 * @param {object} options SDK options
+	 * @param {module} ocisdk Oracle SDK
+	 * @param {object} params SDK params
+	 * @param {string} clientConfiguration SDK ClientConfiguration
 	 */
 	constructor(ocisdk, params, clientConfiguration) {
 		this._oci = ocisdk._sdkFileName;
-		this._sdkclassName = this._oci.DnsClient(params, clientConfiguration);
+		this._dnsClient = this._oci.DnsClient(params, clientConfiguration);
 	}
 	/**
 	 * Trigers the createZone function of DnsClient
