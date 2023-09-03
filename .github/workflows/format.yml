@@ -14,8 +14,8 @@ jobs:
           node-version: "12.x"
       - name: Format
         run: |
-        yarn
-        yarn format
+          yarn
+          yarn format
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4.1.2
         with:
